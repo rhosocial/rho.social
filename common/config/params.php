@@ -1,4 +1,5 @@
 <?php
+
 return [
     'adminEmail' => 'webmaster@rho.social',
     'supportEmail' => 'webmaster@rho.social',
@@ -12,4 +13,5 @@ return [
         'dev' => 'dev',
         'slogan' => 'Convenient and Powerful Personal Information & Relationship Manager.',
     ],
+    'baseDomain' => $baseDomain,
 ];

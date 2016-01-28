@@ -11,4 +11,5 @@
  */
 
 return [
+    'host' => 'sso',
 ];

@@ -15,6 +15,6 @@ return [
     'rules' => [
         '' => 'sso/login',
         'logout' => 'sso/logout',
-        'reset-password' => 'sso/reset-password',
+        'reset-password' => 'sso/request-password-reset',
     ],
 ];

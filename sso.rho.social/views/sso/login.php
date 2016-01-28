@@ -41,7 +41,7 @@ $this->params['breadcrumbs'][] = $this->title;
                     <label>
                         <?=
                         $form->field($model, 'rememberMe', [
-                            'template' => "{input} " . $model->attributeLabels()['rememberMe'] . "\n{hint}\n{error}",
+                            'template' => "{input} " . $model->getAttributeLabel('rememberMe') . "\n{hint}\n{error}",
                         ])->checkbox([
                             'style' => "background: rgb(255, 255, 255); margin: 0px; padding: 0px; border: 0px currentColor; border-image: none; left: -20%; top: -20%; width: 140%; height: 140%; display: block; position: absolute; opacity: 0;",
                             ], false)
@@ -54,7 +54,7 @@ $this->params['breadcrumbs'][] = $this->title;
             </div><!-- /.col -->
         </div>
         <?php ActiveForm::end(); ?>
-        <?= Yii::t('sso', 'Forgot your password?') ?> <?= Html::a(Yii::t('sso', 'reset it'), ['site/request-password-reset']) ?><br>
+        <?= Yii::t('sso', 'Forgot your password?') ?> <?= Html::a(Yii::t('sso', 'reset it'), ['sso/request-password-reset']) ?><br>
         <?php $regUrlManager = Yii::$app->multipleDomainsManager->get('reg'); ?>
         <?= Html::a(Yii::t('sso', 'Register a new membership'), $regUrlManager->createAbsoluteUrl(['register/index']), ['class' => 'text-center']) ?>
 

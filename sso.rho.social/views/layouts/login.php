@@ -41,7 +41,7 @@ EOT;
         <?=
         CnzzWidget::widget([
             'cnzzCode' => $cnzzCode,
-            'host' => \Yii::$app->params['host'],
+            'host' => \Yii::$app->params['host'] . '.' . \Yii::$app->params['baseDomain'],
         ])
         ?>-->
         <?php $this->endBody() ?>
