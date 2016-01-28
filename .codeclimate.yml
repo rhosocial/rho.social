@@ -1,0 +1,17 @@
+exclude_paths:
+    - docs/**/*
+    - tests/**/*
+    
+ratings:
+    paths:
+        - common/**
+        - my.rho.social/**
+        - reg.rho.social/**
+        - rho.social/**
+        - sso.rho.social/**
+        
+engines:
+    phpmd:
+        enabled: true
+    phpcodesniffer:
+        enabled: true
