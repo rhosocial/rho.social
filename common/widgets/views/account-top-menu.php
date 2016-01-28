@@ -36,14 +36,14 @@ $myUrlManager = \Yii::$app->multipleDomainsManager->get('my');
             </a>
             <ul class="dropdown-menu pull-right">
                 <li>
-                    <?= Html::a('<i class="fa fa-user"></i> ' . Yii::t('app', 'My Profile'), $myUrlManager->createAbsoluteUrl('profile')); ?>
+                    <?= Html::a('<i class="fa fa-user"></i> ' . Yii::t('common', 'My Profile'), $myUrlManager->createAbsoluteUrl('profile')); ?>
                 </li>
                 <li>
-                    <?= Html::a('<i class="fa fa-edit"></i> ' . Yii::t('app', 'Settings'), $myUrlManager->createAbsoluteUrl('setting')); ?>
+                    <?= Html::a('<i class="fa fa-edit"></i> ' . Yii::t('common', 'Settings'), $myUrlManager->createAbsoluteUrl('setting')); ?>
                 </li>
                 <li class="divider"></li>
                 <li>
-                    <?= Html::a('<i class="fa fa-sign-out"></i> ' . Yii::t('app', 'Logout'), $ssoUrlManager->createAbsoluteUrl('sso/logout'), ['data-method' => 'post']); ?>
+                    <?= Html::a('<i class="fa fa-sign-out"></i> ' . Yii::t('common', 'Logout'), $ssoUrlManager->createAbsoluteUrl('sso/logout'), ['data-method' => 'post']); ?>
                 </li>
             </ul>
         </li>

@@ -13,4 +13,5 @@
 return [
     'Submit' => '提交',
     'Reset' => '重置',
+    'My Profile' => '我的个人资料',
 ];

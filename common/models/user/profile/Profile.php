@@ -80,20 +80,24 @@ class Profile extends BaseUserItem
         return '{{%user_profile}}';
     }
 
-    public static $additionalRules = [
-        [['gender'], 'in', 'range' => [0, 1]],
-        [['first_name', 'last_name'], 'string', 'max' => 255],
-        [['first_name', 'last_name', 'language', 'timezone'], 'trim'],
-        [['first_name', 'last_name'], 'default', 'value' => ''],
-        [['language'], 'string', 'max' => 8],
-        [['language'], 'default', 'value' => 'zh-CN'],
-        [['timezone'], 'default', 'value' => 'Asia/Shanghai'],
-        [['appellation'], 'in', 'range' => [0, 1, 2, 3, 4, 5]],
-    ];
+    public function getAdditionalRules()
+    {
+        return [
+            [['gender'], 'in', 'range' => [0, 1]],
+            [['first_name', 'last_name'], 'string', 'max' => 255],
+            [['first_name', 'last_name', 'language', 'timezone'], 'trim'],
+            [['first_name', 'last_name'], 'default', 'value' => ''],
+            [['language'], 'string', 'max' => 8],
+            [['language'], 'default', 'value' => 'zh-CN'],
+            [['timezone'], 'default', 'value' => 272],
+            [['timezone'], 'in', 'range' => array_keys(\DateTimeZone::listIdentifiers())],
+            [['appellation'], 'in', 'range' => [0, 1, 2, 3, 4, 5]],
+        ];
+    }
 
     public function rules()
     {
-        return array_merge(parent::rules(), static::$additionalRules);
+        return array_merge(parent::rules(), $this->getAdditionalRules());
     }
 
     public function attributeLabels()

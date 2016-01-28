@@ -19,7 +19,6 @@ use rho_my\controllers\ProfileController;
 use common\models\user\profile\Profile;
 
 $this->params['item'] = 'profile';
-$this->params['profile'] = 'basic';
 $activeFieldTemplate = [
     'oneOfRow' => '<div class="col-md-2">{label}</div>'
     . '<div class="col-md-10">{input}</div>'
@@ -79,7 +78,7 @@ vh::divWithMark('name', vh::divWithMark($languageAttribute, $form->field($profil
         ]), true, 'col-md-6') .
     vh::divWithMark($timezoneAttribute, $form->field($profile, $timezoneAttribute, [
             'template' => $activeFieldTemplate['twoOfRow'],
-        ]), true, 'col-md-6')
+        ])->dropDownList(DateTimeZone::listIdentifiers()), true, 'col-md-6')
 )
 ?>
 <div class="row">

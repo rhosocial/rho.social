@@ -10,6 +10,7 @@
  * @license http://vistart.name/license/
  */
 use yii\helpers\Url;
+use yii\bootstrap\Nav;
 use rho_my\helpers\ViewHelper as vh;
 
 $this->title .= Yii::t('my', 'Profile');
@@ -94,18 +95,35 @@ $this->params['topbar_second_visible_md'] = true;
             </div>
             <hr>
             <div class="panel-body">
-                <ul class="nav nav-tabs" role="tablist">
-                    <li role="presentation"<?php if ($this->params['profile'] == 'basic') echo 'class="active"' ?>><a href="<?= Url::to(['/profile/basic']) ?>">Basic</a></li>
-                    <li role="presentation"<?php if ($this->params['profile'] == 'icon') echo 'class="active"' ?>><a href="<?= Url::to(['/profile/icon']) ?>">Icon</a></li>
-                    <li role="presentation"<?php if ($this->params['profile'] == 'location') echo 'class="active"' ?>><a href="<?= Url::to(['/profile/location']) ?>">Location</a></li>
-                    <li role="presentation"<?php if ($this->params['profile'] == 'preferences') echo 'class="active"' ?>><a href="<?= Url::to(['/profile/preference']) ?>">Preferences</a></li>
-                </ul>
+                <?php
+                echo Nav::widget([
+                    'items' => [
+                        [
+                            'label' => 'Basic',
+                            'url' => ['/profile/basic'],
+                        ],
+                        [
+                            'label' => 'Icon',
+                            'url' => ['/profile/icon'],
+                        ],
+                        [
+                            'label' => 'Location',
+                            'url' => ['/profile/location'],
+                        ],
+                        [
+                            'label' => 'Preferences',
+                            'url' => ['/profile/preference'],
+                        ],
+                    ],
+                    'options' => ['class' => 'nav-tabs'], // set this to nav-tab to get tab-styled navigation
+                ]);
+                ?>
                 <?= $content ?>
             </div>
         </div>
     </div>
     <div class="profile-nav-container col-md-3 col-sm-4">
-        <?php //$this->render('_sidebar') ?>
+        <?php //$this->render('_sidebar')  ?>
     </div>
 </div>
 <?= vh::markEnd('layouts/profile/main') ?>
