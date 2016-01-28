@@ -13,6 +13,7 @@ use vistart\Widgets\CnzzWidget;
 /* @var $content string */
 
 CommonAsset::register($this);
+require('topbar-second.php');
 ?>
 <?php
 $cnzzCode = <<<EOT
