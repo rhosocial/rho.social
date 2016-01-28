@@ -11,7 +11,7 @@
  */
 $username = require(__DIR__ . '/username.php');
 $password = require(__DIR__ . '/password.php');
-$host = require(__DIR__ . '/host');
+$host = require(__DIR__ . '/host.php');
 $database = require(__DIR__ . '/database.php');
 $port = require(__DIR__ . '/port.php');
 return [
