@@ -16,6 +16,7 @@ use yii\widgets\ActiveForm;
 use rho_my\helpers\ViewHelper as vh;
 use rho_my\widgets\NotificationAlertWidget as na;
 use rho_my\controllers\ProfileController;
+use common\models\user\profile\Profile;
 
 $this->params['item'] = 'profile';
 $this->params['profile'] = 'basic';
@@ -28,12 +29,12 @@ $activeFieldTemplate = [
     . '<div class="col-md-offset-4 col-md-8">{error}</div>',
 ];
 ?>
-<?= vh::markBegin('message') ?>
+<?= vh::markBegin('Notification Alert') ?>
 <?php $message = ProfileController::getFlashNotifification(ProfileController::SESSKEY_MY_PROFILE_BASIC) ?>
 <?php if (is_array($message)): ?>
     <?= na::widget($message) ?>
 <?php endif; ?>
-<?= vh::markEnd('message') ?>
+<?= vh::markEnd('Notification Alert') ?>
 
 <?php $formId = 'user_profile_basic_form' ?>
 <?= vh::markBegin($formId) ?>
@@ -53,6 +54,30 @@ vh::divWithMark('name', vh::divWithMark($firstNameAttribute, $form->field($profi
             'template' => $activeFieldTemplate['twoOfRow'],
         ]), true, 'col-md-6') .
     vh::divWithMark($lastNameAttribute, $form->field($profile, $lastNameAttribute, [
+            'template' => $activeFieldTemplate['twoOfRow'],
+        ]), true, 'col-md-6')
+)
+?>
+
+<?php $appellationAttribute = 'appellation'; ?>
+<?php $genderAttribute = 'gender'; ?>
+<?=
+vh::divWithMark('name', vh::divWithMark($appellationAttribute, $form->field($profile, $appellationAttribute, [
+            'template' => $activeFieldTemplate['twoOfRow'],
+        ])->dropDownList(Profile::$appellations), true, 'col-md-6') .
+    vh::divWithMark($genderAttribute, $form->field($profile, $genderAttribute, [
+            'template' => $activeFieldTemplate['twoOfRow'],
+        ])->dropDownList(Profile::$genders), true, 'col-md-6')
+)
+?>
+
+<?php $languageAttribute = 'language'; ?>
+<?php $timezoneAttribute = 'timezone'; ?>
+<?=
+vh::divWithMark('name', vh::divWithMark($languageAttribute, $form->field($profile, $languageAttribute, [
+            'template' => $activeFieldTemplate['twoOfRow'],
+        ]), true, 'col-md-6') .
+    vh::divWithMark($timezoneAttribute, $form->field($profile, $timezoneAttribute, [
             'template' => $activeFieldTemplate['twoOfRow'],
         ]), true, 'col-md-6')
 )

@@ -58,11 +58,11 @@ class Profile extends BaseUserItem
 
     public static $appellations = [
         self::APPELLATION_NONE => 'none',
-        self::APPELLATION_MR => 'mr.',
-        self::APPELLATION_MRS => 'mrs.',
-        self::APPELLATION_MS => 'ms.',
-        self::APPELLATION_DR => 'dr.',
-        self::APPELLATION_JR => 'jr.',
+        self::APPELLATION_MR => 'Mr.',
+        self::APPELLATION_MRS => 'Mrs.',
+        self::APPELLATION_MS => 'Ms.',
+        self::APPELLATION_DR => 'Dr.',
+        self::APPELLATION_JR => 'Jr.',
     ];
 
     public function getNickname()
