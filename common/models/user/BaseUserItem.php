@@ -39,6 +39,39 @@ abstract class BaseUserItem extends \vistart\Models\models\BaseBlameableModel
      */
     const SCENARIO_REGISTER = 'register';
 
+    public $contentTypes = [
+        0x00 => 'Home',
+        0x01 => 'Work',
+        0xff => 'Other',
+    ];
+    public $permissions = [
+        0 => 'Private',
+        1 => 'Friend',
+        2 => 'Logged-in',
+        3 => 'Public',
+    ];
+
+    public function attributeLabels()
+    {
+        return [
+            $this->guidAttribute => 'GUID',
+            $this->createdByAttribute => 'Owner\'s GUID',
+            $this->idAttribute => 'ID',
+            $this->createdAtAttribute => 'Create Time',
+            $this->updatedAtAttribute => 'Update Time',
+            $this->confirmationAttribute => 'Confirmed',
+            'permission' => 'Permission',
+        ];
+    }
+
+    public function rules()
+    {
+        $rules = [
+            ['permission', 'default', 'value' => 0],
+        ];
+        return array_merge(parent::rules(), $rules);
+    }
+
     public function init()
     {
         $this->userClass = \common\models\user\User::className();

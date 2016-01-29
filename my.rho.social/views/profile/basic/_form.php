@@ -14,6 +14,7 @@ use yii\widgets\ActiveForm;
 use common\models\user\profile\Profile;
 use rho_my\helpers\ViewHelper as vh;
 
+/* @var $form yii\widgets\ActiveForm */
 $activeFieldTemplate = [
     'oneOfRow' => '<div class="col-md-2">{label}</div>'
     . '<div class="col-md-10">{input}</div>'

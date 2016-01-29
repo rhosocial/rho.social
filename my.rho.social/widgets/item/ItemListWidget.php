@@ -21,9 +21,10 @@ class ItemListWidget extends \yii\base\Widget
 {
 
     public $items;
+    public $action;
 
     public function run()
     {
-        return $this->render('item-list', ['items' => $this->items]);
+        return $this->render('item-list', ['items' => $this->items, 'action' => $this->action]);
     }
 }

@@ -21,9 +21,17 @@ class ItemWidget extends \yii\base\Widget
 {
 
     public $model;
+    public $action;
+
+    public function init()
+    {
+        if (empty($this->action)) {
+            $this->action = \Yii::$app->request->resolve();
+        }
+    }
 
     public function run()
     {
-        return $this->render('item', ['model' => $this->model]);
+        return $this->render('item', ['model' => $this->model, 'action' => $this->action]);
     }
 }

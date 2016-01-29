@@ -21,29 +21,4 @@ use common\models\user\BaseUserItem;
  */
 class BaseContactItem extends BaseUserItem {
 
-    public $contentTypes = [
-        0x00 => 'Home',
-        0x01 => 'Work',
-        0xff => 'Other',
-    ];
-    
-    public $permissions = [
-        0 => 'Private',
-        1 => 'Friend',
-        2 => 'Logged-in',
-        3 => 'Public',
-    ];
-
-    public function attributeLabels()
-    {
-        return [
-            'guid' => 'GUID',
-            'user_guid' => 'Owner\'s GUID',
-            'id' => 'ID',
-            'Create Time' => 'Create Time',
-            'Update Time' => 'Update Time',
-            'Confirmed' => 'Confirmed',
-        ];
-    }
-
 }

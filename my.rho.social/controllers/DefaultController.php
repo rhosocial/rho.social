@@ -14,6 +14,7 @@ namespace rho_my\controllers;
 
 use Yii;
 use common\models\user\BaseUserItem;
+use yii\base\NotSupportedException;
 
 /**
  * Description of DefaultController
@@ -105,5 +106,20 @@ class DefaultController extends \yii\web\Controller
             throw new \yii\web\NotFoundHttpException('Model Not Found.');
         }
         return $model;
+    }
+
+    public static function getRouteNew()
+    {
+        throw new NotSupportedException('New model cannot be created.');
+    }
+
+    public static function getRouteUpdate()
+    {
+        throw new NotSupportedException('Model cannot be updated.');
+    }
+
+    public static function getRouteDelete()
+    {
+        throw new NotSupportedException('Model cannot be deleted.');
     }
 }

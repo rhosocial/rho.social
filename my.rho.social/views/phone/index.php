@@ -9,12 +9,11 @@
  * @copyright Copyright (c) 2016 vistart
  * @license http://vistart.name/license/
  */
-use rho_my\widgets\item\ItemListWidget;
-
-$identity = Yii::$app->user->identity;
-$phones = common\models\user\contact\Phone::find()->createdBy($identity->guid)->all();
+/* @var $this yii\web\View */
+/* @var $newModel common\models\user\contact\Phone */
+use rho_my\controllers\PhoneController;
+$this->params['newModel'] = $newModel;
 ?>
-<?=
 
-ItemListWidget::widget(['items' => $phones])
-?>
+<?= $this->render("@rho_my/views/common/notification", ['message' => PhoneController::getFlash()]) ?>
+<?= $this->render('_list') ?>

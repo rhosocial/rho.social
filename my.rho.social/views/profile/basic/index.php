@@ -10,7 +10,6 @@
  * @license http://vistart.name/license/
  */
 /* @var $this yii\web\View */
-/* @var $form yii\widgets\ActiveForm */
 /* @var $profile common\models\user\profile\Basic.php */
 use rho_my\controllers\profile\BasicAction;
 

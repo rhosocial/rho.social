@@ -25,6 +25,8 @@ use yii\filters\VerbFilter;
 class PhoneController extends DefaultController
 {
 
+    const SESSKEY_MY_PHONE = 'sesskey_my_phone';
+
     public $layout = 'phone/main';
 
     public function behaviors()
@@ -60,7 +62,15 @@ class PhoneController extends DefaultController
 
     public function actionIndex()
     {
-        return $this->render('index');
+        return $this->render('index', ['newModel' => static::getIdentityNewModel()]);
+    }
+
+    public static function getIdentityNewModel()
+    {
+        $identity = Yii::$app->user->identity;
+        $model = $identity->create(Phone::className());
+        $model->loadDefaultValues();
+        return $model;
     }
 
     public function actionUpdate($id)
@@ -83,5 +93,25 @@ class PhoneController extends DefaultController
     public function actionGet($id)
     {
         return $this->render('index');
+    }
+
+    public static function getFlash()
+    {
+        return static::getFlashNotifification(static::SESSKEY_MY_PHONE);
+    }
+    
+    public static function getRouteNew()
+    {
+        return 'phone/new';
+    }
+    
+    public static function getRouteUpdate()
+    {
+        return 'phone/update';
+    }
+    
+    public static function getRouteDelete()
+    {
+        return 'phone/delete';
     }
 }
