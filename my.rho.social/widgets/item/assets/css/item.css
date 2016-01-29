@@ -1,0 +1,38 @@
+/*
+  _   __ __ _____ _____ ___  ____  _____
+ | | / // // ___//_  _//   ||  __||_   _|
+ | |/ // /(__  )  / / / /| || |     | |
+ |___//_//____/  /_/ /_/ |_||_|     |_|
+@link http://vistart.name/
+@copyright Copyright (c) 2016 vistart
+@license http://vistart.name/license/
+*/
+/* 
+    Created on : 2015-3-16, 15:00:15
+    Author     : vistart
+*/
+
+.item-content {
+    width: 100%;
+    min-height: 60px;
+    padding: 10px;
+    border-left: 3px solid transparent;
+}
+
+.active.item-content, .item-content:hover, .item-content:focus, .active.item-content:hover, .active.item-content:focus {
+    background-color: #f7f7f7;
+    color: #555555;
+    z-index: 2;
+    border-left: 3px solid #4cd9c0 !important;
+}
+
+.item-content-content {
+}
+
+.item-content-div a {
+    margin-right: 3px;
+}
+
+.item-content-heading {
+    font-weight: 600;
+}
