@@ -15,7 +15,7 @@ use yii\helpers\Html;
 use yii\widgets\ActiveForm;
 use rho_my\helpers\ViewHelper as vh;
 use rho_my\widgets\NotificationAlertWidget as na;
-use rho_my\controllers\ProfileController;
+use rho_my\controllers\profile\BasicAction;
 use common\models\user\profile\Profile;
 
 $this->params['item'] = 'profile';
@@ -29,7 +29,7 @@ $activeFieldTemplate = [
 ];
 ?>
 <?= vh::markBegin('Notification Alert') ?>
-<?php $message = ProfileController::getFlashNotifification(ProfileController::SESSKEY_MY_PROFILE_BASIC) ?>
+<?php $message = BasicAction::getFlash() ?>
 <?php if (is_array($message)): ?>
     <?= na::widget($message) ?>
 <?php endif; ?>

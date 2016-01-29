@@ -25,13 +25,31 @@ use rho_my\controllers\ProfileController;
 class BasicAction extends Action
 {
 
+    public static function setFlashSucceeded()
+    {
+        ProfileController::setFlashSucceeded(ProfileController::SESSKEY_MY_PROFILE_BASIC);
+    }
+
+    public static function setFlashFailed()
+    {
+        ProfileController::setFlashFailed(ProfileController::SESSKEY_MY_PROFILE_BASIC);
+    }
+
+    public static function getFlash()
+    {
+        return ProfileController::getFlashNotifification(ProfileController::SESSKEY_MY_PROFILE_BASIC);
+    }
+
     public function run()
     {
         $profile = Yii::$app->user->identity->profile;
         $profile->scenario = Profile::SCENARIO_FORM;
-        if ($profile->load(Yii::$app->request->post()) && $profile->save()) {
-            ProfileController::setFlashNotification(ProfileController::SESSKEY_MY_PROFILE_BASIC, ProfileController::MESSAGE_UPDATE_SUCCESS);
-            return $this->controller->redirect([$this->controller->id . '/' . $this->id]);
+        if ($profile->load(Yii::$app->request->post())) {
+            if ($profile->save()) {
+                static::setFlashSucceeded();
+                return $this->controller->redirect([$this->controller->id . '/' . $this->id]);
+            }
+            static::setFlashFailed();
         }
         return $this->controller->render($this->id, ['profile' => $profile]);
     }
