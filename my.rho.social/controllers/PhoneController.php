@@ -12,6 +12,8 @@
 
 namespace rho_my\controllers;
 
+use Yii;
+use common\models\user\contact\Phone;
 use yii\filters\AccessControl;
 use yii\filters\VerbFilter;
 
@@ -35,7 +37,10 @@ class PhoneController extends DefaultController
                         'allow' => true,
                         'actions' => [
                             'index',
-                            'get-item',
+                            'update',
+                            'delete',
+                            'get',
+                            'gets',
                         ],
                         'roles' => ['@'],
                     ]
@@ -44,7 +49,10 @@ class PhoneController extends DefaultController
             'verbs' => [
                 'class' => VerbFilter::className(),
                 'actions' => [
-                    'get-item' => ['post'],
+                    'get' => ['post'],
+                    'gets' => ['post'],
+                    'update' => ['post'],
+                    'delete' => ['post'],
                 ],
             ],
         ];
@@ -55,7 +63,24 @@ class PhoneController extends DefaultController
         return $this->render('index');
     }
 
-    public function actionGetItem()
+    public function actionUpdate($id)
+    {
+        $result = static::updateItem($id, Phone::className());
+        return $this->redirect(['phone/index']);
+    }
+
+    public function actionDelete($id)
+    {
+        $result = static::deleteItem($id, Phone::className());
+        return $this->redirect(['phone/index']);
+    }
+
+    public function actionGets()
+    {
+        
+    }
+
+    public function actionGet($id)
     {
         return $this->render('index');
     }

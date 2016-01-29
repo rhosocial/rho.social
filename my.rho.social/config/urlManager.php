@@ -14,5 +14,7 @@ return [
     'enablePrettyUrl' => true,
     'rules' => [
         '' => 'profile/basic',
+        'phone' => 'phone/index',
+        'email' => 'email/index',
     ],
 ];

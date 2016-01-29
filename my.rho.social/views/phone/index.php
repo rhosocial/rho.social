@@ -9,4 +9,12 @@
  * @copyright Copyright (c) 2016 vistart
  * @license http://vistart.name/license/
  */
+use rho_my\widgets\item\ItemListWidget;
 
+$identity = Yii::$app->user->identity;
+$phones = common\models\user\contact\Phone::find()->createdBy($identity->guid)->all();
+?>
+<?=
+
+ItemListWidget::widget(['items' => $phones])
+?>

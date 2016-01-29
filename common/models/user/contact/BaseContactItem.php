@@ -26,6 +26,13 @@ class BaseContactItem extends BaseUserItem {
         0x01 => 'Work',
         0xff => 'Other',
     ];
+    
+    public $permissions = [
+        0 => 'Private',
+        1 => 'Friend',
+        2 => 'Logged-in',
+        3 => 'Public',
+    ];
 
     public function attributeLabels()
     {
