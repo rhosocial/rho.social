@@ -51,6 +51,6 @@ class BasicAction extends Action
             }
             static::setFlashFailed();
         }
-        return $this->controller->render($this->id, ['profile' => $profile]);
+        return $this->controller->render($this->id . '/index', ['profile' => $profile]);
     }
 }

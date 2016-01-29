@@ -56,7 +56,7 @@ $this->params['topbar_second'] = [
     ],
     'job' => [
         'label' => Yii::t('my', 'Job Career'),
-        'url' => Url::toRoute('my/job'),
+        'url' => Url::toRoute('/job'),
         'icon' => '<i class="fa fa-job"></i>',
         'isActive' => Yii::$app->controller->id == 'job',
     ],

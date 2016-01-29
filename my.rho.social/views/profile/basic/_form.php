@@ -9,16 +9,11 @@
  * @copyright Copyright (c) 2016 vistart
  * @license http://vistart.name/license/
  */
-/* @var $this yii\web\View */
-/* @var $form yii\widgets\ActiveForm */
 use yii\helpers\Html;
 use yii\widgets\ActiveForm;
-use rho_my\helpers\ViewHelper as vh;
-use rho_my\widgets\NotificationAlertWidget as na;
-use rho_my\controllers\profile\BasicAction;
 use common\models\user\profile\Profile;
+use rho_my\helpers\ViewHelper as vh;
 
-$this->params['item'] = 'profile';
 $activeFieldTemplate = [
     'oneOfRow' => '<div class="col-md-2">{label}</div>'
     . '<div class="col-md-10">{input}</div>'
@@ -28,13 +23,6 @@ $activeFieldTemplate = [
     . '<div class="col-md-offset-4 col-md-8">{error}</div>',
 ];
 ?>
-<?= vh::markBegin('Notification Alert') ?>
-<?php $message = BasicAction::getFlash() ?>
-<?php if (is_array($message)): ?>
-    <?= na::widget($message) ?>
-<?php endif; ?>
-<?= vh::markEnd('Notification Alert') ?>
-
 <?php $formId = 'user_profile_basic_form' ?>
 <?= vh::markBegin($formId) ?>
 <?php $form = ActiveForm::begin(['id' => $formId]) ?>
