@@ -39,6 +39,7 @@ class PhoneController extends DefaultController
                         'allow' => true,
                         'actions' => [
                             'index',
+                            'new',
                             'update',
                             'delete',
                             'get',
@@ -53,6 +54,7 @@ class PhoneController extends DefaultController
                 'actions' => [
                     'get' => ['post'],
                     'gets' => ['post'],
+                    'new' => ['post'],
                     'update' => ['post'],
                     'delete' => ['post'],
                 ],
@@ -73,43 +75,65 @@ class PhoneController extends DefaultController
         return $model;
     }
 
+    public function actionNew()
+    {
+        $result = static::insertItem(Phone::className());
+        static::setFlashNotificationByResult(static::SESSKEY_MY_PHONE, $result);
+        return $this->redirect(['phone/index']);
+    }
+
     public function actionUpdate($id)
     {
         $result = static::updateItem($id, Phone::className());
+        static::setFlashNotificationByResult(static::SESSKEY_MY_PHONE, $result);
         return $this->redirect(['phone/index']);
     }
 
     public function actionDelete($id)
     {
         $result = static::deleteItem($id, Phone::className());
+        static::setFlashNotificationByResult(static::SESSKEY_MY_PHONE, $result);
         return $this->redirect(['phone/index']);
     }
 
-    public function actionGets()
+    public function actionGets($list = 0)
     {
-        
+        if ($list) {
+            return static::getCountJson(Phone::className());
+        }
+        return static::getItem(Phone::className());
     }
 
     public function actionGet($id)
     {
-        return $this->render('index');
+        return static::getModelWidget($id, Phone::className());
     }
 
     public static function getFlash()
     {
         return static::getFlashNotifification(static::SESSKEY_MY_PHONE);
     }
-    
+
+    public static function getRouteGet()
+    {
+        return 'phone/get';
+    }
+
+    public static function getRouteGets()
+    {
+        return 'phone/gets';
+    }
+
     public static function getRouteNew()
     {
         return 'phone/new';
     }
-    
+
     public static function getRouteUpdate()
     {
         return 'phone/update';
     }
-    
+
     public static function getRouteDelete()
     {
         return 'phone/delete';

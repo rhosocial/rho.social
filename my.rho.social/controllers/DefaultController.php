@@ -23,89 +23,18 @@ use yii\base\NotSupportedException;
  */
 class DefaultController extends \yii\web\Controller
 {
+    use CRUDTrait,
+        NotificationTrait,
+        ViewTrait;
 
-    const MESSAGE_UPDATE_SUCCEEDED = [
-        'alert_class' => 'alert-success',
-        'title' => 'Congrats!',
-        'content' => 'Update succeeded!',
-    ];
-    const MESSAGE_UPDATE_FAILED = [
-        'alert_class' => 'alert-danger',
-        'title' => 'Sorry!',
-        'content' => 'Some errors occured.',
-    ];
-
-    public static function setFlashSucceeded($key)
+    public static function getRouteGet()
     {
-        static::setFlashNotification($key, self::MESSAGE_UPDATE_SUCCEEDED);
+        throw new NotSupportedException('Model cannot return by AJAX.');
     }
 
-    public static function setFlashFailed($key)
+    public static function getRouteGets()
     {
-        static::setFlashNotification($key, self::MESSAGE_UPDATE_FAILED);
-    }
-
-    public static function setFlashNotification($key, $value)
-    {
-        Yii::$app->session->setFlash($key, $value);
-    }
-
-    public static function getFlashNotifification($key)
-    {
-        return Yii::$app->session->getFlash($key);
-    }
-
-    public static function insertItem($id, $modelClass)
-    {
-        $model = new $modelClass(['scenario' => BaseUserItem::SCENARIO_FORM]);
-        return ($model->load(Yii::$app->request->post()) && $model->save());
-    }
-
-    public static function updateItem($id, $modelClass)
-    {
-        try {
-            $model = static::getModel($id, $modelClass);
-        } catch (\yii\web\NotFoundHttpException $ex) {
-            return false;
-        }
-        $model->scenario = BaseUserItem::SCENARIO_FORM;
-        return ($model->load(Yii::$app->request->post()) && $model->save());
-    }
-
-    public static function deleteItem($id, $modelClass)
-    {
-        try {
-            $model = static::getModel($id, $modelClass);
-        } catch (\yii\web\NotFoundHttpException $ex) {
-            return false;
-        }
-        return $model->delete();
-    }
-
-    public static function itemExists($content, $modelClass)
-    {
-        $identity = Yii::$app->user->identity;
-        return $modelClass::find()->createdBy($identity->guid)->content($content)->exists();
-    }
-
-    private static function getModels($modelClass)
-    {
-        $identity = Yii::$app->user->identity;
-        return $modelClass::find()->createdBy($identity->guid)->all();
-    }
-
-    private static function getModel($id, $modelClass, $throwException = true)
-    {
-        $identity = Yii::$app->user->identity;
-        $query = $modelClass::find()->createdBy($identity->guid);
-        if (!empty($id)) {
-            $query = $query->id($id);
-        }
-        $model = $query->one();
-        if (!$model && $throwException) {
-            throw new \yii\web\NotFoundHttpException('Model Not Found.');
-        }
-        return $model;
+        throw new NotSupportedException('Model cannot return by AJAX.');
     }
 
     public static function getRouteNew()

@@ -15,7 +15,7 @@ use rho_my\controllers\PhoneController;
 ?>
 <div class="panel-heading">
     <strong><?= Yii::t('my', 'Phone') ?></strong>
-    <div class="pull-right">
+    <div class="pull-right"><!--
         <?=
         ButtonDropdown::widget([
             'label' => 'Amount',
@@ -47,7 +47,7 @@ use rho_my\controllers\PhoneController;
                 'class' => 'btn-primary',
             ]
         ])
-        ?>
+        ?>-->
         <?=
         Button::widget([
             'label' => '<span class="glyphicon glyphicon-plus"></span> ' . 'Add',

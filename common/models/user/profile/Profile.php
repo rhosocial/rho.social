@@ -38,6 +38,7 @@ class Profile extends BaseUserItem
     public $createdByAttribute = 'guid';
     public $contentAttribute = 'nickname';
     public $contentAttributeRule = ['string', 'max' => 255];
+    public $contentTypeAttribute = false;
     public $confirmationAttribute = false;
     public $descriptionAttribute = 'individual_sign';
 

@@ -9,5 +9,9 @@
  * @copyright Copyright (c) 2016 vistart
  * @license http://vistart.name/license/
  */
-$phones = \common\models\user\contact\Phone::find()->byIdentity()->all();
-echo rho_my\widgets\item\ItemListWidget::widget(['items' => $phones, 'action' => \rho_my\controllers\PhoneController::getRouteUpdate()]);
+use rho_my\controllers\PhoneController as pc;
+use rho_my\widgets\item\ItemListWidget as il;
+
+/* @var $list rho_my\widgets\item\ItemListWidget */
+?>
+<?= il::widget(['getItemUrl' => pc::getRouteGets(), 'getCountUrl' => [pc::getRouteGets(), 'list' => 1]]); ?>

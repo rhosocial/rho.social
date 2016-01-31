@@ -27,12 +27,12 @@ class BasicAction extends Action
 
     public static function setFlashSucceeded()
     {
-        ProfileController::setFlashSucceeded(ProfileController::SESSKEY_MY_PROFILE_BASIC);
+        ProfileController::setFlashNotificationSucceeded(ProfileController::SESSKEY_MY_PROFILE_BASIC);
     }
 
     public static function setFlashFailed()
     {
-        ProfileController::setFlashFailed(ProfileController::SESSKEY_MY_PROFILE_BASIC);
+        ProfileController::setFlashNotificationFailed(ProfileController::SESSKEY_MY_PROFILE_BASIC);
     }
 
     public static function getFlash()

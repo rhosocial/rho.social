@@ -10,11 +10,28 @@
  * @license http://vistart.name/license/
  */
 use rho_my\widgets\item\assets\ItemAsset;
-use rho_my\widgets\item\ItemWidget;
+use yii\helpers\Url;
+use yii\web\View;
 
+$this->registerJs('var get_item_url = "' . Url::toRoute($getItemUrl) . '"', View::POS_BEGIN);
+$this->registerJs('var get_count_url = "' . Url::toRoute($getCountUrl) . '"', View::POS_BEGIN);
 ItemAsset::register($this);
-if ($items) {
-    foreach ($items as $model) {
-        echo ItemWidget::widget(['model' => $model]);
-    }
-}
+?>
+<nav id="pagination" class="hidden">
+    <ul class="pager">
+        <li id="li-prev"><a id="btn-prev" href="#"><span class="glyphicon glyphicon-arrow-left"></span><span class="hidden-xs"> Prev</span></a></li>
+        <li>
+            <span id="page-current">1</span> / <span id="page-total">3</span>
+        </li>
+        <li id="li-next"><a id="btn-next" href="#"><span class="hidden-xs">Next </span><span class="glyphicon glyphicon-arrow-right"></span></a></li>
+    </ul>
+</nav>
+<div id="item-list">
+    <div id="loader" class="loader">
+        <div class="sk-spinner sk-spinner-three-bounce">
+            <div class="sk-bounce1"></div>
+            <div class="sk-bounce2"></div>
+            <div class="sk-bounce3"></div>
+        </div>
+    </div>
+</div>

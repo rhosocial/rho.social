@@ -20,9 +20,12 @@ namespace rho_my\widgets\item\assets;
 class ItemAsset extends \yii\web\AssetBundle
 {
 
-    public $sourcePath = '@rho_my/widgets/item/assets';
+    public $sourcePath = '@rho_my/widgets/item/assets/item';
     public $css = [
         'item' => 'css/item.css',
+    ];
+    public $js = [
+        'get-item' => 'js/get-item.js',
     ];
     public $depends = [
         'yii\web\YiiAsset',
