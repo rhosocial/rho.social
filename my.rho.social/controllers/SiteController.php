@@ -17,7 +17,7 @@ namespace rho_my\controllers;
  *
  * @author vistart <i@vistart.name>
  */
-class SiteController extends \yii\web\Controller
+final class SiteController extends \yii\web\Controller
 {
 
     public function actions()

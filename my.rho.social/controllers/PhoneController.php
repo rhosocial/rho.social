@@ -22,7 +22,7 @@ use yii\filters\VerbFilter;
  *
  * @author vistart <i@vistart.name>
  */
-class PhoneController extends DefaultController
+final class PhoneController extends DefaultController
 {
 
     const SESSKEY_MY_PHONE = 'sesskey_my_phone';

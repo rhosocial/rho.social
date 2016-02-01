@@ -14,6 +14,7 @@ namespace rho_my\controllers;
 
 use rho_my\widgets\item\ItemWidget;
 use Yii;
+use yii\base\NotSupportedException;
 use yii\data\Pagination;
 use yii\helpers\Json;
 
@@ -59,7 +60,7 @@ trait ViewTrait
      */
     public static function getModel($id, $modelClass, $throwException = true)
     {
-        $query = $modelClass::find()->byIdentity;
+        $query = $modelClass::find()->byIdentity();
         if (!empty($id)) {
             $query = $query->id($id);
         }
@@ -100,7 +101,7 @@ trait ViewTrait
     }
 
     public static $defaultPageSize = 10;
-    
+
     public static function getItemCountJson($modelClass, $limit)
     {
         $pages = static::getItemPagination($modelClass, $limit);
@@ -148,5 +149,15 @@ trait ViewTrait
             return static::getModelWidgets($modelClass, $page, $limit);
         }
         return '';
+    }
+
+    public static function getRouteGet()
+    {
+        throw new NotSupportedException('Model cannot return by AJAX.');
+    }
+
+    public static function getRouteGets()
+    {
+        throw new NotSupportedException('Model cannot return by AJAX.');
     }
 }

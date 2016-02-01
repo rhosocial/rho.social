@@ -20,7 +20,7 @@ use yii\filters\VerbFilter;
  *
  * @author vistart <i@vistart.name>
  */
-class ProfileController extends DefaultController
+final class ProfileController extends DefaultController
 {
 
     const SESSKEY_MY_PROFILE_BASIC = 'sesskey_my_profile_basic';

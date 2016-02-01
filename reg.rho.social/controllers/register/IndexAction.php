@@ -29,6 +29,10 @@ class IndexAction extends Action
 
     public function run()
     {
+        if (!Yii::$app->user->isGuest) {
+            $homeUrlManager = Yii::$app->multipleDomainsManager->get();
+            return $this->controller->redirect($homeUrlManager->createAbsoluteUrl(''));
+        }
         $model = new RegisterForm();
         if ($model->load(Yii::$app->request->post())) {
             try {
