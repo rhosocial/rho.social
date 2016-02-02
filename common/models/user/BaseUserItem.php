@@ -15,7 +15,11 @@ namespace common\models\user;
 use Yii;
 
 /**
- * Description of BaseItem
+ * 所有继承自该类的模型必须遵循以下规范：
+ * 1.必须具有 content 属性，默认验证规范是字符串，长度不超过255，如果不是该验证规则，请自行指定。
+ * 2.必须指定 content 属性标签名称。
+ * 3.如果 content 属性区分类型，且默认类型不是该类中定义的，必须自行指定并覆盖内容类型。
+ * 4.如果访问继承类区分权限，请自行指定
  *
  * @author vistart <i@vistart.name>
  */
@@ -83,7 +87,7 @@ abstract class BaseUserItem extends \vistart\Models\models\BaseBlameableModel
 
     public static function t($category, $message, $params = [], $language = null)
     {
-        return Yii::t('common/models/user/' . $category, $message, $params = [], $language = null);
+        return Yii::t('common/models/user/' . $category, $message, $params, $language);
     }
 
     /**

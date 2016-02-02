@@ -15,7 +15,7 @@ namespace common\models\user\contact;
 use common\models\user\BaseUserItem;
 
 /**
- * Description of BaseContactItem
+ * 所有继承自该类的模型必须覆盖createModel()方法和getModels()方法。
  *
  * @author vistart <i@vistart.name>
  */

@@ -26,7 +26,6 @@ namespace common\models\user\contact;
  */
 class Email extends BaseContactItem
 {
-    use EmailRelation;
 
     public $contentAttributeRule = 'email';
 
