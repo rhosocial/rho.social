@@ -17,7 +17,7 @@ namespace common\models\user\contact;
  *
  * @author vistart <i@vistart.name>
  */
-class Url extends BaseContactItem
+class URL extends BaseContactItem
 {
 
     public static function tableName()

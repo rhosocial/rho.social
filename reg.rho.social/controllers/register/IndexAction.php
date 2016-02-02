@@ -30,7 +30,7 @@ class IndexAction extends Action
     public function run()
     {
         if (!Yii::$app->user->isGuest) {
-            $homeUrlManager = Yii::$app->multipleDomainsManager->get();
+            $homeUrlManager = Yii::$app->multiDomainsManager->get();
             return $this->controller->redirect($homeUrlManager->createAbsoluteUrl(''));
         }
         $model = new RegisterForm();

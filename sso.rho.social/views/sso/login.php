@@ -55,7 +55,7 @@ $this->params['breadcrumbs'][] = $this->title;
         </div>
         <?php ActiveForm::end(); ?>
         <?= Yii::t('sso', 'Forgot your password?') ?> <?= Html::a(Yii::t('sso', 'reset it'), ['sso/request-password-reset']) ?><br>
-        <?php $regUrlManager = Yii::$app->multipleDomainsManager->get('reg'); ?>
+        <?php $regUrlManager = Yii::$app->multiDomainsManager->get('reg'); ?>
         <?= Html::a(Yii::t('sso', 'Register a new membership'), $regUrlManager->createAbsoluteUrl(['register/index']), ['class' => 'text-center']) ?>
 
     </div><!-- /.login-box-body -->

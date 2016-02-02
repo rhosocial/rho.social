@@ -5,7 +5,7 @@ use rho_reg\assets\RegisterAsset;
 
 $this->title = 'Congratulations!';
 RegisterAsset::register($this);
-$ssoUrlManager = Yii::$app->multipleDomainsManager->get('sso');
+$ssoUrlManager = Yii::$app->multiDomainsManager->get('sso');
 ?>
 <div class="row">
     <div class="jumbotron col-lg-6 col-lg-offset-3 col-md-8 col-md-offset-2 col-sm-10 col-sm-offset-1 register-blocks">

@@ -12,7 +12,7 @@ use yii\bootstrap\Modal;
 /* @var $model RegisterForm */
 $this->title = 'Register';
 $this->registerJs('$(\'#modal-registration-notice\').modal();', yii\web\View::POS_READY);
-$md = Yii::$app->multipleDomainsManager;
+$md = Yii::$app->multiDomainsManager;
 $homeUrlManager = $md->get();
 $ssoUrlManager = $md->get('sso');
 ?>

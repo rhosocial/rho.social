@@ -10,7 +10,7 @@
  * @license http://vistart.name/license/
  */
 return [
-    'class' => 'vistart\Models\components\MultipleDomainsManager',
+    'class' => 'vistart\Models\components\MultiDomainsManager',
     'baseDomain' => $baseDomain,
     'subDomains' => [
         '' => [

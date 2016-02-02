@@ -11,7 +11,7 @@
 
 use yii\helpers\Html;
 
-Yii::$app->homeUrl = Yii::$app->multipleDomainsManager->get('')->createAbsoluteUrl('site/index');
+Yii::$app->homeUrl = Yii::$app->multiDomainsManager->get('')->createAbsoluteUrl('site/index');
 ?>
 <li>
     <?= Html::a('<i class="fa fa-home"></i><br />' . Yii::t('app', 'Homepage'), Yii::$app->homeUrl) ?>

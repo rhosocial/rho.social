@@ -14,8 +14,8 @@ use yii\helpers\Url;
 
 /* @var $title1 string */
 /* @var $title2 string */
-$ssoUrlManager = \Yii::$app->multipleDomainsManager->get('sso');
-$myUrlManager = \Yii::$app->multipleDomainsManager->get('my');
+$ssoUrlManager = \Yii::$app->multiDomainsManager->get('sso');
+$myUrlManager = \Yii::$app->multiDomainsManager->get('my');
 ?>
 <?php if (Yii::$app->user->isGuest): ?>
     <?= Html::a('Sign in / up', Url::toRoute('/site/login'), ['class' => 'btn btn-enter']); ?>

@@ -24,7 +24,7 @@ use yii\base\Action;
 class LoginAction extends Action {
 
     public function run() {
-        $mdManager = Yii::$app->multipleDomainsManager;
+        $mdManager = Yii::$app->multiDomainsManager;
         $homeUrlManager = $mdManager->get('');
         Yii::$app->setHomeUrl($homeUrlManager->createAbsoluteUrl(['site/index']));
         if (!Yii::$app->user->isGuest) {
