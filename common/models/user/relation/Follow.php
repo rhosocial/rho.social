@@ -23,11 +23,12 @@ namespace common\models\user\relation;
 class Follow extends \vistart\Models\models\BaseUserRelationModel
 {
 
-    public $multiBlamesAttribute = false;
+    public $multiBlamesAttribute = 'groups';
 
     public function init()
     {
         $this->relationType = static::$relationSingle;
+        $this->multiBlamesClass = FollowGroup::className();
         parent::init();
     }
 
