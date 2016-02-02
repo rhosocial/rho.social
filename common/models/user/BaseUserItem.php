@@ -1,6 +1,6 @@
 <?php
 
-/*
+/**
  *  _   __ __ _____ _____ ___  ____  _____
  * | | / // // ___//_  _//   ||  __||_   _|
  * | |/ // /(__  )  / / / /| || |     | |
@@ -40,15 +40,17 @@ abstract class BaseUserItem extends \vistart\Models\models\BaseBlameableModel
     const SCENARIO_REGISTER = 'register';
 
     public $contentTypes = [
-        0x00 => 'Home',
-        0x01 => 'Work',
-        0xff => 'Other',
+        0x0 => 'Home',
+        0x1 => 'Work',
+        0xe => 'Custom',
+        0xf => 'Other',
     ];
     public $permissions = [
-        0 => 'Private',
-        1 => 'Friend',
-        2 => 'Logged-in',
-        3 => 'Public',
+        0x0 => 'Private',
+        0x1 => 'Friend',
+        0x2 => 'Be-followed',
+        0x3 => 'Logged-in',
+        0xf => 'Public',
     ];
 
     public function attributeLabels()

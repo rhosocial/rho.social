@@ -26,6 +26,7 @@ namespace common\models\user\contact;
  */
 class Email extends BaseContactItem
 {
+    use EmailRelation;
 
     public $contentAttributeRule = 'email';
 
@@ -60,5 +61,15 @@ class Email extends BaseContactItem
             'content' => 'Email',
             'type' => 'Email Type',
         ]);
+    }
+
+    public function createEmail($config = array())
+    {
+        return parent::createModel($config);
+    }
+
+    public function getEmails()
+    {
+        return parent::getModels();
     }
 }

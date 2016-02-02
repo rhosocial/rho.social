@@ -24,4 +24,14 @@ class Address extends BaseContactItem
     {
         return '{{%user_address}}';
     }
+
+    public function createAddress($config = array())
+    {
+        return parent::createModel($config);
+    }
+
+    public function getAddresses()
+    {
+        return parent::getModels();
+    }
 }

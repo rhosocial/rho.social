@@ -17,8 +17,21 @@ namespace common\models\user\contact;
  *
  * @author vistart <i@vistart.name>
  */
-class Anniversary extends BaseContactItem  {
-    public static function tableName() {
+class Anniversary extends BaseContactItem
+{
+
+    public static function tableName()
+    {
         return '{{%user_anniversary}}';
+    }
+
+    public function createAnniversary($config = array())
+    {
+        return parent::createModel($config);
+    }
+
+    public function getAnniversaries()
+    {
+        return parent::getModels();
     }
 }

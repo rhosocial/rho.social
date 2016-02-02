@@ -13,22 +13,25 @@
 namespace common\models\user\contact;
 
 /**
- * Description of EmailRelation
+ * Description of IM
  *
- * @property-read Email[] $emails
  * @author vistart <i@vistart.name>
  */
-trait EmailRelation
+class IM extends BaseContactItem
 {
 
-    public function createEmail($config = [])
+    public static function tableName()
     {
-        return $this->create(Email::className(), $config);
+        return '{{%user_im}}';
     }
 
-    public function getEmails()
+    public function createIM($config = array())
     {
-        $model = Email::buildNoInitModel();
-        return $this->hasMany(Email::className(), [$model->createdByAttribute => $this->guidAttribute])->inverseOf('user');
+        return parent::createModel($config);
+    }
+
+    public function getIMs()
+    {
+        return parent::getModels();
     }
 }

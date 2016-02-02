@@ -64,4 +64,14 @@ class Phone extends BaseContactItem
             static::SCENARIO_REGISTER => [$this->contentAttribute],
         ]);
     }
+
+    public function createPhone($config = array())
+    {
+        return parent::createModel($config);
+    }
+
+    public function getPhones()
+    {
+        return parent::getModels();
+    }
 }

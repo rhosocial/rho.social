@@ -1,6 +1,6 @@
 <?php
 
-/*
+/**
  *  _   __ __ _____ _____ ___  ____  _____
  * | | / // // ___//_  _//   ||  __||_   _|
  * | |/ // /(__  )  / / / /| || |     | |
@@ -17,8 +17,21 @@ namespace common\models\user\contact;
  *
  * @author vistart <i@vistart.name>
  */
-class Url extends BaseContactItem {
-    public static function tableName() {
-        return '{{%url}}';
+class Url extends BaseContactItem
+{
+
+    public static function tableName()
+    {
+        return '{{%user_url}}';
+    }
+
+    public function createUrl($config = array())
+    {
+        return parent::createModel($config);
+    }
+
+    public function getUrls()
+    {
+        return parent::getModels();
     }
 }
