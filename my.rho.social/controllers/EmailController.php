@@ -1,4 +1,4 @@
-<?php
+﻿<?php
 
 /**
  *  _   __ __ _____ _____ ___  ____  _____
@@ -13,23 +13,21 @@
 namespace rho_my\controllers;
 
 use Yii;
-use common\models\user\contact\Phone;
+use common\models\user\contact\Email;
 use yii\filters\AccessControl;
 use yii\filters\VerbFilter;
 
 /**
- * Description of PhoneController
  *
  * @author vistart <i@vistart.name>
  */
-final class PhoneController extends DefaultController
+final class EmailController extends DefaultController
 {
-
     use ContactTrait;
-    const SESSKEY_MY_PHONE = 'sesskey_my_phone';
+    const SESSKEY_MY_EMAIL = 'sesskey_my_email';
 
-    public $layout = 'phone/main';
-
+    public $layout = 'email/main';
+    
     public function actionIndex()
     {
         return $this->render('index', ['newModel' => static::getIdentityNewModel()]);
@@ -38,72 +36,72 @@ final class PhoneController extends DefaultController
     public static function getIdentityNewModel()
     {
         $identity = Yii::$app->user->identity;
-        $model = $identity->create(Phone::className());
+        $model = $identity->create(Email::className());
         $model->loadDefaultValues();
         return $model;
     }
 
     public function actionNew()
     {
-        $result = static::insertItem(Phone::className());
-        static::setFlashNotificationByResult(static::SESSKEY_MY_PHONE, $result);
-        return $this->redirect(['phone/index']);
+        $result = static::insertItem(Email::className());
+        static::setFlashNotificationByResult(static::SESSKEY_MY_EMAIL, $result);
+        return $this->redirect(['email/index']);
     }
 
     public function actionUpdate($id)
     {
-        $result = static::updateItem($id, Phone::className());
-        static::setFlashNotificationByResult(static::SESSKEY_MY_PHONE, $result);
-        return $this->redirect(['phone/index']);
+        $result = static::updateItem($id, Email::className());
+        static::setFlashNotificationByResult(static::SESSKEY_MY_EMAIL, $result);
+        return $this->redirect(['email/index']);
     }
 
     public function actionDelete($id)
     {
-        $result = static::deleteItem($id, Phone::className());
-        static::setFlashNotificationByResult(static::SESSKEY_MY_PHONE, $result);
-        return $this->redirect(['phone/index']);
+        $result = static::deleteItem($id, Email::className());
+        static::setFlashNotificationByResult(static::SESSKEY_MY_EMAIL, $result);
+        return $this->redirect(['email/index']);
     }
 
     public function actionGets($list = 0)
     {
         if ($list) {
-            return static::getCountJson(Phone::className());
+            return static::getCountJson(Email::className());
         }
-        return static::getItem(Phone::className());
+        return static::getItem(Email::className());
     }
 
     public function actionGet($id)
     {
-        return static::getModelWidget($id, Phone::className());
+        return static::getModelWidget($id, Email::className());
     }
 
     public static function getFlash()
     {
-        return static::getFlashNotifification(static::SESSKEY_MY_PHONE);
+        return static::getFlashNotifification(static::SESSKEY_MY_EMAIL);
     }
 
     public static function getRouteGet()
     {
-        return 'phone/get';
+        return 'email/get';
     }
 
     public static function getRouteGets()
     {
-        return 'phone/gets';
+        return 'email/gets';
     }
 
     public static function getRouteNew()
     {
-        return 'phone/new';
+        return 'email/new';
     }
 
     public static function getRouteUpdate()
     {
-        return 'phone/update';
+        return 'email/update';
     }
 
     public static function getRouteDelete()
     {
-        return 'phone/delete';
+        return 'email/delete';
     }
 }
