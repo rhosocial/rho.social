@@ -15,7 +15,7 @@ return [
         'i18n' => require(__DIR__ . '/i18n/i18n.php'),
         'authManager' => require(__DIR__ . '/authManager/authManager.php'),
         'request' => require(__DIR__ . '/request/request.php'),
-        'multipleDomainsManager' => require(__DIR__ . '/mdManager/multiDomainsManager.php'),
+        'multiDomainsManager' => require(__DIR__ . '/mdManager/multiDomainsManager.php'),
         'redis' => require(__DIR__ . '/redis/redis.php'),
         'session' => require(__DIR__ . '/redis/redis.session.php'),
     ],
