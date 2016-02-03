@@ -1,5 +1,4 @@
-﻿<?php
-
+<?php
 /**
  *  _   __ __ _____ _____ ___  ____  _____
  * | | / // // ___//_  _//   ||  __||_   _|
@@ -22,7 +21,8 @@ use yii\filters\VerbFilter;
  */
 trait ContactTrait
 {
-	public function behaviors()
+
+    public function behaviors()
     {
         return [
             'access' => [
@@ -54,7 +54,7 @@ trait ContactTrait
             ],
         ];
     }
-    
+
     public static function getIdentityNewModel($className)
     {
         $identity = Yii::$app->user->identity;
@@ -62,4 +62,4 @@ trait ContactTrait
         $model->loadDefaultValues();
         return $model;
     }
-} 
+}

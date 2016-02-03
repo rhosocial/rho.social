@@ -1,5 +1,4 @@
 ﻿<?php
-
 /**
  *  _   __ __ _____ _____ ___  ____  _____
  * | | / // // ___//_  _//   ||  __||_   _|
@@ -23,8 +22,8 @@ use yii\filters\VerbFilter;
  */
 final class URLController extends DefaultController
 {
-
     use ContactTrait;
+
     const SESSKEY_MY_URL = 'sesskey_my_url';
 
     public $layout = 'url/main';

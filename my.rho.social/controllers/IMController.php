@@ -1,5 +1,4 @@
 ﻿<?php
-
 /**
  *  _   __ __ _____ _____ ___  ____  _____
  * | | / // // ___//_  _//   ||  __||_   _|
@@ -23,8 +22,8 @@ use yii\filters\VerbFilter;
  */
 final class IMController extends DefaultController
 {
-
     use ContactTrait;
+
     const SESSKEY_MY_IM = 'sesskey_my_im';
 
     public $layout = 'im/main';

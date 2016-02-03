@@ -1,5 +1,4 @@
 ﻿<?php
-
 /**
  *  _   __ __ _____ _____ ___  ____  _____
  * | | / // // ___//_  _//   ||  __||_   _|
@@ -24,10 +23,11 @@ use yii\filters\VerbFilter;
 final class EmailController extends DefaultController
 {
     use ContactTrait;
+
     const SESSKEY_MY_EMAIL = 'sesskey_my_email';
 
     public $layout = 'email/main';
-    
+
     public function actionIndex()
     {
         return $this->render('index', ['newModel' => static::getIdentityNewModel(Email::className())]);
