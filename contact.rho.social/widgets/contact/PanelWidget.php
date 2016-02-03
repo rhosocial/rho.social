@@ -9,9 +9,19 @@
  * @copyright Copyright (c) 2016 vistart
  * @license https://vistart.name/license/
  */
-/* @var $this yii\web\View */
-use rho_contact\widgets\contact\PanelWidget;
-$this->title = 'Contacts';
-?>
-<?= PanelWidget::widget() ?>
-<?= var_dump(Yii::$app->request->resolve()) ?>
+
+namespace rho_contact\widgets\contact;
+
+/**
+ * Description of PanelWidget
+ *
+ * @author vistart <i@vistart.name>
+ */
+class PanelWidget extends \yii\base\Widget
+{
+
+    public function run()
+    {
+        return $this->render('panel');
+    }
+}
