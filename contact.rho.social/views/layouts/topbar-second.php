@@ -12,11 +12,11 @@
 use yii\helpers\Url;
 
 $this->params['topbar_second'] = [
-    'profile' => [
+    'contact' => [
         'label' => Yii::t('contact', 'Contacts'),
         'url' => Url::toRoute(''),
         'icon' => '<i class="fa fa-user"></i>',
-        'isActive' => Yii::$app->controller->id == 'default',
+        'isActive' => Yii::$app->controller->id == 'contact',
     ],
 ];
 $this->params['topbar_second_visible_md'] = true;

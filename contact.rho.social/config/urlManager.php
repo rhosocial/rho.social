@@ -15,7 +15,7 @@ return [
     'rules' => [
         [
             'pattern' => '',
-            'route' => 'default/index',
+            'route' => 'contact/index',
         ]
     ],
 ];

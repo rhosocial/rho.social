@@ -8,7 +8,7 @@ return [
     'id' => require(__DIR__ . '/id.php'),
     'name' => $params['title']['main'] . ' ' . $params['title']['social'],
     'basePath' => dirname(__DIR__),
-    'defaultRoute' => 'default',
+    'defaultRoute' => 'contact',
     'controllerNamespace' => 'rho_contact\controllers',
     'modules' => require(__DIR__ . '/modules.php'),
     'components' => [

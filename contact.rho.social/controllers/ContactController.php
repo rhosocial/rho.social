@@ -17,8 +17,9 @@ namespace rho_contact\controllers;
  *
  * @author vistart <i@vistart.name>
  */
-class DefaultController extends \yii\web\Controller
+class ContactController extends \yii\web\Controller
 {
+
     public function actionIndex()
     {
         return $this->render('index');
