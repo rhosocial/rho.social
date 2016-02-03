@@ -19,6 +19,7 @@ namespace common\models\user\contact;
  */
 class Anniversary extends BaseContactItem
 {
+    public $confirmCodeAttribute = false;
 
     public static function tableName()
     {
