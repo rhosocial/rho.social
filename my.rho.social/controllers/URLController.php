@@ -1,4 +1,4 @@
-﻿<?php
+<?php
 /**
  *  _   __ __ _____ _____ ___  ____  _____
  * | | / // // ___//_  _//   ||  __||_   _|
@@ -20,7 +20,7 @@ use yii\filters\VerbFilter;
  *
  * @author vistart <i@vistart.name>
  */
-final class URLController extends DefaultController
+final class UrlController extends DefaultController
 {
     use ContactTrait;
 
