@@ -5,9 +5,9 @@
  * | | / // // ___//_  _//   ||  __||_   _|
  * | |/ // /(__  )  / / / /| || |     | |
  * |___//_//____/  /_/ /_/ |_||_|     |_|
- * @link http://vistart.name/
+ * @link https://vistart.name/
  * @copyright Copyright (c) 2016 vistart
- * @license http://vistart.name/license/
+ * @license https://vistart.name/license/
  */
 
 namespace rho_my\controllers;
@@ -25,54 +25,14 @@ use yii\filters\VerbFilter;
 final class PhoneController extends DefaultController
 {
 
+    use ContactTrait;
     const SESSKEY_MY_PHONE = 'sesskey_my_phone';
 
     public $layout = 'phone/main';
 
-    public function behaviors()
-    {
-        return [
-            'access' => [
-                'class' => AccessControl::className(),
-                'rules' => [
-                    [
-                        'allow' => true,
-                        'actions' => [
-                            'index',
-                            'new',
-                            'update',
-                            'delete',
-                            'get',
-                            'gets',
-                        ],
-                        'roles' => ['@'],
-                    ]
-                ],
-            ],
-            'verbs' => [
-                'class' => VerbFilter::className(),
-                'actions' => [
-                    'get' => ['post'],
-                    'gets' => ['post'],
-                    'new' => ['post'],
-                    'update' => ['post'],
-                    'delete' => ['post'],
-                ],
-            ],
-        ];
-    }
-
     public function actionIndex()
     {
-        return $this->render('index', ['newModel' => static::getIdentityNewModel()]);
-    }
-
-    public static function getIdentityNewModel()
-    {
-        $identity = Yii::$app->user->identity;
-        $model = $identity->create(Phone::className());
-        $model->loadDefaultValues();
-        return $model;
+        return $this->render('index', ['newModel' => static::getIdentityNewModel(Phone::className())]);
     }
 
     public function actionNew()
