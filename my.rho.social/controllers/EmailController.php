@@ -30,15 +30,7 @@ final class EmailController extends DefaultController
     
     public function actionIndex()
     {
-        return $this->render('index', ['newModel' => static::getIdentityNewModel()]);
-    }
-
-    public static function getIdentityNewModel()
-    {
-        $identity = Yii::$app->user->identity;
-        $model = $identity->create(Email::className());
-        $model->loadDefaultValues();
-        return $model;
+        return $this->render('index', ['newModel' => static::getIdentityNewModel(Email::className())]);
     }
 
     public function actionNew()

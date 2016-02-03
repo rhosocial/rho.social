@@ -54,4 +54,12 @@ trait ContactTrait
             ],
         ];
     }
+    
+    public static function getIdentityNewModel($className)
+    {
+        $identity = Yii::$app->user->identity;
+        $model = $identity->create($className);
+        $model->loadDefaultValues();
+        return $model;
+    }
 } 

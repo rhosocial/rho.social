@@ -31,15 +31,7 @@ final class AnniversaryController extends DefaultController
 
     public function actionIndex()
     {
-        return $this->render('index', ['newModel' => static::getIdentityNewModel()]);
-    }
-
-    public static function getIdentityNewModel()
-    {
-        $identity = Yii::$app->user->identity;
-        $model = $identity->create(Anniversary::className());
-        $model->loadDefaultValues();
-        return $model;
+        return $this->render('index', ['newModel' => static::getIdentityNewModel(Anniversary::className())]);
     }
 
     public function actionNew()

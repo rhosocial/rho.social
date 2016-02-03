@@ -32,15 +32,7 @@ final class PhoneController extends DefaultController
 
     public function actionIndex()
     {
-        return $this->render('index', ['newModel' => static::getIdentityNewModel()]);
-    }
-
-    public static function getIdentityNewModel()
-    {
-        $identity = Yii::$app->user->identity;
-        $model = $identity->create(Phone::className());
-        $model->loadDefaultValues();
-        return $model;
+        return $this->render('index', ['newModel' => static::getIdentityNewModel(Phone::className())]);
     }
 
     public function actionNew()
