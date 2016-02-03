@@ -25,5 +25,8 @@ return [
         'sso' => [
             'component' => require(__DIR__ . '/../../../sso.rho.social/config/urlManager.php'),
         ],
+        'contact' => [
+            'component' => require(__DIR__ . '/../../../contact.rho.social/config/urlManager.php'),
+        ],
     ],
 ];
