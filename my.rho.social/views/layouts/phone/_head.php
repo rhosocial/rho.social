@@ -61,4 +61,4 @@ use rho_my\controllers\PhoneController;
         ?>
     </div>
 </div>
-<?= \rho_my\widgets\phone\FormWidget::widget(['model' => $newModel, 'action' => PhoneController::getRouteNew()]) ?>
+<?= \rho_my\widgets\item\FormWidget::widget(['model' => $newModel, 'action' => PhoneController::getRouteNew()]) ?>

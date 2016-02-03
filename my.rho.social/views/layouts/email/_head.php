@@ -10,7 +10,6 @@
  * @license http://vistart.name/license/
  */
 use yii\bootstrap\Button;
-use yii\bootstrap\ButtonDropdown;
 use rho_my\controllers\EmailController;
 ?>
 <div class="panel-heading">
@@ -29,4 +28,4 @@ use rho_my\controllers\EmailController;
         ?>
     </div>
 </div>
-<?= \rho_my\widgets\email\FormWidget::widget(['model' => $newModel, 'action' => EmailController::getRouteNew()]) ?>
+<?= \rho_my\widgets\item\FormWidget::widget(['model' => $newModel, 'action' => EmailController::getRouteNew()]) ?>

@@ -10,7 +10,6 @@
  * @license http://vistart.name/license/
  */
 use yii\bootstrap\Button;
-use yii\bootstrap\ButtonDropdown;
 use rho_my\controllers\AddressController;
 ?>
 <div class="panel-heading">
@@ -29,4 +28,4 @@ use rho_my\controllers\AddressController;
         ?>
     </div>
 </div>
-<?= \rho_my\widgets\address\FormWidget::widget(['model' => $newModel, 'action' => AddressController::getRouteNew()]) ?>
+<?= \rho_my\widgets\item\FormWidget::widget(['model' => $newModel, 'action' => AddressController::getRouteNew()]) ?>

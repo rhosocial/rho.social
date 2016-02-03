@@ -10,7 +10,7 @@
  * @license http://vistart.name/license/
  */
 
-namespace rho_my\widgets\phone;
+namespace rho_my\widgets\item;
 
 /**
  * Description of FormWidget

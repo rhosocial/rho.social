@@ -51,7 +51,7 @@ use yii\helpers\Url;
     </div>
 </div>
 
-<?= \rho_my\widgets\phone\FormWidget::widget(['model' => $model, 'action' => [$action, 'id' => $model->id]]) ?>
+<?= \rho_my\widgets\item\FormWidget::widget(['model' => $model, 'action' => [$action, 'id' => $model->id]]) ?>
 <?php
 Modal::begin([
     'id' => 'modal-remove-' . $model->id,
