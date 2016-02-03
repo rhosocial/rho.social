@@ -20,4 +20,15 @@
         <log type="testdox-html" target="tmp/testdox.html" />
         <log type="testdox-text" target="tmp/testdox.txt" />
     </logging>
+    <filter>
+        <whitelist processUncoveredFilesFromWhitelist="true">
+            <directory suffix=".php">common</directory>
+            <directory suffix=".php">api.rho.social</directory>
+            <directory suffix=".php">contact.rho.social</directory>
+            <directory suffix=".php">my.rho.social</directory>
+            <directory suffix=".php">reg.rho.social</directory>
+            <directory suffix=".php">rho.social</directory>
+            <directory suffix=".php">sso.rho.social</directory>
+        </whitelist>
+    </filter>
 </phpunit>
