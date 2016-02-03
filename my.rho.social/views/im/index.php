@@ -11,9 +11,9 @@
  */
 /* @var $this yii\web\View */
 /* @var $newModel common\models\user\contact\IM */
-use rho_my\controllers\IMController;
+use rho_my\controllers\ImController;
 $this->params['newModel'] = $newModel;
 ?>
 
-<?= $this->render("@rho_my/views/common/notification", ['message' => IMController::getFlash()]) ?>
+<?= $this->render("@rho_my/views/common/notification", ['message' => ImController::getFlash()]) ?>
 <?= $this->render('_list') ?>

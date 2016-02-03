@@ -11,9 +11,9 @@
  */
 /* @var $this yii\web\View */
 /* @var $newModel common\models\user\contact\URL */
-use rho_my\controllers\URLController;
+use rho_my\controllers\UrlController;
 $this->params['newModel'] = $newModel;
 ?>
 
-<?= $this->render("@rho_my/views/common/notification", ['message' => URLController::getFlash()]) ?>
+<?= $this->render("@rho_my/views/common/notification", ['message' => UrlController::getFlash()]) ?>
 <?= $this->render('_list') ?>
