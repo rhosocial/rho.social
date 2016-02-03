@@ -13,6 +13,7 @@
 namespace common\models\user;
 
 use common\models\user\contact\EmailRelation;
+use common\models\user\contact\PhoneRelation;
 use common\models\user\log\LoginRelation;
 use common\models\user\profile\ProfileRelation;
 use common\models\user\profile\PreferenceRelation;
@@ -28,6 +29,7 @@ trait UserRelationTrait
     use LoginRelation,
         ProfileRelation,
         EmailRelation,
+        PhoneRelation,
         PreferenceRelation,
         IconRelation;
 }

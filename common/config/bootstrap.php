@@ -10,6 +10,7 @@ Yii::setAlias('rho_my', dirname(dirname(__DIR__)) . '/my.rho.social');
 Yii::setAlias('rho_reg', dirname(dirname(__DIR__)) . '/reg.rho.social');
 Yii::setAlias('rho_sso', dirname(dirname(__DIR__)) . '/sso.rho.social');
 Yii::setAlias('console', dirname(dirname(__DIR__)) . '/console');
+Yii::setAlias('console_test', dirname(dirname(__DIR__)) . '/console_test');
 
 $baseDomain = require(__DIR__ . '/base/baseDomain.php');
 $baseDomain = require(__DIR__ . '/base/baseDomain-local.php');

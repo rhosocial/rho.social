@@ -19,20 +19,11 @@ namespace common\models\user\contact;
  */
 class URL extends BaseContactItem
 {
+
     public $confirmCodeAttribute = false;
 
     public static function tableName()
     {
         return '{{%user_url}}';
-    }
-
-    public function createUrl($config = array())
-    {
-        return parent::createModel($config);
-    }
-
-    public function getUrls()
-    {
-        return parent::getModels();
     }
 }

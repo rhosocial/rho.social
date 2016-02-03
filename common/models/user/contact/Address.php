@@ -19,20 +19,11 @@ namespace common\models\user\contact;
  */
 class Address extends BaseContactItem
 {
+
     public $confirmCodeAttribute = false;
 
     public static function tableName()
     {
         return '{{%user_address}}';
-    }
-
-    public function createAddress($config = array())
-    {
-        return parent::createModel($config);
-    }
-
-    public function getAddresses()
-    {
-        return parent::getModels();
     }
 }

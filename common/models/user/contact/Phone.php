@@ -15,6 +15,7 @@ namespace common\models\user\contact;
 /**
  * Description of Phone
  *
+ * @property string $phone
  * @author vistart <i@vistart.name>
  */
 class Phone extends BaseContactItem
@@ -63,15 +64,5 @@ class Phone extends BaseContactItem
             // 注册场景允许“昵称”、“姓”、“名”属性批量赋值。
             static::SCENARIO_REGISTER => [$this->contentAttribute],
         ]);
-    }
-
-    public function createPhone($config = array())
-    {
-        return parent::createModel($config);
-    }
-
-    public function getPhones()
-    {
-        return parent::getModels();
     }
 }

@@ -19,20 +19,11 @@ namespace common\models\user\contact;
  */
 class IM extends BaseContactItem
 {
+
     public $confirmCodeAttribute = false;
 
     public static function tableName()
     {
         return '{{%user_im}}';
-    }
-
-    public function createIM($config = array())
-    {
-        return parent::createModel($config);
-    }
-
-    public function getIMs()
-    {
-        return parent::getModels();
     }
 }

@@ -61,14 +61,4 @@ class Email extends BaseContactItem
             'type' => 'Email Type',
         ]);
     }
-
-    public function createEmail($config = array())
-    {
-        return parent::createModel($config);
-    }
-
-    public function getEmails()
-    {
-        return parent::getModels();
-    }
 }

@@ -19,20 +19,11 @@ namespace common\models\user\contact;
  */
 class Anniversary extends BaseContactItem
 {
+
     public $confirmCodeAttribute = false;
 
     public static function tableName()
     {
         return '{{%user_anniversary}}';
-    }
-
-    public function createAnniversary($config = array())
-    {
-        return parent::createModel($config);
-    }
-
-    public function getAnniversaries()
-    {
-        return parent::getModels();
     }
 }
