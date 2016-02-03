@@ -7,7 +7,7 @@ use common\widgets\Alert;
 use common\widgets\LogoWidget;
 use common\widgets\TopbarSecond;
 use common\widgets\AccountTopMenuWidget;
-use vistart\Widgets\CnzzWidget;
+use common\widgets\FooterWidget;
 
 /* @var $this \yii\web\View */
 /* @var $content string */
@@ -52,21 +52,7 @@ EOT;
             </div>
         </div>
 
-        <footer class="footer">
-            <div class="container">
-                <p class="pull-left">&copy; vistart <?= date('Y') == '2015' ? '2015' : '2015 - ' . date('Y') ?></p>
-                <p class="pull-right">
-                    <a href="http://www.miitbeian.gov.cn" target="_blank" rel="external"><?= '沪ICP备14009001号-2' ?></a>
-                    <?= 'Powered by <a href="http://vistart.name/" rel="external">vistart</a>' ?>
-                </p>
-                <?=
-                CnzzWidget::widget([
-                    'cnzzCode' => $cnzzCode,
-                    'host' => \Yii::$app->params['baseDomain'],
-                ])
-                ?>
-            </div>
-        </footer>
+        <?= FooterWidget::widget() ?>
 
         <?php $this->endBody() ?>
     </body>
