@@ -10,5 +10,6 @@
  * @license https://vistart.name/license/
  */
 /* @var $this yii\web\View */
+$this->title = 'Contacts';
 ?>
 <?= var_dump(Yii::$app->request->resolve()) ?>

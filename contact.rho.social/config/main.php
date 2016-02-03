@@ -20,10 +20,10 @@ return [
         'cache' => require(__DIR__ . '/redis/redis.cache.php'),
         'i18n' => [
             'translations' => [
-                'reg*' => [
+                'contact*' => [
                     'class' => 'yii\i18n\PhpMessageSource',
                     'sourceLanguage' => 'en-US',
-                    'basePath' => '@rho_reg/messages',
+                    'basePath' => '@rho_contact/messages',
                 ],
             ]
         ]
