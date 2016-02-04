@@ -14,6 +14,8 @@ var div_loader = "<div id=\"loader\" class=\"loader\"><div class=\"sk-spinner sk
 
 $(document).ready(function () {
     getCount(true);
+    $("#li-prev").click(getPrevPage);
+    $("#li-next").click(getNextPage);
 });
 
 function getCount(getdata)
@@ -82,6 +84,7 @@ function getData()
 function replaceData(data, status)
 {
     detachDataAndAnimation(data);
+    Holder.run();
 }
 
 function getNextPage()

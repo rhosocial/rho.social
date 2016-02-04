@@ -9,10 +9,8 @@
  * @copyright Copyright (c) 2016 vistart
  * @license http://vistart.name/license/
  */
-use rho_contact\widgets\contact\PanelItemWidget;
-use yii\bootstrap\ButtonGroup;
+use rho_contact\widgets\contact\PanelGroupWidget;
 use yii\bootstrap\ButtonDropdown;
-use yii\bootstrap\Dropdown;
 use yii\helpers\Url;
 use yii\web\View;
 use rho_contact\widgets\contact\assets\PanelAsset;
@@ -22,6 +20,7 @@ $this->registerJs('var get_count_url = "' . Url::toRoute($getCountUrl) . '"', Vi
 PanelAsset::register($this);
 
 /* @var $models \common\models\user\relation\Follow[] */
+/* @var $groups \common\models\user\relation\FollowGroup[] */
 ?>
 <div class="col-md-4">
     <div class="panel panel-default">
@@ -42,20 +41,7 @@ PanelAsset::register($this);
                     ],
                 ])
                 ?>
-                <?=
-                ButtonDropdown::widget([
-                    'label' => 'Group',
-                    'dropdown' => [
-                        'items' => [
-                            ['label' => 'Group 1', 'url' => '#'],
-                            ['label' => 'Group 2', 'url' => '#'],
-                            ['label' => 'All', 'url' => '#'],
-                            '<li role="presentation" class="divider"></li>',
-                            ['label' => 'Manage', 'url' => '#'],
-                        ],
-                    ],
-                ])
-                ?>
+                <?= PanelGroupWidget::widget(['groups' => $groups]) ?>
             </div>
         </div>
         <hr>

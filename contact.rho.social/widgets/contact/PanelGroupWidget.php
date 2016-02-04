@@ -12,27 +12,23 @@
 
 namespace rho_contact\widgets\contact;
 
-use common\models\user\relation\Follow;
+use common\models\user\relation\FollowGroup;
 
 /**
- * Description of PanelWidget
+ * Description of PanelGroupWidget
  *
  * @author vistart <i@vistart.name>
  */
-class PanelWidget extends \yii\base\Widget
+class PanelGroupWidget extends \yii\base\Widget
 {
 
-    public $getItemUrl = '';
-    public $getCountUrl = '';
-
     /**
-     * @var Follow[] 
+     * @var FollowGroup[] 
      */
-    public $models = [];
     public $groups = [];
 
     public function run()
     {
-        return $this->render('panel', ['models' => $this->models, 'groups' => $this->groups, 'getItemUrl' => $this->getItemUrl, 'getCountUrl' => $this->getCountUrl]);
+        return $this->render('panel-group', ['groups' => $this->groups]);
     }
 }

@@ -13,8 +13,6 @@
 namespace console_test\modules\user\controllers;
 
 use common\models\user\User;
-use common\models\user\contact\Phone;
-use common\models\user\contact\Email;
 use common\models\user\profile\Profile;
 use common\models\user\relation\Follow;
 use Faker\Factory;
@@ -114,7 +112,7 @@ class BatchController extends \yii\console\Controller
     public function actionFollow($id = '')
     {
         $query = User::find()->id($id, 'like')->active(self::USER_STATUS_TEST_ACTIVE);
-        $query = $query->orderBy($usersQuery->noInitModel->createdAtAttribute);
+        $query = $query->orderBy($query->noInitModel->createdAtAttribute);
         $users = $query->all();
         /* @var $users User[] */
         foreach ($users as $user) {
@@ -128,5 +126,37 @@ class BatchController extends \yii\console\Controller
             }
             echo count($follows) . ' follows' . "\n";
         }
+    }
+
+    public function actionGroup($id = '')
+    {
+        $query = User::find()->id($id, 'like')->active(self::USER_STATUS_TEST_ACTIVE);
+        $query = $query->orderBy($query->noInitModel->createdAtAttribute);
+        $users = $query->all();
+        /* @var $users User[] */
+        foreach ($users as $user) {
+            
+            $follows = $user->follows;
+            foreach ($follows as $follow) {
+                echo ($follow->groups) . "\n";
+            }
+        }
+    }
+    
+    public function actionGroupRefresh($id = '')
+    {
+        $query = User::find()->id($id, 'like')->active(self::USER_STATUS_TEST_ACTIVE);
+        $query = $query->orderBy($query->noInitModel->createdAtAttribute);
+        $user = $query->one();
+        if (!$user || !$user->follows) {
+            return;
+        }
+        $follow = $user->follows[0];
+        $blame = [
+            'content' => $this->faker->name,
+        ];
+        $follow->addOrCreateGroup($blame);
+        var_dump($blame->attributes);
+        echo($follow->save());
     }
 }

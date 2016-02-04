@@ -14,16 +14,18 @@
     <a href="">
         <div class="media">
             <div class="pull-left">
-                <img class="media-object img-rounded" style="width: 40px; height: 40px;" alt="40x40" src="holder.js/40x40">
+                <img class="media-object img-rounded" style="width: 40px; height: 40px;" alt="40x40" data-src="holder.js/40x40?theme=social">
             </div>
             <div class="media-body">
                 <h4 class="media-heading">
                     <?= $model->recipient->profile->nickname ?>
                     <small>
-                        <span class="time" title="2015-01-06 15:18:41"><?php
+                        <span class="time pull-right">
+                            <?php
                             $ca = $model->createdAtAttribute;
                             echo $model->$ca
-                            ?></span>
+                            ?>
+                        </span>
                     </small>
                 </h4>
                 <h5 id="contact_1"><?= $model->recipient->profile->individual_sign ?>Lorem ipsum dolor sit amet</h5>

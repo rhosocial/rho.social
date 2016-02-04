@@ -12,6 +12,7 @@
 
 namespace rho_contact\controllers;
 
+use common\models\user\relation\FollowGroup;
 use Yii;
 use yii\filters\AccessControl;
 use yii\filters\VerbFilter;
@@ -60,7 +61,7 @@ class ContactController extends \yii\web\Controller
 
     public function actionIndex()
     {
-        return $this->render('index');
+        return $this->render('index', ['groups' => FollowGroup::findByIdentity()->all()]);
     }
 
     public function actionGets($list = 0)
@@ -74,5 +75,10 @@ class ContactController extends \yii\web\Controller
     public function actionGet($id)
     {
         return static::getModelWidget($id);
+    }
+
+    public function actionGetGroups()
+    {
+        
     }
 }
