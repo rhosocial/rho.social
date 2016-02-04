@@ -8,6 +8,7 @@
  * @copyright Copyright (c) 2016 vistart
  * @license https://vistart.name/license/
  */
+/* @var $model \common\models\user\relation\Follow */
 ?>
 <li class="entry">
     <a href="">
@@ -17,12 +18,15 @@
             </div>
             <div class="media-body">
                 <h4 class="media-heading">
-                    Heading
+                    <?= $model->recipient->profile->nickname ?>
                     <small>
-                        <span class="time" title="2015-01-06 15:18:41">2015-01-06 15:18:41</span>
+                        <span class="time" title="2015-01-06 15:18:41"><?php
+                            $ca = $model->createdAtAttribute;
+                            echo $model->$ca
+                            ?></span>
                     </small>
                 </h4>
-                <h5 id="contact_1">Lorem ipsum dolor sit amet</h5>
+                <h5 id="contact_1"><?= $model->recipient->profile->individual_sign ?>Lorem ipsum dolor sit amet</h5>
             </div>
         </div>
     </a>

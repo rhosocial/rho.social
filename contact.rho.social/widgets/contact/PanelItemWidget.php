@@ -12,16 +12,24 @@
 
 namespace rho_contact\widgets\contact;
 
+use common\models\user\relation\Follow;
+
 /**
  * Description of ListItemWidget
  *
  * @author vistart <i@vistart.name>
  */
-class ListItemWidget extends \yii\base\Widget
+class PanelItemWidget extends \yii\base\Widget
 {
+
+    /**
+     *
+     * @var Follow 
+     */
+    public $model;
 
     public function run()
     {
-        return $this->render('list-item');
+        return $this->render('panel-item', ['model' => $this->model]);
     }
 }

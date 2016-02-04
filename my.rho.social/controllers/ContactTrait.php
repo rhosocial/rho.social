@@ -59,7 +59,6 @@ trait ContactTrait
     {
         $identity = Yii::$app->user->identity;
         $model = $identity->create($className);
-        $model->loadDefaultValues();
         return $model;
     }
 }

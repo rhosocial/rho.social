@@ -5,21 +5,22 @@
  * | | / // // ___//_  _//   ||  __||_   _|
  * | |/ // /(__  )  / / / /| || |     | |
  * |___//_//____/  /_/ /_/ |_||_|     |_|
- * @link http://vistart.name/
+ * @link https://vistart.name/
  * @copyright Copyright (c) 2016 vistart
- * @license http://vistart.name/license/
+ * @license https://vistart.name/license/
  */
 
-namespace rho_my\controllers;
+namespace rho_contact\controllers;
 
-use rho_my\widgets\item\ItemWidget;
+use common\models\user\relation\Follow;
+use rho_contact\widgets\contact\PanelItemWidget;
 use Yii;
 use yii\base\NotSupportedException;
 use yii\data\Pagination;
 use yii\helpers\Json;
 
 /**
- * Description of FrontendTrait
+ * Description of ViewTrait
  *
  * @author vistart <i@vistart.name>
  */
@@ -33,10 +34,10 @@ trait ViewTrait
      * @param type $page_size
      * @return type
      */
-    public static function getModels($modelClass, $current_page = 'all', $page_size = 10)
+    public static function getModels($current_page = 'all', $page_size = 10)
     {
         if ($current_page == 'all') {
-            return $modelClass::findByIdentity()->all();
+            return Follow::findByIdentity()->all();
         }
         if (!is_numeric($current_page) || $current_page < 0) {
             $current_page = 0;
@@ -46,7 +47,7 @@ trait ViewTrait
             $page_size = 1;
         }
         $page_size = (int) $page_size;
-        return $modelClass::findByIdentity()->limit($page_size)->offset($current_page * $page_size)->all();
+        return Follow::findByIdentity()->limit($page_size)->offset($current_page * $page_size)->all();
     }
 
     /**
@@ -57,9 +58,9 @@ trait ViewTrait
      * @return type
      * @throws \yii\web\NotFoundHttpException
      */
-    public static function getModel($id, $modelClass, $throwException = true)
+    public static function getModel($id, $throwException = true)
     {
-        $query = $modelClass::findByIdentity();
+        $query = Follow::findByIdentity();
         if (!empty($id)) {
             $query = $query->id($id);
         }
@@ -70,56 +71,51 @@ trait ViewTrait
         return $model;
     }
 
-    public static function getModelWidget($id, $modelClass)
+    public static function getModelWidget($id)
     {
-        $model = static::getModel($id, $modelClass, false);
+        $model = static::getModel($id, false);
         if (!$model) {
             return false;
         }
-        return ItemWidget::widget(['model' => $model, 'action' => static::getRouteUpdate()]);
+        return PanelItemWidget::widget(['model' => $model]);
     }
 
-    public static function getModelWidgets($modelClass, $current_page = 'all', $page_size = 10)
+    public static function getModelWidgets($current_page = 'all', $page_size = 10)
     {
-        $models = static::getModels($modelClass, $current_page, $page_size);
+        $models = static::getModels($current_page, $page_size);
         $widgets = '';
         foreach ($models as $model) {
-            $widgets .= ItemWidget::widget(['model' => $model, 'action' => static::getRouteUpdate()]);
+            $widgets .= PanelItemWidget::widget(['model' => $model]);
         }
         return $widgets;
     }
 
-    public static function identityQuery($modelClass)
+    public static function countModel()
     {
-        return $modelClass::findByIdentity();
-    }
-
-    public static function countModel($modelClass)
-    {
-        return static::identityQuery($modelClass)->count();
+        return Follow::findByIdentity()->count();
     }
 
     public static $defaultPageSize = 10;
 
-    public static function getItemCountJson($modelClass, $limit)
+    public static function getItemCountJson($limit)
     {
-        $pages = static::getItemPagination($modelClass, $limit);
+        $pages = static::getItemPagination($limit);
         return Json::encode(['totalCount' => $pages->totalCount, 'totalPages' => $pages->pageCount, 'pageSize' => $pages->pageSize]);
     }
 
-    public static function getItemPagination($modelClass, $limit)
+    public static function getItemPagination($limit)
     {
         if (!$limit || !is_numeric($limit) || intval($limit) < 0) {
             $limit = static::$defaultPageSize;
         }
-        $count = static::countModel($modelClass);
+        $count = static::countModel();
         if ($limit > $count) {
             $limit = $count;
         }
         return new Pagination(['totalCount' => $count, 'pageSize' => $limit]);
     }
 
-    public static function getCountJson($modelClass)
+    public static function getCountJson()
     {
         $limit = Yii::$app->request->post('limit');
         if (!$limit || !is_numeric($limit) || intval($limit) < 0) {
@@ -127,7 +123,7 @@ trait ViewTrait
         }
         $limit = intval($limit);
         if ($limit) {
-            $result = static::getItemCountJson($modelClass, $limit);
+            $result = static::getItemCountJson($limit);
             if (!$result) {
                 return '';
             }
@@ -136,7 +132,7 @@ trait ViewTrait
         return 0;
     }
 
-    public static function getItem($modelClass)
+    public static function getItem()
     {
         $page = Yii::$app->request->post('page');
         $limit = Yii::$app->request->post('limit');
@@ -145,7 +141,7 @@ trait ViewTrait
         }
         $limit = intval($limit);
         if ($limit && is_numeric($page)) {
-            return static::getModelWidgets($modelClass, $page, $limit);
+            return static::getModelWidgets($page, $limit);
         }
         return '';
     }

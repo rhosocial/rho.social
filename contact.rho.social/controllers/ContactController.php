@@ -12,6 +12,10 @@
 
 namespace rho_contact\controllers;
 
+use Yii;
+use yii\filters\AccessControl;
+use yii\filters\VerbFilter;
+
 /**
  * Description of DefaultController
  *
@@ -19,9 +23,56 @@ namespace rho_contact\controllers;
  */
 class ContactController extends \yii\web\Controller
 {
+    use ViewTrait;
+
+    public function behaviors()
+    {
+        return [
+            'access' => [
+                'class' => AccessControl::className(),
+                'rules' => [
+                    [
+                        'allow' => true,
+                        'actions' => [
+                            'index',
+                            'new',
+                            'update',
+                            'delete',
+                            'get',
+                            'gets',
+                        ],
+                        'roles' => ['@'],
+                    ]
+                ],
+            ],
+            'verbs' => [
+                'class' => VerbFilter::className(),
+                'actions' => [
+                    'get' => ['post'],
+                    'gets' => ['post'],
+                    'new' => ['post'],
+                    'update' => ['post'],
+                    'delete' => ['post'],
+                ],
+            ],
+        ];
+    }
 
     public function actionIndex()
     {
         return $this->render('index');
+    }
+
+    public function actionGets($list = 0)
+    {
+        if ($list) {
+            return static::getCountJson();
+        }
+        return static::getItem();
+    }
+
+    public function actionGet($id)
+    {
+        return static::getModelWidget($id);
     }
 }

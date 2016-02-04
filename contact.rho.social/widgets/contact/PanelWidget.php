@@ -12,6 +12,8 @@
 
 namespace rho_contact\widgets\contact;
 
+use common\models\user\relation\Follow;
+
 /**
  * Description of PanelWidget
  *
@@ -20,8 +22,16 @@ namespace rho_contact\widgets\contact;
 class PanelWidget extends \yii\base\Widget
 {
 
+    public $getItemUrl = '';
+    public $getCountUrl = '';
+
+    /**
+     * @var Follow[] 
+     */
+    public $models = [];
+
     public function run()
     {
-        return $this->render('panel');
+        return $this->render('panel', ['models' => $this->models, 'getItemUrl' => $this->getItemUrl, 'getCountUrl' => $this->getCountUrl]);
     }
 }
