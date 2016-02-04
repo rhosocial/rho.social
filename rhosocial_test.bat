@@ -11,10 +11,10 @@ rem -------------------------------------------------------------
 
 @setlocal
 
-set YII_PATH=%~dp0
+set RHO_SOCIAL_PATH=%~dp0
 
 if "%PHP_COMMAND%" == "" set PHP_COMMAND=php.exe
 
-"%PHP_COMMAND%" "%YII_PATH%yii" %*
+"%PHP_COMMAND%" "%RHO_SOCIAL_PATH%rhosocial_test" %*
 
 @endlocal
