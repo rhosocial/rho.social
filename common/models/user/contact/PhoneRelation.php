@@ -15,6 +15,7 @@ namespace common\models\user\contact;
 /**
  * Description of PhoneRelation
  *
+ * @property-read Phone[] $phones
  * @author vistart <i@vistart.name>
  */
 trait PhoneRelation

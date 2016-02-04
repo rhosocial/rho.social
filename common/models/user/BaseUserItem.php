@@ -80,7 +80,7 @@ abstract class BaseUserItem extends \vistart\Models\models\BaseBlameableModel
 
     public function init()
     {
-        $this->userClass = \common\models\user\User::className();
+        $this->attachUserClass();
         $this->queryClass = BaseUserItemQuery::className();
         parent::init();
     }

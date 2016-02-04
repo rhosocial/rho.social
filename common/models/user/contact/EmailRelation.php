@@ -15,6 +15,7 @@ namespace common\models\user\contact;
 /**
  * Description of EmailRelation
  *
+ * @property-read Email[] $emails
  * @author vistart <i@vistart.name>
  */
 trait EmailRelation

@@ -27,7 +27,7 @@ trait PreferenceRelation
         return $preference;
     }
 
-    public function getPreference()
+    public function getPreferences()
     {
         $model = Preference::className();
         return $this->hasMany(Preference::className(), [$model->createdByAttribute => $this->guidAttribute])->inverseOf('user');

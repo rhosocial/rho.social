@@ -26,7 +26,7 @@ abstract class BaseUserMongoItem extends \vistart\Models\models\BaseMongoBlameab
 
     public function init()
     {
-        $this->userClass = \common\models\user\User::className();
+        $this->attachUserClass();
         parent::init();
     }
 }

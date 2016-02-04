@@ -15,6 +15,7 @@ namespace common\models\user\profile;
 /**
  * Description of ProfileRelation
  *
+ * @property-read Profile $profile Profile
  * @author vistart <i@vistart.name>
  */
 trait ProfileRelation

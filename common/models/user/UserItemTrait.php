@@ -22,9 +22,15 @@ trait UserItemTrait
 {
 
     public static $PERMISSION_PUBLIC = 'public';
-    public static $PERMISSION_LOGGED_IN_USERS = 'loggedinusers';
+    public static $PERMISSION_LOGGED_IN = 'loggedin';
+    public static $PERMISSION_FOLLOWED = 'followed';
     public static $PERMISSION_FRIENDS = 'friends';
     public static $PERMISSION_PRIVATE = 'private';
+
+    public function attachUserClass()
+    {
+        $this->userClass = User::className();
+    }
 
     public function getPermissionTypes()
     {
@@ -32,15 +38,7 @@ trait UserItemTrait
             0 => self::$PERMISSION_PRIVATE,
             1 => self::$PERMISSION_PUBLIC,
             2 => self::$PERMISSION_FRIENDS,
-            3 => self::$PERMISSION_LOGGED_IN_USERS,
+            3 => self::$PERMISSION_LOGGED_IN,
         ];
-    }
-    /*
-     * @return \yii\db\ActiveQuery the user which the item belongs to.
-     */
-
-    public function getUser()
-    {
-        return !empty($this->createdByAttribute) ? $this->hasOne(User::className(), ['guid' => $this->createdByAttribute]) : null;
     }
 }

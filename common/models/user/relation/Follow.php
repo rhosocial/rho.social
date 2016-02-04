@@ -12,6 +12,8 @@
 
 namespace common\models\user\relation;
 
+use common\models\user\UserItemTrait;
+
 /**
  * 此类用于定义用户关系。该用户关系具有以下特征：
  * 1.单向关系。
@@ -22,11 +24,13 @@ namespace common\models\user\relation;
  */
 class Follow extends \vistart\Models\models\BaseUserRelationModel
 {
+    use UserItemTrait;
 
     public $multiBlamesAttribute = 'groups';
 
     public function init()
     {
+        $this->attachUserClass();
         $this->relationType = static::$relationSingle;
         $this->multiBlamesClass = FollowGroup::className();
         parent::init();
