@@ -1,4 +1,5 @@
 <?php
+
 Yii::setAlias('common', dirname(__DIR__));
 Yii::setAlias('rho', dirname(dirname(__DIR__)) . '/rho.social');
 Yii::setAlias('rho_admin', dirname(dirname(__DIR__)) . '/admin.rho.social');
@@ -12,5 +13,12 @@ Yii::setAlias('rho_sso', dirname(dirname(__DIR__)) . '/sso.rho.social');
 Yii::setAlias('console', dirname(dirname(__DIR__)) . '/console');
 Yii::setAlias('console_test', dirname(dirname(__DIR__)) . '/console_test');
 
-$baseDomain = require(__DIR__ . '/base/baseDomain.php');
-$baseDomain = require(__DIR__ . '/base/baseDomain-local.php');
+$baseDomain = '';
+$baseDomainFile = __DIR__ . '/base/baseDomain.php';
+$baseDomainLocalFile = __DIR__ . '/base/baseDomain-local.php';
+if (file_exists($baseDomainFile)) {
+    $baseDomain = require($baseDomainFile);
+}
+if (file_exists($baseDomainLocalFile)) {
+    $baseDomain = require($baseDomainLocalFile);
+}
