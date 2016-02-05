@@ -1,11 +1,16 @@
 <?php
+
 /**
- * @link http://www.yiiframework.com/
- * @copyright Copyright (c) 2008 Yii Software LLC
- * @license http://www.yiiframework.com/license/
+ *  _   __ __ _____ _____ ___  ____  _____
+ * | | / // // ___//_  _//   ||  __||_   _|
+ * | |/ // /(__  )  / / / /| || |     | |
+ * |___//_//____/  /_/ /_/ |_||_|     |_|
+ * @link http://vistart.name/
+ * @copyright Copyright (c) 2016 vistart
+ * @license http://vistart.name/license/
  */
 
-namespace common\assets;
+namespace rho\assets;
 
 use yii\web\AssetBundle;
 
@@ -13,15 +18,15 @@ use yii\web\AssetBundle;
  * @author vistart <i@vistart.name>
  * @since 2.0
  */
-class CommonAsset extends AssetBundle
+class AppAsset extends AssetBundle
 {
-    public $sourcePath = "@common/assets/common";
+
+    public $basePath = '@webroot';
     public $baseUrl = '@web';
     public $css = [
         'css/site.css',
         'css/style.css',
         'css/theme.css',
-        'css/Lato.woff2',
     ];
     public $js = [
     ];
@@ -33,4 +38,5 @@ class CommonAsset extends AssetBundle
         'common\assets\OpenSansAsset',
         'common\assets\HolderAsset',
     ];
+
 }
