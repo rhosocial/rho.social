@@ -5,14 +5,11 @@
  * | | / // // ___//_  _//   ||  __||_   _|
  * | |/ // /(__  )  / / / /| || |     | |
  * |___//_//____/  /_/ /_/ |_||_|     |_|
- * @link http://vistart.name/
+ * @link https://vistart.name/
  * @copyright Copyright (c) 2016 vistart
- * @license http://vistart.name/license/
+ * @license https://vistart.name/license/
  */
-
-$params = array_merge(
-    require(__DIR__ . '/../../common/config/params.php'), require(__DIR__ . '/../../common/config/params-local.php'), require(__DIR__ . '/params.php'), require(__DIR__ . '/params-local.php')
-);
+$params = require(__DIR__ . '/load_params.php');
 
 return [
     'id' => require(__DIR__ . '/id.php'),

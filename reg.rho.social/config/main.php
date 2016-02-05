@@ -1,8 +1,16 @@
 <?php
 
-$params = array_merge(
-    require(__DIR__ . '/../../common/config/params.php'), require(__DIR__ . '/../../common/config/params-local.php'), require(__DIR__ . '/params.php'), require(__DIR__ . '/params-local.php')
-);
+/**
+ *  _   __ __ _____ _____ ___  ____  _____
+ * | | / // // ___//_  _//   ||  __||_   _|
+ * | |/ // /(__  )  / / / /| || |     | |
+ * |___//_//____/  /_/ /_/ |_||_|     |_|
+ * @link https://vistart.name/
+ * @copyright Copyright (c) 2016 vistart
+ * @license https://vistart.name/license/
+ */
+$params = require(__DIR__ . '/load_params.php');
+;
 
 return [
     'id' => require(__DIR__ . '/id.php'),
