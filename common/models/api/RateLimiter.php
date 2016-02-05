@@ -5,9 +5,9 @@
  * | | / // // ___//_  _//   ||  __||_   _|
  * | |/ // /(__  )  / / / /| || |     | |
  * |___//_//____/  /_/ /_/ |_||_|     |_|
- * @link http://vistart.name/
+ * @link https://vistart.name/
  * @copyright Copyright (c) 2016 vistart
- * @license http://vistart.name/license/
+ * @license https://vistart.name/license/
  */
 
 namespace common\models\api;
@@ -24,8 +24,14 @@ use Yii;
  * @property mixed $last_timestamp
  * @property mixed $allowed_remaining
  */
-class RateLimiter extends \vistart\Models\models\BaseMongoEntityModel
+class RateLimiter extends \vistart\Models\models\BaseMongoBlameableModel
 {
+
+    public $enableIP = false;
+    public $createdAtAttribute = false;
+    public $updatedAtAttribute = 'last_timestamp';
+    public $timeFormat = 1;
+    public $contentAttribute = 'api_endpoint';
 
     /**
      * @inheritdoc
@@ -41,11 +47,11 @@ class RateLimiter extends \vistart\Models\models\BaseMongoEntityModel
     public function attributes()
     {
         return [
-            '_id',
+            $this->idAttribute,
             'client_id',
-            'user_guid',
-            'api_endpoint',
-            'last_timestamp',
+            $this->createdByAttribute,
+            $this->contentAttribute,
+            $this->updatedAtAttribute,
             'allowed_remaining',
         ];
     }
@@ -55,13 +61,11 @@ class RateLimiter extends \vistart\Models\models\BaseMongoEntityModel
      */
     public function rules()
     {
-        return [
-            [['client_id', 'user_guid', 'api_endpoint', 'last_timestamp', 'allowed_remaining'], 'required'],
-            [['client_id', 'user_guid'], 'string', 'max' => 80],
+        return array_merge(parent::rules(), [
+            [['client_id', 'allowed_remaining'], 'required'],
+            [['client_id'], 'string', 'max' => 80],
             [['allowed_remaining'], 'number', 'integerOnly' => true, 'min' => -1],
-            [['last_timestamp'], 'number', 'min' => 0],
-            [['api_endpoint'], 'string', 'max' => 255],
-        ];
+        ]);
     }
 
     /**
@@ -70,11 +74,11 @@ class RateLimiter extends \vistart\Models\models\BaseMongoEntityModel
     public function attributeLabels()
     {
         return [
-            '_id' => 'ID',
+            $this->idAttribute => 'ID',
             'client_id' => 'Client ID',
-            'user_guid' => 'User GUID',
-            'api_endpoint' => 'Api Endpoint',
-            'last_timestamp' => 'Last Timestamp',
+            $this->createdByAttribute => 'User GUID',
+            $this->contentAttribute => 'Api Endpoint',
+            $this->updatedAtAttribute => 'Last Timestamp',
             'allowed_remaining' => 'Allowed Remaining',
         ];
     }
