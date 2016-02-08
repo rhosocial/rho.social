@@ -90,7 +90,7 @@ class BatchController extends \yii\console\Controller
 
     public function actionFollowRefresh()
     {
-        Follow::deleteAll();
+        Follow::deleteAll(['status' => [self::USER_STATUS_TEST_ACTIVE, self::USER_STATUS_TEST_INACTIVE]]);
         $users = User::find()->active(self::USER_STATUS_TEST_ACTIVE)->all();
         /* @var $users User[] */
         $count = count($users);
