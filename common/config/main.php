@@ -3,6 +3,7 @@
 return [
     'vendorPath' => dirname(dirname(__DIR__)) . '/vendor',
     'bootstrap' => require(__DIR__. '/bootstrap/bootstrap.php'),
+    'modules' => require(__DIR__ . '/modules/modules.php'),
     'components' => [
         'user' => require(__DIR__ . '/user/user.php'),
         'db' => require (__DIR__ . '/db/db.php'),

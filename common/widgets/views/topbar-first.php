@@ -28,6 +28,12 @@ use common\widgets\AccountTopMenuWidget;
 
         <div class="notifications pull-right">
 
+            <?php
+            echo \common\widgets\NotificationArea::widget(['widgets' => [
+                    [\common\modules\notification\widgets\Overview::className(), [], ['sortOrder' => 10]],
+            ]]);
+            ?>
+
         </div>
     </div>
 </div>
