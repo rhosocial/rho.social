@@ -12,13 +12,23 @@
 /* @var $this yii\web\View */
 /* @var $groups common\models\user\relation\FollowGroup[] */
 use rho_contact\widgets\contact\PanelWidget;
-use Faker\Factory;
+use rho_contact\widgets\contact\ContactWidget;
 
 $this->title = 'Contacts';
 ?>
-<?= PanelWidget::widget(['models' => Yii::$app->user->identity->follows, 'groups' => $groups, 'getItemUrl' => 'contact/gets', 'getCountUrl' => ['contact/gets', 'list' => 1]]) ?>
-<?= var_dump(Yii::$app->request->resolve()) ?>
-<?php $faker = Factory::create('zh_CN'); ?>
-<?= $faker->name ?>
-<br>
-<?= $faker->lastName . $faker->firstNameMale ?>
+<?php
+/**
+ * Contacts Panel
+ */
+?>
+<div class="col-md-4">
+    <?= PanelWidget::widget(['models' => Yii::$app->user->identity->follows, 'groups' => $groups, 'getItemUrl' => 'contact/gets', 'getCountUrl' => ['contact/gets', 'list' => 1]]) ?>
+</div>
+<?php
+/**
+ * Contact Profile
+ */
+?>
+<div class="col-md-8">
+    <?= ContactWidget::widget() ?>
+</div>
