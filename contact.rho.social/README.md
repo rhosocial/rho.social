@@ -1,3 +1,8 @@
 # contact.rho.social
 
-管理用户联系人。
+Contacts Manager.
+
+- List my followed-users.
+- View its profile.
+- Manage group.
+- Recommend my followed-users to others.

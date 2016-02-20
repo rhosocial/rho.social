@@ -1,5 +1,4 @@
-sso.rho.social
-==============
+# sso.rho.social
 
 This sub-application(branch) is used for "Single-Sign On" for all application 
 except backend.
@@ -13,7 +12,7 @@ reset password. May be it need mailing component.
 If someone is not member of this website yet, the registration link shows at the 
 bottom.
 
-# Configuration
+## Configuration
 
 This application will share common identity, it depends on common cookie domain  
 and session domain. But the `cookieValidationKey` of each application must be 
