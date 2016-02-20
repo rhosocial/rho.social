@@ -9,6 +9,8 @@
  * @copyright Copyright (c) 2016 vistart
  * @license http://vistart.name/license/
  */
+use common\widgets\LoaderWidget;
+use yii\helpers\Inflector;
 use rho_contact\widgets\contact\PanelGroupWidget;
 use yii\bootstrap\ButtonDropdown;
 use yii\helpers\Url;
@@ -57,13 +59,7 @@ PanelAsset::register($this);
                     </ul>
                 </nav>
                 <div id="item-list">
-                    <div id="loader" class="loader">
-                        <div class="sk-spinner sk-spinner-three-bounce">
-                            <div class="sk-bounce1"></div>
-                            <div class="sk-bounce2"></div>
-                            <div class="sk-bounce3"></div>
-                        </div>
-                    </div>
+                    <?= LoaderWidget::widget(['id' => Inflector::slug($getItemUrl)]) ?>
                 </div>
             </ul>
         </div>

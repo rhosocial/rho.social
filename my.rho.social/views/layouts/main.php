@@ -1,11 +1,9 @@
 <?php
 
 use yii\helpers\Html;
-use yii\widgets\Breadcrumbs;
 use common\assets\CommonAsset;
 use common\widgets\TopbarFirst;
 use common\widgets\TopbarSecond;
-use common\widgets\AccountTopMenuWidget;
 use common\widgets\FooterWidget;
 
 /* @var $this \yii\web\View */

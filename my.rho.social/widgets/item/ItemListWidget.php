@@ -19,9 +19,10 @@ namespace rho_my\widgets\item;
  */
 class ItemListWidget extends \yii\base\Widget
 {
+
     public $getItemUrl;
     public $getCountUrl;
-    
+
     public function run()
     {
         return $this->render('item-list', ['getItemUrl' => $this->getItemUrl, 'getCountUrl' => $this->getCountUrl]);

@@ -22,3 +22,4 @@ if (file_exists($baseDomainFile)) {
 if (file_exists($baseDomainLocalFile)) {
     $baseDomain = require($baseDomainLocalFile);
 }
+defined('BASE_DOMAIN') or define('BASE_DOMAIN', $baseDomain);

@@ -42,7 +42,8 @@
         "vistart/yii2-helpers": "dev-master",
         "vistart/yii2-models": "dev-master",
         "phpunit/phpunit": "*",
-        "bower-asset/admin-lte": "*"
+        "bower-asset/admin-lte": "*",
+        "bower-asset/intercooler-js": "*"
     },
     "require-dev": {
         "yiisoft/yii2-codeception": "*",

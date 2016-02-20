@@ -16,5 +16,5 @@ return [
     'keyPrefix' => $keyPrefix,
     'redis' => 'redis',
     'name' => $name,
-    'cookieParams' => ['domain' => '.' . $baseDomain, 'lifetime' => 0]
+    'cookieParams' => ['domain' => '.' . BASE_DOMAIN, 'lifetime' => 0]
 ];
