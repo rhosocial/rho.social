@@ -9,12 +9,10 @@
  * @copyright Copyright (c) 2016 vistart
  * @license http://vistart.name/license/
  */
-$keyPrefix = require(__DIR__ . '/keyPrefix.php');
-$name = require(__DIR__ . '/name.php');
 return [
     'class' => 'yii\redis\Session',
-    'keyPrefix' => $keyPrefix,
+    'keyPrefix' => loadAndDefaults(__DIR__ . '/keyPrefix.php', 'rho_local_sess_'),
     'redis' => 'redis',
-    'name' => $name,
+    'name' => loadAndDefaults(__DIR__ . '/name.php', 'RHO_LOCAL_SESSID_'),
     'cookieParams' => ['domain' => '.' . BASE_DOMAIN, 'lifetime' => 0]
 ];

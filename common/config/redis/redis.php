@@ -12,8 +12,8 @@
 
 return [
     'class' => 'yii\redis\Connection',
-    'hostname' => require(__DIR__ . '/redis.hostname.php'),
-    'port' => require(__DIR__ . '/redis.port.php'),
-    'database' => require(__DIR__ . '/redis.database.php'),
-    'password' => require(__DIR__ . '/redis.password.php'),
+    'hostname' => loadAndDefaults(__DIR__ . '/redis.hostname.php', 'localhost'),
+    'port' => loadAndDefaults(__DIR__ . '/redis.port.php', 6379),
+    'database' => loadAndDefaults(__DIR__ . '/redis.database.php', 0),
+    'password' => loadAndDefaults(__DIR__ . '/redis.password.php'),
 ];

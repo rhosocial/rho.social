@@ -9,19 +9,15 @@
  * @copyright Copyright (c) 2016 vistart
  * @license http://vistart.name/license/
  */
-$username = require(__DIR__ . '/mysql/username.php');
-$password = require(__DIR__ . '/mysql/password.php');
-$host = require(__DIR__ . '/mysql/host.php');
-$dbname = require(__DIR__ . '/mysql/dbname.php');
-$tablePrefix = require(__DIR__ . '/mysql/tablePrefix.php');
-$charset = require(__DIR__ . '/mysql/charset.php');
+$host = loadAndDefaults(__DIR__ . '/mysql/host.php', 'localhost');
+$dbname = loadAndDefaults(__DIR__ . '/mysql/dbname.php', 'rho.social');
 
 return [
     'class' => 'yii\db\Connection',
     'dsn' => "mysql:host=$host;dbname=$dbname",
-    'username' => $username,
-    'password' => $password,
-    'tablePrefix' => $tablePrefix,
-    'charset' => $charset,
+    'username' => loadAndDefaults(__DIR__ . '/mysql/username.php', 'root'),
+    'password' => loadAndDefaults(__DIR__ . '/mysql/password.php'),
+    'tablePrefix' => loadAndDefaults(__DIR__ . '/mysql/tablePrefix.php'),
+    'charset' => loadAndDefaults(__DIR__ . '/mysql/charset.php', 'utf8mb4'),
     'enableSchemaCache' => true,
 ];

@@ -9,11 +9,11 @@
  * @copyright Copyright (c) 2016 vistart
  * @license http://vistart.name/license/
  */
-$username = require(__DIR__ . '/username.php');
-$password = require(__DIR__ . '/password.php');
-$host = require(__DIR__ . '/host.php');
-$database = require(__DIR__ . '/database.php');
-$port = require(__DIR__ . '/port.php');
+$username = loadAndDefaults(__DIR__ . '/username.php');
+$password = loadAndDefaults(__DIR__ . '/password.php');
+$host = loadAndDefaults(__DIR__ . '/host.php', 'localhost');
+$database = loadAndDefaults(__DIR__ . '/database.php');
+$port = loadAndDefaults(__DIR__ . '/port.php', 27017);
 return [
     'class' => '\yii\mongodb\Connection',
     'dsn' => "mongodb://$username:$password@$host:$port/$database",

@@ -1,6 +1,6 @@
 <?php
 
-use rho_admin\assets\AdminLteAsset;
+use common\assets\AdminLteAsset;
 use common\assets\IcheckAsset;
 use common\assets\FontAwesomeAsset;
 use yii\helpers\Html;
@@ -40,7 +40,7 @@ EOT;
         <?=
         CnzzWidget::widget([
             'cnzzCode' => $cnzzCode,
-            'host' => \Yii::$app->params['host'],
+            'host' => \Yii::$app->params['host'] . '.' . \Yii::$app->params['baseDomain'],
         ])
         ?>
         <?php $this->endBody() ?>

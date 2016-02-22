@@ -13,13 +13,16 @@ Yii::setAlias('rho_sso', dirname(dirname(__DIR__)) . '/sso.rho.social');
 Yii::setAlias('console', dirname(dirname(__DIR__)) . '/console');
 Yii::setAlias('console_test', dirname(dirname(__DIR__)) . '/console_test');
 
-$baseDomain = '';
-$baseDomainFile = __DIR__ . '/base/baseDomain.php';
-$baseDomainLocalFile = __DIR__ . '/base/baseDomain-local.php';
-if (file_exists($baseDomainFile)) {
-    $baseDomain = require($baseDomainFile);
+function loadAndDefaults($filename, $default = '')
+{
+    $value = '';
+    if (file_exists($filename)) {
+        $value = require($filename);
+    } else {
+        $value = $default;
+    }
+    return $value;
 }
-if (file_exists($baseDomainLocalFile)) {
-    $baseDomain = require($baseDomainLocalFile);
-}
+//$baseDomain = loadAndDefaults(__DIR__ . '/base/baseDomain.php');
+$baseDomain = loadAndDefaults(__DIR__ . '/base/baseDomain-local.php');
 defined('BASE_DOMAIN') or define('BASE_DOMAIN', $baseDomain);
