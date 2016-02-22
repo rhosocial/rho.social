@@ -17,11 +17,11 @@ If you want to develop this application, you need to add the following files by 
 
 Note: The default config will be taken if file marked as `OPTIONAL` doesn't exist.
 
-- base domain
+#### base domain
 
 `/common/config/base/baseDomain-local.php` base domain of this application.
 
-- mysql
+#### mysql
 
 `/common/config/db/mysql/username.php` username of mysql. OPTIONAL, Defaults to `root`.
 
@@ -35,7 +35,7 @@ Note: The default config will be taken if file marked as `OPTIONAL` doesn't exis
 
 `/common/config/db/mysql/charset.php` character set of this application in mysql. OPTIONAL, Defaults to `utf8mb4`.
 
-- mongodb
+#### mongodb
 
 `/common/config/mongodb/username.php` username of mongodb.
 
@@ -47,13 +47,13 @@ Note: The default config will be taken if file marked as `OPTIONAL` doesn't exis
 
 `/common/config/mongodb/database.php` database name of mongodb.
 
-- request component
+#### request component
 
 `/common/config/request/cookieValidationKey.php` Random string of 32 chars.
 
 `/common/config/request/cookieValidationKey-local.php` Random string of 32 chars for local.
 
-- redis component
+#### redis component
 
 `/common/config/redis/redis-local.php` Redis configurations for local.
 
@@ -71,7 +71,7 @@ Note: The default config will be taken if file marked as `OPTIONAL` doesn't exis
 
 `/common/config/redis/keyPrefix.php` session key prefix stored in redis. OPTIONAL, Defaults to `RHO_LOCAL_SESSID_`.
 
-- each of sub-application
+#### each of sub-application
 
 `/<sub-app name>/config/main-local.php` Local configurations. OPTIONAL, Defaults to empty array. If you want to load `debug`, `gii` or any other components, please add this file and modify `$config['components']` configs.
 
@@ -79,7 +79,7 @@ Note: The default config will be taken if file marked as `OPTIONAL` doesn't exis
 
 You need to modify the following files:
 
-- request component
+#### request component
 
 `/common/config/request/cookieValidationKey.php` Random string of 32 chars at least.
 

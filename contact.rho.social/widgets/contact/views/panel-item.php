@@ -9,9 +9,10 @@
  * @license https://vistart.name/license/
  */
 /* @var $model \common\models\user\relation\Follow */
+
 ?>
-<li class="entry">
-    <a href="">
+<li class="entry" type="panel-user-item" user-no="<?= $model->recipient->id ?>">
+    <a href="#">
         <div class="media">
             <div class="pull-left">
                 <img class="media-object img-rounded" style="width: 40px; height: 40px;" alt="40x40" data-src="holder.js/40x40?theme=social">
@@ -33,3 +34,9 @@
         </div>
     </a>
 </li>
+<script type="text/javascript">
+    $("[user-no='<?= $model->recipient->id ?>']").click(load_<?= $model->recipient->id ?>);
+    function load_<?= $model->recipient->id ?>() {
+        load_contact(<?= $model->recipient->id ?>);
+    }
+</script>
