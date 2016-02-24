@@ -1,4 +1,5 @@
 <?php
+
 /**
  * @link http://www.yiiframework.com/
  * @copyright Copyright (c) 2008 Yii Software LLC
@@ -15,6 +16,7 @@ use yii\web\AssetBundle;
  */
 class CommonAsset extends AssetBundle
 {
+
     public $sourcePath = "@common/assets/common";
     public $baseUrl = '@web';
     public $css = [
@@ -24,6 +26,7 @@ class CommonAsset extends AssetBundle
         'css/Lato.woff2',
     ];
     public $js = [
+        'rho' => 'js/rho.js',
     ];
     public $depends = [
         'yii\web\YiiAsset',
@@ -33,4 +36,5 @@ class CommonAsset extends AssetBundle
         'common\assets\OpenSansAsset',
         'common\assets\HolderAsset',
     ];
+
 }

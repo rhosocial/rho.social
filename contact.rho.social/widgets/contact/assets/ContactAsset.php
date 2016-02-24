@@ -5,28 +5,27 @@
  * | | / // // ___//_  _//   ||  __||_   _|
  * | |/ // /(__  )  / / / /| || |     | |
  * |___//_//____/  /_/ /_/ |_||_|     |_|
- * @link https://vistart.name/
+ * @link http://vistart.name/
  * @copyright Copyright (c) 2016 vistart
- * @license https://vistart.name/license/
+ * @license http://vistart.name/license/
  */
 
 namespace rho_contact\widgets\contact\assets;
 
 /**
- * Description of PanelAsset
+ * Description of ContactAsset
  *
  * @author vistart <i@vistart.name>
  */
-class PanelAsset extends \yii\web\AssetBundle
+class ContactAsset extends \yii\web\AssetBundle
 {
 
-    public $sourcePath = '@rho_contact/widgets/contact/assets/panel';
+    public $sourcePath = '@rho_contact/widgets/contact/assets/contact';
     public $js = [
-        'get-item' => 'js/get-item.js',
-        'rho.contact.panel' => 'js/rho.contact.panel.js',
+        'rho.contact.panel' => 'js/rho.contact.contact.js',
     ];
     public $depends = [
-        'rho_contact\assets\AppAsset',
+        'rho_contact\widgets\contact\assets\PanelAsset',
     ];
 
 }

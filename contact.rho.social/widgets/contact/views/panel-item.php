@@ -9,7 +9,6 @@
  * @license https://vistart.name/license/
  */
 /* @var $model \common\models\user\relation\Follow */
-
 ?>
 <li class="entry" type="panel-user-item" user-no="<?= $model->recipient->id ?>">
     <a href="#">
@@ -37,6 +36,11 @@
 <script type="text/javascript">
     $("[user-no='<?= $model->recipient->id ?>']").click(load_<?= $model->recipient->id ?>);
     function load_<?= $model->recipient->id ?>() {
+        <?php
+        /**
+         * TO DO: Check rate limit.
+         */
+        ?>
         load_contact(<?= $model->recipient->id ?>);
     }
 </script>

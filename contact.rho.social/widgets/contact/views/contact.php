@@ -12,6 +12,9 @@
 use common\models\user\User;
 use rho_contact\widgets\contact\ContactHeaderWidget;
 use rho_contact\widgets\contact\ContactBodyWidget;
+use rho_contact\widgets\contact\assets\ContactAsset;
+
+ContactAsset::register($this);
 ?>
 <?php if ($user instanceof User): ?>
     <?= ContactHeaderWidget::widget(['user' => $user]) ?>

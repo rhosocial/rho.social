@@ -13,9 +13,12 @@
 namespace rho_contact\controllers;
 
 use common\models\user\relation\FollowGroup;
+use common\models\user\User;
 use Yii;
 use yii\filters\AccessControl;
 use yii\filters\VerbFilter;
+use yii\web\Request;
+use yii\web\Response;
 
 /**
  * Description of DefaultController
@@ -41,6 +44,7 @@ class ContactController extends \yii\web\Controller
                             'delete',
                             'get',
                             'gets',
+                            'get-contact',
                         ],
                         'roles' => ['@'],
                     ]
@@ -54,6 +58,7 @@ class ContactController extends \yii\web\Controller
                     'new' => ['post'],
                     'update' => ['post'],
                     'delete' => ['post'],
+                    'get-contact' => ['post'],
                 ],
             ],
         ];
@@ -80,5 +85,21 @@ class ContactController extends \yii\web\Controller
     public function actionGetGroups()
     {
         
+    }
+
+    /**
+     * 
+     * @param int $user_no
+     */
+    public function actionGetContact($user_no)
+    {
+        $response = Yii::$app->response;
+        /* @var $response Response */
+        $response->format = Response::FORMAT_JSON;
+        $user = User::find()->id($user_no)->one();
+        if (!$user) {
+            throw new \yii\base\InvalidParamException('User Not Found.');
+        }
+        return $user->profile->attributes;
     }
 }
