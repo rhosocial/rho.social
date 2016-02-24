@@ -56,7 +56,7 @@ final class Follow extends relation\Follow
     }
 
     /**
-     * Find ont follow by specified identity. If `$identity` is null, the logged-in
+     * Find one follow by specified identity. If `$identity` is null, the logged-in
      * identity will be taken. If $identity doesn't has the follower, null will
      * be given.
      * @param integer $id user id.
