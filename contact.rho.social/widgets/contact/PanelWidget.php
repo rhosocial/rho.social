@@ -23,7 +23,7 @@ class PanelWidget extends \yii\base\Widget
 {
 
     public $getItemUrl = '';
-    public $getCountUrl = '';
+    public $getPageCountUrl = '';
 
     /**
      * @var Follow[] 
@@ -33,6 +33,6 @@ class PanelWidget extends \yii\base\Widget
 
     public function run()
     {
-        return $this->render('panel', ['models' => $this->models, 'groups' => $this->groups, 'getItemUrl' => $this->getItemUrl, 'getCountUrl' => $this->getCountUrl]);
+        return $this->render('panel', ['models' => $this->models, 'groups' => $this->groups, 'getItemUrl' => $this->getItemUrl, 'getPageCountUrl' => $this->getPageCountUrl]);
     }
 }

@@ -43,7 +43,7 @@ class ContactController extends \yii\rest\Controller
                     [
                         'allow' => true,
                         'actions' => [
-                            'get'
+                            'get', 'widget-get',
                         ],
                         'matchCallback' => function($rule, $action) {
                         $this->checkCsrfToken();
@@ -55,7 +55,7 @@ class ContactController extends \yii\rest\Controller
                     [
                         'allow' => true,
                         'actions' => [
-                            'list', 'widget-list',
+                            'list', 'widget-list', 'page-count',
                         ],
                         'matchCallback' => function($rule, $action) {
                         $this->checkCsrfToken();
@@ -72,8 +72,10 @@ class ContactController extends \yii\rest\Controller
                 'class' => VerbFilter::className(),
                 'actions' => [
                     'get' => ['post'],
+                    'widget-get' => ['post'],
                     'list' => ['post'],
                     'widget-list' => ['post'],
+                    'page-count' => ['post'],
                 ],
             ],
         ];
@@ -124,9 +126,14 @@ class ContactController extends \yii\rest\Controller
         return $user;
     }
     
+    public function actionWidgetGet()
+    {
+        return $this->route;
+    }
+    
     private static function normalizePageSize($pageSize)
     {
-        if (!is_int($pageSize) || (int) $pageSize < 0) {
+        if (!is_numeric($pageSize) || (int) $pageSize < 0) {
             $pageSize = 10;
         }
         return (int) $pageSize;
@@ -134,10 +141,18 @@ class ContactController extends \yii\rest\Controller
     
     private static function normalizeCurrentPage($currentPage)
     {
-        if (!is_int($currentPage) || (int) $currentPage < 0) {
+        if (!is_numeric($currentPage) || (int) $currentPage < 0) {
             $currentPage = 0;
         }
         return (int) $currentPage;
+    }
+    
+    public function actionPageCount()
+    {
+        $pageSize = Yii::$app->request->post('pageSize');
+        /* normalize $pageSize and $currentPage */
+        $pageSize = static::normalizePageSize($pageSize);
+        return \rho_contact\modules\v1\models\Follow::getPagination($pageSize)->pageCount;
     }
 
     /**

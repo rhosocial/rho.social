@@ -10,9 +10,11 @@
 
 rho.contact.panel = (function ($) {
     var pub = {
+        pageCountUrl: '/v1/contact/page-count',
         btnNext: "contact-panel-list-next",
         btnPrev: "contact-panel-list-prev",
         btnRefresh: "contact-panel-list-refresh",
+        divPagination: "contact-panel-pagination",
         divList: "contact-panel-list",
         divLoader: "contact-panel-loader",
         txtCurrentPage: "contact-panel-text-current-page",
@@ -30,46 +32,63 @@ rho.contact.panel = (function ($) {
             pub.refresh();
         },
         refresh: function () {
-            if (pub.currentPage < 0) {
+            getPageCount();
+            if (typeof pub.currentPage !== "number" || pub.currentPage < 0) {
                 pub.currentPage = 0;
+            }
+            if (typeof pub.totalPage !== "number") {
+                pub.totalPage = 1;
             }
             if (pub.currentPage >= pub.totalPage) {
                 pub.currentPage = pub.totalPage - 1;
             }
             replaceList();
         },
-        initModule: function () {
-            if (contactPanelListNext !== undefined && typeof contactPanelListNext === "String") {
+        init: function () {
+            if (getPageCountUrl !== undefined && typeof getPageCountUrl === "string") {
+                pub.pageCountUrl = getPageCountUrl;
+            }
+            if (contactPanelListNext !== undefined && typeof contactPanelListNext === "string") {
                 pub.btnNext = contactPanelListNext;
             }
-            if (contactPanelListPrev !== undefined && typeof contactPanelListPrev === "String") {
+            if (contactPanelListPrev !== undefined && typeof contactPanelListPrev === "string") {
                 pub.btnPrev = contactPanelListPrev;
             }
-            if (contactPanelListRefresh !== undefined && typeof contactPanelListRefresh === "String") {
+            if (contactPanelListRefresh !== undefined && typeof contactPanelListRefresh === "string") {
                 pub.btnRefresh = contactPanelListRefresh;
             }
-            if (contactPanelList !== undefined && typeof contactPanelList === "String") {
+            if (contactPanelPagination !== undefined && typeof contactPanelPagination === "string") {
+                pub.divPagination = contactPanelPagination;
+            }
+            if (contactPanelList !== undefined && typeof contactPanelList === "string") {
                 pub.divList = contactPanelList;
             }
-            if (contactPanelLoader !== undefined && typeof contactPanelLoader === "String") {
+            if (contactPanelLoader !== undefined && typeof contactPanelLoader === "string") {
                 pub.divLoader = contactPanelLoader;
             }
-            if (contactPanelTextCurrentPage !== undefined && typeof contactPanelTextCurrentPage === "String") {
+            if (contactPanelTextCurrentPage !== undefined && typeof contactPanelTextCurrentPage === "string") {
                 pub.txtCurrentPage = contactPanelTextCurrentPage;
             }
-            if (contactPanelTextTotalPage !== undefined && typeof contactPanelTextTotalPage === "String") {
+            if (contactPanelTextTotalPage !== undefined && typeof contactPanelTextTotalPage === "string") {
                 pub.txtTotalPage = contactPanelTextTotalPage;
             }
-            if (LoaderAnimation !== undefined && typeof LoaderAnimation === "String") {
+            if (LoaderAnimation !== undefined && typeof LoaderAnimation === "string") {
                 pub.Loader = LoaderAnimation;
             }
-        },
-        registerBtnEvents: function () {
-            $("#" + pub.btnPrev).click(pub.prev);
-            $("#" + pub.btnNext).click(pub.next);
-            $("#" + pub.btnRefresh).click(pub.refresh);
+            $(document).ready(function () {
+                $("#" + pub.btnPrev).click(pub.prev);
+                $("#" + pub.btnNext).click(pub.next);
+                $("#" + pub.btnRefresh).click(pub.refresh);
+            });
         },
     };
+    function getPageCount() {
+        rho.post(pub.pageCountUrl, {pageSize: pub.pageSize}, function (data, status) {
+            pub.totalPage = data;
+        }, function (data, status) {
+
+        });
+    }
     function replaceList() {
         emptyList();
         attachLoader();
@@ -80,12 +99,15 @@ rho.contact.panel = (function ($) {
     }
     function getListSuccess(data, status) {
         detachLoader();
+        setPagination();
         appendList(data);
         Holder.run();
+        return status;
     }
     function getListFail(data, status) {
         detachLoader();
-        //rho.alert(data.message);
+        appendList(data.message);
+        return status;
     }
     function emptyList() {
         $("#" + pub.divList).empty();
@@ -103,11 +125,34 @@ rho.contact.panel = (function ($) {
         rho.post();
     }
     function setPagination() {
-        
+        $("#" + pub.txtTotalPage).text(pub.totalPage);
+        $("#" + pub.txtCurrentPage).text(pub.currentPage + 1);
+        if (pub.currentPage <= 0) {
+            if (!$("#" + pub.btnPrev).hasClass("disabled"))
+                $("#" + pub.btnPrev).addClass("disabled");
+        } else {
+            if ($("#" + pub.btnPrev).hasClass("disabled"))
+                $("#" + pub.btnPrev).removeClass("disabled");
+        }
+        if (pub.currentPage >= pub.totalPage - 1) {
+            if (!$("#" + pub.btnNext).hasClass("disabled"))
+                $("#" + pub.btnNext).addClass("disabled");
+        } else {
+            if ($("#" + pub.btnNext).hasClass("disabled"))
+                $("#" + pub.btnNext).removeClass("disabled");
+        }
+        if (pub.totalPage <= 1) {
+            if (!$("#" + pub.divPagination).hasClass("hidden")) {
+                $("#" + pub.divPagination).addClass("hidden");
+            }
+        } else {
+            if ($("#" + pub.divPagination).hasClass("hidden")) {
+                $("#" + pub.divPagination).removeClass("hidden");
+            }
+        }
     }
     return pub;
 })(jQuery);
 jQuery(document).ready(function () {
-    rho.contact.panel.registerBtnEvents();
     rho.contact.panel.refresh();
 });

@@ -10,29 +10,32 @@
  * @license http://vistart.name/license/
  */
 use common\widgets\LoaderWidget;
-use yii\helpers\Inflector;
 use rho_contact\widgets\contact\PanelGroupWidget;
 use yii\bootstrap\ButtonDropdown;
 use yii\helpers\Url;
 use yii\web\View;
 use rho_contact\widgets\contact\assets\PanelAsset;
 
-$this->registerJs('var get_item_url = "' . Url::toRoute($getItemUrl) . '"', View::POS_BEGIN);
-$this->registerJs('var get_count_url = "' . Url::toRoute($getCountUrl) . '"', View::POS_BEGIN);
-        $btnNext = "contact-panel-list-next";
-        $btnPrev = "contact-panel-list-prev";
-        $btnRefresh = "contact-panel-list-refresh";
-        $divList = "contact-panel-list";
-        $divLoader = "contact-panel-loader";
-        $txtCurrentPage = "contact-panel-text-current-page";
-        $txtTotalPage = "contact-panel-text-total-page";
-$this->registerJs('var btnNext = "' . $btnNext . '"', View::POS_BEGIN);
-$this->registerJs('var btnPrev = "' . $btnPrev . '"', View::POS_BEGIN);
-$this->registerJs('var btnRefresh = "' . $btnRefresh . '"', View::POS_BEGIN);
-$this->registerJs('var divList = "' . $divList . '"', View::POS_BEGIN);
-$this->registerJs('var divLoader = "' . $divLoader . '"', View::POS_BEGIN);
-$this->registerJs('var txtCurrentPage = "' . $txtCurrentPage . '"', View::POS_BEGIN);
-$this->registerJs('var txtTotalPage = "' . $txtTotalPage . '"', View::POS_BEGIN);
+$this->registerJs('var get_item_url = "' . Url::toRoute($getItemUrl) . '";', View::POS_BEGIN);
+$this->registerJs('var getPageCountUrl = "' . Url::toRoute($getPageCountUrl) . '";', View::POS_BEGIN);
+$btnNext = "contact-panel-list-next";
+$btnPrev = "contact-panel-list-prev";
+$btnRefresh = "contact-panel-list-refresh";
+$divPagination = "contact-panel-pagination";
+$divList = "contact-panel-list";
+$divLoader = "contact-panel-loader";
+$txtCurrentPage = "contact-panel-text-current-page";
+$txtTotalPage = "contact-panel-text-total-page";
+$loaderAnimation = str_replace('"', '\\"', LoaderWidget::widget(['id' => $divLoader]));
+$this->registerJs('var contactPanelListNext = "' . $btnNext . '";', View::POS_BEGIN);
+$this->registerJs('var contactPanelListPrev = "' . $btnPrev . '";', View::POS_BEGIN);
+$this->registerJs('var contactPanelListRefresh = "' . $btnRefresh . '";', View::POS_BEGIN);
+$this->registerJs('var contactPanelPagination = "' . $divPagination . '";', View::POS_BEGIN);
+$this->registerJs('var contactPanelList = "' . $divList . '";', View::POS_BEGIN);
+$this->registerJs('var contactPanelLoader = "' . $divLoader . '";', View::POS_BEGIN);
+$this->registerJs('var contactPanelTextCurrentPage = "' . $txtCurrentPage . '";', View::POS_BEGIN);
+$this->registerJs('var contactPanelTextTotalPage = "' . $txtTotalPage . '";', View::POS_BEGIN);
+$this->registerJs('var LoaderAnimation = "' . $loaderAnimation . '";', View::POS_BEGIN);
 PanelAsset::register($this);
 
 /* @var $models \common\models\user\relation\Follow[] */
@@ -42,7 +45,6 @@ PanelAsset::register($this);
     <div class="panel-heading">
         <span style="font-weight: bold; font-size: 16px;"> Contacts</span> All
         <div class="pull-right">
-            <!--<a class="btn btn-info" href="/humhub-master/index.php?r=mail/mail/create&ajax=1" data-target="#globalModal" data-toggle="modal"><span class="glyphicon glyphicon-refresh"></span> 刷新</a>-->
             <?=
             ButtonDropdown::widget([
                 'label' => 'Action',
@@ -50,7 +52,7 @@ PanelAsset::register($this);
                     'items' => [
                         ['label' => '<span class="glyphicon glyphicon-plus"></span> Contact', 'url' => '#', 'options' => ['onclick' => "javascript:$('#contact_1').html('Hello, world.').show(1000)", 'data-target' => '#globalModal', 'data-toggle' => 'modal']],
                         '<li role="presentation" class="divider"></li>',
-                        ['label' => '<span class="glyphicon glyphicon-refresh"></span> Refresh', 'url' => '#'],
+                        ['label' => '<span class="glyphicon glyphicon-refresh"></span> Refresh', 'url' => '#', 'options' => ['id' => $btnRefresh]],
                     ],
                     'encodeLabels' => false,
                 ],
@@ -62,7 +64,7 @@ PanelAsset::register($this);
     <hr>
     <div style="height: 700px;overflow: auto;">
         <ul id="inbox" class="media-list">
-            <nav id="pagination" class="hidden">
+            <nav id="<?= $divPagination ?>" class="hidden">
                 <ul class="pager">
                     <li id="<?= $btnPrev ?>"><a id="<?= $btnPrev ?>-a" href="#"><span class="glyphicon glyphicon-arrow-left"></span><span class="hidden-xs"> Prev</span></a></li>
                     <li>
@@ -72,7 +74,7 @@ PanelAsset::register($this);
                 </ul>
             </nav>
             <div id="<?= $divList ?>">
-                <?= LoaderWidget::widget(['id' => $divLoader]) ?>
+                <?= $loaderAnimation ?>
             </div>
         </ul>
     </div>

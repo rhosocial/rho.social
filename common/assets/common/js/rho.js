@@ -13,8 +13,8 @@ rho = (function ($) {
         alert: function (content) {
             window.alert(content);
         },
-        post: function (url, parameters, successCallback, failCallback) {
-            $.post(url, parameters, function (data, status) {
+        post: function (url, parameters, successCallback, failCallback, postFailCallback, postAlwaysCallback) {
+            var posting = $.post(url, parameters, function (data, status) {
                 if (status !== "success" || !data.success) {
                     if (!$.isFunction(failCallback) && $.isFunction(successCallback)) {
                         return successCallback(data, status);
@@ -27,6 +27,12 @@ rho = (function ($) {
                     return successCallback(data.data, status);
                 }
             });
+            if ($.isFunction(postFailCallback)) {
+                posting.fail(postFailCallback);
+            }
+            if ($.isFunction(postAlwaysCallback)) {
+                posting.always(postAlwaysCallback);
+            }
         },
         initModule: function (module) {
             if (module.isActive === undefined || module.isActive) {

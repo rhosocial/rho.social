@@ -35,5 +35,4 @@ rho.contact = function ($) {
 
 
 $(document).ready(function () {
-    //rho.contact.get(41170537);
 });
