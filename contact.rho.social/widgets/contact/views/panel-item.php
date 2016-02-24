@@ -41,6 +41,6 @@
          * TO DO: Check rate limit.
          */
         ?>
-        load_contact(<?= $model->recipient->id ?>);
+        rho.contact.contact.get(<?= $model->recipient->id ?>);
     }
 </script>

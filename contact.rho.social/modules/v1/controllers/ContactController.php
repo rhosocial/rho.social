@@ -13,6 +13,7 @@
 namespace rho_contact\modules\v1\controllers;
 
 use common\models\user\User;
+use rho_contact\widgets\contact\PanelItemWidget;
 use Yii;
 use yii\filters\AccessControl;
 use yii\filters\VerbFilter;
@@ -25,7 +26,7 @@ use yii\filters\VerbFilter;
 class ContactController extends \yii\rest\Controller
 {
 
-    public $defaultAction = 'get';
+    public $defaultAction = 'list';
 
     public function behaviors()
     {
@@ -42,7 +43,7 @@ class ContactController extends \yii\rest\Controller
                     [
                         'allow' => true,
                         'actions' => [
-                            'get',
+                            'get'
                         ],
                         'matchCallback' => function($rule, $action) {
                         $this->checkCsrfToken();
@@ -50,6 +51,17 @@ class ContactController extends \yii\rest\Controller
                         $this->checkUserRelation(Yii::$app->request->post('id'));
                         return true;
                     },
+                    ],
+                    [
+                        'allow' => true,
+                        'actions' => [
+                            'list', 'widget-list',
+                        ],
+                        'matchCallback' => function($rule, $action) {
+                        $this->checkCsrfToken();
+                        $this->checkIdentity();
+                        return true;
+                    }
                     ]
                 ],
                 'denyCallback' => function($rule, $action) {
@@ -60,6 +72,8 @@ class ContactController extends \yii\rest\Controller
                 'class' => VerbFilter::className(),
                 'actions' => [
                     'get' => ['post'],
+                    'list' => ['post'],
+                    'widget-list' => ['post'],
                 ],
             ],
         ];
@@ -99,10 +113,53 @@ class ContactController extends \yii\rest\Controller
         return true;
     }
 
+    /**
+     * Get contact.
+     * @return type
+     */
     public function actionGet()
     {
         $id = Yii::$app->request->post('id');
         $user = User::find()->id($id)->one();
         return $user;
+    }
+    
+    private static function normalizePageSize($pageSize)
+    {
+        if (!is_int($pageSize) || (int) $pageSize < 0) {
+            $pageSize = 10;
+        }
+        return (int) $pageSize;
+    }
+    
+    private static function normalizeCurrentPage($currentPage)
+    {
+        if (!is_int($currentPage) || (int) $currentPage < 0) {
+            $currentPage = 0;
+        }
+        return (int) $currentPage;
+    }
+
+    /**
+     * Get list of contacts.
+     */
+    public function actionList()
+    {
+        $pageSize = Yii::$app->request->post('pageSize');
+        $currentPage = Yii::$app->request->post('currentPage');
+        /* normalize $pageSize and $currentPage */
+        $pageSize = static::normalizePageSize($pageSize);
+        $currentPage = static::normalizeCurrentPage($currentPage);
+        return \rho_contact\modules\v1\models\Follow::findAllByIdentity($currentPage, $pageSize);
+    }
+
+    public function actionWidgetList()
+    {
+        $follows = $this->actionList();
+        $widgets = "";
+        foreach ($follows as $follow) {
+            $widgets .= PanelItemWidget::widget(['model' => $follow]);
+        }
+        return $widgets;
     }
 }

@@ -23,6 +23,7 @@ use rho_contact\modules\v1\models\Follow;
  */
 class FollowTest extends TestCase
 {
+
     public static function prepareUser()
     {
         return User::find()->id(46513307)->one();
@@ -32,10 +33,10 @@ class FollowTest extends TestCase
     {
         $user = static::prepareUser();
         $this->assertInstanceOf(User::className(), $user);
-        
+
         $follows = Follow::findAllByIdentity('all', 10, $user);
-        foreach ($follows as $follow) {
-            var_dump($follow->recipient->id);
-        }
+        $count = Follow::count($user);
+        var_dump($count);
+        var_dump((new Follow(['skipInit' => true]))->attributes);
     }
 }

@@ -19,6 +19,20 @@ use rho_contact\widgets\contact\assets\PanelAsset;
 
 $this->registerJs('var get_item_url = "' . Url::toRoute($getItemUrl) . '"', View::POS_BEGIN);
 $this->registerJs('var get_count_url = "' . Url::toRoute($getCountUrl) . '"', View::POS_BEGIN);
+        $btnNext = "contact-panel-list-next";
+        $btnPrev = "contact-panel-list-prev";
+        $btnRefresh = "contact-panel-list-refresh";
+        $divList = "contact-panel-list";
+        $divLoader = "contact-panel-loader";
+        $txtCurrentPage = "contact-panel-text-current-page";
+        $txtTotalPage = "contact-panel-text-total-page";
+$this->registerJs('var btnNext = "' . $btnNext . '"', View::POS_BEGIN);
+$this->registerJs('var btnPrev = "' . $btnPrev . '"', View::POS_BEGIN);
+$this->registerJs('var btnRefresh = "' . $btnRefresh . '"', View::POS_BEGIN);
+$this->registerJs('var divList = "' . $divList . '"', View::POS_BEGIN);
+$this->registerJs('var divLoader = "' . $divLoader . '"', View::POS_BEGIN);
+$this->registerJs('var txtCurrentPage = "' . $txtCurrentPage . '"', View::POS_BEGIN);
+$this->registerJs('var txtTotalPage = "' . $txtTotalPage . '"', View::POS_BEGIN);
 PanelAsset::register($this);
 
 /* @var $models \common\models\user\relation\Follow[] */
@@ -50,15 +64,15 @@ PanelAsset::register($this);
         <ul id="inbox" class="media-list">
             <nav id="pagination" class="hidden">
                 <ul class="pager">
-                    <li id="li-prev"><a id="btn-prev" href="#"><span class="glyphicon glyphicon-arrow-left"></span><span class="hidden-xs"> Prev</span></a></li>
+                    <li id="<?= $btnPrev ?>"><a id="<?= $btnPrev ?>-a" href="#"><span class="glyphicon glyphicon-arrow-left"></span><span class="hidden-xs"> Prev</span></a></li>
                     <li>
-                        <span id="page-current">1</span> / <span id="page-total">3</span>
+                        <span id="<?= $txtCurrentPage ?>">1</span> / <span id="<?= $txtTotalPage ?>">3</span>
                     </li>
-                    <li id="li-next"><a id="btn-next" href="#"><span class="hidden-xs">Next </span><span class="glyphicon glyphicon-arrow-right"></span></a></li>
+                    <li id="<?= $btnNext ?>"><a id="<?= $btnNext ?>-a" href="#"><span class="hidden-xs">Next </span><span class="glyphicon glyphicon-arrow-right"></span></a></li>
                 </ul>
             </nav>
-            <div id="item-list">
-                <?= LoaderWidget::widget(['id' => Inflector::slug($getItemUrl)]) ?>
+            <div id="<?= $divList ?>">
+                <?= LoaderWidget::widget(['id' => $divLoader]) ?>
             </div>
         </ul>
     </div>

@@ -22,7 +22,7 @@ class PanelAsset extends \yii\web\AssetBundle
 
     public $sourcePath = '@rho_contact/widgets/contact/assets/panel';
     public $js = [
-        'get-item' => 'js/get-item.js',
+        //'get-item' => 'js/get-item.js',
         'rho.contact.panel' => 'js/rho.contact.panel.js',
     ];
     public $depends = [

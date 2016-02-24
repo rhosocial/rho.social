@@ -15,12 +15,16 @@ rho = (function ($) {
         },
         post: function (url, parameters, successCallback, failCallback) {
             $.post(url, parameters, function (data, status) {
-                if ((status !== "success" || !data.success)&& $.isFunction(failCallback)) {
-                    failCallback(data.data, status);
-                    return;
+                if (status !== "success" || !data.success) {
+                    if (!$.isFunction(failCallback) && $.isFunction(successCallback)) {
+                        return successCallback(data, status);
+                    }
+                    if ($.isFunction(failCallback)) {
+                        return failCallback(data.data, status);
+                    }
                 }
                 if ($.isFunction(successCallback)) {
-                    successCallback(data.data, status);
+                    return successCallback(data.data, status);
                 }
             });
         },

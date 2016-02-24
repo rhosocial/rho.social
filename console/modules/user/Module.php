@@ -1,3 +1,5 @@
+<?php
+
 /**
  *  _   __ __ _____ _____ ___  ____  _____
  * | | / // // ___//_  _//   ||  __||_   _|
@@ -8,11 +10,14 @@
  * @license http://vistart.name/license/
  */
 
-rho.contact.contact = (function ($) {
-    var pub = {
-        get: function(user_no) {
-            rho.post("/v1/contact/widget-get", {id: user_no});
-        }
-    };
-    return pub;
-})(jQuery);
+namespace console\modules\user;
+
+/**
+ * Description of Module
+ *
+ * @author vistart <i@vistart.name>
+ */
+class Module extends \yii\base\Module
+{
+    public $controllerNamespace = 'console\modules\user\controllers';
+}

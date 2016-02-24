@@ -20,6 +20,10 @@ use common\models\user\UserItemTrait;
  * 2.允许备注。
  * 3.允许标注特别关心。
  *
+ * @property string $guid
+ * @property string $user_guid
+ * @property string $other_guid
+ * @property string $remark
  * @author vistart <i@vistart.name>
  */
 class Follow extends \vistart\Models\models\BaseUserRelationModel
