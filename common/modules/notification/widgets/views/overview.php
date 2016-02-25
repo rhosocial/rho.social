@@ -1,6 +1,9 @@
 <?php
 
+use common\assets\JqueryNiceScrollAsset;
 use yii\helpers\Url;
+
+JqueryNiceScrollAsset::register($this);
 ?>
 <div class="btn-group">
     <a href="#" id="icon-notifications" data-toggle="dropdown">

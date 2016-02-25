@@ -67,6 +67,10 @@
 						</a>
 							<ul>
 					<li>
+						<a href="namespace-rho_contact.modules.api.html">
+							api						</a>
+							</li>
+					<li>
 						<a href="namespace-rho_contact.modules.v1.html">
 							v1<span></span>
 						</a>
@@ -105,9 +109,9 @@
 				<li><a href="class-rho_contact.assets.AppAsset.html">rho_contact\assets\AppAsset</a></li>
 				<li><a href="class-rho_contact.controllers.ContactController.html">rho_contact\controllers\ContactController</a></li>
 				<li><a href="class-rho_contact.controllers.GroupController.html">rho_contact\controllers\GroupController</a></li>
+				<li><a href="class-rho_contact.modules.api.Module.html">rho_contact\modules\api\Module</a></li>
 				<li><a href="class-rho_contact.modules.v1.controllers.ContactController.html">rho_contact\modules\v1\controllers\ContactController</a></li>
 				<li><a href="class-rho_contact.modules.v1.controllers.DefaultController.html">rho_contact\modules\v1\controllers\DefaultController</a></li>
-				<li><a href="class-rho_contact.modules.v1.models.Follow.html">rho_contact\modules\v1\models\Follow</a></li>
 				<li><a href="class-rho_contact.modules.v1.models.FollowList.html">rho_contact\modules\v1\models\FollowList</a></li>
 				<li><a href="class-rho_contact.modules.v1.Module.html">rho_contact\modules\v1\Module</a></li>
 				<li><a href="class-rho_contact.widgets.contact.assets.ContactAsset.html">rho_contact\widgets\contact\assets\ContactAsset</a></li>
@@ -121,10 +125,6 @@
 			</ul>
 
 
-			<h3>Traits</h3>
-			<ul>
-				<li><a href="class-rho_contact.controllers.ViewTrait.html">rho_contact\controllers\ViewTrait</a></li>
-			</ul>
 
 
 
@@ -160,7 +160,7 @@
 </span><span id="22" class="l"><a href="#22">22 </a><span class="php-keyword1">class</span> PanelWidget <span class="php-keyword1">extends</span> \yii\base\Widget
 </span><span id="23" class="l"><a href="#23">23 </a>{
 </span><span id="24" class="l"><a href="#24">24 </a>
-</span><span id="25" class="l"><a href="#25">25 </a>    <span class="php-keyword1">public</span> <span class="php-var">$getItemUrl</span> = <span class="php-quote">''</span>;
+</span><span id="25" class="l"><a href="#25">25 </a>    <span class="php-keyword1">public</span> <span class="php-var">$getItemWidgetsUrl</span> = <span class="php-quote">''</span>;
 </span><span id="26" class="l"><a href="#26">26 </a>    <span class="php-keyword1">public</span> <span class="php-var">$getPageCountUrl</span> = <span class="php-quote">''</span>;
 </span><span id="27" class="l"><a href="#27">27 </a>
 </span><span id="28" class="l"><a href="#28">28 </a>    <span class="php-comment">/**
@@ -171,10 +171,18 @@
 </span><span id="33" class="l"><a href="#33">33 </a>
 </span><span id="34" class="l"><a href="#34">34 </a>    <span class="php-keyword1">public</span> <span class="php-keyword1">function</span> run()
 </span><span id="35" class="l"><a href="#35">35 </a>    {
-</span><span id="36" class="l"><a href="#36">36 </a>        <span class="php-keyword1">return</span> <span class="php-var">$this</span>-&gt;render(<span class="php-quote">'panel'</span>, [<span class="php-quote">'models'</span> =&gt; <span class="php-var">$this</span>-&gt;models, <span class="php-quote">'groups'</span> =&gt; <span class="php-var">$this</span>-&gt;groups, <span class="php-quote">'getItemUrl'</span> =&gt; <span class="php-var">$this</span>-&gt;getItemUrl, <span class="php-quote">'getPageCountUrl'</span> =&gt; <span class="php-var">$this</span>-&gt;getPageCountUrl]);
-</span><span id="37" class="l"><a href="#37">37 </a>    }
-</span><span id="38" class="l"><a href="#38">38 </a>}
-</span><span id="39" class="l"><a href="#39">39 </a></span></code></pre>
+</span><span id="36" class="l"><a href="#36">36 </a>        <span class="php-keyword1">return</span> <span class="php-var">$this</span>-&gt;render(
+</span><span id="37" class="l"><a href="#37">37 </a>            <span class="php-quote">'panel'</span>,
+</span><span id="38" class="l"><a href="#38">38 </a>            [
+</span><span id="39" class="l"><a href="#39">39 </a>                <span class="php-quote">'models'</span> =&gt; <span class="php-var">$this</span>-&gt;models,
+</span><span id="40" class="l"><a href="#40">40 </a>                <span class="php-quote">'groups'</span> =&gt; <span class="php-var">$this</span>-&gt;groups,
+</span><span id="41" class="l"><a href="#41">41 </a>                <span class="php-quote">'getItemWidgetsUrl'</span> =&gt; <span class="php-var">$this</span>-&gt;getItemWidgetsUrl,
+</span><span id="42" class="l"><a href="#42">42 </a>                <span class="php-quote">'getPageCountUrl'</span> =&gt; <span class="php-var">$this</span>-&gt;getPageCountUrl
+</span><span id="43" class="l"><a href="#43">43 </a>            ]
+</span><span id="44" class="l"><a href="#44">44 </a>        );
+</span><span id="45" class="l"><a href="#45">45 </a>    }
+</span><span id="46" class="l"><a href="#46">46 </a>}
+</span><span id="47" class="l"><a href="#47">47 </a></span></code></pre>
 	</div>
 
 	<div id="footer">
@@ -182,6 +190,6 @@
 	</div>
 </div>
 <script src="resources/combined.js?f0aaab98db88d505c41af9b0edc8d55085cfaee8"></script>
-<script src="elementlist.js?c377b59d05a7e5ba820fa06ffc15408de3d39889"></script>
+<script src="elementlist.js?4903936c3ade7f8ff0461ced076dff4a836bd775"></script>
 </body>
 </html>

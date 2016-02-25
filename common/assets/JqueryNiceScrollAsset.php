@@ -12,26 +12,21 @@
 
 namespace common\assets;
 
-use yii\web\AssetBundle;
-
 /**
- * Description of AdminLteAsset
+ * Description of JqueryNiceScrollAsset
  *
- * @author vistart
+ * @author vistart <i@vistart.name>
  */
-class AdminLteAsset extends AssetBundle
+class JqueryNiceScrollAsset extends \yii\web\AssetBundle
 {
-
-    public $sourcePath = "@bower/admin-lte/dist";
+    public $sourcePath = "@bower/jquery.nicescroll";
     public $js = [
-        'js/app.js',
+        'jQuery.niceScroll' => 'jquery.nicescroll.js',
     ];
-    public $css = [
-        'css/AdminLTE.css',
-        'css/skins/_all-skins.css',
+    public $jsOptions = [
+        'position' => \yii\web\View::POS_HEAD,
     ];
     public $depends = [
-        'yii\bootstrap\BootstrapPluginAsset',
+        'yii\web\JqueryAsset',
     ];
-
 }
