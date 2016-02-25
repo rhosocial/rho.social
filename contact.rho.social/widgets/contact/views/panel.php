@@ -16,8 +16,6 @@ use yii\helpers\Url;
 use yii\web\View;
 use rho_contact\widgets\contact\assets\PanelAsset;
 
-$this->registerJs('var get_item_url = "' . Url::toRoute($getItemUrl) . '";', View::POS_BEGIN);
-$this->registerJs('var getPageCountUrl = "' . Url::toRoute($getPageCountUrl) . '";', View::POS_BEGIN);
 $btnNext = "contact-panel-list-next";
 $btnPrev = "contact-panel-list-prev";
 $btnRefresh = "contact-panel-list-refresh";
@@ -27,19 +25,32 @@ $divLoader = "contact-panel-loader";
 $txtCurrentPage = "contact-panel-text-current-page";
 $txtTotalPage = "contact-panel-text-total-page";
 $loaderAnimation = str_replace('"', '\\"', LoaderWidget::widget(['id' => $divLoader]));
-$this->registerJs('var contactPanelListNext = "' . $btnNext . '";', View::POS_BEGIN);
-$this->registerJs('var contactPanelListPrev = "' . $btnPrev . '";', View::POS_BEGIN);
-$this->registerJs('var contactPanelListRefresh = "' . $btnRefresh . '";', View::POS_BEGIN);
-$this->registerJs('var contactPanelPagination = "' . $divPagination . '";', View::POS_BEGIN);
-$this->registerJs('var contactPanelList = "' . $divList . '";', View::POS_BEGIN);
-$this->registerJs('var contactPanelLoader = "' . $divLoader . '";', View::POS_BEGIN);
-$this->registerJs('var contactPanelTextCurrentPage = "' . $txtCurrentPage . '";', View::POS_BEGIN);
-$this->registerJs('var contactPanelTextTotalPage = "' . $txtTotalPage . '";', View::POS_BEGIN);
-$this->registerJs('var LoaderAnimation = "' . $loaderAnimation . '";', View::POS_BEGIN);
 PanelAsset::register($this);
 
 /* @var $models \common\models\user\relation\Follow[] */
 /* @var $groups \common\models\user\relation\FollowGroup[] */
+?>
+<?php
+$pcu = Url::toRoute($getPageCountUrl);
+$iu = Url::toRoute($getItemWidgetsUrl);
+$js = <<<EOT
+ $(document).ready(function() {
+    rho.contact.panel.pageCountUrl = "$pcu";
+    rho.contact.panel.itemWidgetsUrl = "$iu";
+    rho.contact.panel.btnNext = "$btnNext";
+    rho.contact.panel.btnPrev = "$btnPrev";
+    rho.contact.panel.btnRefresh = "$btnRefresh";
+    rho.contact.panel.divPagination = "$divPagination";
+    rho.contact.panel.divList = "$divList";
+    rho.contact.panel.divLoader = "$divLoader";
+    rho.contact.panel.txtCurrentPage = "$txtCurrentPage";
+    rho.contact.panel.txtTotalPage = "$txtTotalPage";
+    rho.contact.panel.Loader = "$loaderAnimation";
+    rho.contact.panel.currentPage = 0;
+    rho.contact.panel.pageSize = 10;
+});
+EOT;
+$this->registerJs($js, View::POS_HEAD);
 ?>
 <div class="panel panel-default">
     <div class="panel-heading">

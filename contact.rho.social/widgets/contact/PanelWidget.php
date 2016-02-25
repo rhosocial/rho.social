@@ -22,7 +22,7 @@ use common\models\user\relation\Follow;
 class PanelWidget extends \yii\base\Widget
 {
 
-    public $getItemUrl = '';
+    public $getItemWidgetsUrl = '';
     public $getPageCountUrl = '';
 
     /**
@@ -33,6 +33,6 @@ class PanelWidget extends \yii\base\Widget
 
     public function run()
     {
-        return $this->render('panel', ['models' => $this->models, 'groups' => $this->groups, 'getItemUrl' => $this->getItemUrl, 'getPageCountUrl' => $this->getPageCountUrl]);
+        return $this->render('panel', ['models' => $this->models, 'groups' => $this->groups, 'getItemWidgetsUrl' => $this->getItemWidgetsUrl, 'getPageCountUrl' => $this->getPageCountUrl]);
     }
 }

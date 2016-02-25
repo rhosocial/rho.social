@@ -34,6 +34,25 @@ rho = (function ($) {
                 posting.always(postAlwaysCallback);
             }
         },
+        /**
+         * Load parameter from variable defined in anyother place. You should
+         * ensure the external variable defined, otherwise it will not work.
+         * @param {variable} external External variable to be loaded. If this
+         * variable is undefined, the internal will not be affected.
+         * @param {variable} internal Property or internal variable should be set.
+         * @param {string|undefined} type
+         * @returns {undefined} this method will not return anything.
+         */
+        loadExternalParameter: function (external, internal, type) {
+            if (external !== undefined) {
+                if (type === undefined || typeof type !== "string") {
+                    type = "string";
+                }
+                if (typeof external === type) {
+                    internal = external;
+                }
+            }
+        },
         initModule: function (module) {
             if (module.isActive === undefined || module.isActive) {
                 if ($.isFunction(module.init)) {

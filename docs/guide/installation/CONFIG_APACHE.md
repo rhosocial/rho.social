@@ -34,3 +34,13 @@
 - status_module (shared)
 
 ## Virtual Hosts
+
+You should enable the following virtual hosts:
+
+- admin.rho.social
+- api.rho.social
+- express.rho.social
+- my.rho.social
+- reg.rho.social
+- rho.social
+- sso.rho.social

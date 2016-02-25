@@ -11,6 +11,8 @@
 rho.contact.panel = (function ($) {
     var pub = {
         pageCountUrl: '/v1/contact/page-count',
+        itemWidgetsUrl: '/v1/contact/widget-list',
+        itemWidgetUrl: '/v1/contact/widget-get',
         btnNext: "contact-panel-list-next",
         btnPrev: "contact-panel-list-prev",
         btnRefresh: "contact-panel-list-refresh",
@@ -45,36 +47,6 @@ rho.contact.panel = (function ($) {
             replaceList();
         },
         init: function () {
-            if (getPageCountUrl !== undefined && typeof getPageCountUrl === "string") {
-                pub.pageCountUrl = getPageCountUrl;
-            }
-            if (contactPanelListNext !== undefined && typeof contactPanelListNext === "string") {
-                pub.btnNext = contactPanelListNext;
-            }
-            if (contactPanelListPrev !== undefined && typeof contactPanelListPrev === "string") {
-                pub.btnPrev = contactPanelListPrev;
-            }
-            if (contactPanelListRefresh !== undefined && typeof contactPanelListRefresh === "string") {
-                pub.btnRefresh = contactPanelListRefresh;
-            }
-            if (contactPanelPagination !== undefined && typeof contactPanelPagination === "string") {
-                pub.divPagination = contactPanelPagination;
-            }
-            if (contactPanelList !== undefined && typeof contactPanelList === "string") {
-                pub.divList = contactPanelList;
-            }
-            if (contactPanelLoader !== undefined && typeof contactPanelLoader === "string") {
-                pub.divLoader = contactPanelLoader;
-            }
-            if (contactPanelTextCurrentPage !== undefined && typeof contactPanelTextCurrentPage === "string") {
-                pub.txtCurrentPage = contactPanelTextCurrentPage;
-            }
-            if (contactPanelTextTotalPage !== undefined && typeof contactPanelTextTotalPage === "string") {
-                pub.txtTotalPage = contactPanelTextTotalPage;
-            }
-            if (LoaderAnimation !== undefined && typeof LoaderAnimation === "string") {
-                pub.Loader = LoaderAnimation;
-            }
             $(document).ready(function () {
                 $("#" + pub.btnPrev).click(pub.prev);
                 $("#" + pub.btnNext).click(pub.next);
@@ -95,7 +67,7 @@ rho.contact.panel = (function ($) {
         getList(getListSuccess, getListFail);
     }
     function getList(successCallback, failCallback) {
-        rho.post("/v1/contact/widget-list", {pageSize: pub.pageSize, currentPage: pub.currentPage}, successCallback, failCallback);
+        rho.post(pub.itemWidgetsUrl, {pageSize: pub.pageSize, currentPage: pub.currentPage}, successCallback, failCallback);
     }
     function getListSuccess(data, status) {
         detachLoader();
@@ -120,9 +92,6 @@ rho.contact.panel = (function ($) {
     }
     function detachLoader() {
         $("#" + pub.divLoader).remove();
-    }
-    function count() {
-        rho.post();
     }
     function setPagination() {
         $("#" + pub.txtTotalPage).text(pub.totalPage);
