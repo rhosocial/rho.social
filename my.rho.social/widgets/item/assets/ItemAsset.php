@@ -26,10 +26,10 @@ class ItemAsset extends \yii\web\AssetBundle
     ];
     public $js = [
         'get-item' => 'js/get-item.js',
+        'rho.my.item' => 'js/rho.my.item.js',
     ];
     public $depends = [
-        'yii\web\YiiAsset',
-        'yii\bootstrap\BootstrapAsset',
+        'rho_my\assets\AppAsset',
     ];
 
 }

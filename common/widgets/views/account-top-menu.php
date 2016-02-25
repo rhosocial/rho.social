@@ -18,7 +18,7 @@ $ssoUrlManager = \Yii::$app->multiDomainsManager->get('sso');
 $myUrlManager = \Yii::$app->multiDomainsManager->get('my');
 ?>
 <?php if (Yii::$app->user->isGuest): ?>
-    <?= Html::a('Sign in / up', Url::toRoute('/site/login'), ['class' => 'btn btn-enter']); ?>
+    <?= Html::a('Sign in / up', $ssoUrlManager->createAbsoluteUrl('sso/login'), ['class' => 'btn btn-enter']); ?>
 <?php else: ?>
     <ul class="nav">
         <li class="dropdown account">

@@ -123,5 +123,4 @@ rho.contact.panel = (function ($) {
     return pub;
 })(jQuery);
 jQuery(document).ready(function () {
-    rho.contact.panel.refresh();
 });

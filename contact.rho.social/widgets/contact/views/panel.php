@@ -48,9 +48,10 @@ $js = <<<EOT
     rho.contact.panel.Loader = "$loaderAnimation";
     rho.contact.panel.currentPage = 0;
     rho.contact.panel.pageSize = 10;
+    rho.contact.panel.refresh();
 });
 EOT;
-$this->registerJs($js, View::POS_HEAD);
+$this->registerJs($js, View::POS_END);
 ?>
 <div class="panel panel-default">
     <div class="panel-heading">

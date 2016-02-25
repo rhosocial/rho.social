@@ -4,15 +4,15 @@ The following software and tools should be installed firstly:
 
 #### REQUIRED:
 
-- [Apache](http://httpd.apache.org) 2.4.18
+- [Apache](http://httpd.apache.org) 2.4.18 [for Windows](http://httpd.apache.org/docs/current/platform/windows.html#down)
 
-- [PHP](http://php.net/downloads.php) 5.6.18
+- [PHP](http://php.net/downloads.php) 5.6.18 [for Windows](http://windows.php.net/download)
 
 - [MySQL](http://dev.mysql.com/downloads/) 5.7.10
 
-- [MongoDB](https://www.mongodb.org/downloads) 3.0.9
+- [MongoDB](https://www.mongodb.org/downloads) 3.0.9 [for Windows](https://www.mongodb.org/dl/win32/x86_64-2008plus)
 
-- [Redis](http://redis.io/download) 3.0.501
+- [Redis](http://redis.io/download) 3.0.501 [for Windows](https://github.com/MSOpenTech/redis/releases)
 
 - [Composer](https://getcomposer.org/download)
 

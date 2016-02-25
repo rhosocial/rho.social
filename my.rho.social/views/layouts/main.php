@@ -24,7 +24,7 @@ require('topbar-second.php');
     </head>
     <body>
         <?php $this->beginBody() ?>
-        <?= TopbarFirst::widget(['title1' => Yii::$app->user->identity->profile->nickname, 'title2' => Yii::$app->user->id]); ?>
+        <?= TopbarFirst::widget(); ?>
         <?= TopbarSecond::widget(['navItems' => (isset($this->params['topbar_second']) ? $this->params['topbar_second'] : []), 'visible_md' => (isset($this->params['topbar_second_visible_md']) ? $this->params['topbar_second_visible_md'] : true), 'visible_sm' => (isset($this->params['topbar_second_visible_sm']) ? $this->params['topbar_second_visible_sm'] : true)]) ?>
         <div class="wrap">
             <div class="container">
