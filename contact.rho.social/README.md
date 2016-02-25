@@ -21,4 +21,4 @@ Contacts Manager.
 ## Documentations
 
 - [API](docs/api). HTML, please see them in browers.
-- [Guide](docs/guid). Markdown.
+- [Guide](docs/guide). Markdown.

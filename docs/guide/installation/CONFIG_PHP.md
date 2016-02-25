@@ -1,0 +1,56 @@
+# PHP Configuration
+
+## Modules
+
+- bcmath
+- calendar
+- Core
+- ctype
+- curl
+- date
+- dom
+- ereg
+- exif
+- fileinfo
+- filter
+- ftp
+- gd
+- gettext
+- hash
+- iconv
+- intl
+- json
+- ldap
+- libxml
+- mbstring
+- mcrypt
+- memcache
+- mhash
+- mongo
+- mysqli
+- mysqlnd
+- odbc
+- openssl
+- pcre
+- PDO
+- pdo_mysql
+- pdo_pgsql (Optional)
+- pdo_sqlite
+- pgsql (Optional)
+- Phar
+- Reflection
+- session
+- SimpleXML
+- sphinx
+- SPL
+- sqlite3
+- standard
+- timezonedb (2015.7)
+- tokenizer
+- wddx
+- xdebug (Zend Module, Development Environment Only)
+- xml
+- xmlreader
+- xmlwriter
+- zip
+- zlib

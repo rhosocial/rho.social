@@ -21,6 +21,8 @@ The composer packages manager requires composer asset plugin. Run the following 
 composer global require fxp/composer-asset-plugin:*
 ~~~
 
+This application does NOT support PHP 7, because the required yii2 extension yii2-mongodb does not support PHP 7.
+
 #### OPTIONAL:
 
 - [phpMyAdmin](http://www.phpmyadmin.net)
