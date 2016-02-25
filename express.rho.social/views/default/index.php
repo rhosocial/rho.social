@@ -5,12 +5,8 @@
  * | | / // // ___//_  _//   ||  __||_   _|
  * | |/ // /(__  )  / / / /| || |     | |
  * |___//_//____/  /_/ /_/ |_||_|     |_|
- * @link https://vistart.name/
+ * @link http://vistart.name/
  * @copyright Copyright (c) 2016 vistart
- * @license https://vistart.name/license/
+ * @license http://vistart.name/license/
  */
-return [
-    'api' => [
-        'class' => 'rho_contact\modules\api\Module',
-    ],
-];
+

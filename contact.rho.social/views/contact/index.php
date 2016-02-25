@@ -22,7 +22,16 @@ $this->title = 'Contacts';
  */
 ?>
 <div class="col-md-4">
-    <?= PanelWidget::widget(['models' => Yii::$app->user->identity->follows, 'groups' => $groups, 'getItemWidgetsUrl' => 'v1/contact/widget-list', 'getPageCountUrl' => ['v1/contact/page-count']]) ?>
+    <?=
+    PanelWidget::widget(
+        [
+            'models' => [],
+            'groups' => $groups,
+            'getItemWidgetsUrl' => 'api/contact/widget-list',
+            'getPageCountUrl' => 'api/contact/page-count'
+        ]
+    )
+    ?>
 </div>
 <?php
 /**
@@ -30,5 +39,5 @@ $this->title = 'Contacts';
  */
 ?>
 <div class="col-md-8">
-    <?= ContactWidget::widget() ?>
+<?= ContactWidget::widget() ?>
 </div>

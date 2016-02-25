@@ -13,5 +13,5 @@ return [
         'dev' => 'dev',
         'slogan' => 'Convenient and Powerful Personal Information & Relationship Manager.',
     ],
-    'baseDomain' => $baseDomain,
+    'baseDomain' => BASE_DOMAIN,
 ];

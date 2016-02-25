@@ -5,9 +5,9 @@
  * | | / // // ___//_  _//   ||  __||_   _|
  * | |/ // /(__  )  / / / /| || |     | |
  * |___//_//____/  /_/ /_/ |_||_|     |_|
- * @link https://vistart.name/
+ * @link http://vistart.name/
  * @copyright Copyright (c) 2016 vistart
- * @license https://vistart.name/license/
+ * @license http://vistart.name/license/
  */
 $params = [];
 $params = array_merge($params, getParamsFromFile(__DIR__ . '/../../common/config/params.php'));
@@ -16,11 +16,11 @@ $params = array_merge($params, getParamsFromFile(__DIR__ . '/params.php'));
 $params = array_merge($params, getParamsFromFile(__DIR__ . '/params-local.php'));
 
 return [
-    'id' => getParamsFromFile(__DIR__ . '/id.php', 'rho_social_contact'),
+    'id' => getParamsFromFile(__DIR__ . '/id.php', 'rho_social_express'),
     'name' => $params['title']['main'] . ' ' . $params['title']['social'],
     'basePath' => dirname(__DIR__),
     'defaultRoute' => 'contact',
-    'controllerNamespace' => 'rho_contact\controllers',
+    'controllerNamespace' => 'rho_express\controllers',
     'modules' => getParamsFromFile(__DIR__ . '/modules.php'),
     'components' => [
         'log' => getParamsFromFile(__DIR__ . '/log.php'),

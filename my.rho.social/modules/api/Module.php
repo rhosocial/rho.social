@@ -10,25 +10,14 @@
  * @license http://vistart.name/license/
  */
 
-namespace rho_contact\tests\modules\v1\models;
-
-use common\models\user\User;
-use rho_contact\tests\TestCase;
+namespace rho_my\modules\api;
 
 /**
- * Description of FollowTest
+ * Shadow module of latest version.
  *
  * @author vistart <i@vistart.name>
  */
-class FollowTest extends TestCase
+class Module extends \rho_my\modules\v1\Module
 {
-
-    public static function prepareUser()
-    {
-        return User::find()->id(46513307)->one();
-    }
-
-    public function testNew()
-    {
-    }
+    //put your code here
 }

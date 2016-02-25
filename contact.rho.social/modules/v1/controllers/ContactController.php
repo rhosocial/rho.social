@@ -13,10 +13,13 @@
 namespace rho_contact\modules\v1\controllers;
 
 use common\models\user\User;
+use common\models\user\relation\Follow;
 use rho_contact\widgets\contact\PanelItemWidget;
 use Yii;
 use yii\filters\AccessControl;
 use yii\filters\VerbFilter;
+use yii\web\ForbiddenHttpException;
+use yii\web\NotFoundHttpException;
 
 /**
  * Description of ContactController
@@ -84,7 +87,7 @@ class ContactController extends \yii\rest\Controller
     protected function checkCsrfToken()
     {
         if (!Yii::$app->request->validateCsrfToken()) {
-            throw new \yii\web\ForbiddenHttpException('Invalid CSRF Token.');
+            throw new ForbiddenHttpException('Invalid CSRF Token.');
         }
         return true;
     }
@@ -92,7 +95,7 @@ class ContactController extends \yii\rest\Controller
     protected function checkIdentity()
     {
         if (Yii::$app->user->isGuest) {
-            throw new \yii\web\ForbiddenHttpException('Login Required.');
+            throw new ForbiddenHttpException('Login Required.');
         }
         return true;
     }
@@ -100,7 +103,7 @@ class ContactController extends \yii\rest\Controller
     protected function checkUser($id)
     {
         if (!$user = User::find()->id($id)->one()) {
-            throw new \yii\web\NotFoundHttpException('User Not Found.');
+            throw new NotFoundHttpException('User Not Found.');
         }
         return $user;
     }
@@ -109,8 +112,8 @@ class ContactController extends \yii\rest\Controller
     {
         $initiator = Yii::$app->user->identity;
         $recipient = $this->checkUser($recipient);
-        if (!\common\models\user\relation\Follow::findOneRelation($initiator, $recipient)) {
-            throw new \yii\web\NotFoundHttpException('Follow Not Found.');
+        if (!Follow::findOneRelation($initiator, $recipient)) {
+            throw new NotFoundHttpException('Follow Not Found.');
         }
         return true;
     }
@@ -131,28 +134,10 @@ class ContactController extends \yii\rest\Controller
         return $this->route;
     }
     
-    private static function normalizePageSize($pageSize)
-    {
-        if (!is_numeric($pageSize) || (int) $pageSize < 0) {
-            $pageSize = 10;
-        }
-        return (int) $pageSize;
-    }
-    
-    private static function normalizeCurrentPage($currentPage)
-    {
-        if (!is_numeric($currentPage) || (int) $currentPage < 0) {
-            $currentPage = 0;
-        }
-        return (int) $currentPage;
-    }
-    
     public function actionPageCount()
     {
         $pageSize = Yii::$app->request->post('pageSize');
-        /* normalize $pageSize and $currentPage */
-        $pageSize = static::normalizePageSize($pageSize);
-        return \rho_contact\modules\v1\models\Follow::getPagination($pageSize)->pageCount;
+        return Follow::getPagination($pageSize)->pageCount;
     }
 
     /**
@@ -162,10 +147,7 @@ class ContactController extends \yii\rest\Controller
     {
         $pageSize = Yii::$app->request->post('pageSize');
         $currentPage = Yii::$app->request->post('currentPage');
-        /* normalize $pageSize and $currentPage */
-        $pageSize = static::normalizePageSize($pageSize);
-        $currentPage = static::normalizeCurrentPage($currentPage);
-        return \rho_contact\modules\v1\models\Follow::findAllByIdentity($currentPage, $pageSize);
+        return Follow::findAllByIdentityInBatch($pageSize, $currentPage);
     }
 
     public function actionWidgetList()

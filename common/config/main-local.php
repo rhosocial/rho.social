@@ -1,9 +1,5 @@
 <?php
 
-function getParamsFromFile($file)
-{
-    return file_exists($file) ? require($file) : [];
-}
 return [
     'components' => [
         'db' => getParamsFromFile(__DIR__ . '/db/db-local.php'),

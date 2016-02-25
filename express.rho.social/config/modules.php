@@ -11,6 +11,6 @@
  */
 return [
     'api' => [
-        'class' => 'rho_contact\modules\api\Module',
+        'class' => 'rho_express\modules\api\Module',
     ],
 ];

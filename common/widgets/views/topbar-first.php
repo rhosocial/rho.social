@@ -10,8 +10,6 @@
  * @license https://vistart.name/license/
  */
 /* @var $this yii\web\View */
-/* @var $title1 string */
-/* @var $title2 string */
 use common\widgets\LogoWidget;
 use common\widgets\AccountTopMenuWidget;
 ?>
@@ -21,11 +19,13 @@ use common\widgets\AccountTopMenuWidget;
         <div class="topbar-brand hidden-xs">
             <?= LogoWidget::widget(); ?>
         </div>
-
         <div class="topbar-actions pull-right">
-            <?= AccountTopMenuWidget::widget(['title1' => $title1, 'title2' => $title2]); ?>
+            <?php if (!Yii::$app->user->isGuest) : ?>
+                <?= AccountTopMenuWidget::widget(['title1' => Yii::$app->user->identity->profile->nickname, 'title2' => Yii::$app->user->id]); ?>
+            <?php else: ?>
+                <?= AccountTopMenuWidget::widget(); ?>
+            <?php endif; ?>
         </div>
-
         <div class="notifications pull-right">
 
             <?php

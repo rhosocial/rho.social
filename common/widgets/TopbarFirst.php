@@ -19,12 +19,8 @@ namespace common\widgets;
  */
 class TopbarFirst extends \yii\base\Widget
 {
-
-    public $title1 = '';
-    public $title2 = '';
-
     public function run()
     {
-        return $this->render('topbar-first', ['title1' => $this->title1, 'title2' => $this->title2]);
+        return $this->render('topbar-first');
     }
 }

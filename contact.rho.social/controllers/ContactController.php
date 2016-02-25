@@ -17,7 +17,6 @@ use common\models\user\User;
 use Yii;
 use yii\filters\AccessControl;
 use yii\filters\VerbFilter;
-use yii\web\Request;
 use yii\web\Response;
 
 /**
@@ -27,7 +26,6 @@ use yii\web\Response;
  */
 class ContactController extends \yii\web\Controller
 {
-    use ViewTrait;
 
     public function behaviors()
     {

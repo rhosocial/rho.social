@@ -19,7 +19,6 @@ use common\widgets\FooterWidget;
 /* @var $content string */
 
 CommonAsset::register($this);
-require('topbar-second.php');
 ?>
 <?php $this->beginPage() ?>
 <!DOCTYPE html>
