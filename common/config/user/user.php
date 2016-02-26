@@ -10,7 +10,7 @@
  * @license http://vistart.name/license/
  */
 return [
-    'class' => 'vistart\Models\components\SSOIdentity',
+    'class' => 'vistart\components\web\SSOUser',
     'identityClass' => 'common\models\user\User',
     'enableAutoLogin' => true,
     'identityCookie' => require(__DIR__ . '/identityCookie.php'),

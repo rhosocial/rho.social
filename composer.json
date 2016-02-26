@@ -44,7 +44,8 @@
         "phpunit/phpunit": "*",
         "bower-asset/admin-lte": "*",
         "bower-asset/intercooler-js": "*",
-        "bower-asset/jquery.nicescroll": "*"
+        "bower-asset/jquery.nicescroll": "*",
+        "vistart/yii2-components": "dev-master"
     },
     "require-dev": {
         "yiisoft/yii2-codeception": "*",
