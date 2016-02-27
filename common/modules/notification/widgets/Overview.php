@@ -15,9 +15,9 @@ class Overview extends \yii\base\Widget
      */
     public function run()
     {
-        if (Yii::$app->user->isGuest)
+        if (Yii::$app->user->isGuest) {
             return;
-
+        }
         return $this->render('overview', array(
                 'update' => json_encode([])
         ));

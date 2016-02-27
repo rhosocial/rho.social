@@ -17,7 +17,14 @@ namespace common\models\user\message;
  *
  * @author vistart <i@vistart.name>
  */
-class Notification
+class Notification extends \vistart\Models\models\BaseMongoNotificationModel
 {
-    //put your code here
+
+    /**
+     * @inheritdoc
+     */
+    public static function collectionName()
+    {
+        return ['rho', 'user.message.notification'];
+    }
 }

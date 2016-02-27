@@ -30,7 +30,7 @@ use common\widgets\AccountTopMenuWidget;
 
             <?php
             echo \common\widgets\NotificationArea::widget(['widgets' => [
-                    [\common\modules\notification\widgets\Overview::className(), [], ['sortOrder' => 10]],
+                    [\rho_message\modules\notification\widgets\Overview::className(), [], ['sortOrder' => 10]],
             ]]);
             ?>
 

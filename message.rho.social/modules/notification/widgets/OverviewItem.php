@@ -5,9 +5,9 @@
  * | | / // // ___//_  _//   ||  __||_   _|
  * | |/ // /(__  )  / / / /| || |     | |
  * |___//_//____/  /_/ /_/ |_||_|     |_|
- * @link http://vistart.name/
+ * @link https://vistart.name/
  * @copyright Copyright (c) 2016 vistart
- * @license http://vistart.name/license/
+ * @license https://vistart.name/license/
  */
 
 namespace rho_message\modules\notification\widgets;
@@ -15,18 +15,20 @@ namespace rho_message\modules\notification\widgets;
 use Yii;
 
 /**
- * Description of Overview
+ * Description of OverviewItem
  *
  * @author vistart <i@vistart.name>
  */
-class Overview extends \yii\base\Widget
+class OverviewItem extends \yii\base\Widget
 {
+
+    public $notification;
 
     public function run()
     {
         if (Yii::$app->user->isGuest) {
             return;
         }
-        return $this->render('overview');
+        return $this->render('overview-item', ['notification' => $this->notification]);
     }
 }
