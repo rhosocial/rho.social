@@ -13,11 +13,11 @@
 namespace common\widgets;
 
 /**
- * Description of NotificationArea
+ * Description of MessageArea
  *
  * @author vistart <i@vistart.name>
  */
-class NotificationArea extends \vistart\components\widgets\StackWidget
+class MessageArea extends \vistart\components\widgets\StackWidget
 {
-    
+    //put your code here
 }

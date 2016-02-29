@@ -10,14 +10,23 @@
  * @license https://vistart.name/license/
  */
 
-namespace common\widgets;
+namespace rho_message\modules\message\widgets;
+
+use Yii;
 
 /**
- * Description of NotificationArea
+ * Description of Overview
  *
  * @author vistart <i@vistart.name>
  */
-class NotificationArea extends \vistart\components\widgets\StackWidget
+class Overview extends \yii\base\Widget
 {
-    
+
+    public function run()
+    {
+        if (Yii::$app->user->isGuest) {
+            return;
+        }
+        return $this->render('overview');
+    }
 }

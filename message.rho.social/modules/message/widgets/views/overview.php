@@ -1,13 +1,13 @@
 <?php
 
 use common\assets\JqueryNiceScrollAsset;
-use common\models\user\message\Notification;
+use yii\helpers\Url;
 
 JqueryNiceScrollAsset::register($this);
 ?>
 <div class="btn-group">
     <a href="#" id="icon-notifications" data-toggle="dropdown">
-        <i class="fa fa-bell"></i>
+        <i class="fa fa-envelope"></i>
     </a>
     <span id="badge-notifications" style="display:none;" class="label label-danger label-notifications">1</span>
 
@@ -19,13 +19,7 @@ JqueryNiceScrollAsset::register($this);
                                                  href="javascript:markNotificationsAsSeen();"><?php echo Yii::t('common', 'Mark all as seen'); ?></a>
             </div>
         </li>
-        <ul class="media-list">
-            <?php
-            $ns = Notification::find()->all();
-            foreach ($ns as $n):
-                ?>
-                <?= rho_message\modules\notification\widgets\OverviewItem::widget(['notification' => $n]); ?>
-            <?php endforeach; ?></ul>
+        <ul class="media-list"></ul>
         <li id="loader_notifications">
             <?php echo \common\widgets\LoaderWidget::widget(); ?>
         </li>
