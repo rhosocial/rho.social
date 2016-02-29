@@ -19,6 +19,7 @@ use common\models\user\profile\IconRelation;
 use common\models\user\profile\PreferenceRelation;
 use common\models\user\profile\ProfileRelation;
 use common\models\user\relation\FollowRelation;
+use common\models\user\message\MessageRelation;
 
 /**
  * Description of UserRelationTrait
@@ -33,5 +34,6 @@ trait UserRelationTrait
         EmailRelation,
         PhoneRelation,
         PreferenceRelation,
-        IconRelation;
+        IconRelation,
+        MessageRelation;
 }

@@ -19,7 +19,8 @@ JqueryNiceScrollAsset::register($this);
                                                  href="javascript:markNotificationsAsSeen();"><?php echo Yii::t('common', 'Mark all as seen'); ?></a>
             </div>
         </li>
-        <ul class="media-list"></ul>
+        <ul class="media-list">
+        </ul>
         <li id="loader_notifications">
             <?php echo \common\widgets\LoaderWidget::widget(); ?>
         </li>

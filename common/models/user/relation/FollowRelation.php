@@ -12,6 +12,8 @@
 
 namespace common\models\user\relation;
 
+use common\models\user\User;
+
 /**
  * Description of FollowRelation
  *
@@ -36,5 +38,11 @@ trait FollowRelation
     {
         $model = Follow::buildNoInitModel();
         return $this->hasMany(Follow::className(), [$model->createdByAttribute => $this->guidAttribute])->inverseOf('user');
+    }
+
+    public function getFollowers()
+    {
+        $model = Follow::buildNoInitModel();
+        return $this->hasMany(User::className(), [$this->guidAttribute => $model->otherGuidAttribute])->via('follows');
     }
 }
