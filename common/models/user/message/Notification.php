@@ -12,6 +12,8 @@
 
 namespace common\models\user\message;
 
+use common\models\user\UserItemTrait;
+
 /**
  * Description of Notification
  *
@@ -19,6 +21,7 @@ namespace common\models\user\message;
  */
 class Notification extends \vistart\Models\models\BaseMongoNotificationModel
 {
+    use UserItemTrait;
 
     /**
      * @inheritdoc
@@ -26,5 +29,11 @@ class Notification extends \vistart\Models\models\BaseMongoNotificationModel
     public static function collectionName()
     {
         return ['rho', 'user.message.notification'];
+    }
+
+    public function init()
+    {
+        $this->attachUserClass();
+        parent::init();
     }
 }

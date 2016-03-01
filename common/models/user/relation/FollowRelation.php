@@ -40,9 +40,21 @@ trait FollowRelation
         return $this->hasMany(Follow::className(), [$model->createdByAttribute => $this->guidAttribute])->inverseOf('user');
     }
 
-    public function getFollowers()
+    public function getFollowings()
     {
         $model = Follow::buildNoInitModel();
         return $this->hasMany(User::className(), [$this->guidAttribute => $model->otherGuidAttribute])->via('follows');
+    }
+
+    public function getInverseFollows()
+    {
+        $model = Follow::buildNoInitModel();
+        return $this->hasMany(Follow::className(), [$model->otherGuidAttribute => $this->guidAttribute])->inverseOf('user');
+    }
+
+    public function getFollowers()
+    {
+        $model = Follow::buildNoInitModel();
+        return $this->hasMany(User::className(), [$this->guidAttribute => $model->createdByAttribute])->via('inverseFollows');
     }
 }

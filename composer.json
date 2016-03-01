@@ -16,7 +16,7 @@
         "yiisoft/yii2-bootstrap": "*",
         "yiisoft/yii2-swiftmailer": "*",
         "yiisoft/yii2-mongodb": "^2.0",
-        "yiisoft/yii2-redis": "^2.0",
+        "yiisoft/yii2-redis": "dev-master",
         "kartik-v/yii2-widgets": "^3.4",
         "bower-asset/holderjs": "^2.7",
         "bower-asset/font-awesome": "^4.3",

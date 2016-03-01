@@ -1,7 +1,7 @@
 <?php
 
 use common\assets\JqueryNiceScrollAsset;
-use yii\helpers\Url;
+use common\widgets\LoaderWidget;
 
 JqueryNiceScrollAsset::register($this);
 ?>
@@ -22,7 +22,7 @@ JqueryNiceScrollAsset::register($this);
         <ul class="media-list">
         </ul>
         <li id="loader_notifications">
-            <?php echo \common\widgets\LoaderWidget::widget(); ?>
+            <?php echo LoaderWidget::widget(); ?>
         </li>
     </ul>
 </div>

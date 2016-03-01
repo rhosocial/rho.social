@@ -20,6 +20,7 @@ use common\models\user\profile\PreferenceRelation;
 use common\models\user\profile\ProfileRelation;
 use common\models\user\relation\FollowRelation;
 use common\models\user\message\MessageRelation;
+use common\models\user\message\NotificationRelation;
 
 /**
  * Description of UserRelationTrait
@@ -35,5 +36,6 @@ trait UserRelationTrait
         PhoneRelation,
         PreferenceRelation,
         IconRelation,
-        MessageRelation;
+        MessageRelation,
+        NotificationRelation;
 }

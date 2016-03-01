@@ -13,7 +13,7 @@
 namespace common\models\user\contact;
 
 use common\models\user\BaseUserItem;
-use common\models\user\message\Message;
+use common\models\user\BaseUserItemNotification;
 use common\models\user\User;
 use Yii;
 
@@ -57,17 +57,9 @@ class BaseContactItem extends BaseUserItem
         if (!isset($event->changedAttributes[$sender->contentAttribute])) {
             return;
         }
-        $followers = Yii::$app->user->identity->followers;
-        /* @var $followers User[] */
         $user = Yii::$app->user->identity;
         /* @var $user User */
-        foreach ($followers as $follower) {
-            $message = $user->createMessage($follower, 'Something changed.');
-            if ($message->save()) {
-                
-            } else {
-                
-            }
-        }
+        $notification = $user->createNotification('Something changed.');
+        return $notification->save();
     }
 }
