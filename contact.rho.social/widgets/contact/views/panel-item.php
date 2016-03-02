@@ -13,7 +13,7 @@
 <li class="entry" type="panel-user-item" user-no="<?= $model->recipient->id ?>">
     <a href="#">
         <div class="media">
-            <div class="pull-left">
+            <div class="pull-left" style="margin-right: 6px;">
                 <img class="media-object img-rounded" style="width: 40px; height: 40px;" alt="40x40" data-src="holder.js/40x40?theme=social">
             </div>
             <div class="media-body">
