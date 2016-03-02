@@ -1,6 +1,6 @@
 <?php
 
-namespace common\models\Constants;
+namespace common\models\constants\region;
 
 use Yii;
 
@@ -19,29 +19,31 @@ use Yii;
  */
 class Province extends \yii\db\ActiveRecord
 {
+
     public static function asArray($provinces = [])
     {
         if (!is_array($provinces)) {
             return null;
         }
         $provinceArray = [];
-        for ($i = 0; $i < count($provinces); $i++){
+        for ($i = 0; $i < count($provinces); $i++) {
             $provinceArray[$i] = ['localname' => $provinces[$i]['localname'], 'alpha2' => $provinces[$i]['alpha2']];
         }
         return $provinceArray;
     }
-    
+
     public static function asArrayWithKeys($provinces = [])
     {
         if (!is_array($provinces)) {
             return null;
         }
         $provinceArray = [];
-        for ($i = 0; $i < count($provinces); $i++){
+        for ($i = 0; $i < count($provinces); $i++) {
             $provinceArray[$provinces[$i]['alpha2']] = ['localname' => $provinces[$i]['localname']];
         }
         return $provinceArray;
     }
+
     /**
      * @inheritdoc
      */
@@ -101,5 +103,15 @@ class Province extends \yii\db\ActiveRecord
     public function getCities()
     {
         return $this->hasMany(City::className(), ['province' => 'alpha2']);
+    }
+
+    /**
+     * 
+     * @param string $alpha
+     * @return City
+     */
+    public function getCity($alpha)
+    {
+        return City::find()->where(['alpha' => $alpha, 'province' => $this->alpha2, 'country' => $this->country])->one();
     }
 }

@@ -1,6 +1,6 @@
 <?php
 
-namespace common\models\Constants;
+namespace common\models\constants\region;
 
 use Yii;
 
@@ -25,29 +25,31 @@ use Yii;
  */
 class Country extends \yii\db\ActiveRecord
 {
+
     public static function asArray($countries = [])
     {
         if (!is_array($countries)) {
             return null;
         }
         $countryArray = [];
-        for ($i = 0; $i < count($countries); $i++){
+        for ($i = 0; $i < count($countries); $i++) {
             $countryArray[$i] = ['shortname' => $countries[$i]['lowercase'] . ' (' . $countries[$i]['fullname'] . ')', 'alpha2' => $countries[$i]['alpha2'], 'fullname' => $countries[$i]['fullname']];
         }
         return $countryArray;
     }
-    
+
     public static function asArrayWithKeys($countries = [])
     {
         if (!is_array($countries)) {
             return null;
         }
         $countryArray = [];
-        for ($i = 0; $i < count($countries); $i++){
+        for ($i = 0; $i < count($countries); $i++) {
             $countryArray[$countries[$i]['alpha2']] = ['shortname' => $countries[$i]['lowercase'], 'fullname' => $countries[$i]['fullname']];
         }
         return $countryArray;
     }
+
     /**
      * @inheritdoc
      */
@@ -111,5 +113,25 @@ class Country extends \yii\db\ActiveRecord
     public function getProvinces()
     {
         return $this->hasMany(Province::className(), ['country' => 'alpha2']);
+    }
+
+    /**
+     * 
+     * @param string $alpha2
+     * @return Province
+     */
+    public function getProvince($alpha2)
+    {
+        return Province::find()->where(['alpha2' => $alpha2, 'country' => $this->alpha2])->one();
+    }
+
+    /**
+     * 
+     * @param string $alpha2
+     * @return static
+     */
+    public static function get($alpha2)
+    {
+        return static::findOne($alpha2);
     }
 }

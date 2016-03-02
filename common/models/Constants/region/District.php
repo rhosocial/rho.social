@@ -1,54 +1,54 @@
 <?php
 
-namespace common\models\Constants;
+namespace common\models\constants\region;
 
 use Yii;
 
 /**
- * This is the model class for table "city".
+ * This is the model class for table "district".
  *
  * @property string $alpha
  * @property string $localname
  * @property string $romanname
  * @property integer $numericcode
+ * @property string $city
  * @property string $province
  * @property string $country
  *
  * @property Country $country0
  * @property Province $province0
- * @property District[] $districts
+ * @property City $city0
  */
-class City extends \yii\db\ActiveRecord
+class District extends \yii\db\ActiveRecord
 {
-    public static function asArray($cities = [])
+    public static function asArray($districts = [])
     {
-        if (!is_array($cities)) {
+        if (!is_array($districts)) {
             return null;
         }
-        $cityArray = [];
-        for ($i = 0; $i < count($cities); $i++){
-            $cityArray[$i] = ['localname' => $cities[$i]['localname'], 'alpha' => $cities[$i]['alpha']];
+        $districtArray = [];
+        for ($i = 0; $i < count($districts); $i++){
+            $districtArray[$i] = ['localname' => $districts[$i]['localname'], 'alpha' => $districts[$i]['alpha']];
         }
-        return $cityArray;
+        return $districtArray;
     }
-    
-    public static function asArrayWithKeys($cities = [])
+    public static function asArrayWithKeys($districts = [])
     {
-        if (!is_array($cities)) {
+        if (!is_array($districts)) {
             return null;
         }
-        $cityArray = [];
-        for ($i = 0; $i < count($cities); $i++){
-            $cityArray[$cities[$i]['alpha']] = ['localname' => $cities[$i]['localname']];
+        $districtArray = [];
+        for ($i = 0; $i < count($districts); $i++){
+            $districtArray[$districts[$i]['alpha']] = ['localname' => $districts[$i]['localname']];
         }
-        return $cityArray;
+        return $districtArray;
     }
     /**
      * @inheritdoc
      */
     public static function tableName()
     {
-        return 'city';
+        return 'district';
     }
 
     /**
@@ -65,10 +65,10 @@ class City extends \yii\db\ActiveRecord
     public function rules()
     {
         return [
-            [['alpha', 'localname', 'romanname', 'numericcode', 'province', 'country'], 'required'],
-            [['alpha', 'localname', 'romanname', 'province', 'country'], 'string'],
+            [['alpha', 'localname', 'romanname', 'numericcode', 'city', 'province', 'country'], 'required'],
+            [['alpha', 'localname', 'romanname', 'city', 'province', 'country'], 'string'],
             [['numericcode'], 'integer'],
-            [['numericcode', 'alpha', 'localname', 'romanname', 'province'], 'unique', 'targetAttribute' => ['numericcode', 'alpha', 'localname', 'romanname', 'province'], 'message' => 'The combination of Alpha, Localname, Romanname, Numericcode and Province has already been taken.'],
+            [['numericcode', 'alpha', 'localname', 'romanname', 'city'], 'unique', 'targetAttribute' => ['numericcode', 'alpha', 'localname', 'romanname', 'city'], 'message' => 'The combination of Alpha, Localname, Romanname, Numericcode and City has already been taken.'],
             [['alpha'], 'unique']
         ];
     }
@@ -83,6 +83,7 @@ class City extends \yii\db\ActiveRecord
             'localname' => 'Localname',
             'romanname' => 'Romanname',
             'numericcode' => 'Numericcode',
+            'city' => 'City',
             'province' => 'Province',
             'country' => 'Country',
         ];
@@ -107,8 +108,8 @@ class City extends \yii\db\ActiveRecord
     /**
      * @return \yii\db\ActiveQuery
      */
-    public function getDistricts()
+    public function getCity0()
     {
-        return $this->hasMany(District::className(), ['city' => 'alpha']);
+        return $this->hasOne(City::className(), ['alpha' => 'city']);
     }
 }

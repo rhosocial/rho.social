@@ -1,7 +1,6 @@
 <?php
 
 use common\assets\JqueryNiceScrollAsset;
-use common\models\user\message\Notification;
 
 JqueryNiceScrollAsset::register($this);
 ?>

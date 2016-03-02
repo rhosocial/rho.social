@@ -1,6 +1,6 @@
 <?php
 
-namespace common\models\Constants;
+namespace common\models\constants;
 
 use Yii;
 
