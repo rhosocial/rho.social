@@ -20,10 +20,38 @@ namespace common\models\user\contact;
 class URL extends BaseContactItem
 {
 
+    public $contentAttributeRule = ['url'];
     public $confirmCodeAttribute = false;
+
+    public function getUrl()
+    {
+        return $this->getContent();
+    }
+
+    public function setUrl($url)
+    {
+        $this->setContent($url);
+    }
 
     public static function tableName()
     {
         return '{{%user_url}}';
+    }
+
+    public function attributeLabels()
+    {
+        $labels = parent::attributeLabels();
+        return array_merge($labels, [
+            'content' => 'URL',
+            'type' => 'URL Type',
+        ]);
+    }
+
+    public function scenarios()
+    {
+        return array_merge(parent::scenarios(), [
+            static::SCENARIO_FORM => [$this->contentAttribute, $this->descriptionAttribute, $this->contentTypeAttribute],
+            static::SCENARIO_REGISTER => [$this->contentAttribute],
+        ]);
     }
 }

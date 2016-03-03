@@ -26,4 +26,21 @@ class IM extends BaseContactItem
     {
         return '{{%user_im}}';
     }
+
+    public function attributeLabels()
+    {
+        $labels = parent::attributeLabels();
+        return array_merge($labels, [
+            'content' => 'IM Account',
+            'type' => 'IM Account Type',
+        ]);
+    }
+
+    public function scenarios()
+    {
+        return array_merge(parent::scenarios(), [
+            static::SCENARIO_FORM => [$this->contentAttribute, $this->descriptionAttribute, $this->contentTypeAttribute],
+            static::SCENARIO_REGISTER => [$this->contentAttribute],
+        ]);
+    }
 }

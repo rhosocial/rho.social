@@ -26,4 +26,21 @@ class Anniversary extends BaseContactItem
     {
         return '{{%user_anniversary}}';
     }
+
+    public function attributeLabels()
+    {
+        $labels = parent::attributeLabels();
+        return array_merge($labels, [
+            'content' => 'Anniversary',
+            'type' => 'Anniversary Type',
+        ]);
+    }
+
+    public function scenarios()
+    {
+        return array_merge(parent::scenarios(), [
+            static::SCENARIO_FORM => [$this->contentAttribute, $this->descriptionAttribute, $this->contentTypeAttribute],
+            static::SCENARIO_REGISTER => [$this->contentAttribute],
+        ]);
+    }
 }

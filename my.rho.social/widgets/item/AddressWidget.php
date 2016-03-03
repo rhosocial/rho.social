@@ -10,18 +10,18 @@
  * @license https://vistart.name/license/
  */
 
-namespace common\modules\localization;
+namespace rho_my\widgets\item;
 
 /**
- * This module provides localization features.
- * This module contains only one controller: RegionController.
+ * Description of AddressWidget
  *
  * @author vistart <i@vistart.name>
  */
-class Module extends \vistart\components\rest\Module
+class AddressWidget extends ItemWidget
 {
 
-    public $controllerNamespace = "common\modules\localization\controllers";
-    public $defaultRoute = 'region';
-
+    public function run()
+    {
+        return $this->render('address', ['model' => $this->model, 'action' => $this->action]);
+    }
 }

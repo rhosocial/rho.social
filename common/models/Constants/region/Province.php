@@ -115,7 +115,7 @@ class Province extends \yii\db\ActiveRecord
         return City::find()->where(['alpha' => $alpha, 'province' => $this->alpha2, 'country' => $this->country])->one();
     }
 
-    public function get($alpha2, $country)
+    public static function get($alpha2, $country)
     {
         return static::find()->where(['alpha2' => $alpha2, 'country' => $country])->one();
     }

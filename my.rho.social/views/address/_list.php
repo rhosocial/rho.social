@@ -10,7 +10,7 @@
  * @license http://vistart.name/license/
  */
 use rho_my\controllers\AddressController as adc;
-use rho_my\widgets\item\ItemListWidget as il;
+use rho_my\widgets\item\AddressListWidget as il;
 
 /* @var $list rho_my\widgets\item\ItemListWidget */
 ?>

@@ -59,9 +59,7 @@ class Phone extends BaseContactItem
     public function scenarios()
     {
         return array_merge(parent::scenarios(), [
-            // 表单场景允许“昵称”、“姓”、“名”、“性别”、“头衔”、“语言”、“时区”、“个性签名”属性批量赋值。
             static::SCENARIO_FORM => [$this->contentAttribute, $this->descriptionAttribute, $this->contentTypeAttribute],
-            // 注册场景允许“昵称”、“姓”、“名”属性批量赋值。
             static::SCENARIO_REGISTER => [$this->contentAttribute],
         ]);
     }

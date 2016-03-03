@@ -21,28 +21,31 @@ use Yii;
  */
 class District extends \yii\db\ActiveRecord
 {
+
     public static function asArray($districts = [])
     {
         if (!is_array($districts)) {
             return null;
         }
         $districtArray = [];
-        for ($i = 0; $i < count($districts); $i++){
+        for ($i = 0; $i < count($districts); $i++) {
             $districtArray[$i] = ['localname' => $districts[$i]['localname'], 'alpha' => $districts[$i]['alpha']];
         }
         return $districtArray;
     }
+
     public static function asArrayWithKeys($districts = [])
     {
         if (!is_array($districts)) {
             return null;
         }
         $districtArray = [];
-        for ($i = 0; $i < count($districts); $i++){
+        for ($i = 0; $i < count($districts); $i++) {
             $districtArray[$districts[$i]['alpha']] = ['localname' => $districts[$i]['localname']];
         }
         return $districtArray;
     }
+
     /**
      * @inheritdoc
      */
@@ -111,5 +114,10 @@ class District extends \yii\db\ActiveRecord
     public function getCity0()
     {
         return $this->hasOne(City::className(), ['alpha' => 'city']);
+    }
+
+    public static function get($alpha, $country, $province, $city)
+    {
+        return static::find()->where(['alpha' => $alpha, 'country' => $country, 'province' => $province, 'city' => $city])->one();
     }
 }

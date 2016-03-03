@@ -123,4 +123,9 @@ class City extends \yii\db\ActiveRecord
     {
         return District::find()->where(['alpha' => $alpha, 'city' => $this->alpha, 'province' => $this->province, 'country' => $this->country])->one();
     }
+    
+    public static function get($alpha, $country, $province)
+    {
+        return static::find()->where(['alpha' => $alpha, 'country' => $country, 'province' => $province])->one();
+    }
 }

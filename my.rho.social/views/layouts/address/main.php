@@ -16,7 +16,7 @@
  */
 use rho_my\helpers\ViewHelper as vh;
 
-$this->title .= Yii::t('my', 'address');
+$this->title .= Yii::t('my', 'Address');
 ?>
 <?php $this->beginContent('@rho_my/views/layouts/main.php'); ?>
 <?= vh::markBegin('layouts/address/main') ?>

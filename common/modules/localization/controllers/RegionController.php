@@ -22,7 +22,7 @@ use yii\rest\Controller;
 use yii\web\Response;
 
 /**
- * Description of RegionController
+ * This controller provides countries, provinces, cities and districts.
  *
  * @author vistart <i@vistart.name>
  */

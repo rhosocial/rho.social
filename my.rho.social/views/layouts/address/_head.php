@@ -28,4 +28,4 @@ use rho_my\controllers\AddressController;
         ?>
     </div>
 </div>
-<?= \rho_my\widgets\item\FormWidget::widget(['model' => $newModel, 'action' => AddressController::getRouteNew()]) ?>
+<?= \rho_my\widgets\item\AddressFormWidget::widget(['model' => $newModel, 'action' => AddressController::getRouteNew()]) ?>
