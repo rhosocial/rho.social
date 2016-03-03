@@ -17,16 +17,19 @@ use common\models\user\relation\Follow;
 use rho_contact\widgets\contact\PanelItemWidget;
 use Yii;
 use yii\filters\AccessControl;
+use yii\filters\ContentNegotiator;
 use yii\filters\VerbFilter;
+use yii\rest\Controller;
 use yii\web\ForbiddenHttpException;
 use yii\web\NotFoundHttpException;
+use yii\web\Response;
 
 /**
  * Description of ContactController
  *
  * @author vistart <i@vistart.name>
  */
-class ContactController extends \yii\rest\Controller
+class ContactController extends Controller
 {
 
     public $defaultAction = 'list';
@@ -35,9 +38,9 @@ class ContactController extends \yii\rest\Controller
     {
         return [
             'contentNegotiator' => [
-                'class' => \yii\filters\ContentNegotiator::className(),
+                'class' => ContentNegotiator::className(),
                 'formats' => [
-                    'test/html' => \yii\web\Response::FORMAT_JSON,
+                    'text/html' => Response::FORMAT_JSON,
                 ],
             ],
             'access' => [
@@ -68,7 +71,7 @@ class ContactController extends \yii\rest\Controller
                     ]
                 ],
                 'denyCallback' => function($rule, $action) {
-                throw new \yii\web\ForbiddenHttpException('Access Denied.');
+                throw new ForbiddenHttpException('Access Denied.');
             }
             ],
             'verbs' => [
@@ -128,12 +131,12 @@ class ContactController extends \yii\rest\Controller
         $user = User::find()->id($id)->one();
         return $user;
     }
-    
+
     public function actionWidgetGet()
     {
         return $this->route;
     }
-    
+
     public function actionPageCount()
     {
         $pageSize = Yii::$app->request->post('pageSize');

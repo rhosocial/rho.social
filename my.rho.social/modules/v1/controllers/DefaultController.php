@@ -10,19 +10,17 @@
  * @license https://vistart.name/license/
  */
 
-namespace common\modules\localization;
-
-use Yii;
+namespace rho_my\modules\v1\controllers;
 
 /**
- * Description of Module
+ * Description of DefaultController
  *
  * @author vistart <i@vistart.name>
  */
-class Module extends \vistart\components\rest\Module
+class DefaultController extends \yii\rest\Controller
 {
-
-    public $controllerNamespace = "common\modules\localization\controllers";
-    public $defaultRoute = 'region';
-
+    public function actionIndex()
+    {
+        return '{}';
+    }
 }

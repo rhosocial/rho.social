@@ -22,4 +22,13 @@ class Module extends \vistart\components\rest\Module
 
     public $controllerNamespace = 'rho_my\modules\v1\controllers';
 
+    public function init()
+    {
+        parent::init();
+        $this->modules = [
+            'localization' => [
+                'class' => 'common\modules\localization\Module',
+            ],
+        ];
+    }
 }

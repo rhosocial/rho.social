@@ -1,7 +1,6 @@
 <?php
 
 use common\assets\JqueryNiceScrollAsset;
-use common\models\constants\region\Country;
 use common\widgets\LoaderWidget;
 
 JqueryNiceScrollAsset::register($this);
@@ -16,7 +15,7 @@ JqueryNiceScrollAsset::register($this);
         <li class="dropdown-header">
             <div class="arrow"></div>
             <?php echo Yii::t('common', 'Messages'); ?>
-            <a data-target="#globalModal" href="#" class="btn btn-info btn-xs" id="create-message-button"><?php echo Yii::t('common', 'New Message'); ?></a>
+            <a data-target="#globalModal" href="#" class="btn btn-info btn-xs" id="create-message-button"><?php echo Yii::t('common', 'New'); ?></a>
         </li>
         <ul class="media-list">
         </ul>

@@ -1,6 +1,6 @@
 <?php
 
-/* 
+/*
  *  _   __ __ _____ _____ ___  ____  _____
  * | | / // // ___//_  _//   ||  __||_   _|
  * | |/ // /(__  )  / / / /| || |     | |
@@ -10,4 +10,8 @@
  * @license http://vistart.name/license/
  */
 
-return [];
+return [
+    'api' => [
+        'class' => 'rho_my\modules\api\Module'
+    ],
+];
