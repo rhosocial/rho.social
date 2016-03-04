@@ -12,6 +12,8 @@
 
 namespace rho_my\modules\v1;
 
+use Yii;
+
 /**
  * Description of Module
  *

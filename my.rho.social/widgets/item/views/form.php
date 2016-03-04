@@ -16,13 +16,14 @@ use yii\helpers\Url;
 use yii\widgets\ActiveForm;
 
 /* @var $model common\models\user\contact\Phone */
+/* @var $form yii\widgets\ActiveForm */
 
 $new = $model->isNewRecord;
 ?>
 
 <?php
 Modal::begin([
-    'id' => ($new ? 'modal-' : 'modal-edit-') . $id,
+    'id' => $new ? 'modal-new' : ('modal-edit-' . $id),
     'header' => '<h4>' . $title . '</h4>',
     'options' => [
         'aria-hidden' => 'true',
@@ -34,7 +35,7 @@ Modal::begin([
 $form = ActiveForm::begin([
         'action' => Url::toRoute($action),
         'options' => [
-            'id' => ($new ? 'form-' : 'form-edit-') . $id,
+            'id' => $new ? 'form-new' : ('form-edit-' . $id),
         ]
     ]);
 ?>

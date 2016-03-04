@@ -1,1 +1,3 @@
 # GUIDE
+
+- [Installation](installation)

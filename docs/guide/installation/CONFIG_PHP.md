@@ -45,7 +45,7 @@
 - SPL
 - sqlite3
 - standard
-- timezonedb (2015.7)
+- timezonedb (2016.1)
 - tokenizer
 - wddx
 - xdebug (Zend Module, Development Environment Only)

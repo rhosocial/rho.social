@@ -10,17 +10,20 @@
  * @license https://vistart.name/license/
  */
 
-namespace common\modules\localization;
+namespace rho_my\widgets\item\assets;
 
 /**
- * This module provides localization features.
- * This module contains only one controller: RegionController.
+ * Description of AddressItemAsset
  *
  * @author vistart <i@vistart.name>
  */
-class Module extends \yii\base\Module
+class AddressItemAsset extends ItemAsset
 {
 
-    public $controllerNamespace = "common\modules\localization\controllers";
-    public $defaultRoute = 'region';
+    public $js = [
+        'get-item' => 'js/get-item.js',
+        'rho.my.item' => 'js/rho.my.item.js',
+        'rho.my.address' => 'js/rho.my.address.js',
+    ];
+
 }

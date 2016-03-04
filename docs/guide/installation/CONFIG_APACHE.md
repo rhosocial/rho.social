@@ -39,7 +39,9 @@ You should enable the following virtual hosts:
 
 - admin.rho.social
 - api.rho.social
+- contact.rho.social
 - express.rho.social
+- message.rho.social
 - my.rho.social
 - reg.rho.social
 - rho.social

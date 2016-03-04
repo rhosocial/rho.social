@@ -23,7 +23,7 @@ $new = $model->isNewRecord;
 
 <?php
 Modal::begin([
-    'id' => ($new ? 'modal-' : 'modal-edit-') . $id,
+    'id' => $new ? 'modal-new' : ('modal-edit-' . $id),
     'header' => '<h4>' . $title . '</h4>',
     'options' => [
         'aria-hidden' => 'true',
@@ -32,29 +32,32 @@ Modal::begin([
 ?>
 <hr/>
 <?php
+$formIdPrefix = 'form_';
+$form_id = $new ? $formIdPrefix . 'new' : ($formIdPrefix . 'edit_' . $id);
 $form = ActiveForm::begin([
         'action' => Url::toRoute($action),
         'options' => [
-            'id' => ($new ? 'form-' : 'form-edit-') . $id,
-        ]
+            'user_address_id' => $id,
+            'id' => $form_id,
+        ],
     ]);
 ?>
 <div class="row">
     <div class="col-md-12">
         <div class="row">
             <div class="col-md-6">
-                <?= $form->field($model, 'country') ?>
+                <?= $form->field($model, 'country')->dropDownList(['' => 'Choose One...']) ?>
             </div>
             <div class="col-md-6">
-                <?= $form->field($model, 'province') ?>
+                <?= $form->field($model, 'province')->dropDownList(['none' => 'None']) ?>
             </div>
         </div>
         <div class="row">
             <div class="col-md-6">
-                <?= $form->field($model, 'city') ?>
+                <?= $form->field($model, 'city')->dropDownList(['none' => 'None']) ?>
             </div>
             <div class="col-md-6">
-                <?= $form->field($model, 'district') ?>
+                <?= $form->field($model, 'district')->dropDownList(['none' => 'None']) ?>
             </div>
         </div>
         <?= $form->field($model, 'street') ?>
@@ -94,3 +97,49 @@ $form = ActiveForm::begin([
 </div>
 <?php ActiveForm::end(); ?>
 <?php Modal::end(); ?>
+<script type="text/javascript">
+    $(document).ready(function () {
+        rho.my.address.country =
+                {
+                    selector: "select#address-country",
+                    url: "<?= Url::toRoute(['api/localization/region/countries']) ?>",
+                    params: {},
+                    prepend: "Choose One...",
+                    valueParam: "alpha2",
+                    displayValueParam: "shortname",
+                    value: "<?= $new ? '' : $model->country ?>"
+                };
+        rho.my.address.province =
+                {
+                    selector: "select#address-province",
+                    url: "<?= Url::toRoute(['api/localization/region/provinces']) ?>",
+                    params: {},
+                    prepend: "Choose One...",
+                    valueParam: "alpha2",
+                    displayValueParam: "localname",
+                    value: "<?= $new ? '' : $model->province ?>"
+                };
+        rho.my.address.city =
+                {
+                    selector: "select#address-city",
+                    url: "<?= Url::toRoute(['api/localization/region/cities']) ?>",
+                    params: {},
+                    prepend: "Choose One...",
+                    valueParam: "alpha",
+                    displayValueParam: "localname",
+                    value: "<?= $new ? '' : $model->city ?>"
+                };
+        rho.my.address.district =
+                {
+                    selector: "select#address-district",
+                    url: "<?= Url::toRoute(['api/localization/region/districts']) ?>",
+                    params: {},
+                    prepend: "Choose One...",
+                    valueParam: "alpha",
+                    displayValueParam: "localname",
+                    value: "<?= $new ? '' : $model->district ?>"
+                };
+        jQuery('#<?= $form_id ?>').yiiActiveForm(<?= \yii\helpers\Json::encode($form->attributes) ?>);
+        rho.my.address.bind('<?= $form_id ?>');
+    });
+</script>

@@ -14,6 +14,8 @@ namespace common\modules\localization\controllers;
 
 use common\models\constants\region\Country;
 use common\models\constants\region\Province;
+use common\models\constants\region\City;
+use common\models\constants\region\District;
 use Yii;
 use yii\filters\AccessControl;
 use yii\filters\ContentNegotiator;
@@ -60,21 +62,39 @@ class RegionController extends Controller
     public function actionProvinces()
     {
         $country = Yii::$app->request->post('country');
+        if (empty($country) || $country === 'undefined') {
+            return null;
+        }
         return Province::asArray(Country::get($country)->provinces);
     }
 
     public function actionCities()
     {
         $country = Yii::$app->request->post('country');
+        if (empty($country) || $country === 'undefined') {
+            return null;
+        }
         $province = Yii::$app->request->post('province');
+        if (empty($province) || $province === 'undefined') {
+            return null;
+        }
         return City::asArray(Country::get($country)->getProvince($province)->cities);
     }
 
     public function actionDistricts()
     {
         $country = Yii::$app->request->post('country');
+        if (empty($country) || $country === 'undefined') {
+            return null;
+        }
         $province = Yii::$app->request->post('province');
+        if (empty($province) || $province === 'undefined') {
+            return null;
+        }
         $city = Yii::$app->request->post('city');
+        if (empty($city) || $city === 'undefined') {
+            return null;
+        }
         return District::asArray(Country::get($country)->getProvince($province)->getCity($city)->districts);
     }
 }

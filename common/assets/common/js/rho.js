@@ -13,6 +13,16 @@ rho = (function ($) {
         alert: function (content) {
             window.alert(content);
         },
+        /**
+         * 
+         * @param string url
+         * @param array parameters
+         * @param callback successCallback
+         * @param callback failCallback
+         * @param callback postFailCallback
+         * @param callback postAlwaysCallback
+         * @returns mixed, determined by callback.
+         */
         post: function (url, parameters, successCallback, failCallback, postFailCallback, postAlwaysCallback) {
             var posting = $.post(url, parameters, function (data, status) {
                 if (status !== "success" || !data.success) {
@@ -33,6 +43,7 @@ rho = (function ($) {
             if ($.isFunction(postAlwaysCallback)) {
                 posting.always(postAlwaysCallback);
             }
+            return posting;
         },
         /**
          * Load parameter from variable defined in anyother place. You should

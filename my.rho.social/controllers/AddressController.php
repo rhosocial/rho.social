@@ -64,6 +64,25 @@ final class AddressController extends DefaultController
         return static::getModelWidget($id, Address::className());
     }
 
+    public static function getModelWidget($id, $modelClass)
+    {
+        $model = static::getModel($id, $modelClass, false);
+        if (!$model) {
+            return false;
+        }
+        return \rho_my\widgets\item\AddressItemWidget::widget(['model' => $model, 'action' => static::getRouteUpdate()]);
+    }
+
+    public static function getModelWidgets($modelClass, $current_page = 'all', $page_size = 10)
+    {
+        $models = static::getModels($modelClass, $current_page, $page_size);
+        $widgets = '';
+        foreach ($models as $model) {
+            $widgets .= \rho_my\widgets\item\AddressItemWidget::widget(['model' => $model, 'action' => static::getRouteUpdate()]);
+        }
+        return $widgets;
+    }
+
     public static function getFlash()
     {
         return static::getFlashNotifification(static::SESSKEY_MY_ADDRESS);

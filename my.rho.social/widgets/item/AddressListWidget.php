@@ -20,6 +20,11 @@ namespace rho_my\widgets\item;
 class AddressListWidget extends ItemListWidget
 {
 
+    public function run()
+    {
+        return $this->render('address-item-list', ['getItemUrl' => $this->getItemUrl, 'getCountUrl' => $this->getCountUrl]);
+    }
+
     public function item($model, $action)
     {
         return AddressWidget::widget(['model' => $model, 'action' => $action]);

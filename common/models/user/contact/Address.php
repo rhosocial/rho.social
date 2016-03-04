@@ -12,6 +12,8 @@
 
 namespace common\models\user\contact;
 
+use Yii;
+
 /**
  * Description of Address
  *
@@ -34,5 +36,28 @@ class Address extends BaseContactItem
             static::SCENARIO_FORM => array_merge($this->contentAttribute, [$this->descriptionAttribute, $this->contentTypeAttribute]),
             static::SCENARIO_REGISTER => $this->contentAttribute,
         ]);
+    }
+
+    public function notifyOthers($event)
+    {
+        if (Yii::$app->user->isGuest) {
+            return;
+        }
+        $sender = $event->sender;
+        /* @var $sender static */
+        $changed = false;
+        foreach ($sender->contentAttribute as $attribute) {
+            if (isset($event->changedAttributes[$attribute])) {
+                $changed = true;
+                break;
+            }
+        }
+        if (!$changed) {
+            return;
+        }
+        $user = Yii::$app->user->identity;
+        /* @var $user User */
+        $notification = $user->createNotification('Something changed.');
+        return $notification->save();
     }
 }
