@@ -138,7 +138,7 @@ $form = ActiveForm::begin([
         rho.my.address.value["<?= $id ?>"]["city"] = "<?= $model->city ?>";
         rho.my.address.value["<?= $id ?>"]["district"] = "<?= $model->district ?>";
         <?php endif; ?>
-        jQuery('#<?= $form_id ?>').yiiActiveForm(<?= \yii\helpers\Json::encode($form->attributes) ?>);
+        jQuery('#<?= $form_id ?>').yiiActiveForm(<?= \yii\helpers\Json::htmlEncode($form->attributes) ?>);
         rho.my.address.bind('<?= $form_id ?>');
     });
 </script>

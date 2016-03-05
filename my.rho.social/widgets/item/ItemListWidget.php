@@ -27,9 +27,4 @@ class ItemListWidget extends \yii\base\Widget
     {
         return $this->render('item-list', ['getItemUrl' => $this->getItemUrl, 'getCountUrl' => $this->getCountUrl]);
     }
-
-    public function item($model, $action)
-    {
-        return ItemWidget::widget(['model' => $model, 'action' => $action]);
-    }
 }

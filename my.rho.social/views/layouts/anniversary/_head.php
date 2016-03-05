@@ -15,7 +15,7 @@ use rho_my\modules\v1\controllers\AnniversaryController;
 <div class="panel-heading">
     <strong><?= Yii::t('my', 'Anniversary') ?></strong>
     <div class="pull-right">
-    	<?=
+        <?=
         Button::widget([
             'label' => '<span class="glyphicon glyphicon-plus"></span> ' . 'Add',
             'encodeLabel' => false,
@@ -28,4 +28,4 @@ use rho_my\modules\v1\controllers\AnniversaryController;
         ?>
     </div>
 </div>
-<?= \rho_my\widgets\item\FormWidget::widget(['model' => $newModel, 'action' => AnniversaryController::getRouteNew()]) ?>
+<?= \rho_my\widgets\item\AnniversaryFormWidget::widget(['model' => $newModel, 'action' => AnniversaryController::getRouteNew()]) ?>

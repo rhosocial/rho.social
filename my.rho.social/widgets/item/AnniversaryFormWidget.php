@@ -1,6 +1,6 @@
 <?php
 
-/**
+/* *
  *  _   __ __ _____ _____ ___  ____  _____
  * | | / // // ___//_  _//   ||  __||_   _|
  * | |/ // /(__  )  / / / /| || |     | |
@@ -13,15 +13,15 @@
 namespace rho_my\widgets\item;
 
 /**
- * Description of AddressListWidget
+ * Description of AnniversaryFormWidget
  *
  * @author vistart <i@vistart.name>
  */
-class AddressListWidget extends ItemListWidget
+class AnniversaryFormWidget extends FormWidget
 {
 
     public function run()
     {
-        return $this->render('address-item-list', ['getItemUrl' => $this->getItemUrl, 'getCountUrl' => $this->getCountUrl]);
+        return $this->render('anniversary-form', ['model' => $this->model, 'title' => $this->title, 'id' => $this->id, 'action' => $this->action]);
     }
 }

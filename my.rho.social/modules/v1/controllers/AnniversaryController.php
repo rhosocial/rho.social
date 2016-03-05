@@ -13,6 +13,7 @@
 namespace rho_my\modules\v1\controllers;
 
 use common\models\user\contact\Anniversary;
+use rho_my\widgets\item\AnniversaryItemWidget;
 use Yii;
 
 /**
@@ -44,6 +45,25 @@ class AnniversaryController extends DefaultController
     public function actionList()
     {
         return static::getList(Anniversary::className());
+    }
+
+    public function actionWidgetGet()
+    {
+        $model = static::actionGet();
+        if (!$model) {
+            return false;
+        }
+        return AnniversaryItemWidget::widget(['model' => $model, 'action' => static::getRouteUpdate(), 'delete' => static::getRouteDelete()]);
+    }
+
+    public function actionWidgetList()
+    {
+        $items = $this->actionList();
+        $widgets = "";
+        foreach ($items as $item) {
+            $widgets .= AnniversaryItemWidget::widget(['model' => $item, 'action' => static::getRouteUpdate(), 'delete' => static::getRouteDelete()]);
+        }
+        return $widgets;
     }
 
     public static function getRouteList()

@@ -13,15 +13,15 @@
 namespace rho_my\widgets\item;
 
 /**
- * Description of AddressListWidget
+ * Description of AnniversaryListWidget
  *
  * @author vistart <i@vistart.name>
  */
-class AddressListWidget extends ItemListWidget
+class AnniversaryListWidget extends ItemListWidget
 {
 
     public function run()
     {
-        return $this->render('address-item-list', ['getItemUrl' => $this->getItemUrl, 'getCountUrl' => $this->getCountUrl]);
+        return $this->render('anniversary-list', ['getItemUrl' => $this->getItemUrl, 'getCountUrl' => $this->getCountUrl]);
     }
 }

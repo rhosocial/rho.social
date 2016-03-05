@@ -10,7 +10,7 @@
  * @license http://vistart.name/license/
  */
 use rho_my\modules\v1\controllers\AnniversaryController as anc;
-use rho_my\widgets\item\ItemListWidget as il;
+use rho_my\widgets\item\AnniversaryListWidget as il;
 
 /* @var $list rho_my\widgets\item\ItemListWidget */
 ?>

@@ -54,6 +54,7 @@ $this->params['topbar_second'] = [
         'icon' => '<i class="fa fa-link"></i>',
         'isActive' => Yii::$app->controller->id == 'url',
     ],
+    /*
     'job' => [
         'label' => Yii::t('my', 'Job Career'),
         'url' => Url::toRoute('/job'),
@@ -78,5 +79,7 @@ $this->params['topbar_second'] = [
         'icon' => '<i class="fa fa-favorite"></i>',
         'isActive' => Yii::$app->controller->id == 'favorite',
     ],
+     * 
+     */
 ];
 $this->params['topbar_second_visible_md'] = true;

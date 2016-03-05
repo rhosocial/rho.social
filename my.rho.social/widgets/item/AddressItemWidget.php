@@ -13,9 +13,6 @@
 namespace rho_my\widgets\item;
 
 use common\models\constants\region\Country;
-use common\models\constants\region\Province;
-use common\models\constants\region\city;
-use common\models\constants\region\District;
 
 /**
  * Description of AddressItemWidget
@@ -27,7 +24,7 @@ class AddressItemWidget extends ItemWidget
 
     public function run()
     {
-        return $this->render('address-item', ['model' => $this->model, 'action' => $this->action, 'region' => $this->populateRegion()]);
+        return $this->render('address-item', ['model' => $this->model, 'action' => $this->action, 'delete' => $this->delete, 'region' => $this->populateRegion()]);
     }
     
     protected function populateRegion()
