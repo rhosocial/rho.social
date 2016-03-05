@@ -14,6 +14,7 @@ namespace common\models\user\profile;
 
 use Yii;
 use common\models\user\BaseUserItem;
+use vistart\helpers\Timezone;
 
 /**
  * Description of Profile
@@ -90,8 +91,8 @@ class Profile extends BaseUserItem
             [['first_name', 'last_name'], 'default', 'value' => ''],
             [['language'], 'string', 'max' => 8],
             [['language'], 'default', 'value' => 'zh-CN'],
-            [['timezone'], 'default', 'value' => 272],
-            [['timezone'], 'in', 'range' => array_keys(\DateTimeZone::listIdentifiers())],
+            [['timezone'], 'default', 'value' => 'Asia/Shanghai'],
+            [['timezone'], 'in', 'range' => array_keys(Timezone::generateList())],
             [['appellation'], 'in', 'range' => [0, 1, 2, 3, 4, 5]],
         ];
     }

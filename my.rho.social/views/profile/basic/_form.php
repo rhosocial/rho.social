@@ -67,7 +67,7 @@ vh::divWithMark('name', vh::divWithMark($languageAttribute, $form->field($profil
         ]), true, 'col-md-6') .
     vh::divWithMark($timezoneAttribute, $form->field($profile, $timezoneAttribute, [
             'template' => $activeFieldTemplate['twoOfRow'],
-        ])->dropDownList(DateTimeZone::listIdentifiers()), true, 'col-md-6')
+        ])->dropDownList(vistart\helpers\Timezone::generateList()), true, 'col-md-6')
 )
 ?>
 <div class="row">
