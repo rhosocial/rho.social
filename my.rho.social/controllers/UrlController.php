@@ -11,10 +11,7 @@
 
 namespace rho_my\controllers;
 
-use Yii;
 use common\models\user\contact\URL;
-use yii\filters\AccessControl;
-use yii\filters\VerbFilter;
 
 /**
  *
@@ -54,46 +51,8 @@ final class UrlController extends DefaultController
         return $this->redirect(['url/index']);
     }
 
-    public function actionGets($list = 0)
-    {
-        if ($list) {
-            return static::getCountJson(URL::className());
-        }
-        return static::getItem(URL::className());
-    }
-
-    public function actionGet($id)
-    {
-        return static::getModelWidget($id, URL::className());
-    }
-
     public static function getFlash()
     {
         return static::getFlashNotifification(static::SESSKEY_MY_URL);
-    }
-
-    public static function getRouteGet()
-    {
-        return 'url/get';
-    }
-
-    public static function getRouteGets()
-    {
-        return 'url/gets';
-    }
-
-    public static function getRouteNew()
-    {
-        return 'url/new';
-    }
-
-    public static function getRouteUpdate()
-    {
-        return 'url/update';
-    }
-
-    public static function getRouteDelete()
-    {
-        return 'url/delete';
     }
 }

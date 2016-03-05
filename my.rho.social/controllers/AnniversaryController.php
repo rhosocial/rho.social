@@ -11,10 +11,7 @@
 
 namespace rho_my\controllers;
 
-use Yii;
 use common\models\user\contact\Anniversary;
-use yii\filters\AccessControl;
-use yii\filters\VerbFilter;
 
 /**
  *
@@ -54,46 +51,8 @@ final class AnniversaryController extends DefaultController
         return $this->redirect(['anniversary/index']);
     }
 
-    public function actionGets($list = 0)
-    {
-        if ($list) {
-            return static::getCountJson(Anniversary::className());
-        }
-        return static::getItem(Anniversary::className());
-    }
-
-    public function actionGet($id)
-    {
-        return static::getModelWidget($id, Anniversary::className());
-    }
-
     public static function getFlash()
     {
         return static::getFlashNotifification(static::SESSKEY_MY_ANNIVERSARY);
-    }
-
-    public static function getRouteGet()
-    {
-        return 'anniversary/get';
-    }
-
-    public static function getRouteGets()
-    {
-        return 'anniversary/gets';
-    }
-
-    public static function getRouteNew()
-    {
-        return 'anniversary/new';
-    }
-
-    public static function getRouteUpdate()
-    {
-        return 'anniversary/update';
-    }
-
-    public static function getRouteDelete()
-    {
-        return 'anniversary/delete';
     }
 }

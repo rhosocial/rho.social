@@ -10,10 +10,10 @@
  * @license http://vistart.name/license/
  */
 use yii\bootstrap\Button;
-use rho_my\controllers\UrlController;
+use rho_my\modules\v1\controllers\UrlController;
 ?>
 <div class="panel-heading">
-    <strong><?= Yii::t('my', 'Url') ?></strong>
+    <strong><?= Yii::t('my', 'URL') ?></strong>
     <div class="pull-right">
     	<?=
         Button::widget([

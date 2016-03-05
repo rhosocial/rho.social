@@ -9,9 +9,9 @@
  * @copyright Copyright (c) 2016 vistart
  * @license http://vistart.name/license/
  */
-use rho_my\controllers\ImController as ic;
+use rho_my\modules\v1\controllers\ImController as ic;
 use rho_my\widgets\item\ItemListWidget as il;
 
 /* @var $list rho_my\widgets\item\ItemListWidget */
 ?>
-<?= il::widget(['getItemUrl' => ic::getRouteGets(), 'getCountUrl' => [ic::getRouteGets(), 'list' => 1]]); ?>
+<?= il::widget(['getItemUrl' => ic::getRouteList(), 'getCountUrl' => ic::getRoutePageCount()]); ?>

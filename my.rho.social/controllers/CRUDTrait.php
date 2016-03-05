@@ -13,8 +13,8 @@
 namespace rho_my\controllers;
 
 use common\models\user\BaseUserItem;
+use rho_my\modules\v1\controllers\DefaultController as dc;
 use Yii;
-use yii\base\NotSupportedException;
 use yii\web\NotFoundHttpException;
 
 /**
@@ -34,7 +34,7 @@ trait CRUDTrait
     public static function updateItem($id, $modelClass)
     {
         try {
-            $model = static::getModel($id, $modelClass);
+            $model = dc::getModel($id, $modelClass);
         } catch (NotFoundHttpException $ex) {
             return false;
         }
@@ -45,7 +45,7 @@ trait CRUDTrait
     public static function deleteItem($id, $modelClass)
     {
         try {
-            $model = static::getModel($id, $modelClass);
+            $model = dc::getModel($id, $modelClass);
         } catch (NotFoundHttpException $ex) {
             return false;
         }
@@ -59,16 +59,16 @@ trait CRUDTrait
 
     public static function getRouteNew()
     {
-        throw new NotSupportedException('New model cannot be created.');
+        
     }
 
     public static function getRouteUpdate()
     {
-        throw new NotSupportedException('Model cannot be updated.');
+        
     }
 
     public static function getRouteDelete()
     {
-        throw new NotSupportedException('Model cannot be deleted.');
+        
     }
 }

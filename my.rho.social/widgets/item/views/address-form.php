@@ -37,7 +37,7 @@ $form_id = $new ? $formIdPrefix . 'new' : ($formIdPrefix . 'edit_' . $id);
 $form = ActiveForm::begin([
         'action' => Url::toRoute($action),
         'options' => [
-            'user_address_id' => $id,
+            'address_id' => $id,
             'id' => $form_id,
         ],
     ]);
@@ -102,43 +102,42 @@ $form = ActiveForm::begin([
         rho.my.address.country =
                 {
                     selector: "select#address-country",
-                    url: "<?= Url::toRoute(['api/localization/region/countries']) ?>",
-                    params: {},
+                    url: "<?= Url::toRoute(['/api/localization/region/countries']) ?>",
                     prepend: "Choose One...",
                     valueParam: "alpha2",
-                    displayValueParam: "shortname",
-                    value: "<?= $new ? '' : $model->country ?>"
+                    displayValueParam: "shortname"
                 };
         rho.my.address.province =
                 {
                     selector: "select#address-province",
-                    url: "<?= Url::toRoute(['api/localization/region/provinces']) ?>",
-                    params: {},
+                    url: "<?= Url::toRoute(['/api/localization/region/provinces']) ?>",
                     prepend: "Choose One...",
                     valueParam: "alpha2",
-                    displayValueParam: "localname",
-                    value: "<?= $new ? '' : $model->province ?>"
+                    displayValueParam: "localname"
                 };
         rho.my.address.city =
                 {
                     selector: "select#address-city",
-                    url: "<?= Url::toRoute(['api/localization/region/cities']) ?>",
-                    params: {},
+                    url: "<?= Url::toRoute(['/api/localization/region/cities']) ?>",
                     prepend: "Choose One...",
                     valueParam: "alpha",
-                    displayValueParam: "localname",
-                    value: "<?= $new ? '' : $model->city ?>"
+                    displayValueParam: "localname"
                 };
         rho.my.address.district =
                 {
                     selector: "select#address-district",
-                    url: "<?= Url::toRoute(['api/localization/region/districts']) ?>",
-                    params: {},
+                    url: "<?= Url::toRoute(['/api/localization/region/districts']) ?>",
                     prepend: "Choose One...",
                     valueParam: "alpha",
-                    displayValueParam: "localname",
-                    value: "<?= $new ? '' : $model->district ?>"
+                    displayValueParam: "localname"
                 };
+        <?php if (!$new) : ?>
+        rho.my.address.value["<?= $id ?>"] = new Array();
+        rho.my.address.value["<?= $id ?>"]["country"] = "<?= $model->country ?>";
+        rho.my.address.value["<?= $id ?>"]["province"] = "<?= $model->province ?>";
+        rho.my.address.value["<?= $id ?>"]["city"] = "<?= $model->city ?>";
+        rho.my.address.value["<?= $id ?>"]["district"] = "<?= $model->district ?>";
+        <?php endif; ?>
         jQuery('#<?= $form_id ?>').yiiActiveForm(<?= \yii\helpers\Json::encode($form->attributes) ?>);
         rho.my.address.bind('<?= $form_id ?>');
     });

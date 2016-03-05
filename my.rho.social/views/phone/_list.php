@@ -9,9 +9,9 @@
  * @copyright Copyright (c) 2016 vistart
  * @license http://vistart.name/license/
  */
-use rho_my\controllers\PhoneController as pc;
+use rho_my\modules\v1\controllers\PhoneController as pc;
 use rho_my\widgets\item\ItemListWidget as il;
 
 /* @var $list rho_my\widgets\item\ItemListWidget */
 ?>
-<?= il::widget(['getItemUrl' => pc::getRouteGets(), 'getCountUrl' => [pc::getRouteGets(), 'list' => 1]]); ?>
+<?= il::widget(['getItemUrl' => pc::getRouteList(), 'getCountUrl' => pc::getRoutePageCount()]); ?>

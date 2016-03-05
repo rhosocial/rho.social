@@ -10,7 +10,7 @@
  * @license http://vistart.name/license/
  */
 use yii\bootstrap\Button;
-use rho_my\controllers\ImController;
+use rho_my\modules\v1\controllers\ImController;
 ?>
 <div class="panel-heading">
     <strong><?= Yii::t('my', 'IM') ?></strong>

@@ -10,10 +10,18 @@
 
 rho.my.address = (function ($) {
     var pub = {
+        /**
+         * selector: REQUIRED.
+         * url: REQUIRED.
+         * prepend: REQUIRED.
+         * valueParam: REQUIRED.
+         * displayValueParam: REQUIRED.
+         */
         country: [],
         province: [],
         city: [],
         district: [],
+        value: [],
         url: "",
         prepend: "Choose One...",
         optionNone: "<option value='none'>None</option>",
@@ -64,9 +72,9 @@ rho.my.address = (function ($) {
                 currentProvince.prepend(pub.optionNone);
                 return false;
             }
-            currentProvince.prepend("<option value=''>" + pub.province.prepend + "</option>");
+            prependSelector(currentProvince, '', pub.province.prepend);
             $.each(data, function (i, item) {
-                currentProvince.append("<option value='" + item[pub.province.valueParam] + "'>" + item[pub.province.displayValueParam] + "</option>");
+                appendSelector(currentProvince, item[pub.province.valueParam], item[pub.province.displayValueParam]);
             })
             enableSelector(currentProvince);
         });
@@ -98,9 +106,9 @@ rho.my.address = (function ($) {
                 currentCity.prepend(pub.optionNone);
                 return false;
             }
-            currentCity.prepend("<option value=''>" + pub.city.prepend + "</option>");
+            prependSelector(currentCity, '', pub.city.prepend);
             $.each(data, function (i, item) {
-                currentCity.append("<option value='" + item[pub.city.valueParam] + "'>" + item[pub.city.displayValueParam] + "</option>");
+                appendSelector(currentCity, item[pub.city.valueParam], item[pub.city.displayValueParam]);
             })
             enableSelector(currentCity);
         });
@@ -129,15 +137,16 @@ rho.my.address = (function ($) {
                 currentDistrict.prepend(pub.optionNone);
                 return false;
             }
-            currentDistrict.prepend("<option value=''>" + pub.district.prepend + "</option>");
+            prependSelector(currentDistrict, '', pub.district.prepend);
             $.each(data, function (i, item) {
-                currentDistrict.append("<option value='" + item[pub.district.valueParam] + "'>" + item[pub.district.displayValueParam] + "</option>");
+                appendSelector(currentDistrict, item[pub.district.valueParam], item[pub.district.displayValueParam]);
             })
             enableSelector(currentDistrict);
         });
     }
 
     function setCountrySelector(form) {
+        var addressId = form.attr("address_id");
         var countrySelector = form.find(pub.country.selector);
         var provinceSelector = form.find(pub.province.selector);
         var citySelector = form.find(pub.city.selector);
@@ -148,21 +157,21 @@ rho.my.address = (function ($) {
         disableSelector(districtSelector);
         rho.post(pub.country.url, {}, function (data, status) {
             countrySelector.empty();
-            countrySelector.prepend("<option value=''>" + pub.country.prepend + "</option>");
+            prependSelector(countrySelector, '', pub.country.prepend);
             $.each(data, function (i, item) {
-                countrySelector.append("<option value='" + item[pub.country.valueParam] + "'>" + item[pub.country.displayValueParam] + "</option>");
+                appendSelector(countrySelector, item[pub.country.valueParam], item[pub.country.displayValueParam]);
             });
-            if (typeof (pub.country.value) === "undefined"
-                    || pub.country.value === false
-                    || pub.country.value === ""
-                    || pub.country.value === "none") {
+            if (typeof (pub.value[addressId]["country"]) === "undefined"
+                    || pub.value[addressId]["country"] === false
+                    || pub.value[addressId]["country"] === ""
+                    || pub.value[addressId]["country"] === "none") {
                 enableSelector(countrySelector);
                 enableSelector(provinceSelector);
                 enableSelector(citySelector);
                 enableSelector(districtSelector);
                 return false;
             }
-            countrySelector.find("option[value='" + pub.country.value + "']").attr("selected", true);
+            countrySelector.find("option[value='" + pub.value[addressId]["country"] + "']").attr("selected", true);
             setProvinceSelector(form);
             return true;
         }, function (data, status) {
@@ -172,10 +181,11 @@ rho.my.address = (function ($) {
     }
 
     function setProvinceSelector(form) {
+        var addressId = form.attr("address_id");
         var provinceSelector = form.find(pub.province.selector);
         var citySelector = form.find(pub.city.selector);
         var districtSelector = form.find(pub.district.selector);
-        rho.post(pub.province.url, {country: pub.country.value}, function (data, status) {
+        rho.post(pub.province.url, {country: pub.value[addressId]["country"]}, function (data, status) {
             if (data.length === 0) {
                 enableSelector(provinceSelector);
                 enableSelector(citySelector);
@@ -189,20 +199,20 @@ rho.my.address = (function ($) {
                 return false;
             }
             provinceSelector.empty();
-            provinceSelector.prepend("<option value=''>" + pub.province.prepend + "</option>");
+            prependSelector(provinceSelector, '', pub.province.prepend);
             $.each(data, function (i, item) {
-                provinceSelector.append("<option value='" + item[pub.province.valueParam] + "'>" + item[pub.province.displayValueParam] + "</option>");
+                appendSelector(provinceSelector, item[pub.province.valueParam], item[pub.province.displayValueParam]);
             })
-            if (typeof (pub.province.value) === "undefined"
-                    || pub.province.value === false
-                    || pub.province.value === ""
-                    || pub.province.value === "none") {
+            if (typeof (pub.value[addressId]["province"]) === "undefined"
+                    || pub.value[addressId]["province"] === false
+                    || pub.value[addressId]["province"] === ""
+                    || pub.value[addressId]["province"] === "none") {
                 enableSelector(provinceSelector);
                 enableSelector(citySelector);
                 enableSelector(districtSelector);
                 return false;
             }
-            provinceSelector.find("option[value='" + pub.province.value + "']").attr("selected", true);
+            provinceSelector.find("option[value='" + pub.value[addressId]["province"] + "']").attr("selected", true);
             setCitySelector(form);
             return true;
         }, function (data, status) {
@@ -212,9 +222,10 @@ rho.my.address = (function ($) {
     }
 
     function setCitySelector(form) {
+        var addressId = form.attr("address_id");
         var citySelector = form.find(pub.city.selector);
         var districtSelector = form.find(pub.district.selector);
-        rho.post(pub.city.url, {country: pub.country.value, province: pub.province.value}, function (data, status) {
+        rho.post(pub.city.url, {country: pub.value[addressId]["country"], province: pub.value[addressId]["province"]}, function (data, status) {
             if (data.length === 0) {
                 enableSelector(citySelector);
                 enableSelector(districtSelector);
@@ -226,19 +237,19 @@ rho.my.address = (function ($) {
                 return false;
             }
             citySelector.empty();
-            citySelector.prepend("<option value=''>" + pub.city.prepend + "</option>");
+            prependSelector(citySelector, '', pub.city.prepend);
             $.each(data, function (i, item) {
-                citySelector.append("<option value='" + item[pub.city.valueParam] + "'>" + item[pub.city.displayValueParam] + "</option>");
+                appendSelector(citySelector, item[pub.city.valueParam], item[pub.city.displayValueParam]);
             })
-            if (typeof (pub.city.value) === "undefined"
-                    || pub.city.value === false
-                    || pub.city.value === ""
-                    || pub.city.value === "none") {
+            if (typeof (pub.value[addressId]["city"]) === "undefined"
+                    || pub.value[addressId]["city"] === false
+                    || pub.value[addressId]["city"] === ""
+                    || pub.value[addressId]["city"] === "none") {
                 enableSelector(citySelector);
                 enableSelector(districtSelector);
                 return false;
             }
-            citySelector.find("option[value='" + pub.city.value + "']").attr("selected", true);
+            citySelector.find("option[value='" + pub.value[addressId]["city"] + "']").attr("selected", true);
             setDistrictSelector(form);
             return true;
         }, function (data, status) {
@@ -248,8 +259,9 @@ rho.my.address = (function ($) {
     }
 
     function setDistrictSelector(form) {
+        var addressId = form.attr("address_id");
         var districtSelector = form.find(pub.district.selector);
-        rho.post(pub.district.url, {country: pub.country.value, province: pub.province.value, city: pub.city.value}, function (data, status) {
+        rho.post(pub.district.url, {country: pub.value[addressId]["country"], province: pub.value[addressId]["province"], city: pub.value[addressId]["city"]}, function (data, status) {
             if (data.length === 0) {
                 enableSelector(districtSelector);
                 return false;
@@ -259,23 +271,31 @@ rho.my.address = (function ($) {
                 return false;
             }
             districtSelector.empty();
-            districtSelector.prepend("<option value=''>" + pub.district.prepend + "</option>");
+            prependSelector(districtSelector, '', pub.district.prepend);
             $.each(data, function (i, item) {
-                districtSelector.append("<option value='" + item[pub.district.valueParam] + "'>" + item[pub.district.displayValueParam] + "</option>");
+                appendSelector(districtSelector, item[pub.district.valueParam], item[pub.district.displayValueParam]);
             })
-            if (typeof (pub.district.value) === "undefined"
-                    || pub.district.value === false
-                    || pub.district.value === ""
-                    || pub.district.value === "none") {
+            if (typeof (pub.value[addressId]["district"]) === "undefined"
+                    || pub.value[addressId]["district"] === false
+                    || pub.value[addressId]["district"] === ""
+                    || pub.value[addressId]["district"] === "none") {
                 enableSelector(districtSelector);
                 return false;
             }
-            districtSelector.find("option[value='" + pub.district.value + "']").attr("selected", true);
+            districtSelector.find("option[value='" + pub.value[addressId]["district"] + "']").attr("selected", true);
             return true;
         }, function (data, status) {
             return false;
         });
         enableSelector(districtSelector);
+    }
+
+    function prependSelector(selector, value, displayValue) {
+        selector.prepend("<option value='" + value + "'>" + displayValue + "</option>");
+    }
+
+    function appendSelector(selector, value, displayValue) {
+        selector.append("<option value='" + value + "'>" + displayValue + "</option>");
     }
 
     function disableSelector(selector) {

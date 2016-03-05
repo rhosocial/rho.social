@@ -9,9 +9,9 @@
  * @copyright Copyright (c) 2016 vistart
  * @license http://vistart.name/license/
  */
-use rho_my\controllers\AnniversaryController as anc;
+use rho_my\modules\v1\controllers\AnniversaryController as anc;
 use rho_my\widgets\item\ItemListWidget as il;
 
 /* @var $list rho_my\widgets\item\ItemListWidget */
 ?>
-<?= il::widget(['getItemUrl' => anc::getRouteGets(), 'getCountUrl' => [anc::getRouteGets(), 'list' => 1]]); ?>
+<?= il::widget(['getItemUrl' => anc::getRouteList(), 'getCountUrl' => anc::getRoutePageCount()]); ?>

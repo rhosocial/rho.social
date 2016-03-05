@@ -39,63 +39,25 @@ final class PhoneController extends DefaultController
     {
         $result = static::insertItem(Phone::className());
         static::setFlashNotificationByResult(static::SESSKEY_MY_PHONE, $result);
-        return $this->redirect(['phone/index']);
+        return $this->redirect(['/phone/index']);
     }
 
     public function actionUpdate($id)
     {
         $result = static::updateItem($id, Phone::className());
         static::setFlashNotificationByResult(static::SESSKEY_MY_PHONE, $result);
-        return $this->redirect(['phone/index']);
+        return $this->redirect(['/phone/index']);
     }
 
     public function actionDelete($id)
     {
         $result = static::deleteItem($id, Phone::className());
         static::setFlashNotificationByResult(static::SESSKEY_MY_PHONE, $result);
-        return $this->redirect(['phone/index']);
-    }
-
-    public function actionGets($list = 0)
-    {
-        if ($list) {
-            return static::getCountJson(Phone::className());
-        }
-        return static::getItem(Phone::className());
-    }
-
-    public function actionGet($id)
-    {
-        return static::getModelWidget($id, Phone::className());
+        return $this->redirect(['/phone/index']);
     }
 
     public static function getFlash()
     {
         return static::getFlashNotifification(static::SESSKEY_MY_PHONE);
-    }
-
-    public static function getRouteGet()
-    {
-        return 'phone/get';
-    }
-
-    public static function getRouteGets()
-    {
-        return 'phone/gets';
-    }
-
-    public static function getRouteNew()
-    {
-        return 'phone/new';
-    }
-
-    public static function getRouteUpdate()
-    {
-        return 'phone/update';
-    }
-
-    public static function getRouteDelete()
-    {
-        return 'phone/delete';
     }
 }

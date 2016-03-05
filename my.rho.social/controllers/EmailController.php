@@ -11,10 +11,7 @@
 
 namespace rho_my\controllers;
 
-use Yii;
 use common\models\user\contact\Email;
-use yii\filters\AccessControl;
-use yii\filters\VerbFilter;
 
 /**
  *
@@ -54,46 +51,8 @@ final class EmailController extends DefaultController
         return $this->redirect(['email/index']);
     }
 
-    public function actionGets($list = 0)
-    {
-        if ($list) {
-            return static::getCountJson(Email::className());
-        }
-        return static::getItem(Email::className());
-    }
-
-    public function actionGet($id)
-    {
-        return static::getModelWidget($id, Email::className());
-    }
-
     public static function getFlash()
     {
         return static::getFlashNotifification(static::SESSKEY_MY_EMAIL);
-    }
-
-    public static function getRouteGet()
-    {
-        return 'email/get';
-    }
-
-    public static function getRouteGets()
-    {
-        return 'email/gets';
-    }
-
-    public static function getRouteNew()
-    {
-        return 'email/new';
-    }
-
-    public static function getRouteUpdate()
-    {
-        return 'email/update';
-    }
-
-    public static function getRouteDelete()
-    {
-        return 'email/delete';
     }
 }

@@ -11,7 +11,7 @@
  */
 use yii\bootstrap\Button;
 use yii\bootstrap\ButtonDropdown;
-use rho_my\controllers\PhoneController;
+use rho_my\modules\v1\controllers\PhoneController;
 ?>
 <div class="panel-heading">
     <strong><?= Yii::t('my', 'Phone') ?></strong>

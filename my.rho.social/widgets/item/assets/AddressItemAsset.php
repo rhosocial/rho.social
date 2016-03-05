@@ -21,7 +21,7 @@ class AddressItemAsset extends ItemAsset
 {
 
     public $js = [
-        'get-item' => 'js/get-item.js',
+        //'get-item' => 'js/get-item.js',
         'rho.my.item' => 'js/rho.my.item.js',
         'rho.my.address' => 'js/rho.my.address.js',
     ];

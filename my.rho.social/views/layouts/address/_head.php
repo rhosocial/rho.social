@@ -10,7 +10,7 @@
  * @license http://vistart.name/license/
  */
 use yii\bootstrap\Button;
-use rho_my\controllers\AddressController;
+use rho_my\modules\v1\controllers\AddressController;
 ?>
 <div class="panel-heading">
     <strong><?= Yii::t('my', 'Address') ?></strong>

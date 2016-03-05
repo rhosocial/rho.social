@@ -152,11 +152,9 @@ trait ViewTrait
 
     public static function getRouteGet()
     {
-        throw new NotSupportedException('Model cannot return by AJAX.');
     }
 
     public static function getRouteGets()
     {
-        throw new NotSupportedException('Model cannot return by AJAX.');
     }
 }

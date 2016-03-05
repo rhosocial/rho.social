@@ -12,6 +12,8 @@
 
 namespace rho_my\widgets\item;
 
+use Yii;
+
 /**
  * Description of ItemWidget
  *
@@ -22,16 +24,20 @@ class ItemWidget extends \yii\base\Widget
 
     public $model;
     public $action;
+    public $delete;
 
     public function init()
     {
         if (empty($this->action)) {
-            $this->action = \Yii::$app->request->resolve();
+            $this->action = Yii::$app->request->resolve();
+        }
+        if (empty($this->delete)) {
+            $this->delete = Yii::$app->request->resolve();
         }
     }
 
     public function run()
     {
-        return $this->render('item', ['model' => $this->model, 'action' => $this->action]);
+        return $this->render('item', ['model' => $this->model, 'action' => $this->action, 'delete' => $this->delete]);
     }
 }

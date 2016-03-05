@@ -10,21 +10,117 @@
 
 rho.my.item = (function ($) {
     var pub = {
+        pageCountUrl: '/api/item/page-count',
+        itemWidgetsUrl: '/api/item/widget-list',
+        itemWidgetUrl: '/api/item/widget-get',
+        btnNext: "list-next",
+        btnPrev: "list-prev",
+        btnRefresh: "list-refresh",
+        divPagination: "list-pagination",
+        divList: "list",
+        divLoader: "loader",
+        txtCurrentPage: "current-page",
+        txtTotalPage: "total-page",
+        Loader: "<div id=\"loader\" class=\"loader\"><div class=\"sk-spinner sk-spinner-three-bounce\"><div class=\"sk-bounce1\"></div><div class=\"sk-bounce2\"></div><div class=\"sk-bounce3\"></div></div></div>",
+        currentPage: 0,
+        totalPage: 1,
+        pageSize: 10,
         init: function () {
-
+            $(document).ready(function () {
+                $("#" + pub.btnPrev).click(pub.prev);
+                $("#" + pub.btnNext).click(pub.next);
+                $("#" + pub.btnRefresh).click(pub.refresh);
+            });
         },
         prev: function () {
-
+            pub.currentPage = pub.currentPage - 1;
+            pub.refresh();
         },
         next: function () {
-
+            pub.currentPage = pub.currentPage + 1;
+            pub.refresh();
         },
         refresh: function () {
-
+            getPageCount();
+            if (typeof pub.currentPage !== "number" || pub.currentPage < 0) {
+                pub.currentPage = 0;
+            }
+            if (typeof pub.totalPage !== "number") {
+                pub.totalPage = 1;
+            }
+            if (pub.currentPage >= pub.totalPage) {
+                pub.currentPage = pub.totalPage - 1;
+            }
+            replaceList();
         },
         get: function () {
 
         },
     };
+    function getPageCount() {
+        rho.post(pub.pageCountUrl, {pageSize: pub.pageSize}, function (data, status) {
+            pub.totalPage = data;
+        }, function (data, status) {
+
+        });
+    }
+    function replaceList() {
+        emptyList();
+        attachLoader();
+        getList(getListSuccess, getListFail);
+    }
+    function getList(successCallback, failCallback) {
+        rho.post(pub.itemWidgetsUrl, {pageSize: pub.pageSize, currentPage: pub.currentPage}, successCallback, failCallback);
+    }
+    function getListSuccess(data, status) {
+        detachLoader();
+        setPagination();
+        appendList(data);
+        return status;
+    }
+    function getListFail(data, status) {
+        detachLoader();
+        appendList(data.message);
+        return status;
+    }
+    function emptyList() {
+        $("#" + pub.divList).empty();
+    }
+    function appendList(data) {
+        $("#" + pub.divList).append(data);
+    }
+    function attachLoader() {
+        $("#" + pub.divList).append(pub.Loader);
+    }
+    function detachLoader() {
+        $("#" + pub.divLoader).remove();
+    }
+    function setPagination() {
+        $("#" + pub.txtTotalPage).text(pub.totalPage);
+        $("#" + pub.txtCurrentPage).text(pub.currentPage + 1);
+        if (pub.currentPage <= 0) {
+            if (!$("#" + pub.btnPrev).hasClass("disabled"))
+                $("#" + pub.btnPrev).addClass("disabled");
+        } else {
+            if ($("#" + pub.btnPrev).hasClass("disabled"))
+                $("#" + pub.btnPrev).removeClass("disabled");
+        }
+        if (pub.currentPage >= pub.totalPage - 1) {
+            if (!$("#" + pub.btnNext).hasClass("disabled"))
+                $("#" + pub.btnNext).addClass("disabled");
+        } else {
+            if ($("#" + pub.btnNext).hasClass("disabled"))
+                $("#" + pub.btnNext).removeClass("disabled");
+        }
+        if (pub.totalPage <= 1) {
+            if (!$("#" + pub.divPagination).hasClass("hidden")) {
+                $("#" + pub.divPagination).addClass("hidden");
+            }
+        } else {
+            if ($("#" + pub.divPagination).hasClass("hidden")) {
+                $("#" + pub.divPagination).removeClass("hidden");
+            }
+        }
+    }
     return pub;
 })(jQuery);
