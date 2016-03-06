@@ -1,0 +1,934 @@
+<!DOCTYPE html>
+<html>
+<head>
+	<meta charset="utf-8">
+
+	<title>Class common\models\user\BaseUserItem</title>
+
+	<link rel="stylesheet" href="resources/bootstrap.min.css?973e37a8502921d56bc02bb55321f45b072b6f71">
+	<link rel="stylesheet" href="resources/style.css?49f43d3208c5d7e33fa16d36107a345bf11cc00d">
+
+</head>
+
+<body>
+	<nav id="navigation" class="navbar navbar-default navbar-fixed-top">
+		<div class="container-fluid">
+			<div class="navbar-header">
+				<a href="index.html" class="navbar-brand">Overview</a>
+			</div>
+			<div class="collapse navbar-collapse">
+
+                <form id="search" class="navbar-form navbar-left" role="search">
+                    <input type="hidden" name="cx" value="">
+                    <input type="hidden" name="ie" value="UTF-8">
+                    <div class="form-group">
+                        <input type="text" name="q" class="search-query form-control" placeholder="Search">
+					</div>
+				</form>
+
+				<ul class="nav navbar-nav">
+					<li>
+						<a href="namespace-common.models.user.html" title="Summary of common\models\user"><span>Namespace</span></a>
+					</li>
+					<li class="active">
+<span>Class</span>					</li>
+
+
+
+
+
+				</ul>
+			</div>
+		</div>
+	</nav>
+
+	<div id="left">
+	<div id="menu">
+
+		<div id="groups">
+				<h3>Namespaces</h3>
+			<ul>
+					<li class="active">
+						<a href="namespace-common.html">
+							common<span></span>
+						</a>
+							<ul>
+					<li>
+						<a href="namespace-common.assets.html">
+							assets						</a>
+							</li>
+					<li class="active">
+						<a href="namespace-common.models.html">
+							models<span></span>
+						</a>
+							<ul>
+					<li>
+						<a href="namespace-common.models.api.html">
+							api						</a>
+							</li>
+					<li>
+						<a href="namespace-common.models.Constants.html">
+							Constants<span></span>
+						</a>
+							<ul>
+					<li>
+						<a href="namespace-common.models.Constants.Redis.html">
+							Redis						</a>
+							</li>
+					<li>
+						<a href="namespace-common.models.constants.region.html">
+							region						</a>
+							</li>
+								</ul></li>
+					<li class="active">
+						<a href="namespace-common.models.user.html">
+							user<span></span>
+						</a>
+							<ul>
+					<li>
+						<a href="namespace-common.models.user.contact.html">
+							contact						</a>
+							</li>
+					<li>
+						<a href="namespace-common.models.user.log.html">
+							log						</a>
+							</li>
+					<li>
+						<a href="namespace-common.models.user.message.html">
+							message						</a>
+							</li>
+					<li>
+						<a href="namespace-common.models.user.profile.html">
+							profile						</a>
+							</li>
+					<li>
+						<a href="namespace-common.models.user.relation.html">
+							relation						</a>
+							</li>
+								</ul></li></ul></li>
+					<li>
+						<a href="namespace-common.modules.html">
+							modules<span></span>
+						</a>
+							<ul>
+					<li>
+						<a href="namespace-common.modules.localization.html">
+							localization<span></span>
+						</a>
+							<ul>
+					<li>
+						<a href="namespace-common.modules.localization.controllers.html">
+							controllers						</a>
+							</li>
+								</ul></li>
+					<li>
+						<a href="namespace-common.modules.notification.html">
+							notification<span></span>
+						</a>
+							<ul>
+					<li>
+						<a href="namespace-common.modules.notification.controllers.html">
+							controllers						</a>
+							</li>
+					<li>
+						<a href="namespace-common.modules.notification.widgets.html">
+							widgets						</a>
+							</li>
+								</ul></li></ul></li>
+					<li>
+						<a href="namespace-common.widgets.html">
+							widgets						</a>
+							</li>
+								</ul></li>
+					<li>
+						<a href="namespace-None.html">
+							None						</a>
+							</li>
+			</ul>
+		</div>
+
+
+		<div id="elements">
+			<h3>Classes</h3>
+			<ul>
+				<li class="active"><a href="class-common.models.user.BaseUserItem.html">BaseUserItem</a></li>
+				<li><a href="class-common.models.user.BaseUserItemQuery.html">BaseUserItemQuery</a></li>
+				<li><a href="class-common.models.user.BaseUserMongoItem.html">BaseUserMongoItem</a></li>
+				<li><a href="class-common.models.user.User.html">User</a></li>
+			</ul>
+
+
+			<h3>Traits</h3>
+			<ul>
+				<li><a href="class-common.models.user.PermissionTrait.html">PermissionTrait</a></li>
+				<li><a href="class-common.models.user.UserItemTrait.html">UserItemTrait</a></li>
+				<li><a href="class-common.models.user.UserRelationTrait.html">UserRelationTrait</a></li>
+			</ul>
+
+
+
+		</div>
+	</div>
+</div>
+
+<div id="splitter"></div>
+
+<div id="right">
+	<div id="rightInner">
+<div id="content" class="class">
+	<h1>Class BaseUserItem</h1>
+
+
+	<div class="description">
+	<p>所有继承自该类的模型必须遵循以下规范：
+1.必须具有 content 属性，默认验证规范是字符串，长度不超过255，如果不是该验证规则，请自行指定。
+2.必须指定 content 属性标签名称。
+3.如果 content 属性区分类型，且默认类型不是该类中定义的，必须自行指定并覆盖内容类型。
+4.如果访问继承类区分权限，请自行指定</p>
+	</div>
+
+	<dl class="tree well">
+		<dd style="padding-left:0px">
+vistart\Models\models\BaseBlameableModel
+			
+			
+		</dd>
+		<dd style="padding-left:30px">
+			<img src="resources/inherit.png" alt="Extended by">
+<b><span>common\models\user\BaseUserItem</span></b>			
+			
+			 uses 
+					<a href="class-common.models.user.UserItemTrait.html"><span>common\models\user\UserItemTrait</span></a>
+			
+		</dd>
+	</dl>
+
+
+	<div>
+		<h3>Direct known subclasses</h3>
+		<p class="elementList">
+			<code><a href="class-common.models.user.contact.BaseContactItem.html">common\models\user\contact\BaseContactItem</a></code>, 
+			<code><a href="class-common.models.user.profile.Profile.html">common\models\user\profile\Profile</a></code>
+		</p>
+	</div>
+
+	<div>
+		<h3>Indirect known subclasses</h3>
+		<p class="elementList">
+			<code><a href="class-common.models.user.contact.Address.html">common\models\user\contact\Address</a></code>, 
+			<code><a href="class-common.models.user.contact.Anniversary.html">common\models\user\contact\Anniversary</a></code>, 
+			<code><a href="class-common.models.user.contact.Email.html">common\models\user\contact\Email</a></code>, 
+			<code><a href="class-common.models.user.contact.IM.html">common\models\user\contact\IM</a></code>, 
+			<code><a href="class-common.models.user.contact.Phone.html">common\models\user\contact\Phone</a></code>, 
+			<code><a href="class-common.models.user.contact.URL.html">common\models\user\contact\URL</a></code>
+		</p>
+	</div>
+
+
+
+
+
+	<div class="alert alert-info">
+		<b>Abstract</b><br>
+		
+		<b>Namespace:</b> <a href="namespace-common.html">common</a>\<a href="namespace-common.models.html">models</a>\<a href="namespace-common.models.user.html">user</a><br>
+		
+
+				<b>Author:</b>
+				vistart <a href="&#x6d;&#97;&#x69;&#x6c;&#116;&#x6f;&#58;&#105;&#x40;&#118;i&#x73;&#116;&#x61;&#x72;&#116;&#x2e;&#110;&#97;&#x6d;&#101;">&#105;&#x40;&#118;i&#x73;&#116;&#x61;&#x72;&#116;&#x2e;&#110;&#97;&#x6d;&#101;</a><br>
+			<b>Located at</b> <a href="source-class-common.models.user.BaseUserItem.html#20-166" title="Go to source code">models/user/BaseUserItem.php</a>
+		<br>
+	</div>
+
+
+
+		<div class="panel panel-default">
+			<div class="panel-heading"><h2>Methods summary</h2></div>
+			<table class="summary table table-bordered table-striped methods" id="methods">
+		<tr data-order="attributeLabels" id="_attributeLabels">
+
+			<td class="attributes"><code>
+				 public 
+				
+				
+				</code>
+			</td>
+
+			<td class="name"><div>
+			<a class="anchor" href="#_attributeLabels">#</a>
+			<code><a href="source-class-common.models.user.BaseUserItem.html#71-82" title="Go to source code">attributeLabels</a>( )</code>
+
+			<div class="description short">
+				
+			</div>
+
+			<div class="description detailed hidden">
+				
+
+
+
+
+
+
+
+			</div>
+			</div></td>
+		</tr>
+		<tr data-order="rules" id="_rules">
+
+			<td class="attributes"><code>
+				 public 
+				
+				
+				</code>
+			</td>
+
+			<td class="name"><div>
+			<a class="anchor" href="#_rules">#</a>
+			<code><a href="source-class-common.models.user.BaseUserItem.html#84-90" title="Go to source code">rules</a>( )</code>
+
+			<div class="description short">
+				
+			</div>
+
+			<div class="description detailed hidden">
+				
+
+
+
+
+
+
+
+			</div>
+			</div></td>
+		</tr>
+		<tr data-order="init" id="_init">
+
+			<td class="attributes"><code>
+				 public 
+				
+				
+				</code>
+			</td>
+
+			<td class="name"><div>
+			<a class="anchor" href="#_init">#</a>
+			<code><a href="source-class-common.models.user.BaseUserItem.html#92-97" title="Go to source code">init</a>( )</code>
+
+			<div class="description short">
+				
+			</div>
+
+			<div class="description detailed hidden">
+				
+
+
+
+
+
+
+
+			</div>
+			</div></td>
+		</tr>
+		<tr data-order="initEntityEvents" id="_initEntityEvents">
+
+			<td class="attributes"><code>
+				 public 
+				
+				
+				</code>
+			</td>
+
+			<td class="name"><div>
+			<a class="anchor" href="#_initEntityEvents">#</a>
+			<code><a href="source-class-common.models.user.BaseUserItem.html#99-103" title="Go to source code">initEntityEvents</a>( )</code>
+
+			<div class="description short">
+				
+			</div>
+
+			<div class="description detailed hidden">
+				
+
+
+
+
+
+
+
+			</div>
+			</div></td>
+		</tr>
+		<tr data-order="notifyOthers" id="_notifyOthers">
+
+			<td class="attributes"><code>
+				 public 
+				boolean
+				
+				</code>
+			</td>
+
+			<td class="name"><div>
+			<a class="anchor" href="#_notifyOthers">#</a>
+			<code><a href="source-class-common.models.user.BaseUserItem.html#105-141" title="Go to source code">notifyOthers</a>( <span>yii\db\AfterSaveEvent <var>$event</var></span> )</code>
+
+			<div class="description short">
+				
+			</div>
+
+			<div class="description detailed hidden">
+				
+
+
+					<h4>Parameters</h4>
+					<div class="list"><dl>
+						<dt><var>$event</var></dt>
+						<dd></dd>
+					</dl></div>
+
+					<h4>Returns</h4>
+					<div class="list">
+						boolean<br>Whether the notification sent succeeded.
+					</div>
+
+
+
+
+			</div>
+			</div></td>
+		</tr>
+		<tr data-order="makeNotification" id="_makeNotification">
+
+			<td class="attributes"><code>
+				 public 
+				
+				
+				</code>
+			</td>
+
+			<td class="name"><div>
+			<a class="anchor" href="#_makeNotification">#</a>
+			<code><a href="source-class-common.models.user.BaseUserItem.html#143-151" title="Go to source code">makeNotification</a>( <span> <var>$content</var></span> )</code>
+
+			<div class="description short">
+				
+			</div>
+
+			<div class="description detailed hidden">
+				
+
+
+
+
+
+
+
+			</div>
+			</div></td>
+		</tr>
+		<tr data-order="t" id="_t">
+
+			<td class="attributes"><code>
+				 public static
+				
+				
+				</code>
+			</td>
+
+			<td class="name"><div>
+			<a class="anchor" href="#_t">#</a>
+			<code><a href="source-class-common.models.user.BaseUserItem.html#153-156" title="Go to source code">t</a>( <span> <var>$category</var></span>, <span> <var>$message</var></span>, <span> <var>$params</var> = []</span>, <span> <var>$language</var> = <span class="php-keyword1">null</span></span> )</code>
+
+			<div class="description short">
+				
+			</div>
+
+			<div class="description detailed hidden">
+				
+
+
+
+
+
+
+
+			</div>
+			</div></td>
+		</tr>
+		<tr data-order="find" id="_find">
+
+			<td class="attributes"><code>
+				 public static
+				vistart\Models\queries\BaseBlameableQuery
+				
+				</code>
+			</td>
+
+			<td class="name"><div>
+			<a class="anchor" href="#_find">#</a>
+			<code><a href="source-class-common.models.user.BaseUserItem.html#158-165" title="Go to source code">find</a>( )</code>
+
+			<div class="description short">
+				<p>Friendly to IDE.</p>
+			</div>
+
+			<div class="description detailed hidden">
+				<p>Friendly to IDE.</p>
+
+
+
+					<h4>Returns</h4>
+					<div class="list">
+						vistart\Models\queries\BaseBlameableQuery
+					</div>
+
+
+
+
+			</div>
+			</div></td>
+		</tr>
+			</table>
+		</div>
+
+
+		<div class="panel panel-default">
+	        <div class="panel-heading"><h3>Methods used from <a href="class-common.models.user.UserItemTrait.html#methods">common\models\user\UserItemTrait</a></h3></div>
+			<p class="elementList">
+				<code><a href="class-common.models.user.UserItemTrait.html#_attachUserClass">attachUserClass()</a></code>, 
+				<code><a href="class-common.models.user.UserItemTrait.html#_getPermissionTypes">getPermissionTypes()</a></code>
+			</p>
+		</div>
+
+
+
+
+
+
+		<div class="panel panel-default">
+            <div class="panel-heading"><h2>Constants summary</h2></div>
+			<table class="summary table table-bordered table-striped constants" id="constants">
+			<tr data-order="SCENARIO_FORM" id="SCENARIO_FORM">
+
+				<td class="attributes"><code>string</code></td>
+				<td class="name">
+					<code>
+						<a href="source-class-common.models.user.BaseUserItem.html#40-43" title="Go to source code"><b>SCENARIO_FORM</b></a>
+					</code>
+
+					<div class="description short">
+						<p>此场景用于表单。</p>
+					</div>
+
+					<div class="description detailed hidden">
+						<p>此场景用于表单。</p>
+
+					</div>
+				</td>
+				<td class="value">
+					<div>
+						<a href="#SCENARIO_FORM" class="anchor">#</a>
+						<code><span class="php-quote">'form'</span></code>
+					</div>
+				</td>
+			</tr>
+			<tr data-order="SCENARIO_REGISTER" id="SCENARIO_REGISTER">
+
+				<td class="attributes"><code>string</code></td>
+				<td class="name">
+					<code>
+						<a href="source-class-common.models.user.BaseUserItem.html#45-48" title="Go to source code"><b>SCENARIO_REGISTER</b></a>
+					</code>
+
+					<div class="description short">
+						<p>此场景用于注册。</p>
+					</div>
+
+					<div class="description detailed hidden">
+						<p>此场景用于注册。</p>
+
+					</div>
+				</td>
+				<td class="value">
+					<div>
+						<a href="#SCENARIO_REGISTER" class="anchor">#</a>
+						<code><span class="php-quote">'register'</span></code>
+					</div>
+				</td>
+			</tr>
+			<tr data-order="PERMISSION_PRIVATE" id="PERMISSION_PRIVATE">
+
+				<td class="attributes"><code>integer</code></td>
+				<td class="name">
+					<code>
+						<a href="source-class-common.models.user.BaseUserItem.html#57" title="Go to source code"><b>PERMISSION_PRIVATE</b></a>
+					</code>
+
+					<div class="description short">
+						
+					</div>
+
+					<div class="description detailed hidden">
+						
+
+					</div>
+				</td>
+				<td class="value">
+					<div>
+						<a href="#PERMISSION_PRIVATE" class="anchor">#</a>
+						<code><span class="php-num">0x0</span></code>
+					</div>
+				</td>
+			</tr>
+			<tr data-order="PERMISSION_MUTUAL" id="PERMISSION_MUTUAL">
+
+				<td class="attributes"><code>integer</code></td>
+				<td class="name">
+					<code>
+						<a href="source-class-common.models.user.BaseUserItem.html#58" title="Go to source code"><b>PERMISSION_MUTUAL</b></a>
+					</code>
+
+					<div class="description short">
+						
+					</div>
+
+					<div class="description detailed hidden">
+						
+
+					</div>
+				</td>
+				<td class="value">
+					<div>
+						<a href="#PERMISSION_MUTUAL" class="anchor">#</a>
+						<code><span class="php-num">0x10</span></code>
+					</div>
+				</td>
+			</tr>
+			<tr data-order="PERMISSION_FOLLOWER" id="PERMISSION_FOLLOWER">
+
+				<td class="attributes"><code>integer</code></td>
+				<td class="name">
+					<code>
+						<a href="source-class-common.models.user.BaseUserItem.html#59" title="Go to source code"><b>PERMISSION_FOLLOWER</b></a>
+					</code>
+
+					<div class="description short">
+						
+					</div>
+
+					<div class="description detailed hidden">
+						
+
+					</div>
+				</td>
+				<td class="value">
+					<div>
+						<a href="#PERMISSION_FOLLOWER" class="anchor">#</a>
+						<code><span class="php-num">0x11</span></code>
+					</div>
+				</td>
+			</tr>
+			<tr data-order="PERMISSION_LOGGED_IN" id="PERMISSION_LOGGED_IN">
+
+				<td class="attributes"><code>integer</code></td>
+				<td class="name">
+					<code>
+						<a href="source-class-common.models.user.BaseUserItem.html#60" title="Go to source code"><b>PERMISSION_LOGGED_IN</b></a>
+					</code>
+
+					<div class="description short">
+						
+					</div>
+
+					<div class="description detailed hidden">
+						
+
+					</div>
+				</td>
+				<td class="value">
+					<div>
+						<a href="#PERMISSION_LOGGED_IN" class="anchor">#</a>
+						<code><span class="php-num">0x12</span></code>
+					</div>
+				</td>
+			</tr>
+			<tr data-order="PERMISSION_PUBLIC" id="PERMISSION_PUBLIC">
+
+				<td class="attributes"><code>integer</code></td>
+				<td class="name">
+					<code>
+						<a href="source-class-common.models.user.BaseUserItem.html#61" title="Go to source code"><b>PERMISSION_PUBLIC</b></a>
+					</code>
+
+					<div class="description short">
+						
+					</div>
+
+					<div class="description detailed hidden">
+						
+
+					</div>
+				</td>
+				<td class="value">
+					<div>
+						<a href="#PERMISSION_PUBLIC" class="anchor">#</a>
+						<code><span class="php-num">0xff</span></code>
+					</div>
+				</td>
+			</tr>
+			</table>
+		</div>
+
+
+
+
+		<div class="panel panel-default">
+            <div class="panel-heading"><h2>Properties summary</h2></div>
+			<table class="summary table table-bordered table-striped properties" id="properties">
+		<tr data-order="updatedByAttribute" id="$updatedByAttribute">
+			<td class="attributes"><code>
+				public  
+				boolean
+			</code></td>
+
+			<td class="name">
+					<a href="source-class-common.models.user.BaseUserItem.html#34" title="Go to source code"><var>$updatedByAttribute</var></a>
+
+				<div class="description short">
+					
+				</div>
+
+				<div class="description detailed hidden">
+					
+
+				</div>
+			</td>
+			<td class="value">
+				<div>
+					<a href="#$updatedByAttribute" class="anchor">#</a>
+					<code><span class="php-keyword1">false</span></code>
+				</div>
+			</td>
+		</tr>
+		<tr data-order="enableIP" id="$enableIP">
+			<td class="attributes"><code>
+				public  
+				boolean
+			</code></td>
+
+			<td class="name">
+					<a href="source-class-common.models.user.BaseUserItem.html#35" title="Go to source code"><var>$enableIP</var></a>
+
+				<div class="description short">
+					
+				</div>
+
+				<div class="description detailed hidden">
+					
+
+				</div>
+			</td>
+			<td class="value">
+				<div>
+					<a href="#$enableIP" class="anchor">#</a>
+					<code><span class="php-keyword1">false</span></code>
+				</div>
+			</td>
+		</tr>
+		<tr data-order="confirmationAttribute" id="$confirmationAttribute">
+			<td class="attributes"><code>
+				public  
+				string
+			</code></td>
+
+			<td class="name">
+					<a href="source-class-common.models.user.BaseUserItem.html#36" title="Go to source code"><var>$confirmationAttribute</var></a>
+
+				<div class="description short">
+					
+				</div>
+
+				<div class="description detailed hidden">
+					
+
+				</div>
+			</td>
+			<td class="value">
+				<div>
+					<a href="#$confirmationAttribute" class="anchor">#</a>
+					<code><span class="php-quote">'confirmed'</span></code>
+				</div>
+			</td>
+		</tr>
+		<tr data-order="contentTypeAttribute" id="$contentTypeAttribute">
+			<td class="attributes"><code>
+				public  
+				string
+			</code></td>
+
+			<td class="name">
+					<a href="source-class-common.models.user.BaseUserItem.html#37" title="Go to source code"><var>$contentTypeAttribute</var></a>
+
+				<div class="description short">
+					
+				</div>
+
+				<div class="description detailed hidden">
+					
+
+				</div>
+			</td>
+			<td class="value">
+				<div>
+					<a href="#$contentTypeAttribute" class="anchor">#</a>
+					<code><span class="php-quote">'type'</span></code>
+				</div>
+			</td>
+		</tr>
+		<tr data-order="descriptionAttribute" id="$descriptionAttribute">
+			<td class="attributes"><code>
+				public  
+				string
+			</code></td>
+
+			<td class="name">
+					<a href="source-class-common.models.user.BaseUserItem.html#38" title="Go to source code"><var>$descriptionAttribute</var></a>
+
+				<div class="description short">
+					
+				</div>
+
+				<div class="description detailed hidden">
+					
+
+				</div>
+			</td>
+			<td class="value">
+				<div>
+					<a href="#$descriptionAttribute" class="anchor">#</a>
+					<code><span class="php-quote">'description'</span></code>
+				</div>
+			</td>
+		</tr>
+		<tr data-order="contentTypes" id="$contentTypes">
+			<td class="attributes"><code>
+				public  
+				array
+			</code></td>
+
+			<td class="name">
+					<a href="source-class-common.models.user.BaseUserItem.html#50-55" title="Go to source code"><var>$contentTypes</var></a>
+
+				<div class="description short">
+					
+				</div>
+
+				<div class="description detailed hidden">
+					
+
+				</div>
+			</td>
+			<td class="value">
+				<div>
+					<a href="#$contentTypes" class="anchor">#</a>
+					<code>[
+    <span class="php-num">0x0</span> =&gt; <span class="php-quote">'Home'</span>,
+    <span class="php-num">0x1</span> =&gt; <span class="php-quote">'Work'</span>,
+    <span class="php-num">0xe</span> =&gt; <span class="php-quote">'Custom'</span>,
+    <span class="php-num">0xf</span> =&gt; <span class="php-quote">'Other'</span>,
+]</code>
+				</div>
+			</td>
+		</tr>
+		<tr data-order="permissions" id="$permissions">
+			<td class="attributes"><code>
+				public  
+				array
+			</code></td>
+
+			<td class="name">
+					<a href="source-class-common.models.user.BaseUserItem.html#63-69" title="Go to source code"><var>$permissions</var></a>
+
+				<div class="description short">
+					
+				</div>
+
+				<div class="description detailed hidden">
+					
+
+				</div>
+			</td>
+			<td class="value">
+				<div>
+					<a href="#$permissions" class="anchor">#</a>
+					<code>[
+    self::PERMISSION_PRIVATE =&gt; <span class="php-quote">'Private'</span>,
+    self::PERMISSION_MUTUAL =&gt; <span class="php-quote">'Mutual'</span>,
+    self::PERMISSION_FOLLOWER =&gt; <span class="php-quote">'Follower'</span>,
+    self::PERMISSION_LOGGED_IN =&gt; <span class="php-quote">'Logged-in'</span>,
+    self::PERMISSION_PUBLIC =&gt; <span class="php-quote">'Public'</span>,
+]</code>
+				</div>
+			</td>
+		</tr>
+			</table>
+		</div>
+
+
+		<div class="panel panel-default">
+            <div class="panel-heading"><h3>Properties used from <a href="class-common.models.user.UserItemTrait.html#properties">common\models\user\UserItemTrait</a></h3></div>
+			<p class="elementList">
+				<code><a href="class-common.models.user.UserItemTrait.html#$PERMISSION_FOLLOWED"><var>$PERMISSION_FOLLOWED</var></a></code>, 
+				<code><a href="class-common.models.user.UserItemTrait.html#$PERMISSION_FRIENDS"><var>$PERMISSION_FRIENDS</var></a></code>, 
+				<code><a href="class-common.models.user.UserItemTrait.html#$PERMISSION_LOGGED_IN"><var>$PERMISSION_LOGGED_IN</var></a></code>, 
+				<code><a href="class-common.models.user.UserItemTrait.html#$PERMISSION_PRIVATE"><var>$PERMISSION_PRIVATE</var></a></code>, 
+				<code><a href="class-common.models.user.UserItemTrait.html#$PERMISSION_PUBLIC"><var>$PERMISSION_PUBLIC</var></a></code>
+			</p>
+		</div>
+
+		<div class="panel panel-default">
+            <div class="panel-heading"><h3>Magic properties</h3></div>
+			<table class="summary table table-bordered table-striped properties" id="magicProperties">
+		<tr data-order="permission" id="m$permission">
+			<td class="attributes"><code>
+				public  
+				integer
+			</code></td>
+
+			<td class="name">
+					<a href="source-class-common.models.user.BaseUserItem.html#27" title="Go to source code"><var>$permission</var></a>
+
+				<div class="description short">
+					
+				</div>
+
+				<div class="description detailed hidden">
+					
+
+				</div>
+			</td>
+		</tr>
+			</table>
+		</div>
+
+
+		<div class="panel panel-default">
+            <div class="panel-heading"><h3>Magic properties used from <a href="class-common.models.user.UserItemTrait.html#properties">common\models\user\UserItemTrait</a></h3></div>
+			<p class="elementList">
+				<code><a href="class-common.models.user.UserItemTrait.html#m$user"><var>$user</var></a></code>
+			</p>
+		</div>
+
+</div>
+	</div>
+
+	<div id="footer">
+		 API documentation generated by <a href="http://apigen.org">ApiGen</a>
+	</div>
+</div>
+<script src="resources/combined.js"></script>
+<script src="elementlist.js"></script>
+</body>
+</html>

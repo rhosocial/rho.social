@@ -4,15 +4,15 @@ Contacts Manager.
 
 - List my followers.
 
--- List followers page-by-page.
+  - List followers page-by-page.
 
--- List followers of specified group.
+  - List followers of specified group.
 
 - View their profile.
 
--- Phone\Email\URL\Address\Anniversary\Instant Message\Any others...
+  - Phone\Email\URL\Address\Anniversary\Instant Message\Any others...
 
--- View them if permitted.
+  - View them if permitted.
 
 - Manage group.
 

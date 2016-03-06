@@ -22,7 +22,8 @@ use common\models\user\message\MessageRelation;
 use common\models\user\message\NotificationRelation;
 
 /**
- * Description of UserRelationTrait
+ * This trait is used for compositing all the relations associated with user.
+ * Please see details in each of relation traits.
  *
  * @author vistart <i@vistart.name>
  */

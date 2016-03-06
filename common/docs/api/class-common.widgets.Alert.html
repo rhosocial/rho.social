@@ -1,0 +1,361 @@
+<!DOCTYPE html>
+<html>
+<head>
+	<meta charset="utf-8">
+
+	<title>Class common\widgets\Alert</title>
+
+	<link rel="stylesheet" href="resources/bootstrap.min.css?973e37a8502921d56bc02bb55321f45b072b6f71">
+	<link rel="stylesheet" href="resources/style.css?49f43d3208c5d7e33fa16d36107a345bf11cc00d">
+
+</head>
+
+<body>
+	<nav id="navigation" class="navbar navbar-default navbar-fixed-top">
+		<div class="container-fluid">
+			<div class="navbar-header">
+				<a href="index.html" class="navbar-brand">Overview</a>
+			</div>
+			<div class="collapse navbar-collapse">
+
+                <form id="search" class="navbar-form navbar-left" role="search">
+                    <input type="hidden" name="cx" value="">
+                    <input type="hidden" name="ie" value="UTF-8">
+                    <div class="form-group">
+                        <input type="text" name="q" class="search-query form-control" placeholder="Search">
+					</div>
+				</form>
+
+				<ul class="nav navbar-nav">
+					<li>
+						<a href="namespace-common.widgets.html" title="Summary of common\widgets"><span>Namespace</span></a>
+					</li>
+					<li class="active">
+<span>Class</span>					</li>
+
+
+
+
+
+				</ul>
+			</div>
+		</div>
+	</nav>
+
+	<div id="left">
+	<div id="menu">
+
+		<div id="groups">
+				<h3>Namespaces</h3>
+			<ul>
+					<li class="active">
+						<a href="namespace-common.html">
+							common<span></span>
+						</a>
+							<ul>
+					<li>
+						<a href="namespace-common.assets.html">
+							assets						</a>
+							</li>
+					<li>
+						<a href="namespace-common.models.html">
+							models<span></span>
+						</a>
+							<ul>
+					<li>
+						<a href="namespace-common.models.api.html">
+							api						</a>
+							</li>
+					<li>
+						<a href="namespace-common.models.Constants.html">
+							Constants<span></span>
+						</a>
+							<ul>
+					<li>
+						<a href="namespace-common.models.Constants.Redis.html">
+							Redis						</a>
+							</li>
+					<li>
+						<a href="namespace-common.models.constants.region.html">
+							region						</a>
+							</li>
+								</ul></li>
+					<li>
+						<a href="namespace-common.models.user.html">
+							user<span></span>
+						</a>
+							<ul>
+					<li>
+						<a href="namespace-common.models.user.contact.html">
+							contact						</a>
+							</li>
+					<li>
+						<a href="namespace-common.models.user.log.html">
+							log						</a>
+							</li>
+					<li>
+						<a href="namespace-common.models.user.message.html">
+							message						</a>
+							</li>
+					<li>
+						<a href="namespace-common.models.user.profile.html">
+							profile						</a>
+							</li>
+					<li>
+						<a href="namespace-common.models.user.relation.html">
+							relation						</a>
+							</li>
+								</ul></li></ul></li>
+					<li>
+						<a href="namespace-common.modules.html">
+							modules<span></span>
+						</a>
+							<ul>
+					<li>
+						<a href="namespace-common.modules.localization.html">
+							localization<span></span>
+						</a>
+							<ul>
+					<li>
+						<a href="namespace-common.modules.localization.controllers.html">
+							controllers						</a>
+							</li>
+								</ul></li>
+					<li>
+						<a href="namespace-common.modules.notification.html">
+							notification<span></span>
+						</a>
+							<ul>
+					<li>
+						<a href="namespace-common.modules.notification.controllers.html">
+							controllers						</a>
+							</li>
+					<li>
+						<a href="namespace-common.modules.notification.widgets.html">
+							widgets						</a>
+							</li>
+								</ul></li></ul></li>
+					<li class="active">
+						<a href="namespace-common.widgets.html">
+							widgets						</a>
+							</li>
+								</ul></li>
+					<li>
+						<a href="namespace-None.html">
+							None						</a>
+							</li>
+			</ul>
+		</div>
+
+
+		<div id="elements">
+			<h3>Classes</h3>
+			<ul>
+				<li><a href="class-common.widgets.AccountTopMenuWidget.html">AccountTopMenuWidget</a></li>
+				<li class="active"><a href="class-common.widgets.Alert.html">Alert</a></li>
+				<li><a href="class-common.widgets.FeatureItemWidget.html">FeatureItemWidget</a></li>
+				<li><a href="class-common.widgets.FooterWidget.html">FooterWidget</a></li>
+				<li><a href="class-common.widgets.LoaderWidget.html">LoaderWidget</a></li>
+				<li><a href="class-common.widgets.LogoWidget.html">LogoWidget</a></li>
+				<li><a href="class-common.widgets.MessageArea.html">MessageArea</a></li>
+				<li><a href="class-common.widgets.NotificationArea.html">NotificationArea</a></li>
+				<li><a href="class-common.widgets.TopbarFirst.html">TopbarFirst</a></li>
+				<li><a href="class-common.widgets.TopbarSecond.html">TopbarSecond</a></li>
+				<li><a href="class-common.widgets.TopNavigation.html">TopNavigation</a></li>
+			</ul>
+
+
+
+
+
+		</div>
+	</div>
+</div>
+
+<div id="splitter"></div>
+
+<div id="right">
+	<div id="rightInner">
+<div id="content" class="class">
+	<h1>Class Alert</h1>
+
+
+	<div class="description">
+	<p>Alert widget renders a message from session flash. All flash messages are displayed
+in the sequence they were assigned using setFlash. You can set message as following:</p>
+
+<pre>\Yii::<span class="php-var">$app</span>-&gt;getSession()-&gt;setFlash(<span class="php-quote">'error'</span>, <span class="php-quote">'This is the message'</span>);
+\Yii::<span class="php-var">$app</span>-&gt;getSession()-&gt;setFlash(<span class="php-quote">'success'</span>, <span class="php-quote">'This is the message'</span>);
+\Yii::<span class="php-var">$app</span>-&gt;getSession()-&gt;setFlash(<span class="php-quote">'info'</span>, <span class="php-quote">'This is the message'</span>);</pre>
+
+<p>Multiple messages could be set as follows:</p>
+
+<pre>\Yii::<span class="php-var">$app</span>-&gt;getSession()-&gt;setFlash(<span class="php-quote">'error'</span>, [<span class="php-quote">'Error 1'</span>, <span class="php-quote">'Error 2'</span>]);</pre>
+	</div>
+
+	<dl class="tree well">
+		<dd style="padding-left:0px">
+yii\bootstrap\Widget
+			
+			
+		</dd>
+		<dd style="padding-left:30px">
+			<img src="resources/inherit.png" alt="Extended by">
+<b><span>common\widgets\Alert</span></b>			
+			
+			
+		</dd>
+	</dl>
+
+
+
+
+
+
+
+
+	<div class="alert alert-info">
+		
+		
+		<b>Namespace:</b> <a href="namespace-common.html">common</a>\<a href="namespace-common.widgets.html">widgets</a><br>
+		
+
+				<b>Author:</b>
+				Kartik Visweswaran <a href="&#x6d;&#97;&#105;&#x6c;&#x74;&#111;:&#x6b;&#97;&#114;&#x74;&#x69;&#107;v&#x32;&#64;&#103;&#x6d;&#x61;&#105;&#108;&#x2e;&#x63;&#111;&#x6d;">&#x6b;&#97;&#114;&#x74;&#x69;&#107;v&#x32;&#64;&#103;&#x6d;&#x61;&#105;&#108;&#x2e;&#x63;&#111;&#x6d;</a><br>
+				<b>Author:</b>
+				Alexander Makarov <a href="&#109;&#97;&#x69;l&#116;&#x6f;&#x3a;s&#97;&#x6d;&#x40;&#114;&#109;&#x63;&#x72;&#101;&#97;&#x74;&#x69;&#118;&#101;&#x2e;&#x72;&#117;">s&#97;&#x6d;&#x40;&#114;&#109;&#x63;&#x72;&#101;&#97;&#x74;&#x69;&#118;&#101;&#x2e;&#x72;&#117;</a><br>
+			<b>Located at</b> <a href="source-class-common.widgets.Alert.html#10-79" title="Go to source code">widgets/Alert.php</a>
+		<br>
+	</div>
+
+
+
+		<div class="panel panel-default">
+			<div class="panel-heading"><h2>Methods summary</h2></div>
+			<table class="summary table table-bordered table-striped methods" id="methods">
+		<tr data-order="init" id="_init">
+
+			<td class="attributes"><code>
+				 public 
+				
+				
+				</code>
+			</td>
+
+			<td class="name"><div>
+			<a class="anchor" href="#_init">#</a>
+			<code><a href="source-class-common.widgets.Alert.html#50-78" title="Go to source code">init</a>( )</code>
+
+			<div class="description short">
+				
+			</div>
+
+			<div class="description detailed hidden">
+				
+
+
+
+
+
+
+
+			</div>
+			</div></td>
+		</tr>
+			</table>
+		</div>
+
+
+
+
+
+
+
+
+
+
+
+		<div class="panel panel-default">
+            <div class="panel-heading"><h2>Properties summary</h2></div>
+			<table class="summary table table-bordered table-striped properties" id="properties">
+		<tr data-order="alertTypes" id="$alertTypes">
+			<td class="attributes"><code>
+				public  
+				array
+			</code></td>
+
+			<td class="name">
+					<a href="source-class-common.widgets.Alert.html#31-43" title="Go to source code"><var>$alertTypes</var></a>
+
+				<div class="description short">
+					<p>the alert types configuration for the flash messages.
+This array is setup as $key => $value, where:
+- $key is the name of the session flash variable
+- $value is the bootstrap alert type (i.e. danger, success, info, warning)</p>
+				</div>
+
+				<div class="description detailed hidden">
+					<p>the alert types configuration for the flash messages.
+This array is setup as $key => $value, where:
+- $key is the name of the session flash variable
+- $value is the bootstrap alert type (i.e. danger, success, info, warning)</p>
+
+				</div>
+			</td>
+			<td class="value">
+				<div>
+					<a href="#$alertTypes" class="anchor">#</a>
+					<code>[
+    <span class="php-quote">'error'</span>   =&gt; <span class="php-quote">'alert-danger'</span>,
+    <span class="php-quote">'danger'</span>  =&gt; <span class="php-quote">'alert-danger'</span>,
+    <span class="php-quote">'success'</span> =&gt; <span class="php-quote">'alert-success'</span>,
+    <span class="php-quote">'info'</span>    =&gt; <span class="php-quote">'alert-info'</span>,
+    <span class="php-quote">'warning'</span> =&gt; <span class="php-quote">'alert-warning'</span>
+]</code>
+				</div>
+			</td>
+		</tr>
+		<tr data-order="closeButton" id="$closeButton">
+			<td class="attributes"><code>
+				public  
+				array
+			</code></td>
+
+			<td class="name">
+					<a href="source-class-common.widgets.Alert.html#45-48" title="Go to source code"><var>$closeButton</var></a>
+
+				<div class="description short">
+					<p>the options for rendering the close button tag.</p>
+				</div>
+
+				<div class="description detailed hidden">
+					<p>the options for rendering the close button tag.</p>
+
+				</div>
+			</td>
+			<td class="value">
+				<div>
+					<a href="#$closeButton" class="anchor">#</a>
+					<code>[]</code>
+				</div>
+			</td>
+		</tr>
+			</table>
+		</div>
+
+
+
+
+
+
+</div>
+	</div>
+
+	<div id="footer">
+		 API documentation generated by <a href="http://apigen.org">ApiGen</a>
+	</div>
+</div>
+<script src="resources/combined.js"></script>
+<script src="elementlist.js"></script>
+</body>
+</html>
