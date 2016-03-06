@@ -75,10 +75,13 @@ abstract class DefaultController extends \yii\rest\Controller
 
     public function actionWidgetList()
     {
-        $items = $this->actionList();
         $widgets = "";
+        $items = $this->actionList();
         foreach ($items as $item) {
             $widgets .= ItemWidget::widget(['model' => $item, 'action' => static::getRouteUpdate(), 'delete' => static::getRouteDelete()]);
+        }
+        if (empty($widgets)) {
+            $widgets = "There's no any items. You can click above button to add a new one.";
         }
         return $widgets;
     }

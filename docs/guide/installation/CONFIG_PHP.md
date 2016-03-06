@@ -1,6 +1,6 @@
 # PHP Configuration
 
-## Modules
+## Extensions
 
 - bcmath
 - calendar

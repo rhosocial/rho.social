@@ -12,6 +12,8 @@
 
 namespace common\models\user\contact;
 
+use common\models\user\BaseUserItemQuery;
+
 /**
  * Description of PhoneRelation
  *
@@ -21,11 +23,22 @@ namespace common\models\user\contact;
 trait PhoneRelation
 {
 
-    public function createPhone($config = [])
+    /**
+     * Create phone instance.
+     * @param string $phone
+     * @param string $description
+     * @param mixed $permission
+     * @return Phone
+     */
+    public function createPhone($phone, $description = '', $permission = Phone::PERMISSION_MUTUAL)
     {
-        return $this->create(Phone::className(), $config);
+        return $this->create(Phone::className(), ['phone' => $phone, 'description' => $description, 'permission' => $permission]);
     }
 
+    /**
+     * 
+     * @return BaseUserItemQuery
+     */
     public function getPhones()
     {
         $model = Phone::buildNoInitModel();

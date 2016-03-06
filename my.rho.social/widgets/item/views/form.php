@@ -32,16 +32,35 @@ Modal::begin([
 ?>
 <hr/>
 <?php
+$form_id = $new ? 'form-new' : ('form-edit-' . $id);
 $form = ActiveForm::begin([
         'action' => Url::toRoute($action),
         'options' => [
-            'id' => $new ? 'form-new' : ('form-edit-' . $id),
-        ]
+            'id' => $form_id,
+        ],
+        'enableClientValidation' => false,
+        'enableAjaxValidation' => true,
     ]);
 ?>
 <div class="row">
     <div class="col-md-12">
         <?= $form->field($model, $model->contentAttribute) ?>
+    </div>
+</div>
+<div class="row">
+    <div class="col-md-6">
+        <div class="row">
+            <div class="col-md-12">
+                <?= $form->field($model, $model->contentTypeAttribute)->dropDownList($model->contentTypes) ?>
+            </div>
+        </div>
+    </div>
+    <div class="col-md-6">
+        <div class="row">
+            <div class="col-md-12">
+                <?= $form->field($model, 'permission')->dropDownList($model->permissions) ?>
+            </div>
+        </div>
     </div>
 </div>
 <?= $form->field($model, $model->descriptionAttribute)->textarea(['rows' => 2]) ?> 
@@ -62,3 +81,9 @@ $form = ActiveForm::begin([
 </div>
 <?php ActiveForm::end(); ?>
 <?php Modal::end(); ?>
+
+<script type="text/javascript">
+    $(document).ready(function () {
+        jQuery('#<?= $form_id ?>').yiiActiveForm(<?= \yii\helpers\Json::htmlEncode($form->attributes) ?>);
+    });
+</script>

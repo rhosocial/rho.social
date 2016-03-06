@@ -12,6 +12,8 @@
 
 namespace common\models\user;
 
+use common\models\user\UserRelationTrait;
+use vistart\Models\models\BaseUserModel;
 use Yii;
 
 /**
@@ -33,9 +35,9 @@ use Yii;
  * @property string $status
  * @property string $source
  */
-class User extends \vistart\Models\models\BaseUserModel
+class User extends BaseUserModel
 {
-    use \common\models\user\UserRelationTrait;
+    use UserRelationTrait;
 
     public $idAttributeType = 1;
     public $idAttributeLength = 8;

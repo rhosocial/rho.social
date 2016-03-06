@@ -25,13 +25,7 @@ use yii\web\NotFoundHttpException;
 trait CRUDTrait
 {
 
-    public static function insertItem($modelClass)
-    {
-        $model = new $modelClass(['scenario' => BaseUserItem::SCENARIO_FORM]);
-        return ($model->load(Yii::$app->request->post()) && $model->save());
-    }
-
-    public static function updateItem($id, $modelClass)
+    public static function update($id, $modelClass)
     {
         try {
             $model = dc::getModel($id, $modelClass);
@@ -42,7 +36,7 @@ trait CRUDTrait
         return ($model->load(Yii::$app->request->post()) && $model->save());
     }
 
-    public static function deleteItem($id, $modelClass)
+    public static function delete($id, $modelClass)
     {
         try {
             $model = dc::getModel($id, $modelClass);
@@ -52,7 +46,7 @@ trait CRUDTrait
         return $model->delete();
     }
 
-    public static function itemExists($content, $modelClass)
+    public static function exists($content, $modelClass)
     {
         return $modelClass::find()->byIdentity->content($content)->exists();
     }

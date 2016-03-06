@@ -22,6 +22,16 @@ class Anniversary extends BaseContactItem
 
     public $confirmCodeAttribute = false;
 
+    public function getAnniversary()
+    {
+        return $this->getContent();
+    }
+
+    public function setAnniversary($anniversary)
+    {
+        return $this->setContent($anniversary);
+    }
+
     public static function tableName()
     {
         return '{{%user_anniversary}}';

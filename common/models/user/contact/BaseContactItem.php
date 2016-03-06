@@ -13,9 +13,6 @@
 namespace common\models\user\contact;
 
 use common\models\user\BaseUserItem;
-use common\models\user\BaseUserItemNotification;
-use common\models\user\User;
-use Yii;
 
 /**
  * 所有继承自该类的模型必须覆盖createModel()方法和getModels()方法。
@@ -36,30 +33,19 @@ class BaseContactItem extends BaseUserItem
         return $this->hasMany(static::className(), [$model->createdByAttribute => $this->guidAttribute])->inverseOf('user');
     }
 
-    public function initEntityEvents()
+    public function rules()
     {
-        parent::initEntityEvents();
-        $this->on(static::EVENT_AFTER_UPDATE, [$this, 'notifyOthers']);
-    }
-
-    /**
-     * 
-     * @param \yii\db\AfterSaveEvent $event
-     * @return type
-     */
-    public function notifyOthers($event)
-    {
-        if (Yii::$app->user->isGuest) {
-            return;
+        $rules = [];
+        $message = 'You have added it.';
+        if (!is_array($this->contentAttribute)) {
+            $rules = [
+                'user_content_unique' => [[$this->createdByAttribute, $this->contentAttribute], 'unique', 'targetAttribute' => [$this->createdByAttribute, $this->contentAttribute], 'message' => $message],
+            ];
+        } elseif (is_array($this->contentAttribute)) {
+            $rules = [
+                'user_content_unique' => [array_merge([$this->createdByAttribute], $this->contentAttribute), 'unique', 'targetAttribute' => array_merge([$this->createdByAttribute], $this->contentAttribute), 'message' => $message],
+            ];
         }
-        $sender = $event->sender;
-        /* @var $sender static */
-        if (!isset($event->changedAttributes[$sender->contentAttribute])) {
-            return;
-        }
-        $user = Yii::$app->user->identity;
-        /* @var $user User */
-        $notification = $user->createNotification('Something changed.');
-        return $notification->save();
+        return array_merge(parent::rules(), $rules);
     }
 }

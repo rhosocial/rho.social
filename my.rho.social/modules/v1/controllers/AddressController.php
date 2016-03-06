@@ -58,10 +58,13 @@ class AddressController extends DefaultController
 
     public function actionWidgetList()
     {
-        $items = $this->actionList();
         $widgets = "";
+        $items = $this->actionList();
         foreach ($items as $item) {
             $widgets .= AddressItemWidget::widget(['model' => $item, 'action' => static::getRouteUpdate(), 'delete' => static::getRouteDelete()]);
+        }
+        if (empty($widgets)) {
+            $widgets = "There's no any addresses. You can click above button to add a new one.";
         }
         return $widgets;
     }

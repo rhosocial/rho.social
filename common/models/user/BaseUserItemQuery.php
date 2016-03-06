@@ -12,12 +12,26 @@
 
 namespace common\models\user;
 
+use vistart\Models\queries\BaseBlameableQuery;
+
 /**
  * Description of BaseUserItemQuery
  *
  * @author vistart <i@vistart.name>
  */
-class BaseUserItemQuery extends \vistart\Models\queries\BaseBlameableQuery
+class BaseUserItemQuery extends BaseBlameableQuery
 {
-    
+
+    public function permissions($permissions = [0])
+    {
+        if (!is_array($permissions)) {
+            $permissions = (array) $permissions;
+        }
+        foreach ($permissions as $key => $p) {
+            if (!in_array($p, $this->noInitModel->permissions)) {
+                unset($permissions[$key]);
+            }
+        }
+        return $this->andWhere(['permission' => $permissions]);
+    }
 }

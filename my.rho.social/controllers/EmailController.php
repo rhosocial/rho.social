@@ -1,4 +1,5 @@
 <?php
+
 /**
  *  _   __ __ _____ _____ ___  ____  _____
  * | | / // // ___//_  _//   ||  __||_   _|
@@ -12,6 +13,10 @@
 namespace rho_my\controllers;
 
 use common\models\user\contact\Email;
+use common\models\user\User;
+use Yii;
+use yii\web\Response;
+use yii\widgets\ActiveForm;
 
 /**
  *
@@ -32,23 +37,64 @@ final class EmailController extends DefaultController
 
     public function actionNew()
     {
-        $result = static::insertItem(Email::className());
+        if (Yii::$app->request->isAjax) {
+            return $this->actionValidate();
+        }
+        $user = Yii::$app->user->identity;
+        /* @var $user User */
+        $model = $user->createEmail('');
+        /* @var $model Email */
+        $model->scenario = Email::SCENARIO_FORM;
+        $result = ($model->load(Yii::$app->request->post()) && $model->save());
+        $content = '';
+        if ($model->hasErrors()) {
+            foreach ($model->getFirstErrors() as $key => $error) {
+                $content = $error;
+                break;
+            }
+        }
         static::setFlashNotificationByResult(static::SESSKEY_MY_EMAIL, $result);
         return $this->redirect(['email/index']);
     }
 
     public function actionUpdate($id)
     {
-        $result = static::updateItem($id, Email::className());
+        if (Yii::$app->request->isAjax) {
+            return $this->actionValidate($id);
+        }
+        $result = static::update($id, Email::className());
         static::setFlashNotificationByResult(static::SESSKEY_MY_EMAIL, $result);
         return $this->redirect(['email/index']);
     }
 
     public function actionDelete($id)
     {
-        $result = static::deleteItem($id, Email::className());
+        $result = static::delete($id, Email::className());
         static::setFlashNotificationByResult(static::SESSKEY_MY_EMAIL, $result);
         return $this->redirect(['email/index']);
+    }
+
+    public function actionValidate($id = '')
+    {
+        Yii::$app->response->format = Response::FORMAT_JSON;
+        if (!Yii::$app->request->isAjax) {
+            return false;
+        }
+        $model = null;
+        if (empty($id)) {
+            $model = static::getIdentityNewModel(Email::className());
+        } else {
+            $model = Email::findByIdentity()->id($id)->one();
+        }
+        if (!$model) {
+            return false;
+        }
+        /* @var $model Email */
+        $model->scenario = Email::SCENARIO_FORM;
+        if ($model->load(Yii::$app->request->post())) {
+            return ActiveForm::validate($model);
+        }
+        return false;
     }
 
     public static function getFlash()

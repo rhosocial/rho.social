@@ -19,12 +19,9 @@ JqueryNiceScrollAsset::register($this);
             </div>
         </li>
         <ul class="media-list">
-            <?php
-            $ns = Yii::$app->user->identity->receivedNotifications;
-            foreach ($ns as $n):
-                ?>
-                <?= rho_message\modules\notification\widgets\OverviewItem::widget(['notification' => $n]); ?>
-            <?php endforeach; ?></ul>
+            <?php/*
+             * */ ?>
+        </ul>
         <li id="loader_notifications">
             <?php echo \common\widgets\LoaderWidget::widget(); ?>
         </li>

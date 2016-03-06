@@ -161,7 +161,8 @@ rho.my.address = (function ($) {
             $.each(data, function (i, item) {
                 appendSelector(countrySelector, item[pub.country.valueParam], item[pub.country.displayValueParam]);
             });
-            if (typeof (pub.value[addressId]["country"]) === "undefined"
+            if (pub.value[addressId] === undefined
+                    || pub.value[addressId]["country"] === undefined
                     || pub.value[addressId]["country"] === false
                     || pub.value[addressId]["country"] === ""
                     || pub.value[addressId]["country"] === "none") {
@@ -203,7 +204,8 @@ rho.my.address = (function ($) {
             $.each(data, function (i, item) {
                 appendSelector(provinceSelector, item[pub.province.valueParam], item[pub.province.displayValueParam]);
             })
-            if (typeof (pub.value[addressId]["province"]) === "undefined"
+            if (pub.value[addressId] === undefined
+                    || pub.value[addressId]["province"] === undefined
                     || pub.value[addressId]["province"] === false
                     || pub.value[addressId]["province"] === ""
                     || pub.value[addressId]["province"] === "none") {
@@ -241,7 +243,8 @@ rho.my.address = (function ($) {
             $.each(data, function (i, item) {
                 appendSelector(citySelector, item[pub.city.valueParam], item[pub.city.displayValueParam]);
             })
-            if (typeof (pub.value[addressId]["city"]) === "undefined"
+            if (pub.value[addressId] === undefined
+                    || pub.value[addressId]["city"] === undefined
                     || pub.value[addressId]["city"] === false
                     || pub.value[addressId]["city"] === ""
                     || pub.value[addressId]["city"] === "none") {
@@ -275,7 +278,8 @@ rho.my.address = (function ($) {
             $.each(data, function (i, item) {
                 appendSelector(districtSelector, item[pub.district.valueParam], item[pub.district.displayValueParam]);
             })
-            if (typeof (pub.value[addressId]["district"]) === "undefined"
+            if (pub.value[addressId] === undefined
+                    || pub.value[addressId]["district"] === undefined
                     || pub.value[addressId]["district"] === false
                     || pub.value[addressId]["district"] === ""
                     || pub.value[addressId]["district"] === "none") {

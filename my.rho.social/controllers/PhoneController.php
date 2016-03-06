@@ -12,10 +12,11 @@
 
 namespace rho_my\controllers;
 
-use Yii;
 use common\models\user\contact\Phone;
-use yii\filters\AccessControl;
-use yii\filters\VerbFilter;
+use common\models\user\User;
+use Yii;
+use yii\web\Response;
+use yii\widgets\ActiveForm;
 
 /**
  * Description of PhoneController
@@ -24,8 +25,8 @@ use yii\filters\VerbFilter;
  */
 final class PhoneController extends DefaultController
 {
-
     use ContactTrait;
+
     const SESSKEY_MY_PHONE = 'sesskey_my_phone';
 
     public $layout = 'phone/main';
@@ -37,23 +38,64 @@ final class PhoneController extends DefaultController
 
     public function actionNew()
     {
-        $result = static::insertItem(Phone::className());
-        static::setFlashNotificationByResult(static::SESSKEY_MY_PHONE, $result);
+        if (Yii::$app->request->isAjax) {
+            return $this->actionValidate();
+        }
+        $user = Yii::$app->user->identity;
+        /* @var $user User */
+        $model = $user->createPhone('');
+        /* @var $model Phone */
+        $model->scenario = Phone::SCENARIO_FORM;
+        $result = ($model->load(Yii::$app->request->post()) && $model->save());
+        $content = '';
+        if ($model->hasErrors()) {
+            foreach ($model->getFirstErrors() as $key => $error) {
+                $content = $error;
+                break;
+            }
+        }
+        static::setFlashNotificationByResult(static::SESSKEY_MY_PHONE, $result, $content);
         return $this->redirect(['/phone/index']);
     }
 
     public function actionUpdate($id)
     {
-        $result = static::updateItem($id, Phone::className());
+        if (Yii::$app->request->isAjax) {
+            return $this->actionValidate($id);
+        }
+        $result = static::update($id, Phone::className());
         static::setFlashNotificationByResult(static::SESSKEY_MY_PHONE, $result);
         return $this->redirect(['/phone/index']);
     }
 
     public function actionDelete($id)
     {
-        $result = static::deleteItem($id, Phone::className());
+        $result = static::delete($id, Phone::className());
         static::setFlashNotificationByResult(static::SESSKEY_MY_PHONE, $result);
         return $this->redirect(['/phone/index']);
+    }
+
+    public function actionValidate($id = '')
+    {
+        Yii::$app->response->format = Response::FORMAT_JSON;
+        if (!Yii::$app->request->isAjax) {
+            return false;
+        }
+        $model = null;
+        if (empty($id)) {
+            $model = static::getIdentityNewModel(Phone::className());
+        } else {
+            $model = Phone::findByIdentity()->id($id)->one();
+        }
+        if (!$model) {
+            return false;
+        }
+        /* @var $model Phone */
+        $model->scenario = Phone::SCENARIO_FORM;
+        if ($model->load(Yii::$app->request->post())) {
+            return ActiveForm::validate($model);
+        }
+        return false;
     }
 
     public static function getFlash()

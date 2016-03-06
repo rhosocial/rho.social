@@ -40,6 +40,8 @@ $form = ActiveForm::begin([
             'address_id' => $id,
             'id' => $form_id,
         ],
+        'enableClientValidation' => false,
+        'enableAjaxValidation' => true,
     ]);
 ?>
 <div class="row">
@@ -75,6 +77,22 @@ $form = ActiveForm::begin([
             </div>
             <div class="col-md-6">
                 <?= $form->field($model, 'po_box') ?>
+            </div>
+        </div>
+    </div>
+</div>
+<div class="row">
+    <div class="col-md-6">
+        <div class="row">
+            <div class="col-md-12">
+                <?= $form->field($model, $model->contentTypeAttribute)->dropDownList($model->contentTypes) ?>
+            </div>
+        </div>
+    </div>
+    <div class="col-md-6">
+        <div class="row">
+            <div class="col-md-12">
+                <?= $form->field($model, 'permission')->dropDownList($model->permissions) ?>
             </div>
         </div>
     </div>

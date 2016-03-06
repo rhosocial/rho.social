@@ -33,22 +33,28 @@ trait NotificationTrait
         'content' => 'Some errors occured.',
     ];
 
-    public static function setFlashNotificationByResult($key, $result = 1)
+    public static function setFlashNotificationByResult($key, $result = 1, $content = '')
     {
         if ($result) {
-            static::setFlashNotificationSucceeded($key);
+            static::setFlashNotificationSucceeded($key, $content);
         } else {
-            static::setFlashNotificationFailed($key);
+            static::setFlashNotificationFailed($key, $content);
         }
     }
 
-    public static function setFlashNotificationSucceeded($key)
+    public static function setFlashNotificationSucceeded($key, $content = '')
     {
+        if (!empty($content)) {
+            static::$messageUpdateSuccess['content'] = $content;
+        }
         static::setFlashNotification($key, self::$messageUpdateSuccess);
     }
 
-    public static function setFlashNotificationFailed($key)
+    public static function setFlashNotificationFailed($key, $content = '')
     {
+        if (!empty($content)) {
+            static::$messageUpdateFail['content'] = $content;
+        }
         static::setFlashNotification($key, self::$messageUpdateFail);
     }
 

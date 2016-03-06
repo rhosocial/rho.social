@@ -12,6 +12,8 @@
 
 namespace common\models\user\contact;
 
+use common\models\user\BaseUserItemQuery;
+
 /**
  * Description of EmailRelation
  *
@@ -21,11 +23,22 @@ namespace common\models\user\contact;
 trait EmailRelation
 {
 
-    public function createEmail($config = [])
+    /**
+     * Create email instance.
+     * @param string $email
+     * @param string $descripition
+     * @param mixed $permission
+     * @return Email
+     */
+    public function createEmail($email, $descripition = "", $permission = Email::PERMISSION_MUTUAL)
     {
-        return $this->create(Email::className(), $config);
+        return $this->create(Email::className(), ['email' => $email, 'description' => $descripition, 'permission' => $permission]);
     }
 
+    /**
+     * 
+     * @return BaseUserItemQuery
+     */
     public function getEmails()
     {
         $model = Email::buildNoInitModel();

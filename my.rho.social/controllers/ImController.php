@@ -13,6 +13,10 @@
 namespace rho_my\controllers;
 
 use common\models\user\contact\IM;
+use common\models\user\User;
+use Yii;
+use yii\web\Response;
+use yii\widgets\ActiveForm;
 
 /**
  *
@@ -33,23 +37,64 @@ final class ImController extends DefaultController
 
     public function actionNew()
     {
-        $result = static::insertItem(IM::className());
+        if (Yii::$app->request->isAjax) {
+            return $this->actionValidate();
+        }
+        $user = Yii::$app->user->identity;
+        /* @var $user User */
+        $model = $user->createIM('');
+        /* @var $model IM */
+        $model->scenario = IM::SCENARIO_FORM;
+        $result = ($model->load(Yii::$app->request->post()) && $model->save());
+        $content = '';
+        if ($model->hasErrors()) {
+            foreach ($model->getFirstErrors() as $key => $error) {
+                $content = $error;
+                break;
+            }
+        }
         static::setFlashNotificationByResult(static::SESSKEY_MY_IM, $result);
         return $this->redirect(['im/index']);
     }
 
     public function actionUpdate($id)
     {
-        $result = static::updateItem($id, IM::className());
+        if (Yii::$app->request->isAjax) {
+            return $this->actionValidate($id);
+        }
+        $result = static::update($id, IM::className());
         static::setFlashNotificationByResult(static::SESSKEY_MY_IM, $result);
         return $this->redirect(['im/index']);
     }
 
     public function actionDelete($id)
     {
-        $result = static::deleteItem($id, IM::className());
+        $result = static::delete($id, IM::className());
         static::setFlashNotificationByResult(static::SESSKEY_MY_IM, $result);
         return $this->redirect(['im/index']);
+    }
+
+    public function actionValidate($id = '')
+    {
+        Yii::$app->response->format = Response::FORMAT_JSON;
+        if (!Yii::$app->request->isAjax) {
+            return false;
+        }
+        $model = null;
+        if (empty($id)) {
+            $model = static::getIdentityNewModel(IM::className());
+        } else {
+            $model = IM::findByIdentity()->id($id)->one();
+        }
+        if (!$model) {
+            return false;
+        }
+        /* @var $model IM */
+        $model->scenario = IM::SCENARIO_FORM;
+        if ($model->load(Yii::$app->request->post())) {
+            return ActiveForm::validate($model);
+        }
+        return false;
     }
 
     public static function getFlash()

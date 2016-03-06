@@ -12,7 +12,10 @@
 
 namespace common\models\user;
 
+use vistart\Models\models\BaseBlameableModel;
+use vistart\Models\queries\BaseBlameableQuery;
 use Yii;
+use yii\db\AfterSaveEvent;
 
 /**
  * 所有继承自该类的模型必须遵循以下规范：
@@ -21,9 +24,10 @@ use Yii;
  * 3.如果 content 属性区分类型，且默认类型不是该类中定义的，必须自行指定并覆盖内容类型。
  * 4.如果访问继承类区分权限，请自行指定
  *
+ * @property integer $permission
  * @author vistart <i@vistart.name>
  */
-abstract class BaseUserItem extends \vistart\Models\models\BaseBlameableModel
+abstract class BaseUserItem extends BaseBlameableModel
 {
     use UserItemTrait;
 
@@ -49,12 +53,19 @@ abstract class BaseUserItem extends \vistart\Models\models\BaseBlameableModel
         0xe => 'Custom',
         0xf => 'Other',
     ];
+
+    const PERMISSION_PRIVATE = 0x0;
+    const PERMISSION_MUTUAL = 0x10;
+    const PERMISSION_FOLLOWER = 0x11;
+    const PERMISSION_LOGGED_IN = 0x12;
+    const PERMISSION_PUBLIC = 0xff;
+
     public $permissions = [
-        0x0 => 'Private',
-        0x1 => 'Friend',
-        0x2 => 'Be-followed',
-        0x3 => 'Logged-in',
-        0xf => 'Public',
+        self::PERMISSION_PRIVATE => 'Private',
+        self::PERMISSION_MUTUAL => 'Mutual',
+        self::PERMISSION_FOLLOWER => 'Follower',
+        self::PERMISSION_LOGGED_IN => 'Logged-in',
+        self::PERMISSION_PUBLIC => 'Public',
     ];
 
     public function attributeLabels()
@@ -73,7 +84,7 @@ abstract class BaseUserItem extends \vistart\Models\models\BaseBlameableModel
     public function rules()
     {
         $rules = [
-            ['permission', 'default', 'value' => 0],
+            ['permission', 'default', 'value' => self::PERMISSION_MUTUAL],
         ];
         return array_merge(parent::rules(), $rules);
     }
@@ -85,6 +96,60 @@ abstract class BaseUserItem extends \vistart\Models\models\BaseBlameableModel
         parent::init();
     }
 
+    public function initEntityEvents()
+    {
+        parent::initEntityEvents();
+        $this->on(static::EVENT_AFTER_UPDATE, [$this, 'notifyOthers']);
+    }
+
+    /**
+     * 
+     * @param AfterSaveEvent $event
+     * @return boolean Whether the notification sent succeeded.
+     */
+    public function notifyOthers($event)
+    {
+        // Only logged-in user can send notification.
+        if (Yii::$app->user->isGuest) {
+            return false;
+        }
+        $user = Yii::$app->user->identity;
+        /* @var $user User */
+        $sender = $event->sender;
+        /* @var $sender static */
+        // Only logged-in user who owned this model can send notification.
+        if ($sender->user->guid !== $user->guid) {
+            return false;
+        }
+        if (!isset($event->changedAttributes[$sender->contentAttribute])) {
+            return false;
+        }
+        /**
+         * TODO: If user changed the permission...
+         */
+        if (isset($event->changedAttributes['permission'])) {
+
+            if ($event->changedAttributes['permission'] != self::PERMISSION_PRIVATE && $sender->permission == self::PERMISSION_PRIVATE) {
+                // TODO: If current permission is private and the previous is not.
+            }
+            if ($event->changedAttributes['permission'] == self::PERMISSION_PRIVATE && $sender->permission != self::PERMISSION_PRIVATE) {
+                // TODO: If current permission is not private and the previous is.
+            }
+        }
+        $content = 'Something changed.';
+        return $sender->makeNotification($content);
+    }
+
+    public function makeNotification($content)
+    {
+        if (empty($content)) {
+            return false;
+        }
+        $user = $this->user;
+        $notification = $user->createNotification($content);
+        return $notification->save();
+    }
+
     public static function t($category, $message, $params = [], $language = null)
     {
         return Yii::t('common/models/user/' . $category, $message, $params, $language);
@@ -92,7 +157,7 @@ abstract class BaseUserItem extends \vistart\Models\models\BaseBlameableModel
 
     /**
      * Friendly to IDE.
-     * @return \vistart\Models\queries\BaseBlameableQuery
+     * @return BaseBlameableQuery
      */
     public static function find()
     {

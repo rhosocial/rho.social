@@ -10,23 +10,19 @@
  * @license https://vistart.name/license/
  */
 
-namespace rho_my\controllers;
-
-use common\models\user\User;
-use Yii;
+namespace common\models\user\contact;
 
 /**
+ * Description of ContactRelation
  *
  * @author vistart <i@vistart.name>
  */
-trait ContactTrait
+trait ContactRelation
 {
-
-    public static function getIdentityNewModel($className)
-    {
-        $identity = Yii::$app->user->identity;
-        /* @var $identity User */
-        $model = $identity->create($className);
-        return $model;
-    }
+    use AddressRelation,
+        AnniversaryRelation,
+        EmailRelation,
+        PhoneRelation,
+        IMRelation,
+        URLRelation;
 }
