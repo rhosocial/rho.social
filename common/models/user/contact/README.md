@@ -9,4 +9,4 @@ Now, the contact models consist the following models (Ordered alphabetically):
 - [Phone](Phone.php)
 - [URL](URL.php)
 
-The each of above models has a relation trait used for being used by User model.
+Each of above models has a relation trait used for being used by User model.
