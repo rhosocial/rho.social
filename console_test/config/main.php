@@ -28,10 +28,12 @@ return [
         ],
     ],
     'components' => [
-        'db' => getParamsFromFile(__DIR__ . '/../../common/config/db/db.php'),
-        'request' => [
-            'class' => 'yii\console\Request',
+        'redis' => getParamsFromFile(__DIR__ . '/../../common/config/redis/redis.php'),
+        'cache' => [
+            'class' => 'yii\redis\Cache',
+            'redis' => 'redis',
         ],
+        'db' => getParamsFromFile(__DIR__ . '/../../common/config/db/db.php'),
     ],
     'params' => $params,
 ];

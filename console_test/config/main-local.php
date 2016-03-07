@@ -9,6 +9,8 @@
  * @copyright Copyright (c) 2016 vistart
  * @license https://vistart.name/license/
  */
-
 return [
+    'components' => [
+        'redis' => getParamsFromFile(__DIR__ . '/../../common/config/redis/redis-local.php'),
+    ]
 ];
