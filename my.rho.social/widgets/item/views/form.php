@@ -15,16 +15,18 @@ use yii\bootstrap\Modal;
 use yii\helpers\Html;
 use yii\helpers\Url;
 use yii\widgets\ActiveForm;
+use vistart\components\widgets\Pjax;
 
 /* @var $model common\models\user\contact\Phone */
 /* @var $form yii\widgets\ActiveForm */
 
 $new = $model->isNewRecord;
+$suffix = $new ? 'new' : 'edit-' . $id;
 ?>
 
 <?php
 Modal::begin([
-    'id' => $new ? 'modal-new' : ('modal-edit-' . $id),
+    'id' => 'modal-' . $suffix,
     'header' => '<h4>' . $title . '</h4>',
     'options' => [
         'aria-hidden' => 'true',
@@ -33,7 +35,13 @@ Modal::begin([
 ?>
 <hr/>
 <?php
-$form_id = $new ? 'form-new' : ('form-edit-' . $id);
+$form_id = 'form-' . $suffix;
+$pjax_id = 'pjax-' . $suffix;
+$pjax = Pjax::begin([
+        'id' => $pjax_id,
+        'linkSelector' => '#' . 'submit-' . $suffix,
+        'formSelector' => "#$form_id",
+    ]);
 $form = ActiveForm::begin([
         'action' => Url::toRoute($action),
         'options' => [
@@ -67,7 +75,7 @@ $form = ActiveForm::begin([
 <?= $form->field($model, $model->descriptionAttribute)->textarea(['rows' => 2]) ?> 
 <hr/>
 <div class="form-group">
-    <?= Html::submitButton('<span class="glyphicon glyphicon-ok"></span> ' . 'OK', ['class' => 'btn btn-primary']) ?>
+    <?= Html::submitButton('<span class="glyphicon glyphicon-ok"></span> ' . 'OK', ['id' => 'submit-' . $suffix, 'class' => 'btn btn-primary']) ?>
     <?= Html::resetButton('<span class="glyphicon glyphicon-refresh"></span> ' . 'Reset', ['class' => 'btn btn-danger']) ?>
     <?=
     Button::widget([
@@ -81,10 +89,14 @@ $form = ActiveForm::begin([
     ?>
 </div>
 <?php ActiveForm::end(); ?>
+<?php Pjax::end(); ?>
 <?php Modal::end(); ?>
 
 <script type="text/javascript">
     $(document).ready(function () {
-        jQuery('#<?= $form_id ?>').yiiActiveForm(<?= \yii\helpers\Json::htmlEncode($form->attributes) ?>);
+<?php if (!$new) : ?>
+            jQuery('#<?= $form_id ?>').yiiActiveForm(<?= \yii\helpers\Json::htmlEncode($form->attributes) ?>);
+    <?= $pjax->generateClientScript() ?>
+<?php endif; ?>
     });
 </script>

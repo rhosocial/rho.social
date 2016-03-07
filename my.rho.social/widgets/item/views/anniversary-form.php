@@ -16,16 +16,18 @@ use yii\bootstrap\Modal;
 use yii\helpers\Html;
 use yii\helpers\Url;
 use yii\widgets\ActiveForm;
+use vistart\components\widgets\Pjax;
 
 /* @var $model common\models\user\contact\Anniversary */
 /* @var $form yii\widgets\ActiveForm */
 
 $new = $model->isNewRecord;
+$suffix = $new ? 'new' : 'edit-' . $id;
 ?>
 
 <?php
 Modal::begin([
-    'id' => $new ? 'modal-new' : ('modal-edit-' . $id),
+    'id' => 'modal-' . $suffix,
     'header' => '<h4>' . $title . '</h4>',
     'options' => [
         'aria-hidden' => 'true',
@@ -35,7 +37,13 @@ Modal::begin([
 <hr/>
 <?php
 $formIdPrefix = 'form_';
-$form_id = $new ? $formIdPrefix . 'new' : ($formIdPrefix . 'edit_' . $id);
+$form_id = $formIdPrefix . $suffix;
+$pjax_id = 'pjax-' . $suffix;
+$pjax = Pjax::begin([
+        'id' => $pjax_id,
+        'linkSelector' => '#' . 'submit-' . $suffix,
+        'formSelector' => "#$form_id",
+    ]);
 $form = ActiveForm::begin([
         'action' => Url::toRoute($action),
         'options' => [
@@ -91,6 +99,7 @@ $form = ActiveForm::begin([
     ?>
 </div>
 <?php ActiveForm::end(); ?>
+<?php Pjax::end(); ?>
 <?php Modal::end(); ?>
 <?php if (!$new): ?>
     <script type="text/javascript">
@@ -98,6 +107,7 @@ $form = ActiveForm::begin([
             var datetimepicker_setting = $('#<?= $form_id ?> #anniversary-content').attr("data-krajee-datetimepicker");
             $('#<?= $form_id ?> #anniversary-content').datetimepicker(this[datetimepicker_setting]);
             jQuery('#<?= $form_id ?>').yiiActiveForm(<?= \yii\helpers\Json::htmlEncode($form->attributes) ?>);
+    <?= $pjax->generateClientScript() ?>
         });
     </script>
 <?php endif; ?>

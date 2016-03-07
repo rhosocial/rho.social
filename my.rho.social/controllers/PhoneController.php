@@ -38,7 +38,7 @@ final class PhoneController extends DefaultController
 
     public function actionNew()
     {
-        if (Yii::$app->request->isAjax) {
+        if (Yii::$app->request->isAjax && !Yii::$app->request->isPjax) {
             return $this->actionValidate();
         }
         $user = Yii::$app->user->identity;
@@ -60,7 +60,7 @@ final class PhoneController extends DefaultController
 
     public function actionUpdate($id)
     {
-        if (Yii::$app->request->isAjax) {
+        if (Yii::$app->request->isAjax && !Yii::$app->request->isPjax) {
             return $this->actionValidate($id);
         }
         $result = static::update($id, Phone::className());

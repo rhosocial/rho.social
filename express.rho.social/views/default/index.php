@@ -10,3 +10,5 @@
  * @license http://vistart.name/license/
  */
 
+/* @var $this yii\web\View */
+$this->title = "Home";

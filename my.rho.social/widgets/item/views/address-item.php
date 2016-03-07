@@ -21,7 +21,7 @@ use yii\helpers\Url;
 <div class="item-content">
     <div class="item-content-content">
         <h4 class="item-content-heading">
-        <?= Html::encode($model->street . $model->building . $model->room . " " . $model->po_box . " " . $model->post_code) ?>
+        <?= Html::encode($model->street . " " . $model->building . " " . $model->room . " " . $model->po_box . " " . $model->post_code) ?>
         </h4>
         <h4  class="item-content-heading">
         <?= Html::encode($region) ?>
@@ -65,7 +65,7 @@ Modal::begin([
     'options' => [
         'aria-hidden' => 'true'
     ],
-    'footer' => Html::a('Yes, I am!', Url::toRoute(['delete', 'id' => $model->id]), ['type' => 'button', 'class' => 'btn btn-danger', 'data-method' => 'post']) . Html::button('No', ['class' => 'btn btn-default', 'data-dismiss' => 'modal']),
+    'footer' => Html::a('Yes, I am!', Url::toRoute([$delete, 'id' => $model->id]), ['type' => 'button', 'class' => 'btn btn-danger', 'data-method' => 'post']) . Html::button('No', ['class' => 'btn btn-default', 'data-dismiss' => 'modal']),
 ]);
 echo "Are you sure to delete $model->street ? " . 'This operation can not be reversed. ';
 Modal::end();

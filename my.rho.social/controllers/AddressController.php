@@ -37,7 +37,7 @@ final class AddressController extends DefaultController
 
     public function actionNew()
     {
-        if (Yii::$app->request->isAjax) {
+        if (Yii::$app->request->isAjax && !Yii::$app->request->isPjax) {
             return $this->actionValidate();
         }
         $user = Yii::$app->user->identity;
@@ -54,24 +54,24 @@ final class AddressController extends DefaultController
             }
         }
         static::setFlashNotificationByResult(static::SESSKEY_MY_ADDRESS, $result);
-        return $this->redirect(['address/index']);
+        return $this->redirect(['/address/index']);
     }
 
     public function actionUpdate($id)
     {
-        if (Yii::$app->request->isAjax) {
+        if (Yii::$app->request->isAjax && !Yii::$app->request->isPjax) {
             return $this->actionValidate($id);
         }
         $result = static::update($id, Address::className());
         static::setFlashNotificationByResult(static::SESSKEY_MY_ADDRESS, $result);
-        return $this->redirect(['address/index']);
+        return $this->redirect(['/address/index']);
     }
 
     public function actionDelete($id)
     {
         $result = static::delete($id, Address::className());
         static::setFlashNotificationByResult(static::SESSKEY_MY_ADDRESS, $result);
-        return $this->redirect(['address/index']);
+        return $this->redirect(['/address/index']);
     }
 
     public function actionValidate($id = '')
