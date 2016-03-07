@@ -1,9 +1,5 @@
 <?php
 
-function getParamsFromFile($file, $default = [])
-{
-    return file_exists($file) ? require($file) : $default;
-}
 return [
     'vendorPath' => dirname(dirname(__DIR__)) . '/vendor',
     'bootstrap' => require(__DIR__ . '/bootstrap/bootstrap.php'),

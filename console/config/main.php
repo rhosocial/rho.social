@@ -9,12 +9,11 @@
  * @copyright Copyright (c) 2016 vistart
  * @license https://vistart.name/license/
  */
-$params = array_merge(
-    require(__DIR__ . '/../../common/config/params.php'),
-    require(__DIR__ . '/../../common/config/params-local.php'),
-    require(__DIR__ . '/params.php'),
-    require(__DIR__ . '/params-local.php')
-);
+$params = [];
+$params = array_merge($params, getParamsFromFile(__DIR__ . '/../../common/config/params.php'));
+$params = array_merge($params, getParamsFromFile(__DIR__ . '/../../common/config/params-local.php'));
+$params = array_merge($params, getParamsFromFile(__DIR__ . '/params.php'));
+$params = array_merge($params, getParamsFromFile(__DIR__ . '/params-local.php'));
 
 return [
     'id' => 'rhosocial-console',
@@ -23,16 +22,15 @@ return [
     'vendorPath' => dirname(dirname(__DIR__)) . '/vendor',
     'bootstrap' => ['log'],
     'controllerNamespace' => 'console\controllers',
+    'modules' => [
+        'user' => [
+            'class' => 'console\modules\user\Module',
+        ],
+    ],
     'components' => [
-        'db' => require (__DIR__ . '/../../common/config/db/db.php'),
-        'log' => [
-            'traceLevel' => YII_DEBUG ? 3 : 0,
-            'targets' => [
-                [
-                    'class' => 'yii\log\FileTarget',
-                    'levels' => ['error', 'warning'],
-                ],
-            ],
+        'db' => getParamsFromFile(__DIR__ . '/../../common/config/db/db.php'),
+        'request' => [
+            'class' => 'yii\console\Request',
         ],
     ],
     'params' => $params,

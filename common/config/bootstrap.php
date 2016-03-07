@@ -14,6 +14,11 @@ Yii::setAlias('rho_sso', dirname(dirname(__DIR__)) . '/sso.rho.social');
 Yii::setAlias('console', dirname(dirname(__DIR__)) . '/console');
 Yii::setAlias('console_test', dirname(dirname(__DIR__)) . '/console_test');
 
+function getParamsFromFile($file, $default = [])
+{
+    return file_exists($file) ? require($file) : $default;
+}
+
 function loadAndDefaults($filename, $default = '')
 {
     $value = '';

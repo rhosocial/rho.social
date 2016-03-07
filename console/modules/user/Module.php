@@ -19,5 +19,8 @@ namespace console\modules\user;
  */
 class Module extends \yii\base\Module
 {
+
     public $controllerNamespace = 'console\modules\user\controllers';
+    public $defaultRoute = 'info';
+
 }
