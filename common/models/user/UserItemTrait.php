@@ -21,24 +21,8 @@ namespace common\models\user;
 trait UserItemTrait
 {
 
-    public static $PERMISSION_PUBLIC = 'public';
-    public static $PERMISSION_LOGGED_IN = 'loggedin';
-    public static $PERMISSION_FOLLOWED = 'followed';
-    public static $PERMISSION_FRIENDS = 'friends';
-    public static $PERMISSION_PRIVATE = 'private';
-
     public function attachUserClass()
     {
         $this->userClass = User::className();
-    }
-
-    public function getPermissionTypes()
-    {
-        return [
-            0 => self::$PERMISSION_PRIVATE,
-            1 => self::$PERMISSION_PUBLIC,
-            2 => self::$PERMISSION_FRIENDS,
-            3 => self::$PERMISSION_LOGGED_IN,
-        ];
     }
 }

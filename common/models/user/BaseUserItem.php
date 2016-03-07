@@ -60,7 +60,7 @@ abstract class BaseUserItem extends BaseBlameableModel
     const PERMISSION_LOGGED_IN = 0x12;
     const PERMISSION_PUBLIC = 0xff;
 
-    public $permissions = [
+    public static $permissions = [
         self::PERMISSION_PRIVATE => 'Private',
         self::PERMISSION_MUTUAL => 'Mutual',
         self::PERMISSION_FOLLOWER => 'Follower',

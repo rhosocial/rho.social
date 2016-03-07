@@ -14,6 +14,7 @@ namespace common\models\user;
 
 use common\models\user\UserRelationTrait;
 use vistart\Models\models\BaseUserModel;
+use vistart\Models\queries\BaseUserQuery;
 use Yii;
 
 /**
@@ -42,6 +43,18 @@ class User extends BaseUserModel
     public $idAttributeType = 1;
     public $idAttributeLength = 8;
     public $idAttributePrefix = '4';
+
+    const STATUS_INACTIVE = 0x00;
+    const STATUS_ACTIVE = 0x01;
+    const STATUS_TEST_INACTIVE = 0x1e;
+    const STATUS_TEST_ACTIVE = 0x1f;
+
+    public static $statuses = [
+        self::STATUS_INACTIVE => "Inactive",
+        self::STATUS_ACTIVE => "Active",
+        self::STATUS_TEST_INACTIVE => "Test, Inactive",
+        self::STATUS_TEST_ACTIVE => "Test, Active",
+    ];
 
     public static function findIdentityByEmail($email)
     {
@@ -78,5 +91,14 @@ class User extends BaseUserModel
             'status' => Yii::t('app', 'User Status'),
             'source' => Yii::t('app', 'User Source'),
         ];
+    }
+
+    /**
+     * Friendly to IDE.
+     * @return BaseUserQuery
+     */
+    public static function find()
+    {
+        return parent::find();
     }
 }

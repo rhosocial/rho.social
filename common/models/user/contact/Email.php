@@ -61,12 +61,4 @@ class Email extends BaseContactItem
             'type' => 'Email Type',
         ]);
     }
-
-    public function scenarios()
-    {
-        return array_merge(parent::scenarios(), [
-            static::SCENARIO_FORM => [$this->contentAttribute, $this->descriptionAttribute, $this->contentTypeAttribute],
-            static::SCENARIO_REGISTER => [$this->contentAttribute],
-        ]);
-    }
 }

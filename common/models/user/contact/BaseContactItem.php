@@ -48,4 +48,25 @@ class BaseContactItem extends BaseUserItem
         }
         return array_merge(parent::rules(), $rules);
     }
+
+    public function scenarios()
+    {
+        $scenario = [];
+        if (is_array($this->contentAttribute)) {
+            $scenario = array_merge($this->contentAttribute, ['permission']);
+        } else {
+            $scenario[] = $this->contentAttribute;
+            $scenario[] = 'permission';
+        }
+        if (is_string($this->contentTypeAttribute)) {
+            $scenario[] = $this->contentTypeAttribute;
+        }
+        if (is_string($this->descriptionAttribute)) {
+            $scenario[] = $this->descriptionAttribute;
+        }
+        return array_merge(parent::scenarios(), [
+            static::SCENARIO_FORM => $scenario,
+            static::SCENARIO_REGISTER => $this->contentAttribute,
+        ]);
+    }
 }

@@ -9,6 +9,7 @@
  * @copyright Copyright (c) 2016 vistart
  * @license http://vistart.name/license/
  */
+use common\models\user\contact\Anniversary;
 use kartik\widgets\DateTimePicker;
 use yii\bootstrap\Button;
 use yii\bootstrap\Modal;
@@ -68,7 +69,7 @@ $form = ActiveForm::begin([
     <div class="col-md-6">
         <div class="row">
             <div class="col-md-12">
-                <?= $form->field($model, 'permission')->dropDownList($model->permissions) ?>
+                <?= $form->field($model, 'permission')->dropDownList(Anniversary::$permissions) ?>
             </div>
         </div>
     </div>

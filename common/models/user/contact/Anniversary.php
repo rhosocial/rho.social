@@ -32,6 +32,21 @@ class Anniversary extends BaseContactItem
         return $this->setContent($anniversary);
     }
 
+    const USER_ANNIVERSARY_ID_LENGTH = 4;
+    const ANNIVERSARY_NONE = 0x00;
+    const ANNIVERSARY_BIRTHDAY = 0x01;
+    const ANNIVERSARY_WEDDING = 0x02;
+    const ANNIVERSARY_GRADUATED = 0x03;
+    const ANNIVERSARY_OTHER = 0xff;
+
+    public $contentTypes = [
+        self::ANNIVERSARY_NONE => 'None',
+        self::ANNIVERSARY_BIRTHDAY => 'Birthday',
+        self::ANNIVERSARY_WEDDING => 'Wedding',
+        self::ANNIVERSARY_GRADUATED => 'Graduated',
+        self::ANNIVERSARY_OTHER => 'Other',
+    ];
+
     public static function tableName()
     {
         return '{{%user_anniversary}}';
@@ -43,14 +58,6 @@ class Anniversary extends BaseContactItem
         return array_merge($labels, [
             'content' => 'Anniversary',
             'type' => 'Anniversary Type',
-        ]);
-    }
-
-    public function scenarios()
-    {
-        return array_merge(parent::scenarios(), [
-            static::SCENARIO_FORM => [$this->contentAttribute, $this->descriptionAttribute, $this->contentTypeAttribute],
-            static::SCENARIO_REGISTER => [$this->contentAttribute],
         ]);
     }
 }

@@ -9,6 +9,7 @@
  * @copyright Copyright (c) 2016 vistart
  * @license http://vistart.name/license/
  */
+use common\models\user\contact\Address;
 use yii\bootstrap\Button;
 use yii\bootstrap\Modal;
 use yii\helpers\Html;
@@ -25,7 +26,7 @@ use yii\helpers\Url;
         <h4  class="item-content-heading">
         <?= Html::encode($region) ?>
         </h4>
-        <h5><?= $model->contentTypes[$model->type] . ' | ' . $model->permissions[$model->permission] ?></h5>
+        <h5><?= $model->contentTypes[$model->type] . ' | ' . Address::$permissions[$model->permission] ?></h5>
         <p>
             <?= Html::encode($model->description) ?>
         </p>

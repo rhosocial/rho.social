@@ -30,14 +30,6 @@ class Address extends BaseContactItem
         return '{{%user_address}}';
     }
 
-    public function scenarios()
-    {
-        return array_merge(parent::scenarios(), [
-            static::SCENARIO_FORM => array_merge($this->contentAttribute, [$this->descriptionAttribute, $this->contentTypeAttribute]),
-            static::SCENARIO_REGISTER => $this->contentAttribute,
-        ]);
-    }
-
     public function notifyOthers($event)
     {
         if (Yii::$app->user->isGuest) {
