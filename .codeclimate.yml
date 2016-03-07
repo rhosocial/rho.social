@@ -1,10 +1,40 @@
 exclude_paths:
     - docs/**/*
     - tests/**/*
+    - admin.rho.social/docs/**/*
+    - admin.rho.social/tests/**/*
+    - api.rho.social/docs/**/*
+    - api.rho.social/tests/**/*
+    - common/docs/**/*
+    - common/tests/**/*
+    - console/docs/**/*
+    - console/tests/**/*
+    - console_test/docs/**/*
+    - contact.rho.social/docs/**/*
+    - contact.rho.social/tests/**/*
+    - express.rho.social/docs/**/*
+    - express.rho.social/tests/**/*
+    - message.rho.social/docs/**/*
+    - message.rho.social/tests/**/*
+    - my.rho.social/docs/**/*
+    - my.rho.social/tests/**/*
+    - reg.rho.social/docs/**/*
+    - reg.rho.social/tests/**/*
+    - rho.social/docs/**/*
+    - rho.social/tests/**/*
+    - sso.rho.social/docs/**/*
+    - sso.rho.social/tests/**/*
     
 ratings:
     paths:
+        - admin.rho.social/**
+        - api.rho.social/**
         - common/**
+        - console/**
+        - console_test/**
+        - contact.rho.social/**
+        - express.rho.social/**
+        - message.rho.social/**
         - my.rho.social/**
         - reg.rho.social/**
         - rho.social/**
