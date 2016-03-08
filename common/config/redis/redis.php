@@ -12,8 +12,8 @@
 
 return [
     'class' => 'yii\redis\Connection',
-    'hostname' => loadAndDefaults(__DIR__ . '/redis.hostname.php', 'localhost'),
-    'port' => loadAndDefaults(__DIR__ . '/redis.port.php', 6379),
-    'database' => loadAndDefaults(__DIR__ . '/redis.database.php', 0),
-    'password' => loadAndDefaults(__DIR__ . '/redis.password.php'),
+    'hostname' => getParamsFromFile(__DIR__ . '/redis.hostname.php', 'localhost'),
+    'port' => getParamsFromFile(__DIR__ . '/redis.port.php', 6379),
+    'database' => getParamsFromFile(__DIR__ . '/redis.database.php', 0),
+    'password' => getParamsFromFile(__DIR__ . '/redis.password.php', ''),
 ];

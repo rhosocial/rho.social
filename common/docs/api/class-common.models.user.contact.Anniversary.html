@@ -235,7 +235,7 @@ vistart\Models\models\BaseBlameableModel
 
 				<b>Author:</b>
 				vistart <a href="&#x6d;&#97;&#x69;&#x6c;&#116;&#x6f;&#58;&#105;&#x40;&#118;i&#x73;&#116;&#x61;&#x72;&#116;&#x2e;&#110;&#97;&#x6d;&#101;">&#105;&#x40;&#118;i&#x73;&#116;&#x61;&#x72;&#116;&#x2e;&#110;&#97;&#x6d;&#101;</a><br>
-			<b>Located at</b> <a href="source-class-common.models.user.contact.Anniversary.html#15-56" title="Go to source code">models/user/contact/Anniversary.php</a>
+			<b>Located at</b> <a href="source-class-common.models.user.contact.Anniversary.html#15-63" title="Go to source code">models/user/contact/Anniversary.php</a>
 		<br>
 	</div>
 
@@ -313,7 +313,7 @@ vistart\Models\models\BaseBlameableModel
 
 			<td class="name"><div>
 			<a class="anchor" href="#_tableName">#</a>
-			<code><a href="source-class-common.models.user.contact.Anniversary.html#35-38" title="Go to source code">tableName</a>( )</code>
+			<code><a href="source-class-common.models.user.contact.Anniversary.html#50-53" title="Go to source code">tableName</a>( )</code>
 
 			<div class="description short">
 				
@@ -342,7 +342,7 @@ vistart\Models\models\BaseBlameableModel
 
 			<td class="name"><div>
 			<a class="anchor" href="#_attributeLabels">#</a>
-			<code><a href="source-class-common.models.user.contact.Anniversary.html#40-47" title="Go to source code">attributeLabels</a>( )</code>
+			<code><a href="source-class-common.models.user.contact.Anniversary.html#55-62" title="Go to source code">attributeLabels</a>( )</code>
 
 			<div class="description short">
 				
@@ -362,35 +362,6 @@ vistart\Models\models\BaseBlameableModel
 			</div>
 			</div></td>
 		</tr>
-		<tr data-order="scenarios" id="_scenarios">
-
-			<td class="attributes"><code>
-				 public 
-				
-				
-				</code>
-			</td>
-
-			<td class="name"><div>
-			<a class="anchor" href="#_scenarios">#</a>
-			<code><a href="source-class-common.models.user.contact.Anniversary.html#49-55" title="Go to source code">scenarios</a>( )</code>
-
-			<div class="description short">
-				
-			</div>
-
-			<div class="description detailed hidden">
-				
-
-
-
-
-
-
-
-			</div>
-			</div></td>
-		</tr>
 			</table>
 		</div>
 
@@ -399,7 +370,8 @@ vistart\Models\models\BaseBlameableModel
 			<p class="elementList">
 				<code><a href="class-common.models.user.contact.BaseContactItem.html#_createModel">createModel()</a></code>, 
 				<code><a href="class-common.models.user.contact.BaseContactItem.html#_getModels">getModels()</a></code>, 
-				<code><a href="class-common.models.user.contact.BaseContactItem.html#_rules">rules()</a></code>
+				<code><a href="class-common.models.user.contact.BaseContactItem.html#_rules">rules()</a></code>, 
+				<code><a href="class-common.models.user.contact.BaseContactItem.html#_scenarios">scenarios()</a></code>
 			</p>
 		</div>
 		<div class="panel panel-default">
@@ -417,8 +389,7 @@ vistart\Models\models\BaseBlameableModel
 		<div class="panel panel-default">
 	        <div class="panel-heading"><h3>Methods used from <a href="class-common.models.user.UserItemTrait.html#methods">common\models\user\UserItemTrait</a></h3></div>
 			<p class="elementList">
-				<code><a href="class-common.models.user.UserItemTrait.html#_attachUserClass">attachUserClass()</a></code>, 
-				<code><a href="class-common.models.user.UserItemTrait.html#_getPermissionTypes">getPermissionTypes()</a></code>
+				<code><a href="class-common.models.user.UserItemTrait.html#_attachUserClass">attachUserClass()</a></code>
 			</p>
 		</div>
 
@@ -429,6 +400,152 @@ vistart\Models\models\BaseBlameableModel
 
 		<div class="panel panel-default">
             <div class="panel-heading"><h2>Constants summary</h2></div>
+			<table class="summary table table-bordered table-striped constants" id="constants">
+			<tr data-order="USER_ANNIVERSARY_ID_LENGTH" id="USER_ANNIVERSARY_ID_LENGTH">
+
+				<td class="attributes"><code>integer</code></td>
+				<td class="name">
+					<code>
+						<a href="source-class-common.models.user.contact.Anniversary.html#35" title="Go to source code"><b>USER_ANNIVERSARY_ID_LENGTH</b></a>
+					</code>
+
+					<div class="description short">
+						
+					</div>
+
+					<div class="description detailed hidden">
+						
+
+					</div>
+				</td>
+				<td class="value">
+					<div>
+						<a href="#USER_ANNIVERSARY_ID_LENGTH" class="anchor">#</a>
+						<code><span class="php-num">4</span></code>
+					</div>
+				</td>
+			</tr>
+			<tr data-order="ANNIVERSARY_NONE" id="ANNIVERSARY_NONE">
+
+				<td class="attributes"><code>integer</code></td>
+				<td class="name">
+					<code>
+						<a href="source-class-common.models.user.contact.Anniversary.html#36" title="Go to source code"><b>ANNIVERSARY_NONE</b></a>
+					</code>
+
+					<div class="description short">
+						
+					</div>
+
+					<div class="description detailed hidden">
+						
+
+					</div>
+				</td>
+				<td class="value">
+					<div>
+						<a href="#ANNIVERSARY_NONE" class="anchor">#</a>
+						<code><span class="php-num">0x00</span></code>
+					</div>
+				</td>
+			</tr>
+			<tr data-order="ANNIVERSARY_BIRTHDAY" id="ANNIVERSARY_BIRTHDAY">
+
+				<td class="attributes"><code>integer</code></td>
+				<td class="name">
+					<code>
+						<a href="source-class-common.models.user.contact.Anniversary.html#37" title="Go to source code"><b>ANNIVERSARY_BIRTHDAY</b></a>
+					</code>
+
+					<div class="description short">
+						
+					</div>
+
+					<div class="description detailed hidden">
+						
+
+					</div>
+				</td>
+				<td class="value">
+					<div>
+						<a href="#ANNIVERSARY_BIRTHDAY" class="anchor">#</a>
+						<code><span class="php-num">0x01</span></code>
+					</div>
+				</td>
+			</tr>
+			<tr data-order="ANNIVERSARY_WEDDING" id="ANNIVERSARY_WEDDING">
+
+				<td class="attributes"><code>integer</code></td>
+				<td class="name">
+					<code>
+						<a href="source-class-common.models.user.contact.Anniversary.html#38" title="Go to source code"><b>ANNIVERSARY_WEDDING</b></a>
+					</code>
+
+					<div class="description short">
+						
+					</div>
+
+					<div class="description detailed hidden">
+						
+
+					</div>
+				</td>
+				<td class="value">
+					<div>
+						<a href="#ANNIVERSARY_WEDDING" class="anchor">#</a>
+						<code><span class="php-num">0x02</span></code>
+					</div>
+				</td>
+			</tr>
+			<tr data-order="ANNIVERSARY_GRADUATED" id="ANNIVERSARY_GRADUATED">
+
+				<td class="attributes"><code>integer</code></td>
+				<td class="name">
+					<code>
+						<a href="source-class-common.models.user.contact.Anniversary.html#39" title="Go to source code"><b>ANNIVERSARY_GRADUATED</b></a>
+					</code>
+
+					<div class="description short">
+						
+					</div>
+
+					<div class="description detailed hidden">
+						
+
+					</div>
+				</td>
+				<td class="value">
+					<div>
+						<a href="#ANNIVERSARY_GRADUATED" class="anchor">#</a>
+						<code><span class="php-num">0x03</span></code>
+					</div>
+				</td>
+			</tr>
+			<tr data-order="ANNIVERSARY_OTHER" id="ANNIVERSARY_OTHER">
+
+				<td class="attributes"><code>integer</code></td>
+				<td class="name">
+					<code>
+						<a href="source-class-common.models.user.contact.Anniversary.html#40" title="Go to source code"><b>ANNIVERSARY_OTHER</b></a>
+					</code>
+
+					<div class="description short">
+						
+					</div>
+
+					<div class="description detailed hidden">
+						
+
+					</div>
+				</td>
+				<td class="value">
+					<div>
+						<a href="#ANNIVERSARY_OTHER" class="anchor">#</a>
+						<code><span class="php-num">0xff</span></code>
+					</div>
+				</td>
+			</tr>
+			</table>
 		</div>
 
 		<div class="panel panel-default">
@@ -474,6 +591,37 @@ vistart\Models\models\BaseBlameableModel
 				</div>
 			</td>
 		</tr>
+		<tr data-order="contentTypes" id="$contentTypes">
+			<td class="attributes"><code>
+				public  
+				array
+			</code></td>
+
+			<td class="name">
+					<a href="source-class-common.models.user.contact.Anniversary.html#42-48" title="Go to source code"><var>$contentTypes</var></a>
+
+				<div class="description short">
+					
+				</div>
+
+				<div class="description detailed hidden">
+					
+
+				</div>
+			</td>
+			<td class="value">
+				<div>
+					<a href="#$contentTypes" class="anchor">#</a>
+					<code>[
+    self::ANNIVERSARY_NONE =&gt; <span class="php-quote">'None'</span>,
+    self::ANNIVERSARY_BIRTHDAY =&gt; <span class="php-quote">'Birthday'</span>,
+    self::ANNIVERSARY_WEDDING =&gt; <span class="php-quote">'Wedding'</span>,
+    self::ANNIVERSARY_GRADUATED =&gt; <span class="php-quote">'Graduated'</span>,
+    self::ANNIVERSARY_OTHER =&gt; <span class="php-quote">'Other'</span>,
+]</code>
+				</div>
+			</td>
+		</tr>
 			</table>
 		</div>
 
@@ -482,7 +630,6 @@ vistart\Models\models\BaseBlameableModel
 			<p class="elementList">
 				<code><a href="class-common.models.user.BaseUserItem.html#$confirmationAttribute"><var>$confirmationAttribute</var></a></code>, 
 				<code><a href="class-common.models.user.BaseUserItem.html#$contentTypeAttribute"><var>$contentTypeAttribute</var></a></code>, 
-				<code><a href="class-common.models.user.BaseUserItem.html#$contentTypes"><var>$contentTypes</var></a></code>, 
 				<code><a href="class-common.models.user.BaseUserItem.html#$descriptionAttribute"><var>$descriptionAttribute</var></a></code>, 
 				<code><a href="class-common.models.user.BaseUserItem.html#$enableIP"><var>$enableIP</var></a></code>, 
 				<code><a href="class-common.models.user.BaseUserItem.html#$permissions"><var>$permissions</var></a></code>, 
@@ -490,16 +637,6 @@ vistart\Models\models\BaseBlameableModel
 			</p>
 		</div>
 
-		<div class="panel panel-default">
-            <div class="panel-heading"><h3>Properties used from <a href="class-common.models.user.UserItemTrait.html#properties">common\models\user\UserItemTrait</a></h3></div>
-			<p class="elementList">
-				<code><a href="class-common.models.user.UserItemTrait.html#$PERMISSION_FOLLOWED"><var>$PERMISSION_FOLLOWED</var></a></code>, 
-				<code><a href="class-common.models.user.UserItemTrait.html#$PERMISSION_FRIENDS"><var>$PERMISSION_FRIENDS</var></a></code>, 
-				<code><a href="class-common.models.user.UserItemTrait.html#$PERMISSION_LOGGED_IN"><var>$PERMISSION_LOGGED_IN</var></a></code>, 
-				<code><a href="class-common.models.user.UserItemTrait.html#$PERMISSION_PRIVATE"><var>$PERMISSION_PRIVATE</var></a></code>, 
-				<code><a href="class-common.models.user.UserItemTrait.html#$PERMISSION_PUBLIC"><var>$PERMISSION_PUBLIC</var></a></code>
-			</p>
-		</div>
 
 
 		<div class="panel panel-default">

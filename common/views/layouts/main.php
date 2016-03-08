@@ -31,7 +31,7 @@ function loadExternalConfigs($files = [])
 {
     foreach ($files as $file) {
         if (is_string($file)) {
-            loadAndDefaults($file);
+            getParamsFromFile($file);
         }
     }
 }

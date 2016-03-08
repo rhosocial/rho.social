@@ -11,8 +11,8 @@
  */
 return [
     'class' => 'yii\redis\Session',
-    'keyPrefix' => loadAndDefaults(__DIR__ . '/keyPrefix.php', 'rho_local_sess_'),
+    'keyPrefix' => getParamsFromFile(__DIR__ . '/keyPrefix.php', 'rho_local_sess_'),
     'redis' => 'redis',
-    'name' => loadAndDefaults(__DIR__ . '/name.php', 'RHO_LOCAL_SESSID_'),
+    'name' => getParamsFromFile(__DIR__ . '/name.php', 'RHO_LOCAL_SESSID_'),
     'cookieParams' => ['domain' => '.' . BASE_DOMAIN, 'lifetime' => 0]
 ];

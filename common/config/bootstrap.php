@@ -18,17 +18,6 @@ function getParamsFromFile($file, $default = [])
 {
     return file_exists($file) ? require($file) : $default;
 }
-
-function loadAndDefaults($filename, $default = '')
-{
-    $value = '';
-    if (file_exists($filename)) {
-        $value = require($filename);
-    } else {
-        $value = $default;
-    }
-    return $value;
-}
-//$baseDomain = loadAndDefaults(__DIR__ . '/base/baseDomain.php');
-$baseDomain = loadAndDefaults(__DIR__ . '/base/baseDomain-local.php');
+//$baseDomain = getParamsFromFile(__DIR__ . '/base/baseDomain.php', 'example.com');
+$baseDomain = getParamsFromFile(__DIR__ . '/base/baseDomain-local.php', 'example.com');
 defined('BASE_DOMAIN') or define('BASE_DOMAIN', $baseDomain);

@@ -253,7 +253,6 @@
 			<h3>Functions</h3>
 			<ul>
 				<li><a href="function-getParamsFromFile.html">getParamsFromFile</a></li>
-				<li><a href="function-loadAndDefaults.html">loadAndDefaults</a></li>
 				<li><a href="function-loadExternalConfigs.html">loadExternalConfigs</a></li>
 			</ul>
 		</div>
@@ -287,28 +286,12 @@
 </span><span id="21" class="l"><a href="#21">21 </a><span class="php-keyword1">trait</span> UserItemTrait
 </span><span id="22" class="l"><a href="#22">22 </a>{
 </span><span id="23" class="l"><a href="#23">23 </a>
-</span><span id="24" class="l"><a href="#24">24 </a>    <span class="php-keyword1">public</span> <span class="php-keyword1">static</span> <span class="php-var">$PERMISSION_PUBLIC</span> = <span class="php-quote">'public'</span>;
-</span><span id="25" class="l"><a href="#25">25 </a>    <span class="php-keyword1">public</span> <span class="php-keyword1">static</span> <span class="php-var">$PERMISSION_LOGGED_IN</span> = <span class="php-quote">'loggedin'</span>;
-</span><span id="26" class="l"><a href="#26">26 </a>    <span class="php-keyword1">public</span> <span class="php-keyword1">static</span> <span class="php-var">$PERMISSION_FOLLOWED</span> = <span class="php-quote">'followed'</span>;
-</span><span id="27" class="l"><a href="#27">27 </a>    <span class="php-keyword1">public</span> <span class="php-keyword1">static</span> <span class="php-var">$PERMISSION_FRIENDS</span> = <span class="php-quote">'friends'</span>;
-</span><span id="28" class="l"><a href="#28">28 </a>    <span class="php-keyword1">public</span> <span class="php-keyword1">static</span> <span class="php-var">$PERMISSION_PRIVATE</span> = <span class="php-quote">'private'</span>;
-</span><span id="29" class="l"><a href="#29">29 </a>
-</span><span id="30" class="l"><a href="#30">30 </a>    <span class="php-keyword1">public</span> <span class="php-keyword1">function</span> attachUserClass()
-</span><span id="31" class="l"><a href="#31">31 </a>    {
-</span><span id="32" class="l"><a href="#32">32 </a>        <span class="php-var">$this</span>-&gt;userClass = User::className();
-</span><span id="33" class="l"><a href="#33">33 </a>    }
-</span><span id="34" class="l"><a href="#34">34 </a>
-</span><span id="35" class="l"><a href="#35">35 </a>    <span class="php-keyword1">public</span> <span class="php-keyword1">function</span> getPermissionTypes()
-</span><span id="36" class="l"><a href="#36">36 </a>    {
-</span><span id="37" class="l"><a href="#37">37 </a>        <span class="php-keyword1">return</span> [
-</span><span id="38" class="l"><a href="#38">38 </a>            <span class="php-num">0</span> =&gt; self::<span class="php-var">$PERMISSION_PRIVATE</span>,
-</span><span id="39" class="l"><a href="#39">39 </a>            <span class="php-num">1</span> =&gt; self::<span class="php-var">$PERMISSION_PUBLIC</span>,
-</span><span id="40" class="l"><a href="#40">40 </a>            <span class="php-num">2</span> =&gt; self::<span class="php-var">$PERMISSION_FRIENDS</span>,
-</span><span id="41" class="l"><a href="#41">41 </a>            <span class="php-num">3</span> =&gt; self::<span class="php-var">$PERMISSION_LOGGED_IN</span>,
-</span><span id="42" class="l"><a href="#42">42 </a>        ];
-</span><span id="43" class="l"><a href="#43">43 </a>    }
-</span><span id="44" class="l"><a href="#44">44 </a>}
-</span><span id="45" class="l"><a href="#45">45 </a></span></code></pre>
+</span><span id="24" class="l"><a href="#24">24 </a>    <span class="php-keyword1">public</span> <span class="php-keyword1">function</span> attachUserClass()
+</span><span id="25" class="l"><a href="#25">25 </a>    {
+</span><span id="26" class="l"><a href="#26">26 </a>        <span class="php-var">$this</span>-&gt;userClass = User::className();
+</span><span id="27" class="l"><a href="#27">27 </a>    }
+</span><span id="28" class="l"><a href="#28">28 </a>}
+</span><span id="29" class="l"><a href="#29">29 </a></span></code></pre>
 	</div>
 
 	<div id="footer">
@@ -316,6 +299,6 @@
 	</div>
 </div>
 <script src="resources/combined.js?3a1f3020b13bbb3ea38798f346fc419b2c26f429"></script>
-<script src="elementlist.js?c6077976a8131aba2a0b3e4d1faf89d71cbd1f0c"></script>
+<script src="elementlist.js?a5e2d69f48e7dfc04a31acd93cff10c6abe62dde"></script>
 </body>
 </html>

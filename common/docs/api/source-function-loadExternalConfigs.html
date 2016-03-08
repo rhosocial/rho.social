@@ -253,7 +253,6 @@
 			<h3>Functions</h3>
 			<ul>
 				<li><a href="function-getParamsFromFile.html">getParamsFromFile</a></li>
-				<li><a href="function-loadAndDefaults.html">loadAndDefaults</a></li>
 				<li><a href="function-loadExternalConfigs.html">loadExternalConfigs</a></li>
 			</ul>
 		</div>
@@ -297,7 +296,7 @@
 </span><span id="31" class="l"><a href="#31">31 </a>{
 </span><span id="32" class="l"><a href="#32">32 </a>    <span class="php-keyword1">foreach</span> (<span class="php-var">$files</span> <span class="php-keyword1">as</span> <span class="php-var">$file</span>) {
 </span><span id="33" class="l"><a href="#33">33 </a>        <span class="php-keyword1">if</span> (<span class="php-keyword2">is_string</span>(<span class="php-var">$file</span>)) {
-</span><span id="34" class="l"><a href="#34">34 </a>            loadAndDefaults(<span class="php-var">$file</span>);
+</span><span id="34" class="l"><a href="#34">34 </a>            getParamsFromFile(<span class="php-var">$file</span>);
 </span><span id="35" class="l"><a href="#35">35 </a>        }
 </span><span id="36" class="l"><a href="#36">36 </a>    }
 </span><span id="37" class="l"><a href="#37">37 </a>}
@@ -346,6 +345,6 @@
 	</div>
 </div>
 <script src="resources/combined.js?3a1f3020b13bbb3ea38798f346fc419b2c26f429"></script>
-<script src="elementlist.js?c6077976a8131aba2a0b3e4d1faf89d71cbd1f0c"></script>
+<script src="elementlist.js?a5e2d69f48e7dfc04a31acd93cff10c6abe62dde"></script>
 </body>
 </html>

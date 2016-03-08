@@ -9,11 +9,11 @@
  * @copyright Copyright (c) 2016 vistart
  * @license http://vistart.name/license/
  */
-$username = loadAndDefaults(__DIR__ . '/username.php');
-$password = loadAndDefaults(__DIR__ . '/password.php');
-$host = loadAndDefaults(__DIR__ . '/host.php', 'localhost');
-$database = loadAndDefaults(__DIR__ . '/database.php');
-$port = loadAndDefaults(__DIR__ . '/port.php', 27017);
+$username = getParamsFromFile(__DIR__ . '/username.php', 'rho_user');
+$password = getParamsFromFile(__DIR__ . '/password.php', '123456');
+$host = getParamsFromFile(__DIR__ . '/host.php', 'localhost');
+$database = getParamsFromFile(__DIR__ . '/database.php', 'rho');
+$port = getParamsFromFile(__DIR__ . '/port.php', 27017);
 return [
     'class' => '\yii\mongodb\Connection',
     'dsn' => "mongodb://$username:$password@$host:$port/$database",
