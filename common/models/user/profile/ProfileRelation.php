@@ -23,8 +23,7 @@ trait ProfileRelation
 
     public function createProfile($config = [])
     {
-        $guidAttribute = $this->guidAttribute;
-        $profile = Profile::findOne($this->$guidAttribute);
+        $profile = Profile::findOne($this->guid);
         if (!$profile) {
             $profile = $this->create(Profile::className(), $config);
         }

@@ -5,21 +5,19 @@
  * | | / // // ___//_  _//   ||  __||_   _|
  * | |/ // /(__  )  / / / /| || |     | |
  * |___//_//____/  /_/ /_/ |_||_|     |_|
- * @link http://vistart.name/
+ * @link https://vistart.name/
  * @copyright Copyright (c) 2016 vistart
- * @license http://vistart.name/license/
+ * @license https://vistart.name/license/
  */
 
-namespace rho_express\modules\v1;
+namespace rho_express\models\provider;
 
 /**
- * Description of Module
+ * Logistic Service Provider.
  *
  * @author vistart <i@vistart.name>
  */
-class Module extends \vistart\components\rest\Module
+class Provider extends \common\models\organization\User
 {
-
-    public $controllerNamespace = 'rho_express\modules\v1\controllers';
-
+    //put your code here
 }

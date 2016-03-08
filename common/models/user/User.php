@@ -101,4 +101,18 @@ class User extends BaseUserModel
     {
         return parent::find();
     }
+
+    /**
+     * 
+     * @param string[] $users
+     */
+    public static function unsetInvalidUsers($users)
+    {
+        foreach ($users as $key => $user) {
+            if (static::find()->guid($user)->count() == 0) {
+                unset($users[$key]);
+            }
+        }
+        return $users;
+    }
 }

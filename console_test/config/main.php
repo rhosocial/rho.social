@@ -26,6 +26,9 @@ return [
         'user' => [
             'class' => 'console_test\modules\user\Module',
         ],
+        'organization' => [
+            'class' => 'console_test\modules\organization\Module',
+        ],
     ],
     'components' => [
         'redis' => getParamsFromFile(__DIR__ . '/../../common/config/redis/redis.php'),
