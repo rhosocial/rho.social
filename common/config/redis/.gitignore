@@ -1,4 +1,4 @@
 *
 !.gitignore
 !redis.php
-!redis.session.php
+!session.php

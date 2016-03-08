@@ -18,6 +18,6 @@ return [
         'request' => require(__DIR__ . '/request/request.php'),
         'multiDomainsManager' => require(__DIR__ . '/mdManager/multiDomainsManager.php'),
         'redis' => require(__DIR__ . '/redis/redis.php'),
-        'session' => require(__DIR__ . '/redis/redis.session.php'),
+        'session' => require(__DIR__ . '/redis/session.php'),
     ],
 ];
