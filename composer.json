@@ -56,7 +56,46 @@
     "config": {
         "process-timeout": 1800
     },
+    "scripts": {
+        "post-create-project-cmd": [
+            "yii\\composer\\Installer::postCreateProject"
+        ]
+    },
     "extra": {
+        "yii\\composer\\Installer::postCreateProject": {
+            "setPermission": [
+                {
+                    "common/runtime": "0777",
+                    "contact.rho.social/runtime": "0777",
+                    "express.rho.social/runtime": "0777",
+                    "message.rho.social/runtime": "0777",
+                    "my.rho.social/runtime": "0777",
+                    "reg.rho.social/runtime": "0777",
+                    "rho.social/runtime": "0777",
+                    "sso.rho.social/runtime": "0777",
+                    "common/web/assets": "0777",
+                    "contact.rho.social/web/assets": "0777",
+                    "express.rho.social/web/assets": "0777",
+                    "message.rho.social/web/assets": "0777",
+                    "my.rho.social/web/assets": "0777",
+                    "reg.rho.social/web/assets": "0777",
+                    "rho.social/web/assets": "0777",
+                    "sso.rho.social/web/assets": "0777",
+                    "rhosocial": "0755",
+                    "rhosocial_test": "0755"
+                }
+            ],
+            "generateCookieValidationKey": [
+                "common/config/request/request.php",
+                "contact.rho.social/config/request.php",
+                "express.rho.social/config/request.php",
+                "message.rho.social/config/request.php",
+                "my.rho.social/config/request.php",
+                "reg.rho.social/config/request.php",
+                "rho.social/config/request.php",
+                "sso.rho.social/config/request.php"
+            ]
+        },
         "asset-installer-paths": {
             "npm-asset-library": "vendor/npm",
             "bower-asset-library": "vendor/bower"

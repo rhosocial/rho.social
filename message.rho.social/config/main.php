@@ -37,7 +37,8 @@ return [
                     'basePath' => '@rho_message/messages',
                 ],
             ]
-        ]
+        ],
+        'request' => getParamsFromFile(__DIR__ . '/request.php'),
     ],
     'params' => $params,
 ];

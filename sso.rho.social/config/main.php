@@ -20,10 +20,6 @@ return [
     'modules' => require(__DIR__ . '/modules.php'),
     //'language' => require(__DIR__ . '/language.php'),
     'components' => [
-        'request' => [
-            // !!! insert a secret key in the following (if it is empty) - this is required by cookie validation
-            'cookieValidationKey' => 'ZQ0vZ8j9JOjyEurULC7AW0Peu8ECikeB',
-        ],
         'errorHandler' => [
             'errorAction' => 'sso/error',
         ],
@@ -38,6 +34,7 @@ return [
                 ],
             ],
         ],
+        'request' => getParamsFromFile(__DIR__ . '/request.php'),
     ],
     'params' => $params,
 ];

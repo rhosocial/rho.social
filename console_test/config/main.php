@@ -29,6 +29,9 @@ return [
         'organization' => [
             'class' => 'console_test\modules\organization\Module',
         ],
+        'init' => [
+            'class' => 'console_test\modules\init\Module',
+        ],
     ],
     'components' => [
         'redis' => getParamsFromFile(__DIR__ . '/../../common/config/redis/redis.php'),

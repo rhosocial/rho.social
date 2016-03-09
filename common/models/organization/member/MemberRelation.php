@@ -18,7 +18,7 @@ use vistart\Models\queries\BaseUserQuery;
 use yii\db\IntegrityException;
 
 /**
- * Description of MemberRelation
+ * This trait is only designed for Organization.
  *
  * @property User[] $members
  * @property-read Member[] $memberItems
@@ -43,7 +43,7 @@ trait MemberRelation
     }
 
     /**
-     * 
+     * Add member.
      * @param string|User $member
      */
     public function addMember($member, $content = '', $type = Member::TYPE_MEMBER)
@@ -66,7 +66,7 @@ trait MemberRelation
     }
 
     /**
-     * 
+     * Add members in batch.
      * @param User[] $members
      * @return boolean
      * @throws IntegrityException
@@ -91,7 +91,7 @@ trait MemberRelation
     }
 
     /**
-     * 
+     * Remove a member.
      * @param User $member
      * @return boolean
      */
@@ -110,7 +110,7 @@ trait MemberRelation
     }
 
     /**
-     * 
+     * Remove members in batch.
      * @param User[] $members
      * @return boolean
      * @throws IntegrityException
@@ -134,13 +134,17 @@ trait MemberRelation
         return true;
     }
 
+    /**
+     * Remove all members.
+     * @return boolean
+     */
     public function removeAllMembers()
     {
         return $this->removeMembers($this->members);
     }
 
     /**
-     * 
+     * Get member records.
      * @return MemberQuery
      */
     public function getMemberItems()
@@ -151,13 +155,21 @@ trait MemberRelation
     }
 
     /**
-     * 
+     * Get all members.
      * @return BaseUserQuery
      */
-    public function getMembers()
+    public function getMembers($type = 'all')
     {
         $model = User::buildNoInitModel();
-        return $this->hasMany(User::className(), [$model->guidAttribute => 'member_guid'])->via('memberItems');
+        $query = $this->hasMany(User::className(), [$model->guidAttribute => 'member_guid'])->via('memberItems');
+        $type = (array) $type;
+        foreach ($type as $key => $t) {
+            if (array_key_exists($t, static::$types)) {
+                unset($type[$key]);
+            }
+            $query = $query->andWhere(['type' => $type]);
+        }
+        return $query;
         /* SELECT * FROM `rho_user` WHERE <Organization::$member_guid> IN (...) */
     }
 
