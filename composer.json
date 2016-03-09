@@ -39,7 +39,7 @@
         "yiisoft/yii2-jui": "^2.0",
         "bower-asset/ckeditor": "*",
         "vistart/yii2-widgets": "*",
-        "vistart/yii2-helpers": "dev-master",
+        "vistart/helpers": "dev-master",
         "vistart/yii2-models": "dev-master",
         "phpunit/phpunit": "*",
         "bower-asset/admin-lte": "*",
@@ -85,30 +85,14 @@
                 }
             ],
             "generateCookieValidationKey": [
-                "common/config/request/request.php"
-            ],
-            "generateCookieValidationKey": [
-                "common/config/request/request-local.php"
-            ],
-            "generateCookieValidationKey": [
-                "contact.rho.social/config/request.php"
-            ],
-            "generateCookieValidationKey": [
-                "express.rho.social/config/request.php"
-            ],
-            "generateCookieValidationKey": [
-                "message.rho.social/config/request.php"
-            ],
-            "generateCookieValidationKey": [
-                "my.rho.social/config/request.php"
-            ],
-            "generateCookieValidationKey": [
-                "reg.rho.social/config/request.php"
-            ],
-            "generateCookieValidationKey": [
-                "rho.social/config/request.php"
-            ],
-            "generateCookieValidationKey": [
+                "common/config/request/request.php",
+                "common/config/request/request-local.php",
+                "contact.rho.social/config/request.php",
+                "express.rho.social/config/request.php",
+                "message.rho.social/config/request.php",
+                "my.rho.social/config/request.php",
+                "reg.rho.social/config/request.php",
+                "rho.social/config/request.php",
                 "sso.rho.social/config/request.php"
             ]
         },
