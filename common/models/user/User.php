@@ -46,15 +46,49 @@ class User extends BaseUserModel
 
     const STATUS_INACTIVE = 0x00;
     const STATUS_ACTIVE = 0x01;
-    const STATUS_TEST_INACTIVE = 0x1e;
-    const STATUS_TEST_ACTIVE = 0x1f;
 
     public static $statuses = [
         self::STATUS_INACTIVE => "Inactive",
         self::STATUS_ACTIVE => "Active",
-        self::STATUS_TEST_INACTIVE => "Test, Inactive",
-        self::STATUS_TEST_ACTIVE => "Test, Active",
     ];
+
+    public function getStatusRules()
+    {
+        if (is_string($this->statusAttribute)) {
+            return [
+                [$this->statusAttribute, 'required'],
+                [$this->statusAttribute, 'in', 'range' => array_keys(static::$statuses)],
+                [$this->statusAttribute, 'default', 'value' => self::STATUS_ACTIVE],
+            ];
+        }
+        return [];
+    }
+
+    const TYPE_USER = 0x0;
+    const TYPE_USER_TEST = 0x1;
+    const TYPE_ORG = 0x10;
+    const TYPE_ORG_TEST = 0x11;
+
+    public static $types = [
+        self::TYPE_USER => "User",
+        self::TYPE_USER_TEST => "User(Test)",
+        self::TYPE_ORG => "Organization",
+        self::TYPE_ORG_TEST => "Organization(Test)",
+    ];
+
+    public function getTypeRules()
+    {
+        return [
+            ['type', 'required'],
+            ['type', 'in', 'range' => array_keys(static::$types)],
+            ['type', 'default', 'value' => self::TYPE_USER],
+        ];
+    }
+
+    public function rules()
+    {
+        return array_merge(parent::rules(), $this->getTypeRules());
+    }
 
     public static function findIdentityByEmail($email)
     {
@@ -89,6 +123,7 @@ class User extends BaseUserModel
             'access_token' => Yii::t('app', 'Access Token'),
             'password_reset_token' => Yii::t('app', 'Password Reset Token'),
             'status' => Yii::t('app', 'User Status'),
+            'type' => Yii::t('app', 'User Type'),
             'source' => Yii::t('app', 'User Source'),
         ];
     }
@@ -108,6 +143,7 @@ class User extends BaseUserModel
      */
     public static function unsetInvalidUsers($users)
     {
+        $users = (array) $users;
         foreach ($users as $key => $user) {
             if (static::find()->guid($user)->count() == 0) {
                 unset($users[$key]);

@@ -21,8 +21,7 @@ use common\models\user\User;
  */
 class Organization extends User
 {
-    use OwnerTrait,
-        ManagerTrait;
+    use OrganizationRelationTrait;
 
     public $idAttributePrefix = "800";
     public $idAttributeLength = 10;
@@ -30,5 +29,14 @@ class Organization extends User
     public static function tableName()
     {
         return '{{%organization}}';
+    }
+
+    public function getTypeRules()
+    {
+        return [
+            ['type', 'required'],
+            ['type', 'in', 'range' => array_keys(static::$types)],
+            ['type', 'default', 'value' => self::TYPE_ORG],
+        ];
     }
 }

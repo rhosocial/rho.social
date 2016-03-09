@@ -30,36 +30,7 @@ class TestController extends \yii\console\Controller
 
     public function actionOrganization()
     {
-        $org = new Organization();
-        $users = User::find()->limit(10)->active(User::STATUS_TEST_ACTIVE)->all();
-        foreach ($users as $user) {
-            echo $user->guid . "\n";
-        }
-        echo "\n";
-        
-        $org->owners = $users;
-        foreach ($org->owners as $owner) {
-            echo $owner->guid . "\n";
-        }
-        echo "\n";
-        
-        $org->removeOwner($users[9]);
-        foreach ($org->owners as $owner) {
-            echo $owner->guid . "\n";
-        }
-        echo "\n";
-        
-        $org->addOwner($users[8]);
-        foreach ($org->owners as $owner) {
-            echo $owner->guid . "\n";
-        }
-        echo "\n";
-        
-        $org->addOwner($users[9]);
-        foreach ($org->owners as $owner) {
-            echo $owner->guid . "\n";
-        }
-        echo "\n";
-        
+        $org = new Organization(['type' => Organization::TYPE_ORG_TEST]);
+        $users = User::find()->limit(10)->active(User::STATUS_ACTIVE)->andWhere(['type' => User::TYPE_USER_TEST])->all();
     }
 }
