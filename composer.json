@@ -88,6 +88,9 @@
                 "common/config/request/request.php"
             ],
             "generateCookieValidationKey": [
+                "common/config/request/request-local.php"
+            ],
+            "generateCookieValidationKey": [
                 "contact.rho.social/config/request.php"
             ],
             "generateCookieValidationKey": [
