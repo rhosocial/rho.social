@@ -73,7 +73,6 @@
                     "reg.rho.social/runtime": "0777",
                     "rho.social/runtime": "0777",
                     "sso.rho.social/runtime": "0777",
-                    "common/web/assets": "0777",
                     "contact.rho.social/web/assets": "0777",
                     "express.rho.social/web/assets": "0777",
                     "message.rho.social/web/assets": "0777",
@@ -86,13 +85,27 @@
                 }
             ],
             "generateCookieValidationKey": [
-                "common/config/request/request.php",
-                "contact.rho.social/config/request.php",
-                "express.rho.social/config/request.php",
-                "message.rho.social/config/request.php",
-                "my.rho.social/config/request.php",
-                "reg.rho.social/config/request.php",
-                "rho.social/config/request.php",
+                "common/config/request/request.php"
+            ],
+            "generateCookieValidationKey": [
+                "contact.rho.social/config/request.php"
+            ],
+            "generateCookieValidationKey": [
+                "express.rho.social/config/request.php"
+            ],
+            "generateCookieValidationKey": [
+                "message.rho.social/config/request.php"
+            ],
+            "generateCookieValidationKey": [
+                "my.rho.social/config/request.php"
+            ],
+            "generateCookieValidationKey": [
+                "reg.rho.social/config/request.php"
+            ],
+            "generateCookieValidationKey": [
+                "rho.social/config/request.php"
+            ],
+            "generateCookieValidationKey": [
                 "sso.rho.social/config/request.php"
             ]
         },
