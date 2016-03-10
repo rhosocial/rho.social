@@ -17,7 +17,7 @@ return [
     'dsn' => "mysql:host=$host;dbname=$dbname",
     'username' => getParamsFromFile(__DIR__ . '/mysql/username.php', 'root'),
     'password' => getParamsFromFile(__DIR__ . '/mysql/password.php', ''),
-    'tablePrefix' => getParamsFromFile(__DIR__ . '/mysql/tablePrefix.php', ''),
+    'tablePrefix' => getParamsFromFile(__DIR__ . '/mysql/tablePrefix.php', 'rho_'),
     'charset' => getParamsFromFile(__DIR__ . '/mysql/charset.php', 'utf8mb4'),
     'enableSchemaCache' => true,
 ];

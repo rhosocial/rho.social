@@ -9,7 +9,7 @@ return [
         'db' => require (__DIR__ . '/db/db.php'),
         'formatter' => require (__DIR__ . '/formatter/formatter.php'),
         'log' => require(__DIR__ . '/log/log.php'),
-        'assetManager' => require(__DIR__ . '/assetManager/assetManager.php'),
+        //'assetManager' => require(__DIR__ . '/assetManager/assetManager.php'),
         'mailer' => require(__DIR__ . '/mailer/mailer.php'),
         'regionDb' => require(__DIR__ . '/region_db/region_db.php'),
         'mongodb' => require(__DIR__ . '/mongodb/mongodb.php'),

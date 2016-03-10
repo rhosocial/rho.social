@@ -20,9 +20,9 @@ use yii\web\AssetBundle;
  */
 class IcheckAsset extends AssetBundle
 {
-    public $sourcePath = "@bower/ickeck";
+    public $sourcePath = "@bower/icheck";
     public $js = [
-        'ickeck.js',
+        'icheck.js',
     ];
     public $css = [
         //'skins/all.css',
