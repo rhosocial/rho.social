@@ -8,6 +8,7 @@
 - port: `27017`
 - database: `rho`
 
+We will not add user if `rho_user` didn't exist, or not change password if it's password was not `123456`.
 If you want to modify anyone of the above default values, please add config value file by yourself:
 
 - username: `username.php`
