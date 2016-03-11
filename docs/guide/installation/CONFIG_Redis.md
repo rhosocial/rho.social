@@ -5,7 +5,7 @@
 - hostname: `localhost`
 - password: null
 - port: `6379`
-` database: `0`
+- database: `0`
 
 We will not change password if it's password was not null.
 If you want to modify anyone of the above default values, please add config value file by yourself:

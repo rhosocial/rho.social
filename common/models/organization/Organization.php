@@ -13,6 +13,7 @@
 namespace common\models\organization;
 
 use common\models\user\User;
+use vistart\Models\traits\SelfBlameableTrait;
 
 /**
  * Organization extends from User. Yes, it has all of the features the User had,
@@ -25,7 +26,8 @@ use common\models\user\User;
  */
 class Organization extends User
 {
-    use OrganizationRelationTrait;
+    use OrganizationRelationTrait,
+        SelfBlameableTrait;
 
     public $idAttributePrefix = "800";
     public $idAttributeLength = 10;
@@ -49,6 +51,12 @@ class Organization extends User
         self::TYPE_EDU => "Education",
         self::TYPE_EDU_TEST => "Education(Test)",
     ];
+
+    public function init()
+    {
+        $this->initSelfBlameableEvents();
+        parent::init();
+    }
 
     public static function tableName()
     {

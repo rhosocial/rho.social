@@ -6,7 +6,7 @@ You need to modify the following files:
 
 `common/config/request.php` Random string of 32 chars at least.
 
-We provide a command for generating random string"
+We provide a command for generating random string.
 
 ```
 rhosocial_test init/config/cookie-validation-key <app name>

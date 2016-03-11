@@ -9,6 +9,6 @@ This application needs only one MySQL database. But we don't share the database 
 - username: `root`
 - password: ``
 - tablePrefix: `rho_`
-` charset: `utf8mb4`
+- charset: `utf8mb4`
 
 We will not change anyone if each of them was not default.

@@ -67,6 +67,6 @@ Modal::begin([
     ],
     'footer' => Html::a('Yes, I am!', Url::toRoute([$delete, 'id' => $model->id]), ['type' => 'button', 'class' => 'btn btn-danger', 'data-method' => 'post']) . Html::button('No', ['class' => 'btn btn-default', 'data-dismiss' => 'modal']),
 ]);
-echo "Are you sure to delete $model->street ? " . 'This operation can not be reversed. ';
+echo "Are you sure to delete $model->street ? " . 'This is permanent change that cannot be undone.';
 Modal::end();
 ?>
