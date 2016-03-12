@@ -34,7 +34,6 @@ return [
                 ],
             ],
         ],
-        'request' => getParamsFromFile(__DIR__ . '/request.php'),
     ],
     'params' => $params,
 ];

@@ -65,7 +65,6 @@
         "yii\\composer\\Installer::postCreateProject": {
             "setPermission": [
                 {
-                    "common/runtime": "0777",
                     "contact.rho.social/runtime": "0777",
                     "express.rho.social/runtime": "0777",
                     "message.rho.social/runtime": "0777",
@@ -85,15 +84,7 @@
                 }
             ],
             "generateCookieValidationKey": [
-                "common/config/request/request.php",
-                "common/config/request/request-local.php",
-                "contact.rho.social/config/request.php",
-                "express.rho.social/config/request.php",
-                "message.rho.social/config/request.php",
-                "my.rho.social/config/request.php",
-                "reg.rho.social/config/request.php",
-                "rho.social/config/request.php",
-                "sso.rho.social/config/request.php"
+                "common/config/request/request.php"
             ]
         },
         "asset-installer-paths": {
