@@ -10,25 +10,17 @@
  * @license https://vistart.name/license/
  */
 use common\models\user\contact\Anniversary;
-use yii\bootstrap\Button;
+use rho_my\widgets\item\AnniversaryFormWidget;
+use rho_my\widgets\item\AnniversaryItemContentWidget;
 use yii\bootstrap\Modal;
 use yii\helpers\Html;
 use yii\helpers\Url;
 
-/* @var $model common\models\user\BaseUserItem */
+/* @var $model Anniversary */
 /* @var $action array */
 ?>
-<div class="item-content">
-    <div class="item-content-content">
-        <h4 id="item-<?= $model->id ?>" class="item-content-heading"><span><?= Html::encode($model->content) ?></span></h4>
-        <h5><?= $model->contentTypes[$model->type] . ' | ' . Anniversary::$permissions[$model->permission] ?></h5>
-        <p>
-            <?= Html::encode($model->description) ?>
-        </p>
-    </div>
-    <div class="item-content-div">
-        <?=
-        Button::widget([
+<?= AnniversaryItemContentWidget::widget(['model' => $model, 'buttons' => [
+        [
             'label' => '<span class="glyphicon glyphicon-edit"></span> ' . 'Edit',
             'encodeLabel' => false,
             'options' => [
@@ -36,10 +28,7 @@ use yii\helpers\Url;
                 'data-toggle' => 'modal',
                 'data-target' => '#modal-edit-' . $model->id,
             ]
-        ])
-        ?>
-        <?=
-        Button::widget([
+        ], [
             'label' => '<span class="glyphicon glyphicon-trash"></span> ' . 'Remove',
             'encodeLabel' => false,
             'options' => [
@@ -47,12 +36,10 @@ use yii\helpers\Url;
                 'data-toggle' => 'modal',
                 'data-target' => '#modal-remove-' . $model->id,
             ]
-        ])
-        ?>
-    </div>
-</div>
-
-<?= \rho_my\widgets\item\AnniversaryFormWidget::widget(['model' => $model, 'action' => [$action, 'id' => $model->id]]) ?>
+        ]
+]]);
+?>
+<?= AnniversaryFormWidget::widget(['model' => $model, 'action' => [$action, 'id' => $model->id]]) ?>
 <?php
 Modal::begin([
     'id' => 'modal-remove-' . $model->id,
