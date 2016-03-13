@@ -1,18 +1,78 @@
 # my.rho.social
 
-管理个人信息。
+Manage Personal Information.
 
-个人信息包括：
-- 个人信息：
-  - 姓名、性别、称谓、时区、语言、个性签名
-  - 头像
-  - 首选
-- 电话
-- 电子邮件
-- 纪念日
-- 即时通讯
+## Personal Information
+
+### Profile
+
+- First Name
+- Last Name
+- Gender
+- Appellation
+- Timezone
+- Language
+- Individual Sign
+- Icon
+- Preferences (of Contact)
+
+### Contact
+
+- Phone
+- Email
 - URL
-- 地址
-- 经历
-  - 教育
-  - 工作
+- Instant Message
+- Address
+- etc.
+
+### Anniversary
+
+- Birthday
+- Graduation
+- Opening
+- Marriage
+- etc.
+
+### Career
+
+(temporarily not available)
+
+- Education
+- Job
+- etc.
+
+## Features
+
+### Permission
+
+Every personal information has permission, the whole types is:
+
+- Private
+Viewed by owner itself.
+
+- Mutual
+Viewed by followers if the owner has followed them.
+
+- Follower
+Viewed by followers.
+
+- Logged-in
+Viewed by logged-in users.
+
+- Public
+Public to everyone.
+
+### Change Log
+
+We will record every change if the personal information changed.
+
+- Date & time.
+- IP Address.
+
+### Delivery (to the third-party) Log
+
+We will record every delivery of personal information if third-party required.
+
+- Third-party.
+- Date & time.
+- Purpose.
