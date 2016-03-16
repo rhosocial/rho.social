@@ -13,6 +13,7 @@
 namespace common\models\user\relation;
 
 use common\models\user\UserItemTrait;
+use vistart\Models\models\BaseUserRelationModel;
 
 /**
  * 此类用于定义用户关系。该用户关系具有以下特征：
@@ -26,7 +27,7 @@ use common\models\user\UserItemTrait;
  * @property string $remark
  * @author vistart <i@vistart.name>
  */
-class Follow extends \vistart\Models\models\BaseUserRelationModel
+class Follow extends BaseUserRelationModel
 {
     use UserItemTrait;
 

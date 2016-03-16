@@ -13,11 +13,16 @@
 namespace common\models\user\relation;
 
 use common\models\user\User;
+use vistart\Models\queries\BaseUserQuery;
+use vistart\Models\queries\BaseUserRelationQuery;
 
 /**
  * Description of FollowRelation
  *
  * @property-read Follow[] $follows
+ * @property-read User[] $followings All the users I am following.
+ * @property-read Follow[] $inverseFollows
+ * @property-read User[] $followers All the users who is following me.
  * @author vistart <i@vistart.name>
  */
 trait FollowRelation
@@ -25,7 +30,7 @@ trait FollowRelation
 
     /**
      * 
-     * @param \common\models\user\User $recipient
+     * @param User $recipient
      * @param string $remark
      * @param boolean $isFavorite
      */
@@ -34,27 +39,54 @@ trait FollowRelation
         return $this->create(Follow::className(), ['other_guid' => $recipient->guid, 'remark' => $remark, 'isFavorite' => $isFavorite]);
     }
 
+    /**
+     * Get the query of follows which I am following.
+     * @return BaseUserRelationQuery
+     */
     public function getFollows()
     {
         $model = Follow::buildNoInitModel();
         return $this->hasMany(Follow::className(), [$model->createdByAttribute => $this->guidAttribute])->inverseOf('user');
     }
 
+    /**
+     * Get the query of the users I am following.
+     * @return BaseUserQuery
+     */
     public function getFollowings()
     {
         $model = Follow::buildNoInitModel();
         return $this->hasMany(User::className(), [$this->guidAttribute => $model->otherGuidAttribute])->via('follows');
     }
 
+    /**
+     * Get the query of follows which is following me.
+     * @return BaseUserRelationQuery
+     */
     public function getInverseFollows()
     {
         $model = Follow::buildNoInitModel();
         return $this->hasMany(Follow::className(), [$model->otherGuidAttribute => $this->guidAttribute])->inverseOf('user');
     }
 
+    /**
+     * Get the query of the users who is following me.
+     * @return BaseUserQuery
+     */
     public function getFollowers()
     {
         $model = Follow::buildNoInitModel();
         return $this->hasMany(User::className(), [$this->guidAttribute => $model->createdByAttribute])->via('inverseFollows');
+    }
+
+    /**
+     * 
+     * @param User $follower
+     * @return BaseUserQuery
+     */
+    public function isFollowedBy($follower)
+    {
+        $model = Follow::buildNoInitModel();
+        return ((int) $this->getFollowers()->andWhere([$model->otherGuidAttribute => $follower->guid])->count()) > 0;
     }
 }
