@@ -43,4 +43,10 @@ trait URLRelation
         $model = URL::buildNoInitModel();
         return $this->hasMany(URL::className(), [$model->createdByAttribute => $this->guidAttribute])->inverseOf('user');
     }
+
+    /**
+     * @param $user statis
+     * @return integer[]
+     */
+    abstract public function getUserPermissions($user);
 }

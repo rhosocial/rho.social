@@ -13,6 +13,7 @@
 namespace common\models\user;
 
 use vistart\Models\models\BaseBlameableModel;
+use vistart\Models\models\BaseUserModel;
 use vistart\Models\queries\BaseBlameableQuery;
 use Yii;
 use yii\db\AfterSaveEvent;

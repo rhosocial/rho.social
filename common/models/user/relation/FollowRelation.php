@@ -86,7 +86,23 @@ trait FollowRelation
      */
     public function isFollowedBy($follower)
     {
-        $model = Follow::buildNoInitModel();
-        return ((int) $this->getFollowers()->andWhere([$model->otherGuidAttribute => $follower->guid])->count()) > 0;
+        $model = User::buildNoInitModel();
+        return $this->getFollowers()->andWhere([$model->guidAttribute => $follower->guid])->exists();
+    }
+
+    /**
+     * 
+     * @param User $following
+     * @return BaseUserQuery
+     */
+    public function isFollowing($following)
+    {
+        $model = User::buildNoInitModel();
+        return $this->getFollowings()->andWhere([$model->guidAttribute => $following->guid])->exists();
+    }
+
+    public function isMutual($follower)
+    {
+        return $this->isFollowedBy($follower) && $this->isFollowing($follower);
     }
 }

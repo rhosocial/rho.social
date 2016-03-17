@@ -12,6 +12,8 @@
 
 namespace common\models\user;
 
+use vistart\Models\models\BaseUserModel;
+
 /**
  * Description of PermissionTrait
  *
@@ -20,24 +22,28 @@ namespace common\models\user;
 trait PermissionTrait
 {
 
-    public $permissionAttribute = 'permission';
-    public static $permissions = [
-        0x0 => 'Private',
-        0x10 => 'Mutual',
-        0x11 => 'Follower',
-        0x12 => 'Logged-in',
-        0xff => 'Public',
-    ];
-
-    public function getPermissionRules()
+    /**
+     * 
+     * @param static $user
+     * @return integer[]
+     */
+    public function getUserPermissions($user)
     {
-        $rules = [];
-        if (!is_string($this->permissionAttribute)) {
-            return $rules;
+        if (!$user || !($user instanceof BaseUserModel) || !static::find()->guid($user->guid)->one()) {
+            return null;
         }
-        return [
-            [$this->permissionAttribute, 'in', 'range' => array_keys(static::$permissions)],
-            [$this->permissionAttribute, 'default',],
-        ];
+        $permissions = [];
+        $permissions[] = BaseUserItem::PERMISSION_PUBLIC;
+        $permissions[] = BaseUserItem::PERMISSION_LOGGED_IN;
+        if (!$this->isFollowing($user)) {
+            return $permissions;
+        }
+        $permissions[] = BaseUserItem::PERMISSION_FOLLOWER;
+
+        if (!$this->isFollowedBy($user)) {
+            return $permissions;
+        }
+        $permissions[] = BaseUserItem::PERMISSION_MUTUAL;
+        return $permissions;
     }
 }

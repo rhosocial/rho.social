@@ -13,6 +13,7 @@
 namespace common\models\user\contact;
 
 use common\models\user\BaseUserItemQuery;
+use vistart\Models\models\BaseUserModel;
 
 /**
  * Description of PhoneRelation
@@ -43,5 +44,21 @@ trait PhoneRelation
     {
         $model = Phone::buildNoInitModel();
         return $this->hasMany(Phone::className(), [$model->createdByAttribute => $this->guidAttribute])->inverseOf('user');
+    }
+
+    /**
+     * @param $user statis
+     * @return integer[]
+     */
+    abstract public function getUserPermissions($user);
+
+    /**
+     * 
+     * @param static $user
+     * @return
+     */
+    public function getUserPhones($user)
+    {
+        return $user->getPhones()->andWhere(['permission' => $this->getUserPermissions($user)]);
     }
 }

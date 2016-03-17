@@ -36,5 +36,6 @@ trait UserRelationTrait
         PreferenceRelation,
         IconRelation,
         MessageRelation,
-        NotificationRelation;
+        NotificationRelation,
+        PermissionTrait;
 }
