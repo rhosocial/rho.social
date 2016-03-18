@@ -41,6 +41,7 @@
         "bower-asset/pace": "^1.0.2",
         "bower-asset/yii2-pjax": "^2.0.6",
         "bower-asset/raphael": "^2.1.4",
+        "bower-asset/typeahead.js": "^0.10.5",
         "yiisoft/yii2-jui": "^2.0.5",
         "bower-asset/ckeditor": "^4.5.7",
         "vistart/yii2-widgets": "*",
