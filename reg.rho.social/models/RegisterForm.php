@@ -147,19 +147,16 @@ class RegisterForm extends Model
         }
         $user = new User([
             'password' => $this->password,
+            'type' => User::TYPE_USER,
         ]);
-        $profile = $user->create(Profile::className(), [
+        $profile = $user->createProfile([
             'nickname' => $this->nickname,
             'first_name' => $this->first_name,
             'last_name' => $this->last_name,
             'gender' => $this->gender,
         ]);
-        $email = $user->create(Email::className(), [
-            'email' => $this->email,
-        ]);
-        $phone = $user->create(Phone::className(), [
-            'phone' => $this->phone,
-        ]);
+        $email = $user->createEmail($this->email);
+        $phone = $user->createPhone($this->phone);
         $result = $user->register([$profile, $email, $phone]);
         if ($result === true) {
             return $user->id;

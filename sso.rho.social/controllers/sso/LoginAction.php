@@ -23,7 +23,7 @@ use yii\base\Action;
  */
 class LoginAction extends Action {
 
-    public function run() {
+    public function run($id = '') {
         $mdManager = Yii::$app->multiDomainsManager;
         $homeUrlManager = $mdManager->get('');
         Yii::$app->setHomeUrl($homeUrlManager->createAbsoluteUrl(['site/index']));
@@ -37,7 +37,7 @@ class LoginAction extends Action {
         }
         $this->controller->layout = 'login';
         return $this->controller->render('login', [
-                    'model' => $model, 'homeUrl' => Yii::$app->homeUrl,
+                    'model' => $model, 'homeUrl' => Yii::$app->homeUrl, 'id' => $id
         ]);
     }
 

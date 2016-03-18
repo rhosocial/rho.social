@@ -14,7 +14,7 @@ $ssoUrlManager = Yii::$app->multiDomainsManager->get('sso');
         </h2>
         <div style="margin-top: 36px;">
             Your <?= Yii::$app->params['title']['main'] ?> No. is:<br/>
-            <a class="btn btn-primary" type="button" href="<?= $ssoUrlManager->createAbsoluteUrl(['/site/login', 'id' => $id]) ?>"><?= $id ?></a>
+            <a class="btn btn-primary" type="button" href="<?= $ssoUrlManager->createAbsoluteUrl(['/sso/login', 'id' => $id]) ?>"><?= $id ?></a>
         </div>
     </div><!-- register-finish -->
 </div>

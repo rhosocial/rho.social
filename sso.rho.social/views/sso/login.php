@@ -16,6 +16,7 @@ use yii\helpers\Html;
 /* @var $form yii\bootstrap\ActiveForm */
 /* @var $model \rho_sso\models\LoginForm */
 /* @var $homeUrl string */
+/* @var $id string */
 
 $this->title = Yii::t('sso', 'Login');
 $this->params['breadcrumbs'][] = $this->title;
@@ -28,11 +29,11 @@ $this->params['breadcrumbs'][] = $this->title;
         <p class="login-box-msg"><?= Yii::t('sso', 'Sign in to start your session') ?></p>
         <?php $form = ActiveForm::begin(['id' => 'login-form']); ?>
         <div class="form-group has-feedback">
-            <?= $form->field($model, 'account', ['template' => "{input}\n{hint}\n{error}"])->textInput(['class' => 'form-control', 'placeholder' => $model->attributeLabels()['account']]) ?>
+            <?= $form->field($model, 'account', ['template' => "{input}\n{hint}\n{error}"])->textInput(['class' => 'form-control', 'placeholder' => $model->getAttributeLabel('account'), 'value' => is_numeric($id) && (int)$id == $id && is_int((int)$id) && strlen($id) <= 10 && strlen($id) >=5 ? $id : '']) ?>
             <span class="glyphicon glyphicon-user form-control-feedback"></span>
         </div>
         <div class="form-group has-feedback">
-            <?= $form->field($model, 'password', ['template' => "{input}\n{hint}\n{error}"])->passwordInput(['class' => 'form-control', 'placeholder' => $model->attributeLabels()['password']]) ?>
+            <?= $form->field($model, 'password', ['template' => "{input}\n{hint}\n{error}"])->passwordInput(['class' => 'form-control', 'placeholder' => $model->getAttributeLabel('password')]) ?>
             <span class="glyphicon glyphicon-lock form-control-feedback"></span>
         </div>
         <div class="row">
