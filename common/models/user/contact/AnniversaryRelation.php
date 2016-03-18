@@ -44,4 +44,10 @@ trait AnniversaryRelation
         $model = Anniversary::buildNoInitModel();
         return $this->hasMany(Anniversary::className(), [$model->createdByAttribute => $this->guidAttribute])->inverseOf('user');
     }
+
+    /**
+     * @param $user static
+     * @return integer[]
+     */
+    abstract public function getUserPermissions($user);
 }

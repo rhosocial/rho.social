@@ -44,4 +44,10 @@ trait EmailRelation
         $model = Email::buildNoInitModel();
         return $this->hasMany(Email::className(), [$model->createdByAttribute => $this->guidAttribute])->inverseOf('user');
     }
+
+    /**
+     * @param $user static
+     * @return integer[]
+     */
+    abstract public function getUserPermissions($user);
 }

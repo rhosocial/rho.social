@@ -49,4 +49,14 @@ trait URLRelation
      * @return integer[]
      */
     abstract public function getUserPermissions($user);
+
+    /**
+     * 
+     * @param static $user
+     * @return BaseUserItemQuery
+     */
+    public function getUserUrls($user)
+    {
+        return $user->getUrls()->andWhere(['permission' => $this->getUserPermissions($user)]);
+    }
 }

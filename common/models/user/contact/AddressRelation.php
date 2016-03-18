@@ -62,4 +62,10 @@ trait AddressRelation
         $model = Address::buildNoInitModel();
         return $this->hasMany(Address::className(), [$model->createdByAttribute => $this->guidAttribute])->inverseOf('user');
     }
+
+    /**
+     * @param $user static
+     * @return integer[]
+     */
+    abstract public function getUserPermissions($user);
 }

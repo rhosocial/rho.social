@@ -47,7 +47,7 @@ trait PhoneRelation
     }
 
     /**
-     * @param $user statis
+     * @param $user static
      * @return integer[]
      */
     abstract public function getUserPermissions($user);
@@ -55,7 +55,7 @@ trait PhoneRelation
     /**
      * 
      * @param static $user
-     * @return
+     * @return BaseUserItemQuery
      */
     public function getUserPhones($user)
     {
