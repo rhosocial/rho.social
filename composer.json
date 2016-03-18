@@ -19,7 +19,6 @@
         "yiisoft/yii2-redis": ">=2.0.5",
         "kartik-v/yii2-widgets": "^3.4",
         "bower-asset/jquery": "^2.2.2",
-        "bower-asset/bootstrap": "^3.3.6",
         "bower-asset/holderjs": "^2.9.3",
         "bower-asset/font-awesome": "^4.5.0",
         "bower-asset/query-object": "^2.0.2",
