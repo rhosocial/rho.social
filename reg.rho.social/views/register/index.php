@@ -137,7 +137,7 @@ $ssoUrlManager = $md->get('sso');
                     <label>
                         <?=
                         $form->field($model, 'agree', [
-                            'template' => "{input} " . 'I agree to the {link}', ['link' => '<a href="#">' . 'terms of user' . '</a>'] . "\n{hint}\n{error}",
+                            'template' => "{input} " . Yii::t('reg', 'I agree to the {link}', ['link' => '<a href="#">' . Yii::t('reg', 'terms of user') . '</a>']) . "\n{hint}\n{error}",
                         ])->checkbox([
                             'style' => "background: rgb(255, 255, 255); margin: 0px; padding: 0px; border: 0px currentColor; border-image: none; left: -20%; top: -20%; width: 140%; height: 140%; display: block; position: absolute; opacity: 0;",
                             ], false)
