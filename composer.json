@@ -46,7 +46,7 @@
         "yiisoft/yii2-jui": "^2.0.5",
         "bower-asset/ckeditor": "^4.5.7",
         "vistart/yii2-widgets": "*",
-        "vistart/helpers": "dev-master",
+        "vistart/helpers": "^1.1.0",
         "vistart/yii2-models": "dev-master",
         "phpunit/phpunit": "^5.2.12",
         "bower-asset/admin-lte": "^2.3.2",
