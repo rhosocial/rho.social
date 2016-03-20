@@ -24,13 +24,24 @@ $this->registerJs(
     </div>
 
     <div class="body-content">
-
         <div class="row">
-            <?= FeatureItemWidget::widget(['title' => 'Personal Information', 'btnGoto' => ['text' => 'My Profile &raquo;', 'href' => Yii::$app->multiDomainsManager->get('my')->createAbsoluteUrl('')], 'btnLearn' => ['text' => 'Learn more &raquo;', 'href' => Url::toRoute('user/my/learn')]]) ?>
+            <div class="col-md-4">
+                <h2>Personal Information</h2>
+                <p>Manage your profile, phone, email, address, etc. Record every modification and delivery of them.</p>
+                <p><a href="https://my.rho.social/" class="btn btn-primary" type="button">My Profile »</a> <a href="/user/my/learn" class="btn btn-success" type="button">Learn more »</a></p>
+            </div>
 
-            <?= FeatureItemWidget::widget(['title' => 'Social Relationship', 'btnGoto' => ['text' => 'Find Friends &raquo;', 'href' => Yii::$app->multiDomainsManager->get('contact')->createAbsoluteUrl('')], 'btnLearn' => ['text' => 'Learn more &raquo;', 'href' => Yii::$app->multiDomainsManager->get('contact')->createAbsoluteUrl('')]]) ?>
+            <div class="col-md-4">
+                <h2>Social Relationship</h2>
+                <p>Follow you want, Notify if changed.</p>
+                <p><a href="https://contact.rho.social/" class="btn btn-primary" type="button">Find Friends »</a> <a href="https://contact.rho.social/" class="btn btn-success" type="button">Learn more »</a></p>
+            </div>
 
-            <?= FeatureItemWidget::widget(['title' => 'Opening to Third-party', 'btnGoto' => ['text' => 'Access Your App &raquo;', 'href' => "http://www.yiiframework.com/extensions/"], 'btnLearn' => ['text' => 'Learn more &raquo;', 'href' => Url::toRoute('dev/learn/introduction')]]) ?>
+            <div class="col-md-4">
+                <h2>Opening to Third-party</h2>
+                <p>Delivery your personal information to third-party.</p>
+                <p><a href="http://www.yiiframework.com/extensions/" class="btn btn-primary" type="button">Access Your App »</a> <a href="/dev/learn/introduction" class="btn btn-success" type="button">Learn more »</a></p>
+            </div>
         </div>
 
     </div>
