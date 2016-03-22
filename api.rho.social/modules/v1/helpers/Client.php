@@ -24,7 +24,7 @@ use yii\web\ForbiddenHttpException;
 class Client
 {
 
-    public static function checkClientId($client_id)
+    public static function checkId($client_id)
     {
         $model = OauthClient::findOne($client_id);
         if (!$model) {
@@ -33,7 +33,7 @@ class Client
         return $model;
     }
 
-    public static function checkClientSecret(OauthClient $client, $client_secret)
+    public static function checkSecret(OauthClient $client, $client_secret)
     {
         if ($client->client_secret !== $client_secret) {
             throw new ForbiddenHttpException("Invalid Client Secret.", 10032);

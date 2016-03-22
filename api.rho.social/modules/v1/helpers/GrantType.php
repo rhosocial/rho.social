@@ -36,9 +36,9 @@ class GrantType
      * Check if the grant type is valid or not.
      * @param type $grant_type The Grant Type String.
      * @return boolean True if grant type is valid.
-     * @throws \yii\web\BadRequestHttpException 
+     * @throws BadRequestHttpException 
      */
-    public static function checkGrantType($grant_type, $valid_grant_type = null)
+    public static function check($grant_type, $valid_grant_type = null)
     {
         if (empty($grant_type)) {
             throw new BadRequestHttpException('Grant Type Not Specified.', 10041);

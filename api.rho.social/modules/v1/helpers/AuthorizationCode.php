@@ -13,6 +13,8 @@
 namespace rho_api\modules\v1\helpers;
 
 use common\models\OauthAuthorizationCode;
+use yii\web\BadRequestHttpException;
+use yii\web\ServerErrorHttpException;
 
 /**
  * Error Number Range: 1002x;
@@ -30,19 +32,19 @@ class AuthorizationCode
      * @param type $code
      * @param type $redirect_uri
      * @return boolean
-     * @throws \yii\web\BadRequestHttpException
+     * @throws BadRequestHttpException
      */
-    public static function checkAuthorizationCode($code, $redirect_uri)
+    public static function check($code, $redirect_uri)
     {
         $model = OauthAuthorizationCode::findOne($code);
         if (!$model) {
-            throw new \yii\web\BadRequestHttpException('Invalid Authorization Code.', 10021);
+            throw new BadRequestHttpException('Invalid Authorization Code.', 10021);
         }
         if ($model->redirect_uri !== $redirect_uri) {
-            throw new \yii\web\BadRequestHttpException('Invalid Redirect URI.', 10022);
+            throw new BadRequestHttpException('Invalid Redirect URI.', 10022);
         }
         if ($model->expired == 'true' || $model->expires < date('Y-m-d H:i:s')) {
-            throw new \yii\web\BadRequestHttpException('Authorization Code Expired.', 10023);
+            throw new BadRequestHttpException('Authorization Code Expired.', 10023);
         }
         return true;
     }
@@ -62,7 +64,7 @@ class AuthorizationCode
      * 
      * @param type $authorization_code
      * @return type
-     * @throws \yii\web\ServerErrorHttpException
+     * @throws ServerErrorHttpException
      */
     public static function findUserUuid($authorization_code)
     {
@@ -70,6 +72,6 @@ class AuthorizationCode
         if ($code) {
             return $code->user_uuid;
         }
-        throw new \yii\web\ServerErrorHttpException('User Not Exists.', 10024);
+        throw new ServerErrorHttpException('User Not Exists.', 10024);
     }
 }

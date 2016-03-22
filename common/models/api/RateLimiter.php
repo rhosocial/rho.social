@@ -12,6 +12,7 @@
 
 namespace common\models\api;
 
+use vistart\Models\models\BaseMongoBlameableModel;
 use Yii;
 
 /**
@@ -24,7 +25,7 @@ use Yii;
  * @property mixed $last_timestamp
  * @property mixed $allowed_remaining
  */
-class RateLimiter extends \vistart\Models\models\BaseMongoBlameableModel
+class RateLimiter extends BaseMongoBlameableModel
 {
 
     public $enableIP = false;
@@ -47,11 +48,11 @@ class RateLimiter extends \vistart\Models\models\BaseMongoBlameableModel
     public function attributes()
     {
         return [
-            $this->idAttribute,
+            $this->idAttribute, // _id
             'client_id',
-            $this->createdByAttribute,
-            $this->contentAttribute,
-            $this->updatedAtAttribute,
+            $this->createdByAttribute, // User GUID
+            $this->contentAttribute, // API Endpoint
+            $this->updatedAtAttribute, // Last Timestamp
             'allowed_remaining',
         ];
     }
@@ -77,9 +78,22 @@ class RateLimiter extends \vistart\Models\models\BaseMongoBlameableModel
             $this->idAttribute => 'ID',
             'client_id' => 'Client ID',
             $this->createdByAttribute => 'User GUID',
-            $this->contentAttribute => 'Api Endpoint',
+            $this->contentAttribute => 'API Endpoint',
             $this->updatedAtAttribute => 'Last Timestamp',
             'allowed_remaining' => 'Allowed Remaining',
         ];
+    }
+
+    const RATE_LIMIT_ALLOW_MAX = 100;
+    const RATE_LIMIT_ALLOW_WINDOW_MAX = 3000;
+
+    public static function getWindow()
+    {
+        return 600;
+    }
+
+    public static function getAllowance()
+    {
+        return 10;
     }
 }
