@@ -32,18 +32,14 @@
                 <div class="col-md-12">
                     <div class="statistics pull-left">
                         <div class="pull-left entry">
-                            <span class="count">0</span>
+                            <span class="count"><?= count(Yii::$app->user->identity->followers) ?></span>
                             <br>
                             <span class="title">被关注</span>
                         </div>
                         <div class="pull-left entry">
-                            <span class="count">0</span>
+                            <span class="count"><?= count(Yii::$app->user->identity->followings) ?></span>
                             <br>
                             <span class="title">关注</span>
-                        </div>
-                        <div class="pull-left entry">
-                            <span class="count">1</span><br>
-                            <span class="title">版块</span>
                         </div>
                     </div>
                     <div class="controls controls-header pull-right">

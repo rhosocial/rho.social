@@ -40,6 +40,23 @@ use yii\bootstrap\Button;
     </div>
     <hr/>
     <div class="panel-body" style="min-height: 477px;">
-
+        <ul class="media-list">
+            <?php foreach (Yii::$app->user->identity->phones as $phone): ?>
+                <li class="entry">
+                    <div class="media">
+                        <h4 class="item-content-heading" id="item-<?= $phone->id ?>"><span><?= $phone->content ?></span></h4>
+                        <h5 class="pull-right"><?= $phone->updatedAt ?></h5>
+                    </div>
+                </li>
+            <?php endforeach; ?>
+            <?php foreach (Yii::$app->user->identity->emails as $phone): ?>
+                <li class="entry">
+                    <div class="media">
+                        <h4 class="item-content-heading" id="item-<?= $phone->id ?>"><span><?= $phone->content ?></span></h4>
+                        <h5 class="pull-right"><?= $phone->updatedAt ?></h5>
+                    </div>
+                </li>
+            <?php endforeach; ?>
+        </ul>
     </div>
 </div>

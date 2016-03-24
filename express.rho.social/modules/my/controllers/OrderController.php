@@ -9,11 +9,19 @@
  * @copyright Copyright (c) 2016 vistart
  * @license https://vistart.name/license/
  */
-return [
-    'api' => [
-        'class' => 'rho_express\modules\api\Module',
-    ],
-    'my' => [
-        'class' => 'rho_express\modules\my\Module',
-    ],
-];
+
+namespace rho_express\modules\my\controllers;
+
+/**
+ * Description of OrderController
+ *
+ * @author vistart <i@vistart.name>
+ */
+class OrderController extends \yii\web\Controller
+{
+
+    public function actionIndex()
+    {
+        
+    }
+}

@@ -9,11 +9,17 @@
  * @copyright Copyright (c) 2016 vistart
  * @license https://vistart.name/license/
  */
-return [
-    'api' => [
-        'class' => 'rho_express\modules\api\Module',
-    ],
-    'my' => [
-        'class' => 'rho_express\modules\my\Module',
-    ],
-];
+
+namespace rho_express\modules\my;
+
+/**
+ * Description of Module
+ *
+ * @author vistart <i@vistart.name>
+ */
+class Module extends \yii\base\Module
+{
+
+    public $controllerNamespace = 'rho_express\modules\my\controllers';
+
+}
